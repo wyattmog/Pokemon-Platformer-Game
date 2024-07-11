@@ -1,0 +1,120 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1720728407
+berry.gd::GDScript::-1::1720304570::0::1::::<>Node2D<>::
+berry.tscn::PackedScene::8021534745655657485::1720649955::0::1::::<><>::res://berry.gd<>uid://cpfi5a4t6blei::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy 2.png
+BG.gd::GDScript::-1::1719610821::0::1::::<>ParallaxBackground<>::
+bg.tscn::PackedScene::3797750501603648488::1720728396::0::1::::<><>::res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png
+block.tscn::PackedScene::4970920881762109965::1720728396::0::1::::<><>::uid://l1qenk1nmx68::::res://sprites/tiles/tilesets/output-onlinepngtools-6.png
+button.gd::GDScript::-1::1720019568::0::1::::<>Button<>::
+Camera2D.gd::GDScript::-1::1720313628::0::1::::<>Camera2D<>::
+Charmander.gd::GDScript::-1::1720059942::0::1::::<>CharacterBody2D<>::
+charmander.tscn::PackedScene::8308321696631004148::1720728396::0::1::::<><>::res://Charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://bmxh77vi6nur4::::res://sprites/mobs/output-onlinepngtools-2 copy 5.png<>uid://bm3guqspbvear::::res://sprites/effects/sma4_sprites copy 5.png<>uid://dchefvv82cxar::::res://sprites/mobs/output-onlinepngtools-2.png<>uid://bxm7pkhmlrw2o::::res://sprites/effects/sma4_sprites copy 4.png<>uid://clkdfkhnj6yv1::::res://sprites/effects/sma4_sprites copy 2.png<>uid://d2jckxyelngbe::::res://sprites/effects/sma4_sprites.png<>uid://cgqipx5gsfcuv::::res://sprites/mobs/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/output-onlinepngtools-2 copy 6.png
+dust.gd::GDScript::-1::1720464404::0::1::::<>Node2D<>::
+dust.tscn::PackedScene::5800478739903573647::1720649955::0::1::::<><>::res://dust.gd<>uid://bkrh3f6niquro::::res://sprites/player/output-onlinepngtools-7.png
+hittable_block.tscn::PackedScene::6287028997280349121::1720728396::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn
+main.gd::GDScript::-1::1720058155::0::1::::<>Control<>::
+main.tscn::PackedScene::4366103909513495105::1720728396::0::1::::<><>::res://main.gd<>uid://280ppurdseor::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png<>uid://bkcqsehqbaufe::::res://sprites/main menu/Super-pokemon-bros-7-2-2024.png<>uid://c1a5dih3tsme7::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png<>uid://budwnpwtudx33::::res://bg.tscn<>uid://2gxwtf7ssmmu::::res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png<>res://button.gd<>uid://bi7xwxhg6vwfm::::res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png
+marioblocks.tres::TileSet::6574120816893181569::1720727723::0::1::::<><>::uid://dw46xal1ijqqu::::res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png<>uid://cfemxfb0ijags::::res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png<>uid://td4s873dgyj0::::res://sprites/tiles/tilesets/grass.png<>uid://g4x60x4lqr58::::res://sprites/tiles/tilesets/output-onlinepngtools-4.png
+menu.gd::GDScript::-1::1719983424::0::1::::<>Control<>::
+Player.gd::GDScript::-1::1720655928::0::1::::<>CharacterBody2D<>::
+Player.tscn::PackedScene::414298450581743502::1720728396::0::1::::<><>::res://Player.gd<>uid://dtv8iamfbk4dh::::res://sprites/player/imageedit_22_7633397634 copy 2.png<>uid://ce21ymjcm7e7h::::res://sprites/player/imageedit_22_7633397634 copy 5.png<>uid://blyww64obyk6v::::res://sprites/player/imageedit_22_7633397634 copy 8.png<>uid://dqb5lbs6fuutc::::res://sprites/player/imageedit_22_7633397634 copy.png<>uid://cvbr0gh6lhgn3::::res://sprites/player/imageedit_22_7633397634 copy 4.png<>uid://bvp26a4vlkorl::::res://sprites/player/imageedit_22_7633397634.png<>uid://bqf1g3wt5w2p5::::res://sprites/player/imageedit_22_7633397634 copy 3.png<>uid://b664ninapwno2::::res://sprites/player/output-onlinepngtools.png<>uid://bjjboaesl5km0::::res://sprites/player/imageedit_22_7633397634 copy 9.png<>uid://cov2bjhn2ny28::::res://dust.tscn
+QuestionBlock.gd::GDScript::-1::1720728269::0::1::::<>StaticBody2D<>::
+question_block.tscn::PackedScene::4571752148728364671::1720728407::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn<>res://QuestionBlock.gd
+SteepSlope.gd::GDScript::-1::1720401262::0::1::::<>StaticBody2D<>::
+world_1.gd::GDScript::-1::1720401311::0::1::::<>Node2D<>::
+world_1.tscn::PackedScene::2568898723036457646::1720728402::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn<>uid://c0ws2rvhej4oj::::res://marioblocks.tres<>res://world_1.gd<>res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://dqmu3yhsnod6k::::res://charmander.tscn<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png<>uid://dmjxrgekwi0jx::::res://berry.tscn<>uid://b6eudb8la734v::::res://question_block.tscn
+world_2.tscn::PackedScene::2547518394695272360::1720728396::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn
+::res://sprites/::1720128254
+::res://sprites/Backrounds/::1719607849
+tile000.png::CompressedTexture2D::1016062176430642454::1719602130::1719602522::1::::<><>::
+tile001.png::CompressedTexture2D::5613979696291803912::1719602130::1719602522::1::::<><>::
+tile002.png::CompressedTexture2D::4531458417807202617::1719602130::1719602522::1::::<><>::
+tile003.png::CompressedTexture2D::5114198490716438832::1719602130::1719602522::1::::<><>::
+tile004.png::CompressedTexture2D::8604800455089712203::1719602130::1719602522::1::::<><>::
+tile005.png::CompressedTexture2D::34200616373415542::1719602130::1719602522::1::::<><>::
+tile006.png::CompressedTexture2D::3843625001687783667::1719602130::1719602522::1::::<><>::
+tile008.png::CompressedTexture2D::6160645007347773722::1719602130::1719602522::1::::<><>::
+tile009.png::CompressedTexture2D::8898189062847958480::1719602130::1719602522::1::::<><>::
+tile010.png::CompressedTexture2D::5989934783917853611::1719602130::1719602522::1::::<><>::
+tile011.png::CompressedTexture2D::8148851445284588793::1719602130::1719602522::1::::<><>::
+tile012.png::CompressedTexture2D::5078463389789311521::1719602130::1719602522::1::::<><>::
+tile013.png::CompressedTexture2D::1406952956278643583::1719602130::1719602522::1::::<><>::
+tile014.png::CompressedTexture2D::4063911107952073244::1719602130::1719602522::1::::<><>::
+tile015.png::CompressedTexture2D::4771103685068293664::1719602130::1719602522::1::::<><>::
+tile016.png::CompressedTexture2D::188169644080921400::1719602130::1719602522::1::::<><>::
+tile017.png::CompressedTexture2D::1993596423273107146::1719602130::1719602522::1::::<><>::
+tile018.png::CompressedTexture2D::6699816126395653183::1719602130::1719602522::1::::<><>::
+tile019.png::CompressedTexture2D::2058183296252426116::1719602130::1719602522::1::::<><>::
+tile020.png::CompressedTexture2D::3452988026371421032::1719602130::1719602522::1::::<><>::
+tile021.png::CompressedTexture2D::479351110192574309::1719602130::1719602522::1::::<><>::
+tile022.png::CompressedTexture2D::6898042368124466967::1719602130::1719602522::1::::<><>::
+tile023.png::CompressedTexture2D::3230191432700307110::1719602130::1719602522::1::::<><>::
+tile024.png::CompressedTexture2D::9029922294119158469::1719602130::1719602522::1::::<><>::
+tile025.png::CompressedTexture2D::3217879705621843879::1719602130::1719602522::1::::<><>::
+tile026.png::CompressedTexture2D::8906717376537950815::1719602130::1719602522::1::::<><>::
+tile027.png::CompressedTexture2D::2441259508587591598::1719602130::1719602522::1::::<><>::
+tile028.png::CompressedTexture2D::4955418408188883461::1719602130::1719602522::1::::<><>::
+tile029.png::CompressedTexture2D::115358340479287666::1719602130::1719602522::1::::<><>::
+tile030.png::CompressedTexture2D::9147887141012793417::1719602130::1719602522::1::::<><>::
+tile031.png::CompressedTexture2D::3131430163775397202::1719602130::1719602522::1::::<><>::
+tile032.png::CompressedTexture2D::3274849447230218197::1719602130::1719602522::1::::<><>::
+tile033.png::CompressedTexture2D::1213271723468055874::1719602130::1719602522::1::::<><>::
+tile034.png::CompressedTexture2D::3789288519812403317::1719602130::1719602522::1::::<><>::
+tile035.png::CompressedTexture2D::8635900434050095241::1719602130::1719602522::1::::<><>::
+world1back.png::CompressedTexture2D::6216639170802069437::1719607848::1719607849::1::::<><>::
+::res://sprites/effects/::1719706704
+sma4_sprites copy 2.png::CompressedTexture2D::5565754041544046764::1719706628::1719706704::1::::<><>::
+sma4_sprites copy 3.png::CompressedTexture2D::447120886592268301::1719706702::1719706704::1::::<><>::
+sma4_sprites copy 4.png::CompressedTexture2D::4027506887701415156::1719706665::1719706704::1::::<><>::
+sma4_sprites copy 5.png::CompressedTexture2D::3286890271161639609::1719706682::1719706704::1::::<><>::
+sma4_sprites copy.png::CompressedTexture2D::6744204600766309939::1719706301::1719706304::1::::<><>::
+sma4_sprites.png::CompressedTexture2D::9073080766326616022::1719706646::1719706704::1::::<><>::
+::res://sprites/main menu/::1720128271
+DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png::CompressedTexture2D::6599578601438488536::1719276996::1720128271::1::::<><>::
+DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png::CompressedTexture2D::1964768775362046301::1719276999::1720128271::1::::<><>::
+Screenshot 2024-06-24 at 7.40.56 PM.png::CompressedTexture2D::3015428518392383526::1719288781::1720128271::1::::<><>::
+Screenshot 2024-06-24 at 7.45.07 PM.png::CompressedTexture2D::1908921830197153612::1719288974::1720128271::1::::<><>::
+Super-pokemon-bros-7-2-2024.png::CompressedTexture2D::3093441713391453902::1719980537::1720128271::1::::<><>::
+::res://sprites/mobs/::1719718537
+output-onlinepngtools-2 copy 2.png::CompressedTexture2D::1088387246469260148::1719681456::1719681597::1::::<><>::
+output-onlinepngtools-2 copy 4.png::CompressedTexture2D::5227518250808109901::1719718498::1719718537::1::::<><>::
+output-onlinepngtools-2 copy 5.png::CompressedTexture2D::3276651373640728263::1719682479::1719682512::1::::<><>::
+output-onlinepngtools-2 copy 6.png::CompressedTexture2D::741719799603280853::1719718533::1719718537::1::::<><>::
+output-onlinepngtools-2 copy 7.png::CompressedTexture2D::6570684984620209636::1719682493::1719718537::1::::<><>::
+output-onlinepngtools-2 copy.png::CompressedTexture2D::6483952208897965486::1719681413::1719681597::1::::<><>::
+output-onlinepngtools-2.png::CompressedTexture2D::7314343316541177741::1719682389::1719682512::1::::<><>::
+::res://sprites/player/::1720411275
+imageedit_22_7633397634 copy 2.png::CompressedTexture2D::8538219978916299361::1719290435::1719608089::1::::<><>::
+imageedit_22_7633397634 copy 3.png::CompressedTexture2D::3521354932791036280::1720321932::1720321935::1::::<><>::
+imageedit_22_7633397634 copy 4.png::CompressedTexture2D::6249948622640806390::1719290435::1719608092::1::::<><>::
+imageedit_22_7633397634 copy 5.png::CompressedTexture2D::5110957086455202967::1719350677::1719608093::1::::<><>::
+imageedit_22_7633397634 copy 8.png::CompressedTexture2D::3209419764777232555::1719351204::1719608095::1::::<><>::
+imageedit_22_7633397634 copy 9.png::CompressedTexture2D::3036785401342311609::1720129054::1720129084::1::::<><>::
+imageedit_22_7633397634 copy.png::CompressedTexture2D::8286189162303648168::1719290435::1719608096::1::::<><>::
+imageedit_22_7633397634.png::CompressedTexture2D::3893046830587005541::1719290435::1719608097::1::::<><>::
+output-onlinepngtools-7.png::CompressedTexture2D::3123878874178834816::1720411239::1720411275::1::::<><>::
+output-onlinepngtools.png::CompressedTexture2D::4628054995249132939::1719290435::1719608099::1::::<><>::
+::res://sprites/tiles/::1719611917
+output-onlinepngtools-2 copy 2.png::CompressedTexture2D::719778949087145951::1719608566::1719608571::1::::<><>::
+output-onlinepngtools-2 copy.png::CompressedTexture2D::8661242239017839563::1719608518::1719608571::1::::<><>::
+output-onlinepngtools-2.png::CompressedTexture2D::6419093041573558475::1719608473::1719608571::1::::<><>::
+tile000 copy.png::CompressedTexture2D::8929291311226260541::1719633570::1719608477::1::::<><>::
+tile000.png::CompressedTexture2D::825647664241459401::1719633484::1719608477::1::::<><>::
+tile001 copy.png::CompressedTexture2D::3840243109412926840::1719633570::1719608477::1::::<><>::
+tile001.png::CompressedTexture2D::2987583957720828491::1719633484::1719608477::1::::<><>::
+tile002 copy.png::CompressedTexture2D::6278285596106080692::1719633570::1719608477::1::::<><>::
+tile002.png::CompressedTexture2D::4563460712951941652::1719633484::1719608477::1::::<><>::
+tile003 copy.png::CompressedTexture2D::7198681125466670391::1719633570::1719608477::1::::<><>::
+tile003.png::CompressedTexture2D::362109236274766360::1719633484::1719608477::1::::<><>::
+::res://sprites/tiles/tilesets/::1720728530
+grass.png::CompressedTexture2D::1341575883446071051::1720232164::1720232206::1::::<><>::
+output-onlinepngtools-2 copy 3.png::CompressedTexture2D::5132813039074098694::1719607549::1719611935::1::::<><>::
+output-onlinepngtools-4 copy.png::CompressedTexture2D::862085706925726111::1720728530::1720728533::1::::<><>::
+output-onlinepngtools-4.png::CompressedTexture2D::482453217087839985::1720301901::1720301977::1::::<><>::
+output-onlinepngtools-6 copy 2.png::CompressedTexture2D::5836535266190345044::1720304088::1720304091::1::::<><>::
+output-onlinepngtools-6 copy 3.png::CompressedTexture2D::5554727205023541134::1720304066::1720304091::1::::<><>::
+output-onlinepngtools-6 copy.png::CompressedTexture2D::8764001757350140651::1720303993::1720304091::1::::<><>::
+output-onlinepngtools-6.png::CompressedTexture2D::826730416134582155::1720303965::1720304091::1::::<><>::
+output-onlinepngtools-7.png::CompressedTexture2D::5150869371410186746::1720411254::1720411254::1::::<><>::
+pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png::CompressedTexture2D::8765206884204555196::1719602976::1719611935::1::::<><>::
+SNES - Super Mario World - Ground Tileset (1).png::CompressedTexture2D::4883347835384763401::1719611989::1719612001::1::::<><>::

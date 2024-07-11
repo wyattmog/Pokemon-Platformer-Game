@@ -1,0 +1,16 @@
+res://block.tscn
+res://marioblocks.tres
+res://hittable_block.tscn
+res://question_block.tscn
+res://world_1.tscn
+res://main.tscn
+res://world_2.tscn
+res://bg.tscn
+res://Player.tscn
+res://charmander.tscn
+res://QuestionBlock.gd
+res://block.gd
+res://used_block.tscn
+res://hittable_block.gd
+res://Coin.gd
+res://coin.tscn

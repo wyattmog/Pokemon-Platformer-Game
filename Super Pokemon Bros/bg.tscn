@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://budwnpwtudx33"]
+
+[ext_resource type="Script" path="res://BG.gd" id="1_djc0f"]
+[ext_resource type="Texture2D" uid="uid://cutneystmh3wj" path="res://sprites/Backrounds/world1back.png" id="2_qf4dp"]
+[ext_resource type="Texture2D" uid="uid://b6atscc1habc3" path="res://sprites/tiles/tile002.png" id="3_fro5e"]
+[ext_resource type="Texture2D" uid="uid://ffn5ep4gcdnc" path="res://sprites/tiles/tile003.png" id="4_3lg3d"]
+[ext_resource type="Texture2D" uid="uid://bithcoocktlbf" path="res://sprites/tiles/tile001.png" id="5_yfxq1"]
+[ext_resource type="Texture2D" uid="uid://l07kcv05l2u4" path="res://sprites/tiles/tile000.png" id="6_hbhog"]
+
+[node name="BG" type="ParallaxBackground"]
+script = ExtResource("1_djc0f")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(-1, 0)
+motion_offset = Vector2(100, 2.08165e-12)
+motion_mirroring = Vector2(1160, 2.08165e-12)
+
+[node name="World1Back" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(625.958, 530)
+scale = Vector2(2.46729, 2.46729)
+texture = ExtResource("2_qf4dp")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1160, 2.08165e-12)
+
+[node name="Tile002" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(216, 522)
+scale = Vector2(6.66216, 6.66216)
+texture = ExtResource("3_fro5e")
+
+[node name="Tile003" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(341, 510)
+scale = Vector2(7.61806, 7.61806)
+texture = ExtResource("4_3lg3d")
+
+[node name="Tile001" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811047, 0.898385, 0.270735, 1)
+position = Vector2(69, 496)
+scale = Vector2(8.5473, 8.5473)
+texture = ExtResource("5_yfxq1")
+
+[node name="Tile000" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(505, 485)
+scale = Vector2(9.18243, 9.18243)
+texture = ExtResource("6_hbhog")
+
+[node name="Tile004" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(806, 527)
+scale = Vector2(6.66216, 6.66216)
+texture = ExtResource("3_fro5e")
+
+[node name="Tile005" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(931.562, 499.578)
+scale = Vector2(8.08681, 8.08681)
+texture = ExtResource("4_3lg3d")
+
+[node name="Tile006" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(651, 497)
+scale = Vector2(8.5473, 8.5473)
+texture = ExtResource("5_yfxq1")
+
+[node name="Tile007" type="Sprite2D" parent="ParallaxLayer2"]
+modulate = Color(0.811765, 0.898039, 0.270588, 1)
+position = Vector2(1092.56, 488.329)
+scale = Vector2(9.32095, 9.32094)
+texture = ExtResource("6_hbhog")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3g8dgcxka3nx"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ci5fu"]
+[ext_resource type="Texture2D" uid="uid://280ppurdseor" path="res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png" id="2_gjhr6"]
+[ext_resource type="Texture2D" uid="uid://bkcqsehqbaufe" path="res://sprites/main menu/Super-pokemon-bros-7-2-2024.png" id="4_e13rr"]
+[ext_resource type="Texture2D" uid="uid://c1a5dih3tsme7" path="res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png" id="5_c5hyu"]
+[ext_resource type="PackedScene" uid="uid://budwnpwtudx33" path="res://bg.tscn" id="5_p1lbf"]
+[ext_resource type="Texture2D" uid="uid://2gxwtf7ssmmu" path="res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png" id="6_tx6n7"]
+[ext_resource type="Script" path="res://button.gd" id="7_jujse"]
+[ext_resource type="Texture2D" uid="uid://bi7xwxhg6vwfm" path="res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png" id="8_hxbbh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2njq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c5hyu")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ci5fu")
+
+[node name="DsDSi-PokemonHeartGoldSoulSilver-PhotoAlbum" type="Sprite2D" parent="."]
+position = Vector2(576, 406)
+scale = Vector2(2.84417, 2.84418)
+texture = ExtResource("2_gjhr6")
+
+[node name="BG" parent="." instance=ExtResource("5_p1lbf")]
+
+[node name="Super-pokemon-bros-7-2-2024" type="Sprite2D" parent="."]
+position = Vector2(576, 109)
+scale = Vector2(0.630742, 0.630742)
+texture = ExtResource("4_e13rr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(301, 224)
+scale = Vector2(2.45833, 2.34211)
+sprite_frames = SubResource("SpriteFrames_n2njq")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 232.0
+offset_right = 1691.0
+offset_bottom = 1098.0
+scale = Vector2(0.0747358, 0.0865741)
+icon = ExtResource("6_tx6n7")
+script = ExtResource("7_jujse")
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 444.0
+offset_top = 232.0
+offset_right = 1980.0
+offset_bottom = 1191.0
+scale = Vector2(0.06762, 0.0779792)
+icon = ExtResource("8_hxbbh")
+
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="focus_entered" from="Button2" to="." method="_on_button_2_focus_entered"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

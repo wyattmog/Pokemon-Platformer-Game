@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cov2bjhn2ny28"]
+
+[ext_resource type="Script" path="res://dust.gd" id="1_awfr3"]
+[ext_resource type="Texture2D" uid="uid://bkrh3f6niquro" path="res://sprites/player/output-onlinepngtools-7.png" id="1_p8yk0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtuss"]
+atlas = ExtResource("1_p8yk0")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4hmb"]
+atlas = ExtResource("1_p8yk0")
+region = Rect2(20, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfl8f"]
+atlas = ExtResource("1_p8yk0")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ni22o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtuss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4hmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfl8f")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dust",
+"speed": 10.0
+}]
+
+[node name="Dust" type="Node2D"]
+z_index = 1
+position = Vector2(-3, 0)
+script = ExtResource("1_awfr3")
+
+[node name="DustSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(1.10865, 1.10865)
+sprite_frames = SubResource("SpriteFrames_ni22o")
+animation = &"dust"
+frame_progress = 0.0234754

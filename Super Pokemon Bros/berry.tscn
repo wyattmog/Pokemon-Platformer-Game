@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmjxrgekwi0jx"]
+
+[ext_resource type="Script" path="res://berry.gd" id="1_br2vl"]
+[ext_resource type="Texture2D" uid="uid://cpfi5a4t6blei" path="res://sprites/tiles/tilesets/output-onlinepngtools-6 copy 2.png" id="1_hr1t2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8i17"]
+atlas = ExtResource("1_hr1t2")
+region = Rect2(0, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5sd0"]
+atlas = ExtResource("1_hr1t2")
+region = Rect2(23, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyjya"]
+atlas = ExtResource("1_hr1t2")
+region = Rect2(46, 0, 18, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocwxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8i17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5sd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyjya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5sd0")
+}],
+"loop": true,
+"name": &"swing",
+"speed": 5.0
+}]
+
+[node name="Berry" type="Node2D"]
+script = ExtResource("1_br2vl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 6)
+sprite_frames = SubResource("SpriteFrames_ocwxy")
+animation = &"swing"
+frame_progress = 0.413691

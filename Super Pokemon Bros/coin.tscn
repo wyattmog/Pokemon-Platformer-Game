@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vxnkx35swspn"]
+
+[ext_resource type="PackedScene" uid="uid://cc27lt2m5bta0" path="res://block.tscn" id="1_8wmtu"]
+[ext_resource type="Script" path="res://Coin.gd" id="2_u1fy4"]
+
+[node name="Coin" instance=ExtResource("1_8wmtu")]
+script = ExtResource("2_u1fy4")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"coin"
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 0)
+disabled = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

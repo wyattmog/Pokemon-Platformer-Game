@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6eudb8la734v"]
+
+[ext_resource type="PackedScene" uid="uid://cvtqpjdaxe642" path="res://hittable_block.tscn" id="1_5we05"]
+[ext_resource type="Script" path="res://QuestionBlock.gd" id="2_dtd0v"]
+
+[node name="Question_Block" instance=ExtResource("1_5we05")]
+script = ExtResource("2_dtd0v")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(1.675, 1)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"turn"
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -0.5)
+
+[node name="BounceTimer" parent="." index="3"]
+wait_time = 0.133
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
