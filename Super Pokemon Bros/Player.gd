@@ -19,6 +19,11 @@ var curr_pos = 0
 var target_left_margin = 0.0
 var target_right_margin = 0.0
 func _physics_process(delta):
+	if Input.is_action_just_pressed("attack"):
+		animplaying = true
+		anim.play("GrassAttack")		
+		await anim.animation_finished
+		animplaying = false
 	get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
 	get_node("Camera2D").position.y = 0
 	# Add the gravity.
@@ -45,8 +50,11 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY - 50
 		else:
 			velocity.y = JUMP_VELOCITY
-		anim.play("JumpBig")
-		jumptype = "jump"
+		if !animplaying:
+			animplaying = true
+			anim.play("JumpBig")
+			animplaying = false
+			jumptype = "jump"
 		if direction < 0:
 			last_pressed = -1
 		else: 
@@ -56,11 +64,12 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY 
 		else:
 			velocity.y = JUMP_VELOCITY + 50
-		anim.play("SpinBig")
-		jumptype = "spin"
-		animplaying = true
-		await anim.animation_finished
-		animplaying = false
+		if !animplaying:
+			animplaying = true
+			anim.play("SpinBig")
+			jumptype = "spin"
+			await not is_on_floor()
+			animplaying = false
 		if direction < 0:
 			last_pressed = -1
 		else: 
@@ -84,54 +93,19 @@ func _physics_process(delta):
 			target_right_margin = 0.0
 		elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 35:
 			target_left_margin = 0.0
-		elif direction == -1 && velocity.x > 0:
-			curr_pos = get_node("AnimatedSprite2D").position.x
-			if is_on_floor():
-				_spawn_dust()
-			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
-		elif direction == 1 && velocity.x < 0:
-			curr_pos = get_node("AnimatedSprite2D").position.x
-			if is_on_floor():
-				_spawn_dust()
-			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
-		else:
-			#if get_node("AnimatedSprite2D").global_position[0] > 30 + get_node("Camera2D").get_screen_center_position()[0]:
-				#target_right_margin = 0.0
-			#elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 30:
-				#target_left_margin = 0.0
-			if Input.is_action_pressed("sprint"):
-				velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION)
-			else: 
-				velocity.x = move_toward(velocity.x, (direction * SPEED)/3, ACCELERATION)
-		if Input.is_action_pressed("down") and is_on_floor() and velocity.x:
-			velocity.x = move_toward(velocity.x, 0, FRICTION)
-			if velocity.x:
-				_spawn_dust()
-			get_node("AnimatedSprite2D").offset.y = 3
-			anim.play("SlideBig")
-		elif velocity.y == 0 && ((velocity.x < 300 && velocity.x > 0)|| (velocity.x < 0 && velocity.x > -300)):
-			anim.play("WalkBig")
-		elif velocity.y == 0 && ((velocity.x >= 300 && velocity.x >= 0) || (velocity.x <= 0 && velocity.x <= -300)):
-			anim.play("RunBig")
-			#last_pressed = -1
-		#elif velocity.y == 0 && direction > 0:
-			#anim.play("WalkRight")
-			#last_pressed = 1
+		_directionalMovement(direction)
 		if direction < 0:
 			last_pressed = -1
 		else: 
 			last_pressed = 1
 	else:
+		_directionalMovement(direction)
 		if last_pressed == 1:
 			target_left_margin = 0.2
 		elif last_pressed == -1:
 			target_right_margin = 0.2
-		get_node("AnimatedSprite2D").offset.y = 0
-		if velocity.y == 0 and not velocity.x:
-			anim.play("IdleBig")
-		velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
-	if velocity.y > 0 and !animplaying:
-		anim.play("FallRight")
+	if velocity.y > 0 and !animplaying and jumptype=="jump":
+		anim.play("FallBig")
 	get_node("Camera2D").drag_left_margin = lerp(get_node("Camera2D").drag_left_margin, target_left_margin, MARGIN_CHANGE_SPEED * delta)
 	get_node("Camera2D").drag_right_margin = lerp(get_node("Camera2D").drag_right_margin, target_right_margin, MARGIN_CHANGE_SPEED * delta)
 	move_and_slide()
@@ -144,10 +118,46 @@ func _spawn_dust():
 	new_dust.position.y = position.y + 12
 	add_sibling(new_dust)
 	get_node("DustTimer").start()
+	
 func _on_charmander_bounce_signal():
-	if jumptype == "spin":
-		anim.play("spin")
-	elif jumptype == "jump":
+	if jumptype == "spin" and !animplaying:
+		anim.play("Spin")
+	elif jumptype == "jump" and !animplaying:
 		anim.play("JumpBig")
 	velocity.y = JUMP_VELOCITY
+	
+func _directionalMovement(direction):
+	if direction:
+		if direction == -1 && velocity.x > 0:
+			if is_on_floor():
+				_spawn_dust()
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
+		elif direction == 1 && velocity.x < 0:
+			if is_on_floor():
+				_spawn_dust()
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
+		else:
+			if Input.is_action_pressed("sprint"):
+				velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION)
+			else: 
+				velocity.x = move_toward(velocity.x, (direction * SPEED)/3, ACCELERATION)
+		if Input.is_action_pressed("down") and is_on_floor() and velocity.x and !animplaying:
+			velocity.x = move_toward(velocity.x, 0, FRICTION)
+			if velocity.x:
+				_spawn_dust()
+			get_node("AnimatedSprite2D").offset.y = 3
+			anim.play("SlideBig")
+		elif velocity.y == 0 && ((velocity.x < 300 && velocity.x > 0)|| (velocity.x < 0 && velocity.x > -300)) and !animplaying:
+			anim.play("WalkBig")
+		elif velocity.y == 0 && ((velocity.x >= 300 && velocity.x >= 0) || (velocity.x <= 0 && velocity.x <= -300)) and !animplaying:
+			anim.play("RunBig")
+	else:
+		if velocity.y == 0 and (velocity.x > 0 or velocity.x < 0) and !animplaying:
+			anim.play("WalkBig")
+		get_node("AnimatedSprite2D").offset.y = 0
+		if velocity.y == 0 and not velocity.x and !animplaying:
+			anim.play("IdleBig")
+		velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
+		
+	
 

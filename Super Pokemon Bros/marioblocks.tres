@@ -19323,7 +19323,6 @@ texture_region_size = Vector2i(16, 8)
 scenes/1/scene = ExtResource("5_0hx66")
 scenes/2/scene = ExtResource("6_smm5p")
 scenes/3/scene = ExtResource("7_2qtk7")
-scenes/3/display_placeholder = ExtResource("7_2qtk7")
 
 [resource]
 tile_size = Vector2i(16, 8)

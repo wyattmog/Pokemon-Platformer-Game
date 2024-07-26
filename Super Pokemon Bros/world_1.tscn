@@ -317,11 +317,11 @@ position = Vector2(828.516, 745.714)
 scale = Vector2(2, 2)
 
 [node name="Charmander2" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(882.798, 747.143)
+position = Vector2(869.942, 745.714)
 scale = Vector2(2, 2)
 
 [node name="Charmander3" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(934.223, 747.143)
+position = Vector2(911.367, 745.714)
 scale = Vector2(2, 2)
 
 [node name="Foreground Blocks" type="Node2D" parent="."]
@@ -330,11 +330,11 @@ scale = Vector2(2, 2)
 position = Vector2(173.988, 511)
 
 [node name="Question_Block" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
-position = Vector2(724.949, 472)
+position = Vector2(719.95, 472)
 scale = Vector2(1.2, 1.2)
 
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
-position = Vector2(748.948, 472)
+position = Vector2(738.948, 472)
 scale = Vector2(1.2, 1.2)
 
 [node name="Question_Block3" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
