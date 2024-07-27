@@ -14,4 +14,3 @@ func _process(delta):
 
 func _on_charmander_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
-	

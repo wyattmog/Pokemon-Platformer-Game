@@ -25,6 +25,7 @@ func _physics_process(delta):
 		velocity.x = -SPEED
 	else: 
 		velocity.x = 0
+		velocity.y = 0
 	#if chase == true:
 		#if !isdead:
 			#get_node("AnimatedSprite2D").play("Walk")
@@ -42,9 +43,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_player_detection_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and !isdead:
 		nearby = true
-		print("noo")
+		print("detection")
 		#print("entered")
 
 func _on_player_detection_body_exited(body):
@@ -56,16 +57,18 @@ func _on_player_death_body_entered(body):
 	if body.name == "Player":
 		death()
 		isdead=true
+		print("deathbody")
 
 func _on_player_collision_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and !isdead:
 		get_node("AnimatedSprite2D").queue_free()
 		get_tree().change_scene_to_file("res://main.tscn")
+		print("collisionbody")
 		
 func death():
 	#chase = false
-	get_node("PlayerCollision/CollisionPolygon2D").disabled = true
 	get_node("PlayerDeath/CollisionPolygon2D").disabled = true
+	get_node("PlayerCollision/CollisionPolygon2D").disabled = true
 	emit_signal("enemy_death", get_path())
 	get_node("AnimatedSprite2D").play("Death")
 	if !attacked:
@@ -77,14 +80,8 @@ func death():
 func _on_player_grass_attack():
 	attacked = true
 	if nearby:
-		#get_node("PlayerCollision/CollisionPolygon2D").disabled = true
-		#get_node("PlayerDeath/CollisionPolygon2D").disabled = true
-		#emit_signal("enemy_death", get_path())
 		isdead = true
 		death()
-		
-
-
 
 func _on_player_grass_attack_ended():
 	attacked = false
