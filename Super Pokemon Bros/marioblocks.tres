@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://c0ws2rvhej4oj"]
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://c0ws2rvhej4oj"]
 
 [ext_resource type="Texture2D" uid="uid://dw46xal1ijqqu" path="res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png" id="1_m4f0e"]
 [ext_resource type="Texture2D" uid="uid://cfemxfb0ijags" path="res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png" id="2_1cd6v"]
@@ -19324,9 +19324,12 @@ scenes/1/scene = ExtResource("5_0hx66")
 scenes/2/scene = ExtResource("6_smm5p")
 scenes/3/scene = ExtResource("7_2qtk7")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d6q1a"]
+
 [resource]
 tile_size = Vector2i(16, 8)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 3
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_cddfx")
 sources/0 = SubResource("TileSetAtlasSource_ccg6q")
 sources/1 = SubResource("TileSetAtlasSource_sxh2i")
@@ -19334,4 +19337,5 @@ sources/2 = SubResource("TileSetAtlasSource_hw1ym")
 sources/3 = SubResource("TileSetAtlasSource_s254a")
 sources/4 = SubResource("TileSetAtlasSource_k3bi8")
 sources/5 = SubResource("TileSetScenesCollectionSource_avxt2")
+sources/6 = SubResource("TileSetScenesCollectionSource_d6q1a")
 pattern_0 = SubResource("TileMapPattern_36do3")

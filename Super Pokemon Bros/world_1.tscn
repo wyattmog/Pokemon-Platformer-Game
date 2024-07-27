@@ -41,6 +41,7 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(406.971, 496)
 scale = Vector2(1.08693, 1.08693)
+collision_mask = 12
 
 [node name="BG" type="ParallaxBackground" parent="."]
 script = ExtResource("2_4bsdx")
@@ -315,36 +316,46 @@ scale = Vector2(0.7, 0.7)
 [node name="Charmander" parent="Mobs" instance=ExtResource("7_fkbon")]
 position = Vector2(828.516, 745.714)
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 9
 
 [node name="Charmander2" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(869.942, 745.714)
+position = Vector2(904.225, 745.714)
 scale = Vector2(2, 2)
-
-[node name="Charmander3" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(911.367, 745.714)
-scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 9
 
 [node name="Foreground Blocks" type="Node2D" parent="."]
 
 [node name="Berry" parent="Foreground Blocks" instance=ExtResource("10_5uhu3")]
 position = Vector2(173.988, 511)
 
+[node name="Coin" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
+position = Vector2(273.981, 490)
+scale = Vector2(1.10512, 1.10512)
+collision_layer = 4
+collision_mask = 9
+
 [node name="Question_Block" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(719.95, 472)
 scale = Vector2(1.2, 1.2)
+collision_layer = 8
 
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(738.948, 472)
 scale = Vector2(1.2, 1.2)
+collision_layer = 8
 
 [node name="Question_Block3" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(700.951, 472)
 scale = Vector2(1.2, 1.2)
+collision_layer = 8
 
-[node name="Coin" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-position = Vector2(273.981, 490)
-scale = Vector2(1.10512, 1.10512)
-
+[connection signal="grass_attack" from="Player/Player" to="Mobs/Charmander" method="_on_player_grass_attack"]
+[connection signal="grass_attack" from="Player/Player" to="Mobs/Charmander2" method="_on_player_grass_attack"]
+[connection signal="grass_attack_ended" from="Player/Player" to="Mobs/Charmander" method="_on_player_grass_attack_ended"]
+[connection signal="grass_attack_ended" from="Player/Player" to="Mobs/Charmander2" method="_on_player_grass_attack_ended"]
 [connection signal="bounce_signal" from="Mobs/Charmander" to="Player/Player" method="_on_charmander_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Charmander" to="." method="_on_charmander_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charmander2" to="Player/Player" method="_on_charmander_bounce_signal"]
-[connection signal="bounce_signal" from="Mobs/Charmander3" to="Player/Player" method="_on_charmander_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Charmander2" to="." method="_on_charmander_enemy_death"]

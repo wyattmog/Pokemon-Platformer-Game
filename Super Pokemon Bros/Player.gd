@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 350.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const FRICTION = 35
 const ACCELERATION = 6.0
@@ -15,15 +15,33 @@ var last_pressed = 0
 var changeddirection = false
 var skid = false
 var curr_pos = 0
-
+var attack = ""
+signal grass_attack
+signal grass_attack_ended
 var target_left_margin = 0.0
 var target_right_margin = 0.0
+
+
+func emit_signal_while_playing():
+	while anim.is_playing():
+		emit_signal("grass_attack")
+		await get_tree().create_timer(0.0).timeout
+	animplaying = false
+	emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	#if Input.is_action_just_pressed("attack"):
+		#emit_signal("grass_attack")
+		#attack = "grass"
+		#animplaying = true
+		#anim.play("GrassAttack")		
+		#await anim.animation_finished
+		#animplaying = false
+		#emit_signal("grass_attack")
 	if Input.is_action_just_pressed("attack"):
-		animplaying = true
-		anim.play("GrassAttack")		
-		await anim.animation_finished
-		animplaying = false
+			attack = "grass"
+			animplaying = true
+			anim.play("GrassAttack")
+			emit_signal_while_playing()
 	get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
 	get_node("Camera2D").position.y = 0
 	# Add the gravity.
@@ -150,7 +168,7 @@ func _directionalMovement(direction):
 		elif velocity.y == 0 && ((velocity.x < 300 && velocity.x > 0)|| (velocity.x < 0 && velocity.x > -300)) and !animplaying:
 			anim.play("WalkBig")
 		elif velocity.y == 0 && ((velocity.x >= 300 && velocity.x >= 0) || (velocity.x <= 0 && velocity.x <= -300)) and !animplaying:
-			anim.play("RunBig")
+			anim.play("GrassRun")
 	else:
 		if velocity.y == 0 and (velocity.x > 0 or velocity.x < 0) and !animplaying:
 			anim.play("WalkBig")
@@ -160,4 +178,3 @@ func _directionalMovement(direction):
 		velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
 		
 	
-
