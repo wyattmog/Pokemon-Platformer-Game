@@ -43,8 +43,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_player_detection_body_entered(body):
+	print(nearby)
 	if body.name == "Player" and !isdead:
 		nearby = true
+		print(nearby)
 		print("detection")
 		#print("entered")
 

@@ -6,6 +6,9 @@
 [node name="Coin" instance=ExtResource("1_8wmtu")]
 script = ExtResource("2_u1fy4")
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(2.38419e-07, 0)
+
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"coin"
 
@@ -14,3 +17,4 @@ position = Vector2(0, 0)
 disabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

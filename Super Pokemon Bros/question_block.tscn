@@ -7,13 +7,14 @@
 script = ExtResource("2_dtd0v")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.00512832, 1.04942)
 scale = Vector2(1.675, 1)
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"turn"
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, -0.5)
+position = Vector2(0, 0.428885)
 
 [node name="BounceTimer" parent="." index="3"]
 wait_time = 0.133

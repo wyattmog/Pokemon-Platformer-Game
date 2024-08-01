@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3c7cgqrp80fn" path="res://sprites/effects/sma4_sprites copy.png" id="3_arhtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0wrv"]
-size = Vector2(9.55224, 16)
+size = Vector2(9.28193, 14.0592)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skwn0"]
 atlas = ExtResource("2_kssti")
@@ -138,7 +138,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nudsl"]
-size = Vector2(16, 15)
+size = Vector2(16, 14.8422)
 
 [node name="Block" type="StaticBody2D"]
 script = ExtResource("1_1vti4")

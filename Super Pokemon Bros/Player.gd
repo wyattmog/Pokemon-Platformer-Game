@@ -20,15 +20,25 @@ signal grass_attack
 signal grass_attack_ended
 var target_left_margin = 0.0
 var target_right_margin = 0.0
-
-
-func emit_signal_while_playing():
+signal jumped
+signal landed
+var min = 0
+func _ready():
+	get_node("GrassAttack/CollisionShape2D").disabled = true
+	
+func emit_signal_while_playing(direction):
 	while anim.is_playing():
 		emit_signal("grass_attack")
+		if velocity.x - 50 == min and animplaying and attack == "grass" and not velocity.x == 0:
+			velocity.x = move_toward(velocity.x, velocity.x - 50, 50)
+		elif velocity.x +50 == min and animplaying and attack == "grass" and not velocity.x == 0:
+			velocity.x = move_toward(velocity.x, velocity.x + 50, 50)
 		await get_tree().create_timer(0.0).timeout
+	get_node("GrassAttack/CollisionShape2D").disabled = true
 	animplaying = false
 	emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	var direction = Input.get_axis("ui_left", "ui_right")
 	#if Input.is_action_just_pressed("attack"):
 		#emit_signal("grass_attack")
 		#attack = "grass"
@@ -37,24 +47,30 @@ func _physics_process(delta):
 		#await anim.animation_finished
 		#animplaying = false
 		#emit_signal("grass_attack")
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and !animplaying:	
+			get_node("GrassAttack/CollisionShape2D").disabled = false
 			attack = "grass"
 			animplaying = true
 			anim.play("GrassAttack")
-			emit_signal_while_playing()
+			if velocity.x > 0:
+				min = velocity.x-50
+			else:
+				min = velocity.x+50
+			emit_signal_while_playing(direction)
 	get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
 	get_node("Camera2D").position.y = 0
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity * delta * 1.2
+	else:
+		emit_signal("landed")
 	#if not is_on_floor() and velocity.y > 0:
 		#get_node("CollisionShape2D").disabled = false
 		#get_node("Area2D/CollisionShape2D").disabled = false
 	#elif not is_on_floor() and velocity.y <= 0:
 		#get_node("CollisionShape2D").disabled = true
 		#get_node("Area2D/CollisionShape2D").disabled = true
-	# Handle jump.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	# Handle jump
 	#if get_node("DustTimer").is_stopped():
 		#get_node("Dust").visible = false
 	#else:
@@ -64,6 +80,7 @@ func _physics_process(delta):
 		#new_dust.position.y = position.y + 32
 		#add_sibling(new_dust)
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		emit_signal("jumped")
 		if velocity.x >= 300 or velocity.x <= -300:
 			velocity.y = JUMP_VELOCITY - 50
 		else:
@@ -78,6 +95,7 @@ func _physics_process(delta):
 		else: 
 			last_pressed = 1
 	if Input.is_action_just_pressed("spinjump") and is_on_floor():
+		emit_signal("jumped")
 		if velocity.x >= 300 or velocity.x <= -300:
 			velocity.y = JUMP_VELOCITY 
 		else:

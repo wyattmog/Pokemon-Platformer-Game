@@ -14,3 +14,12 @@ func _process(delta):
 
 func _on_charmander_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
+
+
+func _on_player_jumped():
+	get_node("TileMap").set_layer_z_index(1, 2)
+
+	
+
+func _on_player_landed():
+	get_node("TileMap").set_layer_z_index(1, 3)

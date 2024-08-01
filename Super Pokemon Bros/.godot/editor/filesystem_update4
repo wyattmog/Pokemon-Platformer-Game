@@ -10,5 +10,6 @@ res://hittable_block.tscn
 res://question_block.tscn
 res://used_block.tscn
 res://coin.tscn
-res://Charmander.gd
+res://Player.gd
+res://Coin.gd
 res://world_1.gd

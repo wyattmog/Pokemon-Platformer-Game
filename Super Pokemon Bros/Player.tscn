@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=93 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="Texture2D" uid="uid://dtv8iamfbk4dh" path="res://sprites/player/imageedit_22_7633397634 copy 2.png" id="2_lsvfv"]
@@ -27,7 +27,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1wql"]
 radius = 7.0
-height = 22.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cg0k"]
 atlas = ExtResource("2_lsvfv")
@@ -851,6 +851,9 @@ _data = {
 radius = 1.08498
 height = 6.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wc4s"]
+size = Vector2(11, 13)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(161, 145)
 floor_max_angle = 1.17461
@@ -860,11 +863,11 @@ script = ExtResource("1_vhn5w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_y1wql")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vy0g8")
 animation = &"Spin"
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 2)
@@ -893,7 +896,7 @@ autoplay = "IdleBig"
 [node name="PlayerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(1, -10)
+position = Vector2(0, -8)
 scale = Vector2(2.76504, 0.824876)
 shape = SubResource("CapsuleShape2D_6as78")
 
@@ -907,6 +910,12 @@ position = Vector2(-5, 7)
 scale = Vector2(0.505066, 0.505066)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(2, 12, -2, 8, 0, 3, -7, -2, -3, -11, 6, -11, 11, -4, 4, 3, 5, 8)
+disabled = true
+
+[node name="GrassAttack" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassAttack"]
+position = Vector2(11.5, 2.5)
+shape = SubResource("RectangleShape2D_5wc4s")
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]

@@ -1,9 +1,9 @@
-CollisionPolygon2D
+CollisionShape2D
 StaticBody2D
+CollisionPolygon2D
 Node2D
 Sprite2D
 Timer
-CollisionShape2D
 AnimatedSprite2D
 Area2D
 RigidBody2D
