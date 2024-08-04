@@ -852,7 +852,7 @@ radius = 1.08498
 height = 6.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wc4s"]
-size = Vector2(11, 13)
+size = Vector2(9, 9)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(161, 145)
@@ -874,6 +874,7 @@ position = Vector2(2, 2)
 zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 150
+limit_bottom = 600
 position_smoothing_speed = 120.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -906,16 +907,20 @@ one_shot = true
 
 [node name="Dust" parent="." instance=ExtResource("11_novsb")]
 z_as_relative = false
-position = Vector2(-5, 7)
+position = Vector2(-5, -6)
 scale = Vector2(0.505066, 0.505066)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 disabled = true
 
-[node name="GrassAttack" type="StaticBody2D" parent="."]
+[node name="GrassAttack" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassAttack"]
-position = Vector2(11.5, 2.5)
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="GrassAttack"]
+position = Vector2(10.5, 2.5)
+shape = SubResource("RectangleShape2D_5wc4s")
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="GrassAttack"]
+position = Vector2(-11.5, 2.5)
 shape = SubResource("RectangleShape2D_5wc4s")
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]

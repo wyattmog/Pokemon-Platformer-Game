@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0xxuu1kp52r7"]
+
+[ext_resource type="Script" path="res://spinning_coin.gd" id="1_5mgey"]
+[ext_resource type="Texture2D" uid="uid://dw4l3f0vtf2f4" path="res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png" id="1_du2ks"]
+[ext_resource type="Texture2D" uid="uid://c3c7cgqrp80fn" path="res://sprites/effects/sma4_sprites copy.png" id="3_pn6bt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmc7n"]
+atlas = ExtResource("3_pn6bt")
+region = Rect2(0, 0, 8, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5fch"]
+atlas = ExtResource("3_pn6bt")
+region = Rect2(8, 0, 8, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpccx"]
+atlas = ExtResource("3_pn6bt")
+region = Rect2(17, 0, 8, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuj16"]
+atlas = ExtResource("3_pn6bt")
+region = Rect2(26, 0, 7, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jua5o"]
+atlas = ExtResource("3_pn6bt")
+region = Rect2(35, 0, 6, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moxg8"]
+atlas = ExtResource("1_du2ks")
+region = Rect2(0, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1206"]
+atlas = ExtResource("1_du2ks")
+region = Rect2(26, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyxox"]
+atlas = ExtResource("1_du2ks")
+region = Rect2(51, 0, 6, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf2kh"]
+atlas = ExtResource("1_du2ks")
+region = Rect2(74, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51w8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmc7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5fch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpccx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuj16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jua5o")
+}],
+"loop": true,
+"name": &"fizzle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moxg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1206")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyxox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf2kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmc7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5fch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpccx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuj16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jua5o")
+}],
+"loop": false,
+"name": &"spinning",
+"speed": 15.0
+}]
+
+[node name="spinning_coin" type="Node2D"]
+script = ExtResource("1_5mgey")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_51w8l")
+animation = &"fizzle"

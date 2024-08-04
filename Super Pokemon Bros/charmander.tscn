@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Charmander.gd" id="1_o4oye"]
 [ext_resource type="Texture2D" uid="uid://gmuasefy7ag8" path="res://sprites/effects/sma4_sprites copy 3.png" id="2_60nr6"]
 [ext_resource type="Texture2D" uid="uid://bmxh77vi6nur4" path="res://sprites/mobs/output-onlinepngtools-2 copy 5.png" id="2_dax5x"]
-[ext_resource type="Texture2D" uid="uid://bm3guqspbvear" path="res://sprites/effects/sma4_sprites copy 5.png" id="3_1na6m"]
+[ext_resource type="Texture2D" uid="uid://65rhndkbmkxa" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (1).png" id="3_haeub"]
 [ext_resource type="Texture2D" uid="uid://dchefvv82cxar" path="res://sprites/mobs/output-onlinepngtools-2.png" id="3_w2i3y"]
-[ext_resource type="Texture2D" uid="uid://bxm7pkhmlrw2o" path="res://sprites/effects/sma4_sprites copy 4.png" id="4_dc80p"]
-[ext_resource type="Texture2D" uid="uid://clkdfkhnj6yv1" path="res://sprites/effects/sma4_sprites copy 2.png" id="5_gafdk"]
-[ext_resource type="Texture2D" uid="uid://d2jckxyelngbe" path="res://sprites/effects/sma4_sprites.png" id="6_fnxmi"]
+[ext_resource type="Texture2D" uid="uid://bvqhrlksvgojq" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (2).png" id="4_57mhl"]
+[ext_resource type="Texture2D" uid="uid://d6cjljg64efk" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (5).png" id="5_qgf57"]
+[ext_resource type="Texture2D" uid="uid://b6ncwf54c43p8" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (4).png" id="6_7jyun"]
 [ext_resource type="Texture2D" uid="uid://cgqipx5gsfcuv" path="res://sprites/mobs/output-onlinepngtools-2 copy 4.png" id="7_ovfbi"]
 [ext_resource type="Texture2D" uid="uid://ktkatlwyadnp" path="res://sprites/mobs/output-onlinepngtools-2 copy 6.png" id="8_bm11v"]
 
@@ -21,20 +21,20 @@ animations = [{
 "texture": ExtResource("2_60nr6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1na6m")
+"texture": ExtResource("3_haeub")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dc80p")
+"texture": ExtResource("4_57mhl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_gafdk")
+"texture": ExtResource("5_qgf57")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_fnxmi")
+"texture": ExtResource("6_7jyun")
 }],
 "loop": false,
 "name": &"Death",
-"speed": 13.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -73,7 +73,9 @@ shape = SubResource("RectangleShape2D_5ku04")
 position = Vector2(0, -2)
 scale = Vector2(1, 0.846774)
 sprite_frames = SubResource("SpriteFrames_rut71")
-animation = &"Walk"
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

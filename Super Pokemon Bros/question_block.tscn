@@ -1,23 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6eudb8la734v"]
+[gd_scene load_steps=4 format=3 uid="uid://b6eudb8la734v"]
 
 [ext_resource type="PackedScene" uid="uid://cvtqpjdaxe642" path="res://hittable_block.tscn" id="1_5we05"]
 [ext_resource type="Script" path="res://QuestionBlock.gd" id="2_dtd0v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpmw"]
+size = Vector2(16, 13)
+
 [node name="Question_Block" instance=ExtResource("1_5we05")]
 script = ExtResource("2_dtd0v")
+spawned_scene = null
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(0.00512832, 1.04942)
+position = Vector2(5.96046e-08, 1)
 scale = Vector2(1.675, 1)
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"turn"
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, 0.428885)
+position = Vector2(0, 2.98023e-08)
 
 [node name="BounceTimer" parent="." index="3"]
 wait_time = 0.133
 one_shot = true
 
+[node name="Area2D2" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5gpmw")
+
+[node name="CoinTimer" type="Timer" parent="." index="5"]
+wait_time = 0.225
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

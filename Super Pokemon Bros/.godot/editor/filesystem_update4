@@ -10,6 +10,7 @@ res://hittable_block.tscn
 res://question_block.tscn
 res://used_block.tscn
 res://coin.tscn
-res://Player.gd
-res://Coin.gd
-res://world_1.gd
+res://spinning_coin.tscn
+res://QuestionBlock.gd
+res://spinng_coin.gd
+res://spinning_coin.gd

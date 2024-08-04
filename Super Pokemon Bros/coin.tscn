@@ -16,5 +16,9 @@ animation = &"coin"
 position = Vector2(0, 0)
 disabled = true
 
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.133
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 275.0
 const JUMP_VELOCITY = -400.0
 const FRICTION = 35
-const ACCELERATION = 6.0
+const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,6 +16,8 @@ var changeddirection = false
 var skid = false
 var curr_pos = 0
 var attack = ""
+var scaleup = false
+var scaledown = false
 signal grass_attack
 signal grass_attack_ended
 var target_left_margin = 0.0
@@ -24,20 +26,29 @@ signal jumped
 signal landed
 var min = 0
 func _ready():
-	get_node("GrassAttack/CollisionShape2D").disabled = true
+	get_node("GrassAttack/CollisionShapeRight").disabled = true
+	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	
 func emit_signal_while_playing(direction):
 	while anim.is_playing():
-		emit_signal("grass_attack")
-		if velocity.x - 50 == min and animplaying and attack == "grass" and not velocity.x == 0:
-			velocity.x = move_toward(velocity.x, velocity.x - 50, 50)
-		elif velocity.x +50 == min and animplaying and attack == "grass" and not velocity.x == 0:
-			velocity.x = move_toward(velocity.x, velocity.x + 50, 50)
+		get_tree().call_group("enemies", "_on_player_grass_attack")
+		get_tree().call_group("question_block", "_grass_attack")
+		#emit_signal("grass_attack")
+		#if velocity.x - 50 == min and animplaying and attack == "grass" and not velocity.x == 0:
+			#velocity.x = move_toward(velocity.x, velocity.x - 50, 50)
+		#elif velocity.x +50 == min and animplaying and attack == "grass" and not velocity.x == 0:
+			#velocity.x = move_toward(velocity.x, velocity.x + 50, 50)
 		await get_tree().create_timer(0.0).timeout
-	get_node("GrassAttack/CollisionShape2D").disabled = true
 	animplaying = false
-	emit_signal("grass_attack_ended")
+	if last_pressed == -1:
+				get_node("GrassAttack/CollisionShapeLeft").disabled = true
+	elif last_pressed == 1:
+		get_node("GrassAttack/CollisionShapeRight").disabled = true
+	get_tree().call_group("enemies", "_on_player_grass_attack_ended")
+	#get_tree().call_group("question_block", "_grass_attack")
+	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	print(animplaying)
 	var direction = Input.get_axis("ui_left", "ui_right")
 	#if Input.is_action_just_pressed("attack"):
 		#emit_signal("grass_attack")
@@ -48,7 +59,10 @@ func _physics_process(delta):
 		#animplaying = false
 		#emit_signal("grass_attack")
 	if Input.is_action_just_pressed("attack") and !animplaying:	
-			get_node("GrassAttack/CollisionShape2D").disabled = false
+			if last_pressed == -1:
+				get_node("GrassAttack/CollisionShapeLeft").disabled = false
+			elif last_pressed == 1:
+				get_node("GrassAttack/CollisionShapeRight").disabled = false
 			attack = "grass"
 			animplaying = true
 			anim.play("GrassAttack")
@@ -81,7 +95,7 @@ func _physics_process(delta):
 		#add_sibling(new_dust)
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		emit_signal("jumped")
-		if velocity.x >= 300 or velocity.x <= -300:
+		if velocity.x >= 275 or velocity.x <= -275:
 			velocity.y = JUMP_VELOCITY - 50
 		else:
 			velocity.y = JUMP_VELOCITY
@@ -90,13 +104,13 @@ func _physics_process(delta):
 			anim.play("JumpBig")
 			animplaying = false
 			jumptype = "jump"
-		if direction < 0:
+		if direction == -1:
 			last_pressed = -1
-		else: 
+		elif direction == 1: 
 			last_pressed = 1
 	if Input.is_action_just_pressed("spinjump") and is_on_floor():
 		emit_signal("jumped")
-		if velocity.x >= 300 or velocity.x <= -300:
+		if velocity.x >= 275 or velocity.x <= -275:
 			velocity.y = JUMP_VELOCITY 
 		else:
 			velocity.y = JUMP_VELOCITY + 50
@@ -106,9 +120,9 @@ func _physics_process(delta):
 			jumptype = "spin"
 			await not is_on_floor()
 			animplaying = false
-		if direction < 0:
+		if direction == -1:
 			last_pressed = -1
-		else: 
+		elif direction == 1: 
 			last_pressed = 1
 	if (!Input.is_action_pressed("spinjump") and !Input.is_action_pressed("ui_accept")) and velocity.y < 0:
 		velocity.y += gravity*delta
@@ -118,12 +132,9 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").offset.y = 3
 	if last_pressed == -1:
 		get_node("AnimatedSprite2D").flip_h = true
-	else:
+	elif last_pressed == 1:
 		get_node("AnimatedSprite2D").flip_h = false
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#if get_node("Camera2D").global_position == get_node("Camera2D").get_screen_center_position():
-		#get_node("Camera2D").position_smoothing_enabled = false
+
 	if direction:
 		if get_node("AnimatedSprite2D").global_position[0] > 35 + get_node("Camera2D").get_screen_center_position()[0]:
 			target_right_margin = 0.0
@@ -151,7 +162,7 @@ func _spawn_dust():
 		return
 	var new_dust = DustScene.instantiate()
 	new_dust.position.x = position.x
-	new_dust.position.y = position.y + 12
+	new_dust.position.y = position.y + 14
 	add_sibling(new_dust)
 	get_node("DustTimer").start()
 	
@@ -160,7 +171,7 @@ func _on_charmander_bounce_signal():
 		anim.play("Spin")
 	elif jumptype == "jump" and !animplaying:
 		anim.play("JumpBig")
-	velocity.y = JUMP_VELOCITY
+	velocity.y = JUMP_VELOCITY/3
 	
 func _directionalMovement(direction):
 	if direction:
@@ -183,9 +194,9 @@ func _directionalMovement(direction):
 				_spawn_dust()
 			get_node("AnimatedSprite2D").offset.y = 3
 			anim.play("SlideBig")
-		elif velocity.y == 0 && ((velocity.x < 300 && velocity.x > 0)|| (velocity.x < 0 && velocity.x > -300)) and !animplaying:
+		elif velocity.y == 0 && ((velocity.x < 275 && velocity.x > 0)|| (velocity.x < 0 && velocity.x > -275)) and !animplaying:
 			anim.play("WalkBig")
-		elif velocity.y == 0 && ((velocity.x >= 300 && velocity.x >= 0) || (velocity.x <= 0 && velocity.x <= -300)) and !animplaying:
+		elif velocity.y == 0 && ((velocity.x >= 275 && velocity.x >= 0) || (velocity.x <= 0 && velocity.x <= -275)) and !animplaying:
 			anim.play("GrassRun")
 	else:
 		if velocity.y == 0 and (velocity.x > 0 or velocity.x < 0) and !animplaying:

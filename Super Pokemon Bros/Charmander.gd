@@ -13,6 +13,7 @@ var nearby
 signal enemy_death(body)
 
 func _ready(): 
+	add_to_group("enemies")
 	get_node("AnimatedSprite2D").play("Idle")
 	velocity.x = SPEED
 
