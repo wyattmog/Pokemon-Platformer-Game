@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coccm"]
-size = Vector2(24, 7)
+size = Vector2(28, 7)
 
 [node name="Charmander" type="CharacterBody2D"]
 script = ExtResource("1_o4oye")
@@ -73,9 +73,7 @@ shape = SubResource("RectangleShape2D_5ku04")
 position = Vector2(0, -2)
 scale = Vector2(1, 0.846774)
 sprite_frames = SubResource("SpriteFrames_rut71")
-animation = &"Death"
-frame = 4
-frame_progress = 1.0
+animation = &"Walk"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

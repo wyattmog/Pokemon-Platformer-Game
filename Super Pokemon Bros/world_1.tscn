@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bcunne72edgc1"]
+[gd_scene load_steps=17 format=3 uid="uid://bcunne72edgc1"]
 
 [ext_resource type="PackedScene" uid="uid://f5xo12ldwedy" path="res://Player.tscn" id="1_cljh0"]
 [ext_resource type="TileSet" uid="uid://c0ws2rvhej4oj" path="res://marioblocks.tres" id="1_eeaho"]
@@ -12,11 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://l07kcv05l2u4" path="res://sprites/tiles/tile000.png" id="8_uq6rp"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="10_5uhu3"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="12_2nnwe"]
-[ext_resource type="PackedScene" uid="uid://vxnkx35swspn" path="res://coin.tscn" id="13_xkopi"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="14_0vuis"]
+[ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="15_ghqvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv08g"]
 size = Vector2(416.471, 305)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lefti"]
+font = ExtResource("15_ghqvc")
+font_color = Color(0, 0, 0, 1)
 
 [node name="World1" type="Node2D"]
 scale = Vector2(1.00007, 1)
@@ -37,7 +41,7 @@ layer_2/tile_data = PackedInt32Array(3539059, 131073, 1342177282, 3604595, 13107
 
 [node name="Player" type="Node2D" parent="."]
 z_index = 1
-position = Vector2(-167.988, 20)
+position = Vector2(-199.986, 48)
 
 [node name="Player" parent="Player" instance=ExtResource("1_cljh0")]
 z_index = 2
@@ -767,48 +771,6 @@ collision_mask = 9
 [node name="Berry" parent="Foreground Blocks" instance=ExtResource("10_5uhu3")]
 position = Vector2(173.988, 511)
 
-[node name="Coin" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(273.981, 490)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
-[node name="Coin5" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(972.932, 390)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
-[node name="Coin2" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(289.98, 491)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
-[node name="Coin3" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(281.98, 475)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
-[node name="Coin4" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(949.934, 373)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
-[node name="Coin6" parent="Foreground Blocks" instance=ExtResource("13_xkopi")]
-visible = false
-position = Vector2(925.935, 390)
-scale = Vector2(1.10512, 1.10512)
-collision_layer = 4
-collision_mask = 9
-
 [node name="Question_Block" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(719.95, 472)
 scale = Vector2(1.2, 1.2)
@@ -831,21 +793,25 @@ spawned_scene = ExtResource("14_0vuis")
 position = Vector2(2812.8, 358)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
+spawned_scene = ExtResource("14_0vuis")
 
 [node name="Question_Block6" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(2831.8, 358)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
+spawned_scene = ExtResource("14_0vuis")
 
 [node name="Question_Block7" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(2793.8, 358)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
+spawned_scene = ExtResource("14_0vuis")
 
 [node name="Question_Block4" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(1974.86, 284)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
+spawned_scene = ExtResource("14_0vuis")
 
 [node name="VoidArea" type="Area2D" parent="."]
 
@@ -860,6 +826,17 @@ shape = SubResource("RectangleShape2D_fv08g")
 [node name="VoidDetectionShape3" type="CollisionShape2D" parent="VoidArea"]
 position = Vector2(4862.41, 718)
 shape = SubResource("RectangleShape2D_fv08g")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 959.0
+offset_top = 35.0
+offset_right = 1027.0
+offset_bottom = 58.0
+scale = Vector2(2.04597, 2.04597)
+text = "Coins:"
+label_settings = SubResource("LabelSettings_lefti")
 
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]

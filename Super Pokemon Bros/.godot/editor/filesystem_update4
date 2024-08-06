@@ -11,6 +11,6 @@ res://question_block.tscn
 res://used_block.tscn
 res://coin.tscn
 res://spinning_coin.tscn
-res://QuestionBlock.gd
-res://spinng_coin.gd
-res://spinning_coin.gd
+res://entity.tscn
+res://Player.gd
+res://game_state.gd

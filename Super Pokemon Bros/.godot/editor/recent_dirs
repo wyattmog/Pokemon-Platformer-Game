@@ -1,5 +1,10 @@
-res://sprites/effects
+res://sprites/player/all anims/jump
+res://sprites/player/all anims/slide
+res://sprites/player/all anims/run
+res://sprites/player/all anims/walk
+res://sprites/player/all anims/idle
 res://
+res://sprites/effects
 res://sprites/tiles/tilesets
 res://sprites/player/Grass Player
 res://sprites/player

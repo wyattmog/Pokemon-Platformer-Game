@@ -1,36 +1,40 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1722725945
+::res://::1722979638
 berry.gd::GDScript::-1::1720304570::0::1::::<>Node2D<>::
 berry.tscn::PackedScene::8021534745655657485::1720649955::0::1::::<><>::res://berry.gd<>uid://cpfi5a4t6blei::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy 2.png
 BG.gd::GDScript::-1::1719610821::0::1::::<>ParallaxBackground<>::
-bg.tscn::PackedScene::3797750501603648488::1722725879::0::1::::<><>::res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png
+bg.tscn::PackedScene::3797750501603648488::1722979515::0::1::::<><>::res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png
 block.gd::GDScript::-1::1720730587::0::1::::<>StaticBody2D<>::
-block.tscn::PackedScene::4970920881762109965::1722725879::0::1::::<><>::res://block.gd<>uid://l1qenk1nmx68::::res://sprites/tiles/tilesets/output-onlinepngtools-6.png<>uid://mjuoqbnc2arf::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy.png<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png<>uid://dp5wqy73r2muv::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy 2.png
+block.tscn::PackedScene::4970920881762109965::1722979515::0::1::::<><>::res://block.gd<>uid://l1qenk1nmx68::::res://sprites/tiles/tilesets/output-onlinepngtools-6.png<>uid://mjuoqbnc2arf::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy.png<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png<>uid://dp5wqy73r2muv::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy 2.png
 button.gd::GDScript::-1::1720019568::0::1::::<>Button<>::
 Camera2D.gd::GDScript::-1::1720313628::0::1::::<>Camera2D<>::
 Charmander.gd::GDScript::-1::1722708354::0::1::::<>CharacterBody2D<>::
-charmander.tscn::PackedScene::8308321696631004148::1722725879::0::1::::<><>::res://Charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://bmxh77vi6nur4::::res://sprites/mobs/output-onlinepngtools-2 copy 5.png<>uid://65rhndkbmkxa::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (1).png<>uid://dchefvv82cxar::::res://sprites/mobs/output-onlinepngtools-2.png<>uid://bvqhrlksvgojq::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (2).png<>uid://d6cjljg64efk::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (5).png<>uid://b6ncwf54c43p8::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (4).png<>uid://cgqipx5gsfcuv::::res://sprites/mobs/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/output-onlinepngtools-2 copy 6.png
-Coin.gd::GDScript::-1::1722545375::0::1::::<>StaticBody2D<>::
-coin.tscn::PackedScene::1522254836266647651::1722725879::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://Coin.gd
-coins.tscn::PackedScene::8909902018921042870::1722723020::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn
+charmander.tscn::PackedScene::8308321696631004148::1722979515::0::1::::<><>::res://Charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://bmxh77vi6nur4::::res://sprites/mobs/output-onlinepngtools-2 copy 5.png<>uid://65rhndkbmkxa::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (1).png<>uid://dchefvv82cxar::::res://sprites/mobs/output-onlinepngtools-2.png<>uid://bvqhrlksvgojq::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (2).png<>uid://d6cjljg64efk::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (5).png<>uid://b6ncwf54c43p8::::res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (4).png<>uid://cgqipx5gsfcuv::::res://sprites/mobs/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/output-onlinepngtools-2 copy 6.png
+Coin.gd::GDScript::-1::1722915158::0::1::::<>StaticBody2D<>::
+coin.tscn::PackedScene::1522254836266647651::1722979515::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://Coin.gd
 dust.gd::GDScript::-1::1720464404::0::1::::<>Node2D<>::
 dust.tscn::PackedScene::5800478739903573647::1720649955::0::1::::<><>::res://dust.gd<>uid://bkrh3f6niquro::::res://sprites/player/output-onlinepngtools-7.png
+entity.tscn::PackedScene::633362825338948478::1722979515::0::1::::<><>::
+game_state.gd::GDScript::-1::1722914821::0::1::::<>Node<>::
 hittable_block.gd::GDScript::-1::1722724840::0::1::::<>StaticBody2D<>::
-hittable_block.tscn::PackedScene::6287028997280349121::1722725879::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://hittable_block.gd
+hittable_block.tscn::PackedScene::6287028997280349121::1722979515::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://hittable_block.gd
 main.gd::GDScript::-1::1720058155::0::1::::<>Control<>::
-main.tscn::PackedScene::4366103909513495105::1722725879::0::1::::<><>::res://main.gd<>uid://280ppurdseor::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png<>uid://bkcqsehqbaufe::::res://sprites/main menu/Super-pokemon-bros-7-2-2024.png<>uid://c1a5dih3tsme7::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png<>uid://budwnpwtudx33::::res://bg.tscn<>uid://2gxwtf7ssmmu::::res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png<>res://button.gd<>uid://bi7xwxhg6vwfm::::res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png
-marioblocks.tres::TileSet::6574120816893181569::1722721547::0::1::::<><>::uid://dw46xal1ijqqu::::res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png<>uid://cfemxfb0ijags::::res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png<>uid://td4s873dgyj0::::res://sprites/tiles/tilesets/grass.png<>uid://dk3q4o2dm3ajn::::res://sprites/tiles/tilesets/SNES - Super Mario World - Pipes (1).png<>uid://g4x60x4lqr58::::res://sprites/tiles/tilesets/output-onlinepngtools-4.png<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://vxnkx35swspn::::res://coin.tscn<>uid://dmjxrgekwi0jx::::res://berry.tscn
+main.tscn::PackedScene::4366103909513495105::1722979515::0::1::::<><>::res://main.gd<>uid://280ppurdseor::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png<>uid://bkcqsehqbaufe::::res://sprites/main menu/Super-pokemon-bros-7-2-2024.png<>uid://c1a5dih3tsme7::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png<>uid://budwnpwtudx33::::res://bg.tscn<>uid://2gxwtf7ssmmu::::res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png<>res://button.gd<>uid://bi7xwxhg6vwfm::::res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png
+marioblocks.tres::TileSet::6574120816893181569::1722978875::0::1::::<><>::uid://dw46xal1ijqqu::::res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png<>uid://cfemxfb0ijags::::res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png<>uid://td4s873dgyj0::::res://sprites/tiles/tilesets/grass.png<>uid://dk3q4o2dm3ajn::::res://sprites/tiles/tilesets/SNES - Super Mario World - Pipes (1).png<>uid://g4x60x4lqr58::::res://sprites/tiles/tilesets/output-onlinepngtools-4.png<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://vxnkx35swspn::::res://coin.tscn<>uid://dmjxrgekwi0jx::::res://berry.tscn
 menu.gd::GDScript::-1::1719983424::0::1::::<>Control<>::
-Player.gd::GDScript::-1::1722722521::0::1::::<>CharacterBody2D<>::
-Player.tscn::PackedScene::414298450581743502::1722725879::0::1::::<><>::res://Player.gd<>uid://dtv8iamfbk4dh::::res://sprites/player/imageedit_22_7633397634 copy 2.png<>uid://ce21ymjcm7e7h::::res://sprites/player/imageedit_22_7633397634 copy 5.png<>uid://c8fojj6oqql6b::::res://sprites/player/Grass Player/ulixouipmkhb1 (1) (1) (1).png<>uid://d08usosywxij5::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (1).png<>uid://blyww64obyk6v::::res://sprites/player/imageedit_22_7633397634 copy 8.png<>uid://dqb5lbs6fuutc::::res://sprites/player/imageedit_22_7633397634 copy.png<>uid://b630bol42622s::::res://sprites/player/Grass Player/ulixouipmkhb1 (3).png<>uid://cvbr0gh6lhgn3::::res://sprites/player/imageedit_22_7633397634 copy 4.png<>uid://wtyahswbws06::::res://sprites/player/Grass Player/ulixouipmkhb1 (4).png<>uid://bvp26a4vlkorl::::res://sprites/player/imageedit_22_7633397634.png<>uid://lkay6mo5sh2o::::res://sprites/player/Grass Player/celebration (2).png<>uid://bgdlfbadpjgk8::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy (3).png<>uid://bqf1g3wt5w2p5::::res://sprites/player/imageedit_22_7633397634 copy 3.png<>uid://bak2wv8xspokr::::res://sprites/player/Grass Player/idle grass 2.png<>uid://b664ninapwno2::::res://sprites/player/output-onlinepngtools.png<>uid://bjjboaesl5km0::::res://sprites/player/imageedit_22_7633397634 copy 9.png<>uid://c67cjdeypc6lg::::res://sprites/player/Grass Player/idle grass 1.png<>uid://bgoafs552lvv1::::res://sprites/player/Grass Player/imageedit_22_7633397634 (4).png<>uid://cov2bjhn2ny28::::res://dust.tscn<>uid://bxlioahnehafu::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 3 (2).png<>uid://c4q857oxe5t2m::::res://sprites/player/Grass Player/output-onlinepngtools (2) (1).png<>uid://cwdynlrka358i::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (2).png<>uid://b6usa6ir61qx2::::res://sprites/player/Grass Player/output-onlinepngtools (2) (1) copy.png
-QuestionBlock.gd::GDScript::-1::1722725738::0::1::::<>StaticBody2D<>::
-question_block.tscn::PackedScene::4571752148728364671::1722725879::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn<>res://QuestionBlock.gd
-spinning_coin.tscn::PackedScene::4190055760806540014::1722725879::0::1::::<><>::uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png
+Player.gd::GDScript::-1::1722979515::0::1::::<>CharacterBody2D<>::
+Player.tscn::PackedScene::414298450581743502::1722979638::0::1::::<><>::res://Player.gd<>uid://dtv8iamfbk4dh::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png<>uid://ce21ymjcm7e7h::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 5.png<>uid://c8fojj6oqql6b::::res://sprites/player/Grass Player/ulixouipmkhb1 (1) (1) (1).png<>uid://d08usosywxij5::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (1).png<>uid://blyww64obyk6v::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 8.png<>uid://dqb5lbs6fuutc::::res://sprites/player/Default Player/imageedit_22_7633397634 copy.png<>uid://b630bol42622s::::res://sprites/player/Grass Player/ulixouipmkhb1 (3).png<>uid://cvbr0gh6lhgn3::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 4.png<>uid://wtyahswbws06::::res://sprites/player/Grass Player/ulixouipmkhb1 (4).png<>uid://bvp26a4vlkorl::::res://sprites/player/Default Player/imageedit_22_7633397634.png<>uid://lkay6mo5sh2o::::res://sprites/player/Grass Player/celebration (2).png<>uid://bgdlfbadpjgk8::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy (3).png<>uid://bqf1g3wt5w2p5::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 3.png<>uid://bak2wv8xspokr::::res://sprites/player/Grass Player/idle grass 2.png<>uid://b664ninapwno2::::res://sprites/player/Default Player/output-onlinepngtools.png<>uid://bjjboaesl5km0::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 9.png<>uid://c67cjdeypc6lg::::res://sprites/player/Grass Player/idle grass 1.png<>uid://bgoafs552lvv1::::res://sprites/player/Grass Player/imageedit_22_7633397634 (4).png<>uid://cov2bjhn2ny28::::res://dust.tscn<>uid://bxlioahnehafu::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 3 (2).png<>uid://c4q857oxe5t2m::::res://sprites/player/Grass Player/output-onlinepngtools (2) (1).png<>uid://cwdynlrka358i::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (2).png<>uid://b6usa6ir61qx2::::res://sprites/player/Grass Player/output-onlinepngtools (2) (1) copy.png
+QuestionBlock.gd::GDScript::-1::1722731063::0::1::::<>StaticBody2D<>::
+question_block.tscn::PackedScene::4571752148728364671::1722979515::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn<>res://QuestionBlock.gd
+spinning_coin.gd::GDScript::-1::1722915158::0::1::::<>Node2D<>::
+spinning_coin.tscn::PackedScene::4190055760806540014::1722979515::0::1::::<><>::res://spinning_coin.gd<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png
 SteepSlope.gd::GDScript::-1::1720401262::0::1::::<>StaticBody2D<>::
-used_block.tscn::PackedScene::1277075594768847201::1722725879::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn
-world_1.gd::GDScript::-1::1722573611::0::1::::<>Node2D<>::
-world_1.tscn::PackedScene::2568898723036457646::1722725879::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn<>uid://c0ws2rvhej4oj::::res://marioblocks.tres<>res://world_1.gd<>res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://dqmu3yhsnod6k::::res://charmander.tscn<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png<>uid://dmjxrgekwi0jx::::res://berry.tscn<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://vxnkx35swspn::::res://coin.tscn<>uid://b0xxuu1kp52r7::::res://spinning_coin.tscn
-world_2.tscn::PackedScene::2547518394695272360::1722725879::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn
+Super-Mario-World.ttf::FontFile::151207973846888600::1379942396::1722915739::1::::<><>::
+used_block.tscn::PackedScene::1277075594768847201::1722979515::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn
+world1_label.gd::GDScript::-1::1722915100::0::1::::<>Label<>::
+world_1.gd::GDScript::-1::1722916367::0::1::::<>Node2D<>::
+world_1.tscn::PackedScene::2568898723036457646::1722979515::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn<>uid://c0ws2rvhej4oj::::res://marioblocks.tres<>res://world_1.gd<>res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://dqmu3yhsnod6k::::res://charmander.tscn<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png<>uid://dmjxrgekwi0jx::::res://berry.tscn<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://b0xxuu1kp52r7::::res://spinning_coin.tscn<>uid://cfimxpyx6jga::::res://Super-Mario-World.ttf
+world_2.tscn::PackedScene::2547518394695272360::1722979515::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn
 ::res://sprites/::1720128254
 ::res://sprites/Backrounds/::1719607849
 tile000.png::CompressedTexture2D::1016062176430642454::1719602130::1719602522::1::::<><>::
@@ -95,18 +99,66 @@ output-onlinepngtools-2 copy 6.png::CompressedTexture2D::741719799603280853::171
 output-onlinepngtools-2 copy 7.png::CompressedTexture2D::6570684984620209636::1719682493::1719718537::1::::<><>::
 output-onlinepngtools-2 copy.png::CompressedTexture2D::6483952208897965486::1719681413::1719681597::1::::<><>::
 output-onlinepngtools-2.png::CompressedTexture2D::7314343316541177741::1719682389::1719682512::1::::<><>::
-::res://sprites/player/::1721929282
-imageedit_22_7633397634 copy 2.png::CompressedTexture2D::8538219978916299361::1719290435::1719608089::1::::<><>::
-imageedit_22_7633397634 copy 3.png::CompressedTexture2D::3521354932791036280::1720321932::1720321935::1::::<><>::
-imageedit_22_7633397634 copy 4.png::CompressedTexture2D::6249948622640806390::1719290435::1719608092::1::::<><>::
-imageedit_22_7633397634 copy 5.png::CompressedTexture2D::5110957086455202967::1719350677::1719608093::1::::<><>::
-imageedit_22_7633397634 copy 8.png::CompressedTexture2D::3209419764777232555::1719351204::1719608095::1::::<><>::
-imageedit_22_7633397634 copy 9.png::CompressedTexture2D::3036785401342311609::1720129054::1720129084::1::::<><>::
-imageedit_22_7633397634 copy.png::CompressedTexture2D::8286189162303648168::1719290435::1719608096::1::::<><>::
-imageedit_22_7633397634.png::CompressedTexture2D::3893046830587005541::1719290435::1719608097::1::::<><>::
+::res://sprites/player/::1722979715
 output-onlinepngtools-7.png::CompressedTexture2D::3123878874178834816::1720411239::1720411275::1::::<><>::
-output-onlinepngtools.png::CompressedTexture2D::4628054995249132939::1719290435::1719608099::1::::<><>::
-::res://sprites/player/Default Player/::1721926857
+::res://sprites/player/all anims/::1722980499
+::res://sprites/player/all anims/behind/::1722979718
+imageedit_22_7633397634 copy 9 (1).png::CompressedTexture2D::5980319765936268312::1721957792::1722979718::1::::<><>::
+::res://sprites/player/all anims/celebration/::1722979718
+celebration (1).png::CompressedTexture2D::3286832110859958282::1720102159::1722979718::1::::<><>::
+celebration (2).png::CompressedTexture2D::8285749714253036033::1720102429::1722979718::1::::<><>::
+celebration (3).png::CompressedTexture2D::5838354970784607181::1720102772::1722979718::1::::<><>::
+::res://sprites/player/all anims/death/::1722979718
+sma4_sprites copy 3 (1).png::CompressedTexture2D::7307792404091987625::1722644869::1722979718::1::::<><>::
+sma4_sprites copy 3 (2).png::CompressedTexture2D::6315486760338813243::1722645389::1722979718::1::::<><>::
+sma4_sprites copy 3 (4).png::CompressedTexture2D::126473954261674199::1722645985::1722979718::1::::<><>::
+sma4_sprites copy 3 (5).png::CompressedTexture2D::2359867069499035510::1722646010::1722979718::1::::<><>::
+::res://sprites/player/all anims/idle/::1722979718
+idle1 (2).png::CompressedTexture2D::5812658739371349874::1720100632::1722979718::1::::<><>::
+idle1.png::CompressedTexture2D::8956250412018165344::1719881586::1722979718::1::::<><>::
+idle2 (1).png::CompressedTexture2D::786099453842043899::1720100895::1722979718::1::::<><>::
+idle2.png::CompressedTexture2D::8306130085901573600::1719881594::1722979718::1::::<><>::
+idle fire 1.png::CompressedTexture2D::3036742881663861767::1719882346::1722979718::1::::<><>::
+idle fire 2.png::CompressedTexture2D::3235291100112984270::1719882358::1722979718::1::::<><>::
+idle grass 1.png::CompressedTexture2D::6910064273162555623::1719882839::1722979718::1::::<><>::
+idle grass 2.png::CompressedTexture2D::2880994505633661694::1719882847::1722979718::1::::<><>::
+water idle 1.png::CompressedTexture2D::4716457483927022463::1719883163::1722979718::1::::<><>::
+water idle 2.png::CompressedTexture2D::6962771621579127686::1719883169::1722979718::1::::<><>::
+::res://sprites/player/all anims/jump/::1722980508
+imageedit_22_7633397634 copy (2) (1).png::CompressedTexture2D::7800200565198664030::1722980491::1722980509::1::::<><>::
+imageedit_22_7633397634 copy (3).png::CompressedTexture2D::5012218101886559281::1720106280::1722979718::1::::<><>::
+imageedit_22_7633397634 copy (4).png::CompressedTexture2D::9127833085444442180::1720106381::1722979718::1::::<><>::
+imageedit_22_7633397634 copy (5).png::CompressedTexture2D::8127904850998452267::1720106460::1722979718::1::::<><>::
+::res://sprites/player/all anims/leaf attack/::1722979718
+imageedit_22_7633397634 copy 9.png::CompressedTexture2D::793883803400132311::1721928328::1722979718::1::::<><>::
+ulixouipmkhb1 (1).png::CompressedTexture2D::1132827931406259277::1721928786::1722979718::1::::<><>::
+ulixouipmkhb1 (3).png::CompressedTexture2D::8056162312425478609::1721929010::1722979718::1::::<><>::
+ulixouipmkhb1 (4).png::CompressedTexture2D::1847497980612672064::1721929162::1722979718::1::::<><>::
+::res://sprites/player/all anims/run/::1722979718
+imageedit_22_7633397634 (1).png::CompressedTexture2D::136080667270530881::1720127970::1722979718::1::::<><>::
+imageedit_22_7633397634 (2).png::CompressedTexture2D::2770409776236270931::1720107159::1722979718::1::::<><>::
+imageedit_22_7633397634 (3).png::CompressedTexture2D::5169705809615719414::1720107368::1722979718::1::::<><>::
+imageedit_22_7633397634 (4).png::CompressedTexture2D::7657655522829440518::1720107481::1722979718::1::::<><>::
+::res://sprites/player/all anims/slide/::1722979718
+imageedit_22_7633397634 copy 3 (1).png::CompressedTexture2D::2194837323480277032::1720103806::1722979718::1::::<><>::
+imageedit_22_7633397634 copy 3 (2).png::CompressedTexture2D::5877594512848668479::1720104004::1722979718::1::::<><>::
+imageedit_22_7633397634 copy 3 (3).png::CompressedTexture2D::7746950589769973650::1720104181::1722979718::1::::<><>::
+imageedit_22_7633397634 copy 3 (4).png::CompressedTexture2D::7084286539244311496::1720127686::1722979718::1::::<><>::
+::res://sprites/player/all anims/walk/::1722979718
+output-onlinepngtools (1) (1).png::CompressedTexture2D::9181164538829486580::1720128208::1722979718::1::::<><>::
+output-onlinepngtools (2).png::CompressedTexture2D::2071592601514164820::1720108004::1722979718::1::::<><>::
+output-onlinepngtools (3).png::CompressedTexture2D::6020802035708511200::1720108294::1722979718::1::::<><>::
+output-onlinepngtools (4).png::CompressedTexture2D::2545074339203739615::1720108396::1722979718::1::::<><>::
+::res://sprites/player/Default Player/::1722979638
+imageedit_22_7633397634 copy 2.png::CompressedTexture2D::8538219978916299361::1719290435::1722979634::1::::<><>::
+imageedit_22_7633397634 copy 3.png::CompressedTexture2D::3521354932791036280::1720321932::1722979634::1::::<><>::
+imageedit_22_7633397634 copy 4.png::CompressedTexture2D::6249948622640806390::1719290435::1722979634::1::::<><>::
+imageedit_22_7633397634 copy 5.png::CompressedTexture2D::5110957086455202967::1719350677::1722979634::1::::<><>::
+imageedit_22_7633397634 copy 8.png::CompressedTexture2D::3209419764777232555::1719351204::1722979634::1::::<><>::
+imageedit_22_7633397634 copy 9.png::CompressedTexture2D::3036785401342311609::1720129054::1722979634::1::::<><>::
+imageedit_22_7633397634 copy.png::CompressedTexture2D::8286189162303648168::1719290435::1722979634::1::::<><>::
+imageedit_22_7633397634.png::CompressedTexture2D::3893046830587005541::1719290435::1722979634::1::::<><>::
+output-onlinepngtools.png::CompressedTexture2D::4628054995249132939::1719290435::1722979638::1::::<><>::
 ::res://sprites/player/Grass Player/::1721958046
 celebration (2).png::CompressedTexture2D::792765564051081456::1721955475::1721955610::1::::<><>::
 idle grass 1.png::CompressedTexture2D::7014893279285673976::1721955481::1721955610::1::::<><>::
@@ -123,6 +175,7 @@ ulixouipmkhb1 (1) (1) (1).png::CompressedTexture2D::7100261727512652363::1721929
 ulixouipmkhb1 (1).png::CompressedTexture2D::2025419891617628218::1721928786::1721929310::1::::<><>::
 ulixouipmkhb1 (3).png::CompressedTexture2D::4621597877873554716::1721929010::1721929310::1::::<><>::
 ulixouipmkhb1 (4).png::CompressedTexture2D::1584835341661975865::1721929162::1721929310::1::::<><>::
+::res://sprites/player/Small Player/::1722979647
 ::res://sprites/tiles/::1722553612
 output-onlinepngtools-2 copy 2.png::CompressedTexture2D::719778949087145951::1719608566::1719608571::1::::<><>::
 output-onlinepngtools-2 copy.png::CompressedTexture2D::8661242239017839563::1719608518::1719608571::1::::<><>::
