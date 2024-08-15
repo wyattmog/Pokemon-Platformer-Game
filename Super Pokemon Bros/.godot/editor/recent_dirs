@@ -1,9 +1,15 @@
+res://sprites/entities/powerups
+res://
+res://sprites/player/all anims/idle
 res://sprites/player/all anims/jump
+res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001
 res://sprites/player/all anims/slide
 res://sprites/player/all anims/run
 res://sprites/player/all anims/walk
-res://sprites/player/all anims/idle
-res://
+res://sprites/player/all anims/fireattack
+res://sprites/player/all anims/death
+res://sprites/player/fireplayer
+res://sprites/player/Default Player
 res://sprites/effects
 res://sprites/tiles/tilesets
 res://sprites/player/Grass Player

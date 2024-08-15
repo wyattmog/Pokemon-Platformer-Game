@@ -1,18 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqmu3yhsnod6k"]
+[gd_scene load_steps=15 format=3 uid="uid://dqmu3yhsnod6k"]
 
 [ext_resource type="Script" path="res://Charmander.gd" id="1_o4oye"]
 [ext_resource type="Texture2D" uid="uid://gmuasefy7ag8" path="res://sprites/effects/sma4_sprites copy 3.png" id="2_60nr6"]
 [ext_resource type="Texture2D" uid="uid://bmxh77vi6nur4" path="res://sprites/mobs/output-onlinepngtools-2 copy 5.png" id="2_dax5x"]
-[ext_resource type="Texture2D" uid="uid://65rhndkbmkxa" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (1).png" id="3_haeub"]
+[ext_resource type="Texture2D" uid="uid://ua6r8137q4hs" path="res://sprites/player/all anims/death/New Piskel.png" id="3_8prv4"]
 [ext_resource type="Texture2D" uid="uid://dchefvv82cxar" path="res://sprites/mobs/output-onlinepngtools-2.png" id="3_w2i3y"]
-[ext_resource type="Texture2D" uid="uid://bvqhrlksvgojq" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (2).png" id="4_57mhl"]
-[ext_resource type="Texture2D" uid="uid://d6cjljg64efk" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (5).png" id="5_qgf57"]
-[ext_resource type="Texture2D" uid="uid://b6ncwf54c43p8" path="res://sprites/effects/drive-download-20240803T174930Z-001/sma4_sprites copy 3 (4).png" id="6_7jyun"]
 [ext_resource type="Texture2D" uid="uid://cgqipx5gsfcuv" path="res://sprites/mobs/output-onlinepngtools-2 copy 4.png" id="7_ovfbi"]
 [ext_resource type="Texture2D" uid="uid://ktkatlwyadnp" path="res://sprites/mobs/output-onlinepngtools-2 copy 6.png" id="8_bm11v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ku04"]
 size = Vector2(4, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi37v"]
+atlas = ExtResource("3_8prv4")
+region = Rect2(0, 0, 42, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raudr"]
+atlas = ExtResource("3_8prv4")
+region = Rect2(42, 0, 42, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg0j0"]
+atlas = ExtResource("3_8prv4")
+region = Rect2(0, 31, 42, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv4sx"]
+atlas = ExtResource("3_8prv4")
+region = Rect2(42, 31, 42, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rut71"]
 animations = [{
@@ -21,16 +34,16 @@ animations = [{
 "texture": ExtResource("2_60nr6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_haeub")
+"texture": SubResource("AtlasTexture_gi37v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_57mhl")
+"texture": SubResource("AtlasTexture_raudr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_qgf57")
+"texture": SubResource("AtlasTexture_lg0j0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_7jyun")
+"texture": SubResource("AtlasTexture_nv4sx")
 }],
 "loop": false,
 "name": &"Death",
@@ -73,7 +86,9 @@ shape = SubResource("RectangleShape2D_5ku04")
 position = Vector2(0, -2)
 scale = Vector2(1, 0.846774)
 sprite_frames = SubResource("SpriteFrames_rut71")
-animation = &"Walk"
+animation = &"Death"
+frame = 4
+frame_progress = 1.0
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

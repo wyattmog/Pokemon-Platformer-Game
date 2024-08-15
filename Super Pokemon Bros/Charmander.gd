@@ -8,8 +8,10 @@ var player
 #var chase = false
 var isdead = false
 signal bounce_signal
-var attacked
+var attacked = false
 var nearby
+#var collided = false
+var invincible = false
 signal enemy_death(body)
 
 func _ready(): 
@@ -40,15 +42,16 @@ func _physics_process(delta):
 			#velocity.x = direction.x * SPEED
 	#else:
 		#velocity.x = 0
+	#print(invincible)
 	
 	move_and_slide()
 	
 func _on_player_detection_body_entered(body):
-	print(nearby)
+	#print(nearby)
 	if body.name == "Player" and !isdead:
 		nearby = true
-		print(nearby)
-		print("detection")
+		#print(nearby)
+		#print("detection")
 		#print("entered")
 
 func _on_player_detection_body_exited(body):
@@ -57,16 +60,25 @@ func _on_player_detection_body_exited(body):
 		#print("exited")
 		
 func _on_player_death_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not isdead and !invincible:
 		death()
 		isdead=true
-		print("deathbody")
-
+	elif body.name == "Fireball" and not isdead:
+		death()
+		isdead=true
+		#print("deathbody")
+		
 func _on_player_collision_body_entered(body):
-	if body.name == "Player" and !isdead:
-		get_node("AnimatedSprite2D").queue_free()
-		get_tree().change_scene_to_file("res://main.tscn")
-		print("collisionbody")
+	if body.name == "Player" and !isdead and !invincible:
+		if GameState.big:
+			GameState.big = false
+			
+			#print("wowowow")
+		else:
+			get_node("AnimatedSprite2D").queue_free()
+			get_tree().change_scene_to_file("res://main.tscn")
+			GameState.power = ""
+			#print("collisionbody")
 		
 func death():
 	#chase = false
@@ -79,6 +91,14 @@ func death():
 	await get_node("AnimatedSprite2D").animation_finished
 	self.queue_free()
 	
+	
+func invincible_start():
+	invincible = true
+	set_collision_mask_value(1, false)
+	
+func invincible_end():
+	invincible = false
+	set_collision_mask_value(1, true)
 	
 func _on_player_grass_attack():
 	attacked = true

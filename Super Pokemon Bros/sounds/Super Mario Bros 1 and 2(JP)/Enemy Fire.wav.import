@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1ycf0sc43s72"
+path="res://.godot/imported/Enemy Fire.wav-7939b344f6a9f6debd67f43f2264985d.sample"
+
+[deps]
+
+source_file="res://sounds/Super Mario Bros 1 and 2(JP)/Enemy Fire.wav"
+dest_files=["res://.godot/imported/Enemy Fire.wav-7939b344f6a9f6debd67f43f2264985d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

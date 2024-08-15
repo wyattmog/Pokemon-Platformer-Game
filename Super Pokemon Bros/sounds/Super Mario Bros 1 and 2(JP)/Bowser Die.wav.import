@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlrjtmxaa67fv"
+path="res://.godot/imported/Bowser Die.wav-7f5011d0ba71991e3cfe99b59ab0cd2a.sample"
+
+[deps]
+
+source_file="res://sounds/Super Mario Bros 1 and 2(JP)/Bowser Die.wav"
+dest_files=["res://.godot/imported/Bowser Die.wav-7f5011d0ba71991e3cfe99b59ab0cd2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

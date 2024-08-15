@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cesyxi0ay6m5r"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_j6cfc"]
+[ext_resource type="Script" path="res://fireball.gd" id="2_6uut4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krguy"]
+resource_local_to_scene = true
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1815"]
+resource_local_to_scene = true
+size = Vector2(12, 11)
+
+[node name="Fireball" instance=ExtResource("1_j6cfc")]
+collision_mask = 14
+script = ExtResource("2_6uut4")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_krguy")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+frame_progress = 0.833307
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i1815")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

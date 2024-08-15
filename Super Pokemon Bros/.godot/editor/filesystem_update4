@@ -1,4 +1,6 @@
 res://main.tscn
+res://water_ball.gd
+res://QuestionBlock.gd
 res://marioblocks.tres
 res://world_1.tscn
 res://world_2.tscn
@@ -12,5 +14,10 @@ res://used_block.tscn
 res://coin.tscn
 res://spinning_coin.tscn
 res://entity.tscn
+res://water_power.tscn
+res://mushroom_power.tscn
+res://grass_power.tscn
+res://fire_power.tscn
+res://fireball.tscn
+res://water_ball.tscn
 res://Player.gd
-res://game_state.gd

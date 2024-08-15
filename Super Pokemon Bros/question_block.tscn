@@ -15,6 +15,7 @@ position = Vector2(5.96046e-08, 1)
 scale = Vector2(1.675, 1)
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(4.17233e-07, 4.17233e-07)
 animation = &"turn"
 
 [node name="CollisionShape2D" parent="." index="2"]
@@ -30,7 +31,11 @@ one_shot = true
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5gpmw")
 
-[node name="CoinTimer" type="Timer" parent="." index="5"]
+[node name="PowerupTimer" type="Timer" parent="." index="5"]
+wait_time = 0.6
+one_shot = true
+
+[node name="CoinTimer" type="Timer" parent="." index="6"]
 wait_time = 0.225
 one_shot = true
 

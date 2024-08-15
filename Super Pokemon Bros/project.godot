@@ -44,7 +44,7 @@ attack={
 
 [physics]
 
-2d/default_gravity=920.0
+2d/default_gravity=675.0
 
 [rendering]
 

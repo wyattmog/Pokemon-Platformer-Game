@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bojg5bknogylv"
+path="res://.godot/imported/Pause.wav-4c0c4b1dc2b9199c5a4c77a1c6dbd9ed.sample"
+
+[deps]
+
+source_file="res://sounds/Super Mario Bros 1 and 2(JP)/Pause.wav"
+dest_files=["res://.godot/imported/Pause.wav-4c0c4b1dc2b9199c5a4c77a1c6dbd9ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

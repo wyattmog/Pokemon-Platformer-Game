@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://88b48vkgtaiy"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_hhpug"]
+[ext_resource type="Script" path="res://grass_power.gd" id="2_02i5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3c0i"]
+resource_local_to_scene = true
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45rau"]
+size = Vector2(16, 14)
+
+[node name="GrassPower" instance=ExtResource("1_hhpug")]
+z_index = -1
+position = Vector2(1, 1)
+collision_mask = 12
+script = ExtResource("2_02i5b")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_x3c0i")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"grass_power_still"
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_45rau")
+
+[node name="UpTimer" type="Timer" parent="." index="3"]
+wait_time = 0.2
+one_shot = true
+
+[node name="DownTimer" type="Timer" parent="." index="4"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

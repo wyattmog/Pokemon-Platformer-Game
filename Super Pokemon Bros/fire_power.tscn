@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dog8fv8spe6ns"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_57s2e"]
+[ext_resource type="Script" path="res://fire_power.gd" id="2_ddm4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_546lo"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0inya"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="FirePower" instance=ExtResource("1_57s2e")]
+z_index = -1
+collision_mask = 12
+script = ExtResource("2_ddm4f")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_546lo")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"fire_power"
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_0inya")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
