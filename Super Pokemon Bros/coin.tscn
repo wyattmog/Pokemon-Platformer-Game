@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://vxnkx35swspn"]
+[gd_scene load_steps=5 format=3 uid="uid://vxnkx35swspn"]
 
 [ext_resource type="PackedScene" uid="uid://cc27lt2m5bta0" path="res://block.tscn" id="1_8wmtu"]
 [ext_resource type="Script" path="res://Coin.gd" id="2_u1fy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg1n5"]
+resource_local_to_scene = true
+size = Vector2(8.35821, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6barv"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
 
 [node name="Coin" instance=ExtResource("1_8wmtu")]
 script = ExtResource("2_u1fy4")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(2.38419e-07, 0)
+shape = SubResource("RectangleShape2D_pg1n5")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_6barv")
 disabled = true
 
 [node name="Timer" type="Timer" parent="." index="3"]

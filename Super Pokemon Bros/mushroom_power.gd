@@ -5,7 +5,7 @@ var SPEED = 50
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready(): 
-	SPEED *= GameState.direction 
+	SPEED *= GameState.direct
 	get_node("AnimatedSprite2D").play("mushroom_power")
 	get_node("Timer").start()
 	set_visible(0)
@@ -19,6 +19,7 @@ func _physics_process(delta):
 	
 	if get_node("Timer").is_stopped():
 		set_collision_mask_value(4, true)
+		set_z_index(2)
 		velocity.x = SPEED
 		if not is_on_floor():
 			velocity.y += gravity * delta

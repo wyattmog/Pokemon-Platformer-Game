@@ -6,7 +6,8 @@ var direction
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	velocity.x = SPEED * GameState.direction
+	add_to_group("projectiles")
+	velocity.x = SPEED * GameState.direct
 	get_node("AnimatedSprite2D").play("fireball")
 	
 func _physics_process(delta):
@@ -37,8 +38,9 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Charmander":
-		get_tree().call_group("enemies", "_on_player_grass_attack")
+		#get_tree().call_group("enemies", "_on_player_grass_attack")
 		queue_free()
+		
 		
 		
 		

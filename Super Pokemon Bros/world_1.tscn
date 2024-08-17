@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://l07kcv05l2u4" path="res://sprites/tiles/tile000.png" id="8_uq6rp"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="10_5uhu3"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="12_2nnwe"]
-[ext_resource type="PackedScene" uid="uid://bhjqn260gic3e" path="res://mushroom_power.tscn" id="13_lb0hr"]
+[ext_resource type="PackedScene" uid="uid://88b48vkgtaiy" path="res://grass_power.tscn" id="13_kmcsa"]
 [ext_resource type="PackedScene" uid="uid://dog8fv8spe6ns" path="res://fire_power.tscn" id="13_n4a5q"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="14_0vuis"]
-[ext_resource type="PackedScene" uid="uid://88b48vkgtaiy" path="res://grass_power.tscn" id="15_dyy48"]
 [ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="15_ghqvc"]
+[ext_resource type="PackedScene" uid="uid://dqtjvcwekhqua" path="res://water_power.tscn" id="15_oknqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv08g"]
 size = Vector2(416.471, 305)
@@ -758,13 +758,25 @@ position = Vector2(-27, -37)
 scale = Vector2(0.7, 0.7)
 
 [node name="Charmander" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(828.516, 745.714)
+position = Vector2(870, 802.857)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Charmander2" parent="Mobs" instance=ExtResource("7_fkbon")]
-position = Vector2(904.225, 745.714)
+position = Vector2(945.71, 802.857)
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 9
+
+[node name="Charmander3" parent="Mobs" instance=ExtResource("7_fkbon")]
+position = Vector2(2027.14, 732.857)
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 9
+
+[node name="Charmander4" parent="Mobs" instance=ExtResource("7_fkbon")]
+position = Vector2(2102.85, 732.857)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 9
@@ -778,7 +790,7 @@ position = Vector2(173.988, 511)
 position = Vector2(719.999, 482)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
-spawned_scene = ExtResource("13_lb0hr")
+spawned_scene = ExtResource("13_kmcsa")
 
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(738.997, 482)
@@ -790,7 +802,7 @@ spawned_scene = ExtResource("13_n4a5q")
 position = Vector2(701, 482)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
-spawned_scene = ExtResource("15_dyy48")
+spawned_scene = ExtResource("15_oknqj")
 
 [node name="Question_Block5" parent="Foreground Blocks" instance=ExtResource("12_2nnwe")]
 position = Vector2(2812.8, 358)
@@ -847,4 +859,8 @@ label_settings = SubResource("LabelSettings_lefti")
 [connection signal="enemy_death" from="Mobs/Charmander" to="." method="_on_charmander_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charmander2" to="Player/Player" method="_on_charmander_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Charmander2" to="." method="_on_charmander_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Charmander3" to="Player/Player" method="_on_charmander_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Charmander3" to="." method="_on_charmander_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Charmander4" to="Player/Player" method="_on_charmander_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Charmander4" to="." method="_on_charmander_enemy_death"]
 [connection signal="body_entered" from="VoidArea" to="." method="_on_void_area_body_entered"]

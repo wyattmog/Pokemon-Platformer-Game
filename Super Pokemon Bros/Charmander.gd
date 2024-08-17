@@ -60,30 +60,36 @@ func _on_player_detection_body_exited(body):
 		#print("exited")
 		
 func _on_player_death_body_entered(body):
+	#print(body.name, isdead)
 	if body.name == "Player" and not isdead and !invincible:
 		death()
 		isdead=true
 	elif body.name == "Fireball" and not isdead:
 		death()
 		isdead=true
+	elif body.name == "Waterball" and not isdead:
+		death()
+		isdead=true
 		#print("deathbody")
-		
 func _on_player_collision_body_entered(body):
 	if body.name == "Player" and !isdead and !invincible:
-		if GameState.big:
+		if GameState.big and GameState.power == "":
 			GameState.big = false
 			
 			#print("wowowow")
+		elif GameState.big and GameState.power != "":
+			GameState.big = true
+			GameState.power = ""
 		else:
 			get_node("AnimatedSprite2D").queue_free()
 			get_tree().change_scene_to_file("res://main.tscn")
-			GameState.power = ""
+			#GameState.power = ""
 			#print("collisionbody")
 		
 func death():
 	#chase = false
-	get_node("PlayerDeath/CollisionPolygon2D").disabled = true
-	get_node("PlayerCollision/CollisionPolygon2D").disabled = true
+	get_node("PlayerHitbox/CollisionShape2D").disabled = true
+	print(get_node("PlayerHitbox/CollisionShape2D").is_disabled())
 	emit_signal("enemy_death", get_path())
 	get_node("AnimatedSprite2D").play("Death")
 	if !attacked:
@@ -99,7 +105,7 @@ func invincible_start():
 func invincible_end():
 	invincible = false
 	set_collision_mask_value(1, true)
-	
+
 func _on_player_grass_attack():
 	attacked = true
 	if nearby:
@@ -108,3 +114,30 @@ func _on_player_grass_attack():
 
 func _on_player_grass_attack_ended():
 	attacked = false
+
+func is_above():
+	return GameState.player.position.y < position.y/2 +65 and GameState.player.velocity.y > 0
+
+
+func _on_player_hitbox_body_entered(body):
+	print(body.name)
+	#print("entered")
+	if body.name == "Player" and not isdead and !invincible and is_above():
+		death()
+		isdead=true
+	elif body.is_in_group("projectiles") and not isdead:
+		death()
+		isdead=true
+	elif body.is_in_group("projectiles") and not isdead:
+		death()
+		isdead=true
+	elif body.name == "Player" and !isdead and !invincible:
+		if GameState.big and GameState.power == "":
+			GameState.big = false
+			
+		elif GameState.big and GameState.power != "":
+			GameState.big = true
+			GameState.power = ""
+		else:
+			get_node("AnimatedSprite2D").queue_free()
+			get_tree().change_scene_to_file("res://main.tscn")

@@ -30,7 +30,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameState.game_ended:
-		print("wowwwwwww")
 		if spawnable:
 			spawnable.queue_free()
 	if get_node("AnimatedSprite2D").position.y == orig_y_position and played == true:

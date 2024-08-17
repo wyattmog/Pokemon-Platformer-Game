@@ -1,5 +1,7 @@
+class_name Player
 extends CharacterBody2D
-var fireball = preload("res://water_ball.tscn")
+var fireball = preload("res://fireball.tscn")
+var waterball = preload("res://waterball.tscn")
 const SPEED = 250.0
 const JUMP_VELOCITY = -300.0
 const FRICTION = 35
@@ -33,6 +35,7 @@ var direction
 var played = false 
 var collected = "small"
 func _ready():
+	GameState.player = self
 	get_node("GrassAttack/CollisionShapeRight").disabled = true
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90)
@@ -59,6 +62,8 @@ func emit_signal_while_playing(direction):
 	#get_tree().call_group("question_block", "_grass_attack")
 	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	#print("PlayerPos: ", position.y)
+	#print(GameState.game_ended)
 	#print(collected, GameState.big, scaled)
 	#print(anim.get_speed_scale())
 	if not get_node("Invincibility").is_stopped() and played:
@@ -72,6 +77,7 @@ func _physics_process(delta):
 		#scale = Vector2(1.1,1.1)
 	#else:
 		#scale = Vector2(.9,.9)
+	#print("power:",GameState.power,"collect:" ,collected, "big:", GameState.big)
 	if scaling:
 		get_tree().call_group("enemies", "invincible_start")
 		scaling = false
@@ -126,7 +132,50 @@ func _physics_process(delta):
 			GameState.big = true
 			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
 			scale = Vector2(1.1,1.1)
-		elif scaled and collected != "grass":
+		elif scaled and (collected == "grass" or collected == "fire" or collected == "water"):
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			#set_self_modulate(Color(1, 1, 1, .5))
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+			scale = Vector2(1.0,1.0)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = true
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			scale = Vector2(1.1,1.1)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+			scale = Vector2(1.0,1.0)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = true
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			scale = Vector2(1.1,1.1)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = true
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+			scale = Vector2(1.00,1.00)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			scale = Vector2(.90,.90)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = true
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+			scale = Vector2(1.00,1.00)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			scale = Vector2(.90,.90)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+			scale = Vector2(1.00,1.00)
+			await get_tree().create_timer(.05).timeout
+			GameState.big = false
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			scale = Vector2(.90,.90)
+			played = true
+		elif scaled and (collected != "grass" or collected != "fire" or collected != "water"):
 			await get_tree().create_timer(.05).timeout
 			GameState.big = false
 			#set_self_modulate(Color(1, 1, 1, .5))
@@ -172,7 +221,7 @@ func _physics_process(delta):
 		anim.play()
 		set_physics_process(true)
 		if scaled:
-			position.y -= 5
+			position.y -= 2
 
 		#move = true
 		#scaling = false
@@ -181,7 +230,7 @@ func _physics_process(delta):
 	#if GameState.power = ""
 	if GameState.power == "grass" and collected != "grass":
 		scaled = false
-		print("grass")
+		#print("grass")
 		scale = Vector2(1.1,1.1)
 		collected = "grass"
 		scaling = true
@@ -189,16 +238,46 @@ func _physics_process(delta):
 		await get_tree().create_timer(.40).timeout
 		#collected = "grass"
 		scaled = true
+	elif GameState.power == "water" and collected != "water":
+		scaled = false
+		#print("grass")
+		scale = Vector2(1.1,1.1)
+		collected = "water"
+		scaling = true
+		#collected = true
+		await get_tree().create_timer(.40).timeout
+		#collected = "grass"
+		scaled = true
+	elif GameState.power == "fire" and collected != "fire":
+		scaled = false
+		#print("grass")
+		scale = Vector2(1.1,1.1)
+		collected = "fire"
+		scaling = true
+		#collected = true
+		await get_tree().create_timer(.40).timeout
+		#collected = "grass"
+		scaled = true
+	elif GameState.power == "" and GameState.big and (collected == "fire" or collected == "water" or collected == "grass"):
+		scaled = false
+		print("wow")
+		#GameState.power == "big
+		collected = "big"
+		scaling = true
+		await get_tree().create_timer(.40).timeout
+		scaled = true
 	elif GameState.big and not scaled:
 		scale = Vector2(1.1,1.1)
-		collected = "mushroom"
+		collected = "big"
 		scaling = true
 		
 		await get_tree().create_timer(.40).timeout
 		scaled = true
+	#elif GameState.big and GameState.power != "":
 	elif !GameState.big and scaled:
 		scale = Vector2(.90,.90)
 		collected = "small"
+		#GameState.power == "small"
 		scaling = true
 		get_node("Invincibility").start()
 		await get_tree().create_timer(.40).timeout
@@ -224,7 +303,6 @@ func _physics_process(delta):
 					min = velocity.x+50
 				emit_signal_while_playing(direction)
 			elif GameState.power == "fire":
-				GameState.split = false
 				animplaying = true
 				if velocity.x == 0:
 					anim.play("FireIdleAttack")
@@ -232,10 +310,24 @@ func _physics_process(delta):
 					anim.play("FireRunAttack")
 				elif abs(velocity.x) <= 225:
 					anim.play("FireWalkAttack")
-				var new_dust = fireball.instantiate()
-				new_dust.position.x = position.x
-				new_dust.position.y = position.y
-				add_sibling(new_dust)
+				var fireball1 = fireball.instantiate()
+				fireball1.position.x = position.x
+				fireball1.position.y = position.y
+				add_sibling(fireball1)
+				await anim.animation_finished
+				animplaying = false
+			elif GameState.power == "water":
+				animplaying = true
+				if velocity.x == 0:
+					anim.play("WaterIdleAttack")
+				elif abs(velocity.x) > 225:
+					anim.play("WaterRunAttack")
+				elif abs(velocity.x) <= 225:
+					anim.play("WaterWalkAttack")
+				var waterball = waterball.instantiate()
+				waterball.position.x = position.x
+				waterball.position.y = position.y
+				add_sibling(waterball)
 				await anim.animation_finished
 				animplaying = false
 	get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
@@ -290,10 +382,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("down") and velocity.x:
 			get_node("AnimatedSprite2D").offset.y = 3
 	if last_pressed == -1:
-		GameState.direction = -1
+		GameState.direct = -1
 		get_node("AnimatedSprite2D").flip_h = true
 	elif last_pressed == 1:
-		GameState.direction = 1
+		GameState.direct = 1
 		get_node("AnimatedSprite2D").flip_h = false
 	#print(animplaying)
 	#print(anim.get_speed_scale())
@@ -325,6 +417,8 @@ func _physics_process(delta):
 			anim.play("GrassFall")
 		elif GameState.power == "fire":
 			anim.play("FireFall")
+		elif GameState.power == "water":
+			anim.play("WaterFall")
 		elif GameState.big:
 			anim.play("BigFall")
 		else:
@@ -373,6 +467,8 @@ func _jumped():
 		anim.play("GrassJump")
 	elif GameState.power == "fire":
 		anim.play("FireJump")
+	elif GameState.power == "water":
+		anim.play("WaterJump")
 	elif GameState.big:
 		anim.play("BigJump")
 	else:
@@ -398,6 +494,8 @@ func _spinned():
 		anim.play("GrassSpin")
 	elif GameState.power == "fire":
 		anim.play("FireSpin")
+	elif GameState.power == "water":
+			anim.play("WaterSpin")
 	elif GameState.big:
 		anim.play("BigSpin")
 	else: 
@@ -446,6 +544,8 @@ func _directionalMovement(direction):
 				anim.play("GrassSlide")
 			elif GameState.power == "fire":
 				anim.play("FireSlide")
+			elif GameState.power == "water":
+				anim.play("WaterSlide")
 			elif GameState.big:
 				anim.play("BigSlide")
 			else:
@@ -455,6 +555,8 @@ func _directionalMovement(direction):
 				anim.play("GrassWalk")
 			elif GameState.power == "fire":
 				anim.play("FireWalk")
+			elif GameState.power == "water":
+				anim.play("WaterWalk")
 			elif GameState.big:
 				anim.play("BigWalk")
 			else:
@@ -464,6 +566,8 @@ func _directionalMovement(direction):
 				anim.play("GrassRun")
 			elif GameState.power == "fire":
 				anim.play("FireRun")
+			elif GameState.power == "water":
+				anim.play("WaterRun")
 			elif GameState.big:
 				anim.play("BigRun")
 			else: 
@@ -474,6 +578,8 @@ func _directionalMovement(direction):
 				anim.play("GrassWalk")
 			elif GameState.power == "fire":
 				anim.play("FireWalk")
+			elif GameState.power == "water":
+				anim.play("WaterWalk")
 			elif GameState.big:
 				anim.play("BigWalk")
 			else:
@@ -484,6 +590,8 @@ func _directionalMovement(direction):
 				anim.play("GrassIdle")
 			elif GameState.power == "fire":
 				anim.play("FireIdle")
+			elif GameState.power == "water":
+				anim.play("WaterIdle")
 			elif GameState.big:
 				anim.play("BigIdle")
 			else:

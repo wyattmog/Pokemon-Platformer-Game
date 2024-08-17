@@ -19,5 +19,6 @@ res://mushroom_power.tscn
 res://grass_power.tscn
 res://fire_power.tscn
 res://fireball.tscn
-res://water_ball.tscn
-res://Player.gd
+res://waterball.tscn
+res://Charmander.gd
+res://fireball.gd

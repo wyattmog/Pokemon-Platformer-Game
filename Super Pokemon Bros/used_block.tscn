@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://sgvipht0afmf"]
+[gd_scene load_steps=4 format=3 uid="uid://sgvipht0afmf"]
 
 [ext_resource type="PackedScene" uid="uid://cc27lt2m5bta0" path="res://block.tscn" id="1_ffe6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x1k7"]
+resource_local_to_scene = true
+size = Vector2(8.35821, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl0y0"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
 
 [node name="Used_Block" instance=ExtResource("1_ffe6n")]
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_4x1k7")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"used"
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -0.314506)
+shape = SubResource("RectangleShape2D_bl0y0")

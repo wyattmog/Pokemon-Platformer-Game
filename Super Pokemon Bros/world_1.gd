@@ -3,9 +3,9 @@ signal on_tile
 var fort_node
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameState.game_ended = false
 	#print(get_node("Foreground Blocks/Question_Block2").get_children())
 	#get_tree().call_group("enemies", "_on_player_grass_attack")
-	GameState.game_ended = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	get_node("CanvasLayer/Label").text = "Coins: %d" % GameState.num_coins
@@ -24,7 +24,7 @@ func _on_player_landed():
 func _on_void_area_body_entered(body):
 	if body.name == "Player":
 		await get_tree().create_timer(.5).timeout
-		GameState.game_ended = true
+		#GameState.game_ended = true
 		get_tree().change_scene_to_file("res://main.tscn")
 		#if get_tree():
 			#get_tree().reload_current_scene()

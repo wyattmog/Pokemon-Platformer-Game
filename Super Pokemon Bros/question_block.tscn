@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6eudb8la734v"]
+[gd_scene load_steps=6 format=3 uid="uid://b6eudb8la734v"]
 
 [ext_resource type="PackedScene" uid="uid://cvtqpjdaxe642" path="res://hittable_block.tscn" id="1_5we05"]
 [ext_resource type="Script" path="res://QuestionBlock.gd" id="2_dtd0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5mhh"]
+resource_local_to_scene = true
+size = Vector2(8.35821, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bqsq"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpmw"]
 size = Vector2(16, 13)
@@ -13,6 +21,7 @@ spawned_scene = null
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(5.96046e-08, 1)
 scale = Vector2(1.675, 1)
+shape = SubResource("RectangleShape2D_t5mhh")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(4.17233e-07, 4.17233e-07)
@@ -20,6 +29,7 @@ animation = &"turn"
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 2.98023e-08)
+shape = SubResource("RectangleShape2D_4bqsq")
 
 [node name="BounceTimer" parent="." index="3"]
 wait_time = 0.133

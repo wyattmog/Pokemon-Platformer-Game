@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5wqy73r2muv" path="res://sprites/tiles/tilesets/output-onlinepngtools-4 copy 2.png" id="6_uio5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0wrv"]
+resource_local_to_scene = true
 size = Vector2(8.35821, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skwn0"]
@@ -172,6 +173,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nudsl"]
+resource_local_to_scene = true
 size = Vector2(14, 14)
 
 [node name="Block" type="StaticBody2D"]

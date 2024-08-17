@@ -19,7 +19,6 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y += gravity * delta
 	else: 
-		print("wow")
 		set_collision_mask_value(4, false)
 
 	move_and_slide()

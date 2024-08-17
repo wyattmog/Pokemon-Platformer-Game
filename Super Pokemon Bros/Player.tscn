@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=224 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="Texture2D" uid="uid://dtv8iamfbk4dh" path="res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png" id="2_lsvfv"]
@@ -42,6 +42,15 @@
 [ext_resource type="Texture2D" uid="uid://d32oo58slrha7" path="res://sprites/player/all anims/walk/output-onlinepngtools (1) (1).png" id="29_57hog"]
 [ext_resource type="Texture2D" uid="uid://eaiqg538fbvl" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin copy.png" id="29_b4ttk"]
 [ext_resource type="AudioStream" uid="uid://bsvqnwa4qvjk6" path="res://sounds/Super Mario Bros 1 and 2(JP)/Beep.wav" id="31_ddj5r"]
+[ext_resource type="Texture2D" uid="uid://c6g23ja0hdtic" path="res://sprites/player/all anims/idle/water idle 2.png" id="41_cv5h7"]
+[ext_resource type="Texture2D" uid="uid://dfbfa3ghjnuun" path="res://sprites/player/all anims/waterattack/imageedit_22_7633397634 (3) (1) 2.png" id="41_j5gvu"]
+[ext_resource type="Texture2D" uid="uid://b8gxmoytvl1eh" path="res://sprites/player/all anims/idle/water idle 1.png" id="42_cbx7n"]
+[ext_resource type="Texture2D" uid="uid://dn2hn1vu3v7pf" path="res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (5).png" id="43_w418k"]
+[ext_resource type="Texture2D" uid="uid://bfqaikmdv71yl" path="res://sprites/player/all anims/run/imageedit_22_7633397634 (2).png" id="44_lnaqd"]
+[ext_resource type="Texture2D" uid="uid://6jgwdpqrk417" path="res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (1).png" id="45_rpcng"]
+[ext_resource type="Texture2D" uid="uid://bckgi6j5w3xm7" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin.png" id="46_3b3yu"]
+[ext_resource type="Texture2D" uid="uid://c3dgg35cfu651" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin copy.png" id="47_kqopk"]
+[ext_resource type="Texture2D" uid="uid://bci4ac6kqmuqp" path="res://sprites/player/all anims/walk/output-onlinepngtools (4).png" id="48_mekvr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1wql"]
 radius = 7.0
@@ -426,6 +435,90 @@ region = Rect2(32, 0, 22, 26)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c25f2"]
 atlas = ExtResource("29_57hog")
 region = Rect2(64, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgxpl"]
+atlas = ExtResource("41_j5gvu")
+region = Rect2(0, 0, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4mxv"]
+atlas = ExtResource("41_j5gvu")
+region = Rect2(23, 0, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnu4l"]
+atlas = ExtResource("41_j5gvu")
+region = Rect2(0, 27, 23, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oke4o"]
+atlas = ExtResource("41_cv5h7")
+region = Rect2(0, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hek0j"]
+atlas = ExtResource("42_cbx7n")
+region = Rect2(0, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxgqw"]
+atlas = ExtResource("42_cbx7n")
+region = Rect2(23, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2ikd"]
+atlas = ExtResource("43_w418k")
+region = Rect2(0, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ife54"]
+atlas = ExtResource("43_w418k")
+region = Rect2(33, 0, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v66i"]
+atlas = ExtResource("43_w418k")
+region = Rect2(61, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6sj3"]
+atlas = ExtResource("43_w418k")
+region = Rect2(92, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l3rb"]
+atlas = ExtResource("44_lnaqd")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m63oe"]
+atlas = ExtResource("44_lnaqd")
+region = Rect2(31, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l012"]
+atlas = ExtResource("44_lnaqd")
+region = Rect2(62, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yrcu"]
+atlas = ExtResource("45_rpcng")
+region = Rect2(23, 0, 22, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mde14"]
+atlas = ExtResource("46_3b3yu")
+region = Rect2(0, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv1g7"]
+atlas = ExtResource("46_3b3yu")
+region = Rect2(0, 26, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vdi8"]
+atlas = ExtResource("47_kqopk")
+region = Rect2(22, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o8s6"]
+atlas = ExtResource("46_3b3yu")
+region = Rect2(22, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhytv"]
+atlas = ExtResource("48_mekvr")
+region = Rect2(0, 0, 22, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdvfq"]
+atlas = ExtResource("48_mekvr")
+region = Rect2(32, 0, 22, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stvik"]
+atlas = ExtResource("48_mekvr")
+region = Rect2(64, 0, 22, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vy0g8"]
 animations = [{
@@ -894,6 +987,104 @@ animations = [{
 "loop": true,
 "name": &"SmallWalk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgxpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4mxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnu4l")
+}],
+"loop": true,
+"name": &"WaterAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oke4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hek0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxgqw")
+}],
+"loop": true,
+"name": &"WaterIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2ikd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ife54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v66i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6sj3")
+}],
+"loop": true,
+"name": &"WaterJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l3rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m63oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l012")
+}],
+"loop": true,
+"name": &"WaterRun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yrcu")
+}],
+"loop": true,
+"name": &"WaterSlide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mde14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv1g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vdi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o8s6")
+}],
+"loop": true,
+"name": &"WaterSpin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhytv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdvfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stvik")
+}],
+"loop": true,
+"name": &"WaterWalk",
+"speed": 5.0
 }]
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_u2dxu"]
@@ -1244,6 +1435,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_imbxv"]
+resource_name = "FireJump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"FireJump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_r7a4m"]
@@ -1680,6 +1898,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"FireIdle"]
+}
 
 [sub_resource type="Animation" id="Animation_65ca6"]
 resource_name = "SmallFall"
@@ -1875,6 +2105,286 @@ tracks/1/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_fam2f"]
+resource_name = "FireFall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterJump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_spj86"]
+resource_name = "FireIdle"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterIdle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_h2qhv"]
+resource_name = "FireIdleAttack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterAttack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_mii6h"]
+resource_name = "FireJump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterJump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_fwilx"]
+resource_name = "FireRun"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterRun"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_1ae0g"]
+resource_name = "FireRunAttack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterAttack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0qbde"]
+resource_name = "FireSlide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterSlide"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lk55u"]
+resource_name = "FireSpin"
+length = 0.15
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterSpin"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_8dvls"]
+resource_name = "FireWalk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterWalk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_7iw0x"]
+resource_name = "FireWalkAttack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterAttack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur182"]
 _data = {
 "BigFall": SubResource("Animation_55k75"),
@@ -1889,6 +2399,7 @@ _data = {
 "FireFall": SubResource("Animation_j2si6"),
 "FireIdle": SubResource("Animation_dv7w6"),
 "FireIdleAttack": SubResource("Animation_og56w"),
+"FireJump": SubResource("Animation_imbxv"),
 "FireRun": SubResource("Animation_r7a4m"),
 "FireRunAttack": SubResource("Animation_qstdn"),
 "FireSlide": SubResource("Animation_byif2"),
@@ -1911,7 +2422,17 @@ _data = {
 "SmallRun": SubResource("Animation_t1quh"),
 "SmallSlide": SubResource("Animation_korqh"),
 "SmallSpin": SubResource("Animation_27aj1"),
-"SmallWalk": SubResource("Animation_5mgi0")
+"SmallWalk": SubResource("Animation_5mgi0"),
+"WaterFall": SubResource("Animation_fam2f"),
+"WaterIdle": SubResource("Animation_spj86"),
+"WaterIdleAttack": SubResource("Animation_h2qhv"),
+"WaterJump": SubResource("Animation_mii6h"),
+"WaterRun": SubResource("Animation_fwilx"),
+"WaterRunAttack": SubResource("Animation_1ae0g"),
+"WaterSlide": SubResource("Animation_0qbde"),
+"WaterSpin": SubResource("Animation_lk55u"),
+"WaterWalk": SubResource("Animation_8dvls"),
+"WaterWalkAttack": SubResource("Animation_7iw0x")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6as78"]
@@ -1919,16 +2440,16 @@ radius = 1.08498
 height = 6.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc6bp"]
-size = Vector2(8, 0)
+size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavn"]
-size = Vector2(6, 0)
+size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyn52"]
-size = Vector2(0, 11)
+size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ppf"]
-size = Vector2(0, 13)
+size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wc4s"]
 size = Vector2(9, 9)
@@ -1944,7 +2465,7 @@ shape = SubResource("CapsuleShape2D_y1wql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vy0g8")
-animation = &"FireAttack"
+animation = &"FireIdle"
 frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1975,33 +2496,34 @@ autoplay = "SmallIdle"
 [node name="PlayerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+visible = false
 position = Vector2(0, -8)
 scale = Vector2(2.76504, 0.824876)
 shape = SubResource("CapsuleShape2D_6as78")
+disabled = true
 
 [node name="Feet" type="CollisionShape2D" parent="PlayerArea"]
 visible = false
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_oc6bp")
-disabled = true
 
-[node name="Head" type="CollisionShape2D" parent="PlayerArea"]
-visible = false
-position = Vector2(0, -10)
+[node name="HeadLeft" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(-3, -10)
 shape = SubResource("RectangleShape2D_xwavn")
-disabled = true
 
-[node name="Right" type="CollisionShape2D" parent="PlayerArea"]
+[node name="HeadRight" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(3, -10)
+shape = SubResource("RectangleShape2D_xwavn")
+
+[node name="RightTop" type="CollisionShape2D" parent="PlayerArea"]
 visible = false
-position = Vector2(7, 3.5)
+position = Vector2(7, 5)
 shape = SubResource("RectangleShape2D_pyn52")
-disabled = true
 
-[node name="Left" type="CollisionShape2D" parent="PlayerArea"]
+[node name="LeftTop" type="CollisionShape2D" parent="PlayerArea"]
 visible = false
-position = Vector2(-7, 2.5)
+position = Vector2(-7, 5)
 shape = SubResource("RectangleShape2D_r3ppf")
-disabled = true
 
 [node name="DustTimer" type="Timer" parent="."]
 wait_time = 0.025

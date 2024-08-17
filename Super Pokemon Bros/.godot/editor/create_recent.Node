@@ -1,6 +1,6 @@
-Timer
 CollisionShape2D
 Area2D
+Timer
 CharacterBody2D
 Node2D
 AudioStreamPlayer2D
