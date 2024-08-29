@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmnw1ic7o4cnt"
+path="res://.godot/imported/03. Yoshi's Island-[AudioTrimmer.com].wav-f12d79b747e095ef2fd8ac8cb8ae2730.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/03. Yoshi's Island-[AudioTrimmer.com].wav"
+dest_files=["res://.godot/imported/03. Yoshi's Island-[AudioTrimmer.com].wav-f12d79b747e095ef2fd8ac8cb8ae2730.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

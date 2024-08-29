@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cyijy2linicue"
+path="res://.godot/imported/fireworks.wav-b354a54f82bac4dd1d3b047e5b62be9b.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/fireworks.wav"
+dest_files=["res://.godot/imported/fireworks.wav-b354a54f82bac4dd1d3b047e5b62be9b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

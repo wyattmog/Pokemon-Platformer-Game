@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dquqd8dmo4xld"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_wttim"]
+[ext_resource type="Script" path="res://petal_projectile.gd" id="2_xhnyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk02y"]
+resource_local_to_scene = true
+size = Vector2(8, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okmm7"]
+resource_local_to_scene = true
+size = Vector2(17, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpfa"]
+resource_local_to_scene = true
+size = Vector2(36, 19.875)
+
+[node name="PetalProjectile" instance=ExtResource("1_wttim")]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("2_xhnyv")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_rk02y")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"petal_idle"
+frame_progress = 0.228087
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_okmm7")
+
+[node name="LeafDetection" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafDetection" index="0"]
+shape = SubResource("RectangleShape2D_5jpfa")
+
+[node name="CheckTimer" type="Timer" parent="." index="4"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="LeafDetection" to="." method="_on_leaf_detection_body_entered"]
+[connection signal="body_exited" from="LeafDetection" to="." method="_on_leaf_detection_body_exited"]

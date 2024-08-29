@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t62neownhnkp"
+path="res://.godot/imported/clowncar-reenter.wav-8d1952dddcc36e6f403a0872dc046160.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/clowncar-reenter.wav"
+dest_files=["res://.godot/imported/clowncar-reenter.wav-8d1952dddcc36e6f403a0872dc046160.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

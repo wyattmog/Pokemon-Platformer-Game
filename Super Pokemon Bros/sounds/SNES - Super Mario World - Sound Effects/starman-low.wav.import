@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2swr27gtbt5w"
+path="res://.godot/imported/starman-low.wav-6022e92e8ce52258754de7a32e959111.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/starman-low.wav"
+dest_files=["res://.godot/imported/starman-low.wav-6022e92e8ce52258754de7a32e959111.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

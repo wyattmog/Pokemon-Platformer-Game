@@ -18,6 +18,7 @@ func _physics_process(delta):
 		#queue_free()
 	
 	if get_node("Timer").is_stopped():
+		set_z_index(2)
 		set_collision_mask_value(4, true)
 		set_z_index(2)
 		velocity.x = SPEED

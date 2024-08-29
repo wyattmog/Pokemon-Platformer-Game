@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgv4jee3j2cs3"
+path="res://.godot/imported/boss-poof.wav-6a4174e5a573799a26d811585a50fa04.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/boss-poof.wav"
+dest_files=["res://.godot/imported/boss-poof.wav-6a4174e5a573799a26d811585a50fa04.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

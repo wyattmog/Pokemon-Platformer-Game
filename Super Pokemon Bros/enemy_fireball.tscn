@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://xrvdk1ymwi5p"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_xkp5e"]
+[ext_resource type="Script" path="res://enemy_fireball.gd" id="2_ks3ph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krguy"]
+resource_local_to_scene = true
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1815"]
+resource_local_to_scene = true
+size = Vector2(12, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0uym"]
+resource_local_to_scene = true
+size = Vector2(40, 19.875)
+
+[node name="EnemyFireball" instance=ExtResource("1_xkp5e")]
+z_index = 2
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("2_ks3ph")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_krguy")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"fire_power"
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i1815")
+
+[node name="LeafDetection" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafDetection" index="0"]
+shape = SubResource("RectangleShape2D_v0uym")
+
+[node name="FireTimer" type="Timer" parent="." index="4"]
+wait_time = 0.1
+one_shot = true
+
+[node name="LifeTimer" type="Timer" parent="." index="5"]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="LeafDetection" to="." method="_on_leaf_detection_body_entered"]
+[connection signal="body_exited" from="LeafDetection" to="." method="_on_leaf_detection_body_exited"]

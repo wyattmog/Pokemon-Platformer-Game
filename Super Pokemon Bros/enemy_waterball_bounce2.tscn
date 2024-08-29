@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://lnbjlavtoxo6"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_63c0e"]
+[ext_resource type="Script" path="res://enemy_waterball_bounce2.gd" id="2_pfgqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pc3o"]
+resource_local_to_scene = true
+size = Vector2(10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32s6g"]
+resource_local_to_scene = true
+size = Vector2(12, 14)
+
+[node name="EnemyWaterballBounce2" instance=ExtResource("1_63c0e")]
+z_index = 2
+collision_mask = 12
+script = ExtResource("2_pfgqn")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_1pc3o")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_32s6g")
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="." index="3"]
+volume_db = -5.0
+pitch_scale = 2.0
+
+[node name="WaterTimer" type="Timer" parent="." index="4"]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

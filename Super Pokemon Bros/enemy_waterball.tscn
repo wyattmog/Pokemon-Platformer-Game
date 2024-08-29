@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7wr26d4jt8n0"]
+
+[ext_resource type="PackedScene" uid="uid://ja2nmsip0fyc" path="res://entity.tscn" id="1_uoid3"]
+[ext_resource type="Script" path="res://enemy_waterball.gd" id="2_oimuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pc3o"]
+resource_local_to_scene = true
+size = Vector2(10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32s6g"]
+resource_local_to_scene = true
+size = Vector2(12, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3dsm"]
+resource_local_to_scene = true
+size = Vector2(40, 19.875)
+
+[node name="EnemyWaterball" instance=ExtResource("1_uoid3")]
+z_index = 2
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("2_oimuh")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_1pc3o")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0.5, 0)
+animation = &"waterball_bounce1"
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_32s6g")
+
+[node name="LeafDetection" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafDetection" index="0"]
+shape = SubResource("RectangleShape2D_l3dsm")
+
+[node name="WaterTimer" type="Timer" parent="." index="4"]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

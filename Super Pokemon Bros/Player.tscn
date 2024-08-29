@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bjjboaesl5km0" path="res://sprites/player/Default Player/imageedit_22_7633397634 copy 9.png" id="10_3ewxy"]
 [ext_resource type="Texture2D" uid="uid://c67cjdeypc6lg" path="res://sprites/player/Grass Player/idle grass 1.png" id="10_aaqas"]
 [ext_resource type="Texture2D" uid="uid://bgoafs552lvv1" path="res://sprites/player/Grass Player/imageedit_22_7633397634 (4).png" id="11_j12aw"]
-[ext_resource type="PackedScene" uid="uid://cov2bjhn2ny28" path="res://dust.tscn" id="11_novsb"]
 [ext_resource type="Texture2D" uid="uid://daxriukavopfh" path="res://sprites/player/all anims/fireattack/imageedit_22_7633397634 (3) (1).png" id="11_s1kyl"]
 [ext_resource type="Texture2D" uid="uid://bxlioahnehafu" path="res://sprites/player/Grass Player/imageedit_22_7633397634 copy 3 (2).png" id="12_ha2nh"]
 [ext_resource type="Texture2D" uid="uid://bmdg1iel28ci5" path="res://sprites/player/all anims/idle/idle fire 2.png" id="12_o6ven"]
@@ -41,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://c76xft5vpcmhk" path="res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (4).png" id="28_wdd7l"]
 [ext_resource type="Texture2D" uid="uid://d32oo58slrha7" path="res://sprites/player/all anims/walk/output-onlinepngtools (1) (1).png" id="29_57hog"]
 [ext_resource type="Texture2D" uid="uid://eaiqg538fbvl" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin copy.png" id="29_b4ttk"]
-[ext_resource type="AudioStream" uid="uid://bsvqnwa4qvjk6" path="res://sounds/Super Mario Bros 1 and 2(JP)/Beep.wav" id="31_ddj5r"]
 [ext_resource type="Texture2D" uid="uid://c6g23ja0hdtic" path="res://sprites/player/all anims/idle/water idle 2.png" id="41_cv5h7"]
 [ext_resource type="Texture2D" uid="uid://dfbfa3ghjnuun" path="res://sprites/player/all anims/waterattack/imageedit_22_7633397634 (3) (1) 2.png" id="41_j5gvu"]
 [ext_resource type="Texture2D" uid="uid://b8gxmoytvl1eh" path="res://sprites/player/all anims/idle/water idle 1.png" id="42_cbx7n"]
@@ -183,6 +181,10 @@ region = Rect2(0, 0, 31, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vhh1"]
 atlas = ExtResource("2_lsvfv")
 region = Rect2(31, 0, 31, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8lst"]
+atlas = ExtResource("2_lsvfv")
+region = Rect2(3, 4, 22, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yla38"]
 atlas = ExtResource("11_s1kyl")
@@ -659,6 +661,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Celebration",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8lst")
+}],
+"loop": true,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1351,6 +1361,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_u8oi0"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_j2si6"]
@@ -2396,6 +2434,7 @@ _data = {
 "BigSpin": SubResource("Animation_dmwab"),
 "BigWalk": SubResource("Animation_wotoa"),
 "Celebration": SubResource("Animation_lbfv2"),
+"Death": SubResource("Animation_u8oi0"),
 "FireFall": SubResource("Animation_j2si6"),
 "FireIdle": SubResource("Animation_dv7w6"),
 "FireIdleAttack": SubResource("Animation_og56w"),
@@ -2452,7 +2491,7 @@ size = Vector2(0, 0)
 size = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wc4s"]
-size = Vector2(9, 9)
+size = Vector2(13, 9)
 
 [node name="Player" type="CharacterBody2D"]
 floor_max_angle = 1.17461
@@ -2473,7 +2512,7 @@ position = Vector2(2, 2)
 zoom = Vector2(3.5, 3.5)
 limit_left = 0
 limit_top = 150
-limit_bottom = 600
+limit_bottom = 570
 position_smoothing_speed = 120.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -2529,32 +2568,32 @@ shape = SubResource("RectangleShape2D_r3ppf")
 wait_time = 0.025
 one_shot = true
 
-[node name="Dust" parent="." instance=ExtResource("11_novsb")]
-z_as_relative = false
-position = Vector2(-5, -6)
-scale = Vector2(0.505066, 0.505066)
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 disabled = true
 
 [node name="GrassAttack" type="Area2D" parent="."]
 
 [node name="CollisionShapeRight" type="CollisionShape2D" parent="GrassAttack"]
-position = Vector2(10.5, 2.5)
+position = Vector2(13, 2)
 shape = SubResource("RectangleShape2D_5wc4s")
 
 [node name="CollisionShapeLeft" type="CollisionShape2D" parent="GrassAttack"]
-position = Vector2(-11.5, 2.5)
+position = Vector2(-13, 2)
 shape = SubResource("RectangleShape2D_5wc4s")
 
-[node name="BackroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("31_ddj5r")
-
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("31_ddj5r")
+
+[node name="Powerup" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Invincibility" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[node name="KickTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="AirResistanceTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]

@@ -71,3 +71,5 @@ modulate = Color(0.811765, 0.898039, 0.270588, 1)
 position = Vector2(1092.56, 488.329)
 scale = Vector2(9.32095, 9.32094)
 texture = ExtResource("6_hbhog")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -101,3 +101,5 @@ script = ExtResource("1_5mgey")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_51w8l")
 animation = &"spinning"
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]

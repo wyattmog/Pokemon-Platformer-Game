@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://clm0kb5vtfnk3"]
+
+[ext_resource type="Texture2D" uid="uid://bc5b13shcaosf" path="res://sprites/effects/Smoke & Fire_0 (1).png" id="1_r8rnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tj4l"]
+atlas = ExtResource("1_r8rnp")
+region = Rect2(0, 0, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0ff6"]
+atlas = ExtResource("1_r8rnp")
+region = Rect2(9, 0, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0hr4"]
+atlas = ExtResource("1_r8rnp")
+region = Rect2(0, 10, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1njvy"]
+atlas = ExtResource("1_r8rnp")
+region = Rect2(9, 10, 9, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqxsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tj4l")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_j0ff6")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_j0hr4")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_1njvy")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"particle",
+"speed": 15.0
+}]
+
+[node name="FireParticles" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uqxsp")
+animation = &"particle"
+autoplay = "particle"

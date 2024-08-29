@@ -12,7 +12,8 @@ resource_local_to_scene = true
 size = Vector2(12, 11)
 
 [node name="Fireball" instance=ExtResource("1_j6cfc")]
-collision_mask = 14
+z_index = 2
+collision_mask = 12
 script = ExtResource("2_6uut4")
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -25,5 +26,13 @@ animation = &"fireball"
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_i1815")
+
+[node name="FireTimer" type="Timer" parent="." index="3"]
+wait_time = 0.05
+one_shot = true
+
+[node name="LifeTimer" type="Timer" parent="." index="4"]
+wait_time = 10.0
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

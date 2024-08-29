@@ -2,6 +2,9 @@ extends StaticBody2D
 @export var spawned_scene: PackedScene
 signal mushroom_physics
 var coin_scene = preload("res://spinning_coin.tscn")
+@onready var audio_player = get_node("SoundEffects")
+var powerup_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/sprout-item.wav")
+var hit_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/slam.wav")
 var spawn = ""
 var gravity: float = 2925
 var initial_bounce_speed: float = -240
@@ -30,7 +33,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameState.game_ended:
-		if spawnable:
+		if spawnable and is_instance_valid(spawnable):
 			spawnable.queue_free()
 	if get_node("AnimatedSprite2D").position.y == orig_y_position and played == true:
 		get_node("AnimatedSprite2D").play("used")
@@ -54,10 +57,10 @@ func _process(delta):
 			if is_instance_valid(spawnable):
 				coin_speed = 0
 				await spawnable.get_node("AnimatedSprite2D").animation_finished
-				spawnable.queue_free()
 				hit=false
+				spawnable.queue_free()
 	elif hit and spawn == "powerup" and get_node("BounceTimer").is_stopped():
-		if not get_node("PowerupTimer").is_stopped():
+		if not get_node("PowerupTimer").is_stopped() and is_instance_valid(spawnable):
 			spawnable.position.y += -.275
 			#coin_speed += gravity * delta
 		elif get_node("PowerupTimer").is_stopped():
@@ -76,7 +79,9 @@ func _bounce():
 		spawnable.position = position + Vector2(0, -16)
 		get_tree().root.add_child(spawnable)
 	elif spawned_scene.can_instantiate() and !played and (spawned_scene.resource_path == "res://mushroom_power.tscn" or spawned_scene.resource_path == "res://grass_power.tscn" or spawned_scene.resource_path == "res://fire_power.tscn" or spawned_scene.resource_path == "res://water_power.tscn"):
-		#print("wow")
+		audio_player.set_stream(powerup_sound)
+		audio_player.set_volume_db(0)
+		audio_player.play()
 		spawn = "powerup"
 		get_node("PowerupTimer").start()
 		spawnable = spawned_scene.instantiate()
@@ -113,6 +118,10 @@ func _grass_attack():
 func _on_area_2d_area_entered(body):
 	if body.name == "PlayerArea":
 		#print(body)
+		audio_player.set_stream(hit_sound)
+		audio_player.set_volume_db(-10)
+
+		audio_player.play()
 		hit = true
 		_bounce()
 

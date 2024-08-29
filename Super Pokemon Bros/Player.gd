@@ -1,5 +1,13 @@
 class_name Player
 extends CharacterBody2D
+@onready var audio_player = get_node("SoundEffects")
+@onready var powerup_player = get_node("Powerup")
+var jump_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/jump.wav")
+var spin_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/spin.wav")
+var powerup_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/powerup.wav")
+var powerdown_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/pipe.wav")
+var projectile = preload("res://sounds/SNES - Super Mario World - Sound Effects/fireball.wav")
+var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_lost_a_life.wav")
 var fireball = preload("res://fireball.tscn")
 var waterball = preload("res://waterball.tscn")
 const SPEED = 250.0
@@ -7,16 +15,20 @@ const JUMP_VELOCITY = -300.0
 const FRICTION = 35
 const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
+var platVel = Vector2(0,0)
+var disable_input = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 var DustScene = preload("res://dust.tscn")
+var KickScene = preload("res://kick.tscn")
 var animplaying = false
 var jumptype = ""
 var last_pressed = 0
 var changeddirection = false
 var skid = false
 var curr_pos = 0
+var bounce = false
 #var attack = ""
 var scaleup = false
 var scaledown = false
@@ -35,6 +47,7 @@ var direction
 var played = false 
 var collected = "small"
 func _ready():
+	add_to_group("player")
 	GameState.player = self
 	get_node("GrassAttack/CollisionShapeRight").disabled = true
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
@@ -44,6 +57,7 @@ func emit_signal_while_playing(direction):
 	while anim.is_playing():
 		anim.set_speed_scale(1)
 		get_tree().call_group("enemies", "_on_player_grass_attack")
+		get_tree().call_group("enemy_projectiles", "_on_player_grass_attack")
 		get_tree().call_group("question_block", "_grass_attack")
 		#emit_signal("grass_attack")
 		if velocity.x - 50 == min and animplaying and GameState.power == "grass" and abs(velocity.x) > 50:
@@ -58,386 +72,448 @@ func emit_signal_while_playing(direction):
 				get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	elif last_pressed == 1:
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
-	get_tree().call_group("enemies", "_on_player_grass_attack_ended")
+	#get_tree().call_group("enemies", "_on_player_grass_attack_ended")
 	#get_tree().call_group("question_block", "_grass_attack")
 	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
-	#print("PlayerPos: ", position.y)
-	#print(GameState.game_ended)
-	#print(collected, GameState.big, scaled)
+	#if Input.is_action_just_pressed("GodMode"):
+		#get_tree().call_group("enemies", "invincible_start")
+		#get_tree().call_group("enemy_projectiles", "invincible_start")
+	#print(disable_input)
+	#print(velocity.y)
+	#print("player: ", position)
+	#print(GameState.projectile_adjustment)
 	#print(anim.get_speed_scale())
-	if not get_node("Invincibility").is_stopped() and played:
-		#emit_signal("invincibility")
-		#add_to_group("invincibility")
-		get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, randi_range(.95,1)))
-	else:
-		get_tree().call_group("enemies", "invincible_end")
-		get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-	#if GameState.big:
-		#scale = Vector2(1.1,1.1)
-	#else:
-		#scale = Vector2(.9,.9)
-	#print("power:",GameState.power,"collect:" ,collected, "big:", GameState.big)
-	if scaling:
-		get_tree().call_group("enemies", "invincible_start")
-		scaling = false
-		anim.stop(false)
-		#move = false
-		#var curr_vel = velocity
-		#print(curr_vel)
-		#velocity = Vector2(0,0)
-		#scaler()
-		set_physics_process(false)
-
-		#get_node
-		if not scaled:
-			#anim.play("Celebration")
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.2))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.2))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.2))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.10,1.10)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.2))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.10,1.10)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.2))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			#get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.1,1.1)
-		elif scaled and (collected == "grass" or collected == "fire" or collected == "water"):
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			#set_self_modulate(Color(1, 1, 1, .5))
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.1,1.1)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.1,1.1)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			played = true
-		elif scaled and (collected != "grass" or collected != "fire" or collected != "water"):
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			#set_self_modulate(Color(1, 1, 1, .5))
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.1,1.1)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.0,1.0)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(1.1,1.1)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = true
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
-			scale = Vector2(1.00,1.00)
-			await get_tree().create_timer(.05).timeout
-			GameState.big = false
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
-			scale = Vector2(.90,.90)
-			played = true
-		anim.play()
-		set_physics_process(true)
-		if scaled:
-			position.y -= 2
-
-		#move = true
-		#scaling = false
-	else:
-		get_node("AnimatedSprite2D").set_visible(1)
-	#if GameState.power = ""
-	if GameState.power == "grass" and collected != "grass":
-		scaled = false
-		#print("grass")
-		scale = Vector2(1.1,1.1)
-		collected = "grass"
-		scaling = true
-		#collected = true
-		await get_tree().create_timer(.40).timeout
-		#collected = "grass"
-		scaled = true
-	elif GameState.power == "water" and collected != "water":
-		scaled = false
-		#print("grass")
-		scale = Vector2(1.1,1.1)
-		collected = "water"
-		scaling = true
-		#collected = true
-		await get_tree().create_timer(.40).timeout
-		#collected = "grass"
-		scaled = true
-	elif GameState.power == "fire" and collected != "fire":
-		scaled = false
-		#print("grass")
-		scale = Vector2(1.1,1.1)
-		collected = "fire"
-		scaling = true
-		#collected = true
-		await get_tree().create_timer(.40).timeout
-		#collected = "grass"
-		scaled = true
-	elif GameState.power == "" and GameState.big and (collected == "fire" or collected == "water" or collected == "grass"):
-		scaled = false
-		print("wow")
-		#GameState.power == "big
-		collected = "big"
-		scaling = true
-		await get_tree().create_timer(.40).timeout
-		scaled = true
-	elif GameState.big and not scaled:
-		scale = Vector2(1.1,1.1)
-		collected = "big"
-		scaling = true
-		
-		await get_tree().create_timer(.40).timeout
-		scaled = true
-	#elif GameState.big and GameState.power != "":
-	elif !GameState.big and scaled:
-		scale = Vector2(.90,.90)
-		collected = "small"
-		#GameState.power == "small"
-		scaling = true
-		get_node("Invincibility").start()
-		await get_tree().create_timer(.40).timeout
-		scaled = false
-	#elif:
-		#GameState.big = false
-		#scale = Vector2(.95,.95)
-
-	direction = Input.get_axis("ui_left", "ui_right")
-	if Input.is_action_just_pressed("attack") and !animplaying and GameState.power != "":	
-			#print("wow")
-			if GameState.power == "grass":
-				if last_pressed == -1:
-					get_node("GrassAttack/CollisionShapeLeft").disabled = false
-				elif last_pressed == 1:
-					get_node("GrassAttack/CollisionShapeRight").disabled = false
-				#attack = "grass"
-				animplaying = true
-				anim.play("GrassAttack")
-				if velocity.x > 0:
-					min = velocity.x-50
-				else:
-					min = velocity.x+50
-				emit_signal_while_playing(direction)
-			elif GameState.power == "fire":
-				animplaying = true
-				if velocity.x == 0:
-					anim.play("FireIdleAttack")
-				elif abs(velocity.x) > 225:
-					anim.play("FireRunAttack")
-				elif abs(velocity.x) <= 225:
-					anim.play("FireWalkAttack")
-				var fireball1 = fireball.instantiate()
-				fireball1.position.x = position.x
-				fireball1.position.y = position.y
-				add_sibling(fireball1)
-				await anim.animation_finished
-				animplaying = false
-			elif GameState.power == "water":
-				animplaying = true
-				if velocity.x == 0:
-					anim.play("WaterIdleAttack")
-				elif abs(velocity.x) > 225:
-					anim.play("WaterRunAttack")
-				elif abs(velocity.x) <= 225:
-					anim.play("WaterWalkAttack")
-				var waterball = waterball.instantiate()
-				waterball.position.x = position.x
-				waterball.position.y = position.y
-				add_sibling(waterball)
-				await anim.animation_finished
-				animplaying = false
-	get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
-	get_node("Camera2D").position.y = 0
-	# Add the gravity.
 	if not scaling:
 		_gravity(delta)
-	#print(GameState.split)
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		_jumped()
-		#if velocity.x >= 250 or velocity.x <= -250:
-			#velocity.y = JUMP_VELOCITY - 50
+	if !disable_input:
+		if not get_node("Invincibility").is_stopped() and played:
+			#emit_signal("invincibility")
+			#add_to_group("invincibility")
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, randi_range(.99,1)))
+		elif get_node("Invincibility").is_stopped() and played:
+			get_tree().call_group("enemies", "invincible_end")
+			get_tree().call_group("enemy_projectiles", "invincible_end")
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+		#if GameState.big:
+			#scale = Vector2(1.1,1.1)
 		#else:
-			#velocity.y = JUMP_VELOCITY
-		#if !animplaying:
-			#animplaying = true
-			#if GameState.big:
-				#anim.play("BigJump")
+			#scale = Vector2(.9,.9)
+		#print("power:",GameState.power,"collect:" ,collected, "big:", GameState.big)
+		if scaling:
+			get_tree().call_group("enemies", "invincible_start")
+			get_tree().call_group("enemy_projectiles", "invincible_start")
+			scaling = false
+			anim.stop(false)
+			#move = false
+			#var curr_vel = velocity
+			#print(curr_vel)
+			#velocity = Vector2(0,0)
+			#scaler()
+			set_physics_process(false)
+
+			#get_node
+			if not scaled:
+				#print('wpwpwwww')
+				#anim.play("Celebration")
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.10,1.10)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.10,1.10)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 0.8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.1,1.1)
+				played = true
+			elif scaled and (collected == "grass" or collected == "fire" or collected == "water"):
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				#set_self_modulate(Color(1, 1, 1, .5))
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.1,1.1)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.1,1.1)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				played = true
+			elif scaled and (collected != "grass" or collected != "fire" or collected != "water"):
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				#set_self_modulate(Color(1, 1, 1, .5))
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.1,1.1)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.0,1.0)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(1.1,1.1)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = true
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, .8))
+				scale = Vector2(1.00,1.00)
+				await get_tree().create_timer(.05).timeout
+				GameState.big = false
+				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+				scale = Vector2(.90,.90)
+				played = true
+			anim.play()
+			set_physics_process(true)
+			if scaled:
+				position.y -= 2
+
+			#move = true
+			#scaling = false
+		else:
+			get_node("AnimatedSprite2D").set_visible(1)
+		#if GameState.power = ""
+		if GameState.power == "grass" and collected != "grass":
+			audio_player.set_stream(powerup_sound)
+			audio_player.play()
+			scaled = false
+			#print("grass")
+			scale = Vector2(1.1,1.1)
+			collected = "grass"
+			scaling = true
+			#collected = true
+			await get_tree().create_timer(.40).timeout
+			#collected = "grass"
+			scaled = true
+		elif GameState.power == "water" and collected != "water":
+			audio_player.set_stream(powerup_sound)
+			audio_player.play()
+			scaled = false
+			#print("grass")
+			scale = Vector2(1.1,1.1)
+			collected = "water"
+			scaling = true
+			#collected = true
+			await get_tree().create_timer(.40).timeout
+			#collected = "grass"
+			scaled = true
+		elif GameState.power == "fire" and collected != "fire":
+			audio_player.set_stream(powerup_sound)
+			audio_player.play()
+			scaled = false
+			#print("grass")
+			scale = Vector2(1.1,1.1)
+			collected = "fire"
+			scaling = true
+			#collected = true
+			await get_tree().create_timer(.40).timeout
+			#collected = "grass"
+			scaled = true
+		elif GameState.power == "" and GameState.big and (collected == "fire" or collected == "water" or collected == "grass"):
+			audio_player.set_stream(powerdown_sound)
+			audio_player.play()
+			scaled = false
+			#print("wow")
+			#GameState.power == "big
+			collected = "big"
+			scaling = true
+			get_node("Invincibility").start()
+			await get_tree().create_timer(.40).timeout
+			scaled = true
+		elif GameState.big and not scaled:
+			audio_player.set_stream(powerup_sound)
+			audio_player.play()
+			scale = Vector2(1.1,1.1)
+			collected = "big"
+			scaling = true
+			
+			await get_tree().create_timer(.40).timeout
+			scaled = true
+		#elif GameState.big and GameState.power != "":
+		elif !GameState.big and scaled:
+			audio_player.set_stream(powerdown_sound)
+			audio_player.play()
+			scale = Vector2(.90,.90)
+			collected = "small"
+			#GameState.power == "small"
+			scaling = true
+			get_node("Invincibility").start()
+			await get_tree().create_timer(.40).timeout
+			scaled = false
+		#elif:
+			#GameState.big = false
+			#scale = Vector2(.95,.95)
+
+		direction = Input.get_axis("ui_left", "ui_right")
+		if Input.is_action_just_pressed("attack") and !animplaying and GameState.power != "":	
+				#print("wow")
+				if GameState.power == "grass":
+					if last_pressed == -1:
+						get_node("GrassAttack/CollisionShapeLeft").disabled = false
+					elif last_pressed == 1:
+						get_node("GrassAttack/CollisionShapeRight").disabled = false
+					#attack = "grass"
+					animplaying = true
+					powerup_player.set_stream(spin_sound)
+					powerup_player.play()
+					anim.play("GrassAttack")
+					if velocity.x > 0:
+						min = velocity.x-50
+					else:
+						min = velocity.x+50
+					emit_signal_while_playing(direction)
+				elif GameState.power == "fire":
+					animplaying = true
+					powerup_player.set_stream(projectile)
+					powerup_player.play()
+					if velocity.x == 0:
+						anim.play("FireIdleAttack")
+					elif abs(velocity.x) > 225:
+						anim.play("FireRunAttack")
+					elif abs(velocity.x) <= 225:
+						anim.play("FireWalkAttack")
+					var fireball1 = fireball.instantiate()
+					fireball1.position.x = position.x
+					fireball1.position.y = position.y
+					add_sibling(fireball1)
+					await anim.animation_finished
+					animplaying = false
+				elif GameState.power == "water":
+					animplaying = true
+					powerup_player.set_stream(projectile)
+					powerup_player.play()
+					if velocity.x == 0:
+						anim.play("WaterIdleAttack")
+					elif abs(velocity.x) > 225:
+						anim.play("WaterRunAttack")
+					elif abs(velocity.x) <= 225:
+						anim.play("WaterWalkAttack")
+					var waterball = waterball.instantiate()
+					waterball.position.x = position.x
+					waterball.position.y = position.y
+					add_sibling(waterball)
+					await anim.animation_finished
+					animplaying = false
+		get_node("Camera2D").position.x = get_node("AnimatedSprite2D").position.x
+		get_node("Camera2D").position.y = 0
+		# Add the gravity.
+		#print(GameState.split)
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			audio_player.set_stream(jump_sound)
+			audio_player.play()
+			_jumped()
+			if !velocity.x:
+				velocity.x = platVel.x * .2
+				get_node("AirResistanceTimer").start()
+			#if velocity.x >= 250 or velocity.x <= -250:
+				#velocity.y = JUMP_VELOCITY - 50
 			#else:
-				#anim.play("SmallJump")
-			#animplaying = false
-			#jumptype = "jump"
-		#if direction == -1:
-			#last_pressed = -1
-		#elif direction == 1: 
-			#last_pressed = 1
-			
-	if Input.is_action_just_pressed("spinjump") and is_on_floor():
-		_spinned()
-		#if velocity.x >= 250 or velocity.x <= -250:
-			#velocity.y = JUMP_VELOCITY -25
-		#else:
-			#velocity.y = JUMP_VELOCITY + 25
-		#if !animplaying:
-			#animplaying = true
-			#if GameState.big:
-				#anim.play("BigSpin")
-			#else: 
-				#anim.play("SmallSpin")
-			#jumptype = "spin"
-			#await not is_on_floor()
-			#animplaying = false
-		#if direction == -1:
-			#last_pressed = -1
-		#elif direction == 1: 
-			#last_pressed = 1
-			
-	if (!Input.is_action_pressed("spinjump") and !Input.is_action_pressed("ui_accept")) and velocity.y < 0:
-		velocity.y += gravity*delta
-	if !Input.is_action_pressed("down") and is_on_floor() and !GameState.big:
-			get_node("AnimatedSprite2D").offset.y = 0
-	if Input.is_action_just_pressed("down") and velocity.x:
-			get_node("AnimatedSprite2D").offset.y = 3
-	if last_pressed == -1:
-		GameState.direct = -1
-		get_node("AnimatedSprite2D").flip_h = true
-	elif last_pressed == 1:
-		GameState.direct = 1
-		get_node("AnimatedSprite2D").flip_h = false
-	#print(animplaying)
-	#print(anim.get_speed_scale())
-	if abs(velocity.x) >= 30 and velocity.x:
-		if is_on_floor():
-			anim.set_speed_scale(abs(velocity.x)/100)
+				#velocity.y = JUMP_VELOCITY
+			#if !animplaying:
+				#animplaying = true
+				#if GameState.big:
+					#anim.play("BigJump")
+				#else:
+					#anim.play("SmallJump")
+				#animplaying = false
+				#jumptype = "jump"
+			#if direction == -1:
+				#last_pressed = -1
+			#elif direction == 1: 
+				#last_pressed = 1
+				
+		if Input.is_action_just_pressed("spinjump") and is_on_floor():
+			audio_player.set_stream(spin_sound)
+			audio_player.play()
+			_spinned()
+			if !velocity.x:
+				velocity.x = platVel.x * .2
+				get_node("AirResistanceTimer").start()
+			#if velocity.x >= 250 or velocity.x <= -250:
+				#velocity.y = JUMP_VELOCITY -25
+			#else:
+				#velocity.y = JUMP_VELOCITY + 25
+			#if !animplaying:
+				#animplaying = true
+				#if GameState.big:
+					#anim.play("BigSpin")
+				#else: 
+					#anim.play("SmallSpin")
+				#jumptype = "spin"
+				#await not is_on_floor()
+				#animplaying = false
+			#if direction == -1:
+				#last_pressed = -1
+			#elif direction == 1: 
+				#last_pressed = 1
+				
+		if (!Input.is_action_pressed("spinjump") and !Input.is_action_pressed("ui_accept")) and velocity.y < 0:
+			velocity.y += gravity*delta
+		if !Input.is_action_pressed("down") and is_on_floor() and !GameState.big:
+				get_node("AnimatedSprite2D").offset.y = 0
+		if Input.is_action_just_pressed("down") and velocity.x:
+				get_node("AnimatedSprite2D").offset.y = 3
+		if last_pressed == -1:
+			GameState.direct = -1
+			get_node("AnimatedSprite2D").flip_h = true
+		elif last_pressed == 1:
+			GameState.direct = 1
+			get_node("AnimatedSprite2D").flip_h = false
+		#print(animplaying)
+		#print(anim.get_speed_scale())
+		if abs(velocity.x) >= 30 and velocity.x:
+			if is_on_floor():
+				anim.set_speed_scale(abs(velocity.x)/100)
+			else:
+				anim.set_speed_scale(1)
 		else:
 			anim.set_speed_scale(1)
-	else:
-		anim.set_speed_scale(1)
-	if direction:
-		if get_node("AnimatedSprite2D").global_position[0] > 35 + get_node("Camera2D").get_screen_center_position()[0]:
-			target_right_margin = 0.0
-		elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 35:
-			target_left_margin = 0.0
-		_directionalMovement(direction)
-		if direction < 0:
-			last_pressed = -1
-		else: 
-			last_pressed = 1
-	else:
-		_directionalMovement(direction)
-		if last_pressed == 1:
-			target_left_margin = 0.2
-		elif last_pressed == -1:
-			target_right_margin = 0.2
-	if velocity.y > 0 and !animplaying and jumptype=="jump":
-		if GameState.power == "grass":
-			anim.play("GrassFall")
-		elif GameState.power == "fire":
-			anim.play("FireFall")
-		elif GameState.power == "water":
-			anim.play("WaterFall")
-		elif GameState.big:
-			anim.play("BigFall")
+		if direction:
+			if get_node("AnimatedSprite2D").global_position[0] > 35 + get_node("Camera2D").get_screen_center_position()[0]:
+				target_right_margin = 0.0
+			elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 35:
+				target_left_margin = 0.0
+			_directionalMovement(direction)
+			if direction < 0:
+				last_pressed = -1
+			else: 
+				last_pressed = 1
 		else:
-			anim.play("SmallFall")
-	get_node("Camera2D").drag_left_margin = lerp(get_node("Camera2D").drag_left_margin, target_left_margin, MARGIN_CHANGE_SPEED * delta)
-	get_node("Camera2D").drag_right_margin = lerp(get_node("Camera2D").drag_right_margin, target_right_margin, MARGIN_CHANGE_SPEED * delta)
-	if move:
-		move_and_slide()
-	
+			_directionalMovement(direction)
+			if last_pressed == 1:
+				target_left_margin = 0.2
+			elif last_pressed == -1:
+				target_right_margin = 0.2
+		if velocity.y > 0 and !animplaying and jumptype=="jump":
+			if GameState.power == "grass":
+				anim.play("GrassFall")
+			elif GameState.power == "fire":
+				anim.play("FireFall")
+			elif GameState.power == "water":
+				anim.play("WaterFall")
+			elif GameState.big:
+				anim.play("BigFall")
+			else:
+				anim.play("SmallFall")
+		get_node("Camera2D").drag_left_margin = lerp(get_node("Camera2D").drag_left_margin, target_left_margin, MARGIN_CHANGE_SPEED * delta)
+		get_node("Camera2D").drag_right_margin = lerp(get_node("Camera2D").drag_right_margin, target_right_margin, MARGIN_CHANGE_SPEED * delta)
+	move_and_slide()
+	platVel = get_platform_velocity()
+func _spawn_kick():
+	var new_dust = KickScene.instantiate()
+	new_dust.position.x = position.x
+	new_dust.position.y = position.y + 14
+	add_sibling(new_dust)
 func _spawn_dust():
 	if not get_node("DustTimer").is_stopped():
 		return
 	var new_dust = DustScene.instantiate()
 	new_dust.position.x = position.x
-	new_dust.position.y = position.y + 14
+	new_dust.position.y = position.y + 12
 	add_sibling(new_dust)
 	get_node("DustTimer").start()
+func _death():
+	set_physics_process(false)
+	anim.play("Death")
+	get_tree().call_group("worlds", "_on_player_death")
+	disable_input = true
+	audio_player.set_stream(death_sound)
+	audio_player.play()
+	velocity.y = 0
+	velocity.x = 0
+	await get_tree().create_timer(.5).timeout
+	set_physics_process(true)
+	velocity.y -= 300
+	velocity.x = 0
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	await get_tree().create_timer(2.5).timeout
+	get_tree().call_group("worlds", "_on_player_dead")
+	get_tree().change_scene_to_file("res://main.tscn")
 	
-func _on_charmander_bounce_signal():
+	
+func _on_bounce_signal():
+	bounce = true
+	print("jump: ",jumptype,"bounce: ", bounce)
 	if jumptype == "spin" and !animplaying:
 		#if GameState.big:
 		
@@ -453,6 +529,8 @@ func _on_charmander_bounce_signal():
 		#print("wow")
 		_jumped()
 	#velocity.y = JUMP_VELOCITY/2
+	elif !animplaying:
+		_jumped()
 	
 func _jumped():
 	emit_signal("jumped")
@@ -484,10 +562,20 @@ func _jumped():
 	
 func _spinned():
 	emit_signal("jumped")
-	if velocity.x >= 250 or velocity.x <= -250:
+	if (velocity.x >= 250 or velocity.x <= -250) and GameState.big:
 		velocity.y = JUMP_VELOCITY -25
-	else:
+	elif (velocity.x < 250 or velocity.x < -250) and GameState.big:
 		velocity.y = JUMP_VELOCITY + 25
+	elif (velocity.x >= 250 or velocity.x <= -250) and !GameState.big:
+		if bounce:
+			velocity.y = JUMP_VELOCITY/2
+		else: 
+			velocity.y = JUMP_VELOCITY + 25
+	elif (velocity.x < 250 or velocity.x < -250) and !GameState.big:
+		if bounce:
+			velocity.y = JUMP_VELOCITY/2
+		else:
+			velocity.y = JUMP_VELOCITY + 25
 	#if !animplaying:
 	animplaying = true
 	if GameState.power == "grass":
@@ -500,8 +588,20 @@ func _spinned():
 		anim.play("BigSpin")
 	else: 
 		anim.play("SmallSpin")
-	jumptype = "spin"
+	if GameState.power == "fire":
+		jumptype = "spin"
+		GameState.direct = 1
+		var fireball1 = fireball.instantiate()
+		fireball1.position.x = position.x
+		fireball1.position.y = position.y
+		add_sibling(fireball1)
+		GameState.direct = -1
+		var fireball2 = fireball.instantiate()
+		fireball2.position.x = position.x
+		fireball2.position.y = position.y
+		add_sibling(fireball2)
 	await is_on_floor()
+	jumptype = "spin"
 	animplaying = false
 	if direction == -1:
 		last_pressed = -1
@@ -509,15 +609,39 @@ func _spinned():
 		last_pressed = 1
 	
 func _gravity(delta):
-	if not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")):
-		velocity.y += gravity * delta
-	elif not is_on_floor():
-
+	#print(bounce)
+	if not is_on_floor() and (jumptype == "spin") and bounce:
 		velocity.y += gravity * delta * 2
+	elif not is_on_floor() and (jumptype == "jump") and bounce and velocity.y <= 0:
+		velocity.y += gravity * delta 
+	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and !bounce:
+		velocity.y += gravity * delta 
+	elif not is_on_floor() and !disable_input:
+		velocity.y += gravity * delta * 2
+	elif disable_input:
+		#print("wow")
+		velocity.y += gravity * delta * 1.2
 	else:
 		emit_signal("landed")
+		bounce = false
 		jumptype = ""
 		
+	
+func _spawn_waterballs(waterballs1, velocityx, ballposition):
+	#print("ball2:   ",ballposition)
+	var waterball1 = waterballs1.instantiate()
+	var waterball2 = waterballs1.instantiate()
+	waterball1.position = ballposition
+	waterball2.position = ballposition
+	waterball1.velocity.x = velocityx
+	waterball2.velocity.x = velocityx
+	waterball1.velocity.y = -200
+	waterball2.velocity.y = -200
+	waterball1.position.x += randi_range(1,20)
+	waterball2.position.x += randi_range(-1,-20)
+	add_child(waterball1)
+	add_child(waterball2)
+	
 func _directionalMovement(direction):
 	if direction:
 		if GameState.big:
@@ -596,6 +720,8 @@ func _directionalMovement(direction):
 				anim.play("BigIdle")
 			else:
 				anim.play("SmallIdle")
-		velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
+		if platVel.x != 0:
+			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*20)
+		elif (get_node("AirResistanceTimer").is_stopped() or is_on_floor()):
+			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
 		
-	

@@ -1,78 +1,181 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1723932157
+::res://::1724891466
 berry.gd::GDScript::-1::1720304570::0::1::::<>Node2D<>::
 berry.tscn::PackedScene::8021534745655657485::1720649955::0::1::::<><>::res://berry.gd<>uid://cpfi5a4t6blei::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy 2.png
-BG.gd::GDScript::-1::1719610821::0::1::::<>ParallaxBackground<>::
-bg.tscn::PackedScene::3797750501603648488::1723932128::0::1::::<><>::res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png
+BG.gd::GDScript::-1::1724186385::0::1::::<>ParallaxBackground<>::
+bg.tscn::PackedScene::3797750501603648488::1724891466::0::1::::<><>::res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png
 block.gd::GDScript::-1::1720730587::0::1::::<>StaticBody2D<>::
-block.tscn::PackedScene::4970920881762109965::1723932128::0::1::::<><>::res://block.gd<>uid://l1qenk1nmx68::::res://sprites/tiles/tilesets/output-onlinepngtools-6.png<>uid://mjuoqbnc2arf::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy.png<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png<>uid://dp5wqy73r2muv::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy 2.png
+block.tscn::PackedScene::4970920881762109965::1723938495::0::1::::<><>::res://block.gd<>uid://l1qenk1nmx68::::res://sprites/tiles/tilesets/output-onlinepngtools-6.png<>uid://mjuoqbnc2arf::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy.png<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png<>uid://dp5wqy73r2muv::::res://sprites/tiles/tilesets/output-onlinepngtools-4 copy 2.png
+blue_pole.tscn::PackedScene::1215976174064352284::1724891466::0::1::::<><>::uid://g8ilhyv8r3y8::::res://sprites/tiles/144428 (1).png
+bulbasaur.gd::GDScript::-1::1724631644::0::1::::<>CharacterBody2D<>::
+bulbasaur.tscn::PackedScene::2707741110672682934::1724891466::0::1::::<><>::res://bulbasaur.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://brj65vkc2j38a::::res://sprites/mobs/bulbasaur/35063 (1).png
 button.gd::GDScript::-1::1720019568::0::1::::<>Button<>::
 Camera2D.gd::GDScript::-1::1720313628::0::1::::<>Camera2D<>::
-Charmander.gd::GDScript::-1::1723932128::0::1::::<>CharacterBody2D<>::
-charmander.tscn::PackedScene::8308321696631004148::1723932141::0::1::::<><>::res://Charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://bmxh77vi6nur4::::res://sprites/mobs/output-onlinepngtools-2 copy 5.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://dchefvv82cxar::::res://sprites/mobs/output-onlinepngtools-2.png<>uid://cgqipx5gsfcuv::::res://sprites/mobs/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/output-onlinepngtools-2 copy 6.png
-Coin.gd::GDScript::-1::1722915158::0::1::::<>StaticBody2D<>::
-coin.tscn::PackedScene::1522254836266647651::1723932128::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://Coin.gd
+charizard.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+charizard.tscn::PackedScene::4867765264062762151::1724891466::0::1::::<><>::res://charizard.gd<>uid://b28j5q3vx5cbg::::res://sprites/mobs/charizard/35282 (2).png<>uid://csnxl01rgb06n::::res://sprites/mobs/charizard/35282 (1).png<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://c62edadwopo6c::::res://sprites/mobs/charizard/203438 (2) (2).png
+charmander.gd::GDScript::-1::1724631644::0::1::::<>CharacterBody2D<>::
+charmander.tscn::PackedScene::7883081181735076380::1724891466::0::1::::<><>::res://charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://crmhu8ehlh48i::::res://sprites/mobs/charmander/35067 (1).png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://df3kx2cw2wtwt::::res://sprites/mobs/charmander/35067 (2).png
+charmeleon.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+charmeleon.tscn::PackedScene::5194727358331903088::1724891466::0::1::::<><>::res://charmeleon.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://b77ttgi7phtq5::::res://sprites/mobs/charmeleon/spr_pt_005_1 (2) copy.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://cpq5ipvqba4b7::::res://sprites/mobs/charmeleon/36325 (2) (1).png<>uid://btyoloarl3jgm::::res://sprites/mobs/charmeleon/36325 (3) (1).png
+checkpoint_pole.gd::GDScript::-1::1724890520::0::1::::<>Node2D<>::
+checkpoint_pole.tscn::PackedScene::8905276285605242222::1724891466::0::1::::<><>::res://checkpoint_pole.gd<>uid://babr4nxket8g::::res://sprites/tiles/144428 (3).png
+Coin.gd::GDScript::-1::1724467251::0::1::::<>StaticBody2D<>::
+coin.tscn::PackedScene::1522254836266647651::1724891466::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://Coin.gd
 dust.gd::GDScript::-1::1720464404::0::1::::<>Node2D<>::
-dust.tscn::PackedScene::5800478739903573647::1720649955::0::1::::<><>::res://dust.gd<>uid://bkrh3f6niquro::::res://sprites/player/output-onlinepngtools-7.png
-enemy.tscn::PackedScene::2722446809058454758::1723235794::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn
+dust.tscn::PackedScene::5800478739903573647::1724891466::0::1::::<><>::res://dust.gd<>uid://bkrh3f6niquro::::res://sprites/player/output-onlinepngtools-7.png
+enemy.gd::GDScript::-1::1724023484::0::1::::<>CharacterBody2D<>::
+enemy.tscn::PackedScene::2722446809058454758::1724356167::0::1::::<><>::res://enemy.gd<>uid://cgqipx5gsfcuv::::res://sprites/mobs/charmander/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/charmander/output-onlinepngtools-2 copy 6.png<>uid://df3kx2cw2wtwt::::res://sprites/mobs/charmander/35067 (2).png<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png
+enemy_fireball.gd::GDScript::-1::1724874825::0::1::::<>CharacterBody2D<>::
+enemy_fireball.tscn::PackedScene::1650718806229348891::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://enemy_fireball.gd
+enemy_waterball.gd::GDScript::-1::1724877057::0::1::::<>CharacterBody2D<>::
+enemy_waterball.tscn::PackedScene::7065382713893722975::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://enemy_waterball.gd
+enemy_waterball_bounce1.gd::GDScript::-1::1724877057::0::1::::<>CharacterBody2D<>::
+enemy_waterball_bounce1.tscn::PackedScene::5068172284132625846::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://enemy_waterball_bounce1.gd
+enemy_waterball_bounce2.gd::GDScript::-1::1724877194::0::1::::<>CharacterBody2D<>::
+enemy_waterball_bounce2.tscn::PackedScene::798991558696007063::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://enemy_waterball_bounce2.gd
 entity.gd::GDScript::-1::1723165817::0::1::::<>CharacterBody2D<>::
-entity.tscn::PackedScene::633362825338948478::1723932128::0::1::::<><>::res://entity.gd<>uid://di8n3ntkl2vo5::::res://sprites/entities/powerups/powerups-custom-4.png<>uid://bst6w3q0pms5b::::res://sprites/entities/powerups/powerups-custom-3.png<>uid://chi0c0u4dh1rx::::res://sprites/player/fireplayer/fire_marigi_mini_sprite_sheet_by_storm424_dg1u5ai-414w-2x (2).png<>uid://drvqaj2v1ue8::::res://sprites/entities/powerups/powerups-custom-3 copy.png<>uid://ncl6u4c738w6::::res://sprites/entities/powerups/sprite-sheet-water-explosion-splashesanimation-260nw-1046891053.png
-fireball.gd::GDScript::-1::1723930072::0::1::::<>CharacterBody2D<>::
-fireball.tscn::PackedScene::5092254281437832309::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://fireball.gd
+entity.tscn::PackedScene::633362825338948478::1724891466::0::1::::<><>::res://entity.gd<>uid://di8n3ntkl2vo5::::res://sprites/entities/powerups/powerups-custom-4.png<>uid://bst6w3q0pms5b::::res://sprites/entities/powerups/powerups-custom-3.png<>uid://chi0c0u4dh1rx::::res://sprites/player/fireplayer/fire_marigi_mini_sprite_sheet_by_storm424_dg1u5ai-414w-2x (2).png<>uid://drvqaj2v1ue8::::res://sprites/entities/powerups/powerups-custom-3 copy.png<>uid://ncl6u4c738w6::::res://sprites/entities/powerups/sprite-sheet-water-explosion-splashesanimation-260nw-1046891053.png<>uid://c51qulxvp021g::::res://sprites/mobs/squirtle/SNES - Super Mario World - Koopas & Masked Koopas (1).png<>uid://30gfdep57rj::::res://sprites/effects/IMG_3258 (1).png
+fireball.gd::GDScript::-1::1724874825::0::1::::<>CharacterBody2D<>::
+fireball.tscn::PackedScene::5092254281437832309::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://fireball.gd
+fire_particles.tscn::PackedScene::5571227063058715036::1724891466::0::1::::<><>::uid://bc5b13shcaosf::::res://sprites/effects/Smoke & Fire_0 (1).png
 fire_power.gd::GDScript::-1::1723925876::0::1::::<>CharacterBody2D<>::
-fire_power.tscn::PackedScene::8156305873073907928::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://fire_power.gd
-game_state.gd::GDScript::-1::1723930234::0::1::::Global<>Node<>::
-grass_power.gd::GDScript::-1::1723930072::0::1::::<>CharacterBody2D<>::
-grass_power.tscn::PackedScene::2384470577129616544::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://grass_power.gd
+fire_power.tscn::PackedScene::8156305873073907928::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://fire_power.gd
+game_state.gd::GDScript::-1::1724122675::0::1::::Global<>Node<>::
+grass_moving_platform.tscn::PackedScene::2713303911972485811::1724891466::0::1::::<><>::uid://diw1pm5fvxhuc::::res://sprites/tiles/145146 (1).png
+grass_power.gd::GDScript::-1::1724107139::0::1::::<>CharacterBody2D<>::
+grass_power.tscn::PackedScene::2384470577129616544::1724188530::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://grass_power.gd
+grass_projectile.gd::GDScript::-1::1724624069::0::1::::<>CharacterBody2D<>::
+grass_projectile.tscn::PackedScene::8800325946773386298::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://grass_projectile.gd
 hittable_block.gd::GDScript::-1::1722724840::0::1::::<>StaticBody2D<>::
-hittable_block.tscn::PackedScene::6287028997280349121::1723932128::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://hittable_block.gd
-main.gd::GDScript::-1::1723698231::0::1::::<>Control<>::
-main.tscn::PackedScene::4366103909513495105::1723932128::0::1::::<><>::res://main.gd<>uid://280ppurdseor::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png<>uid://bkcqsehqbaufe::::res://sprites/main menu/Super-pokemon-bros-7-2-2024.png<>uid://c1a5dih3tsme7::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png<>uid://budwnpwtudx33::::res://bg.tscn<>uid://2gxwtf7ssmmu::::res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png<>res://button.gd<>uid://bi7xwxhg6vwfm::::res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png
-marioblocks.tres::TileSet::6574120816893181569::1723908481::0::1::::<><>::uid://dw46xal1ijqqu::::res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png<>uid://cfemxfb0ijags::::res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png<>uid://td4s873dgyj0::::res://sprites/tiles/tilesets/grass.png<>uid://dk3q4o2dm3ajn::::res://sprites/tiles/tilesets/SNES - Super Mario World - Pipes (1).png<>uid://g4x60x4lqr58::::res://sprites/tiles/tilesets/output-onlinepngtools-4.png<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://vxnkx35swspn::::res://coin.tscn<>uid://dmjxrgekwi0jx::::res://berry.tscn
+hittable_block.tscn::PackedScene::6287028997280349121::1724021651::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn<>res://hittable_block.gd
+ivysaur.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+ivysaur.tscn::PackedScene::6622290243421442359::1724891466::0::1::::<><>::res://ivysaur.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://tf0s3s6kwmct::::res://sprites/mobs/ivysaur/35064 (2).png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://coke072tj6r6c::::res://sprites/mobs/ivysaur/35064 (1).png
+kick.gd::GDScript::-1::1724446574::0::1::::<>Node2D<>::
+kick.tscn::PackedScene::5646714951822359297::1724891466::0::1::::<><>::res://kick.gd<>uid://8krxlc5xskha::::res://sprites/effects/53664 (1).png
+light_blue_pole.tscn::PackedScene::8357402362017835574::1724891466::0::1::::<><>::uid://b2lsktjinxr5b::::res://sprites/tiles/144428 (2).png
+main.gd::GDScript::-1::1724195803::0::1::::<>Control<>::
+main.tscn::PackedScene::4366103909513495105::1724891465::0::1::::<><>::res://main.gd<>uid://280ppurdseor::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png<>uid://bkcqsehqbaufe::::res://sprites/main menu/Super-pokemon-bros-7-2-2024.png<>uid://c1a5dih3tsme7::::res://sprites/main menu/DS DSi - Pokemon HeartGold SoulSilver - Photo Album copy.png<>uid://budwnpwtudx33::::res://bg.tscn<>uid://2gxwtf7ssmmu::::res://sprites/main menu/Screenshot 2024-06-24 at 7.45.07 PM.png<>res://button.gd<>uid://bi7xwxhg6vwfm::::res://sprites/main menu/Screenshot 2024-06-24 at 7.40.56 PM.png<>uid://338j785o7alq::::res://sounds/SNES - Super Mario World - Sound Effects/02. Title-[AudioTrimmer.com].wav<>uid://cfyx07ox0c3nn::::res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav
+marioblocks.tres::TileSet::6574120816893181569::1724891011::0::1::::<><>::uid://dw46xal1ijqqu::::res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png<>uid://cfemxfb0ijags::::res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png<>uid://td4s873dgyj0::::res://sprites/tiles/tilesets/grass.png<>uid://dk3q4o2dm3ajn::::res://sprites/tiles/tilesets/SNES - Super Mario World - Pipes (1).png<>uid://g4x60x4lqr58::::res://sprites/tiles/tilesets/output-onlinepngtools-4.png<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://vxnkx35swspn::::res://coin.tscn<>uid://dmjxrgekwi0jx::::res://berry.tscn
 menu.gd::GDScript::-1::1719983424::0::1::::<>Control<>::
-mushroom_power.gd::GDScript::-1::1723930072::0::1::::<>CharacterBody2D<>::
-mushroom_power.tscn::PackedScene::2897318143314504900::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://mushroom_power.gd
-Player.gd::GDScript::-1::1723932084::0::1::::Player<>CharacterBody2D<>::
-Player.tscn::PackedScene::414298450581743502::1723932128::0::1::::<><>::res://Player.gd<>uid://dtv8iamfbk4dh::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png<>uid://ce21ymjcm7e7h::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 5.png<>uid://c8fojj6oqql6b::::res://sprites/player/Grass Player/ulixouipmkhb1 (1) (1) (1).png<>uid://d08usosywxij5::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (1).png<>uid://blyww64obyk6v::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 8.png<>uid://dqb5lbs6fuutc::::res://sprites/player/Default Player/imageedit_22_7633397634 copy.png<>uid://b630bol42622s::::res://sprites/player/Grass Player/ulixouipmkhb1 (3).png<>uid://cvbr0gh6lhgn3::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 4.png<>uid://wtyahswbws06::::res://sprites/player/Grass Player/ulixouipmkhb1 (4).png<>uid://bvp26a4vlkorl::::res://sprites/player/Default Player/imageedit_22_7633397634.png<>uid://lkay6mo5sh2o::::res://sprites/player/Grass Player/celebration (2).png<>uid://bgdlfbadpjgk8::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy (3).png<>uid://bqf1g3wt5w2p5::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 3.png<>uid://bak2wv8xspokr::::res://sprites/player/Grass Player/idle grass 2.png<>uid://b664ninapwno2::::res://sprites/player/Default Player/output-onlinepngtools.png<>uid://bjjboaesl5km0::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 9.png<>uid://c67cjdeypc6lg::::res://sprites/player/Grass Player/idle grass 1.png<>uid://bgoafs552lvv1::::res://sprites/player/Grass Player/imageedit_22_7633397634 (4).png<>uid://cov2bjhn2ny28::::res://dust.tscn<>uid://daxriukavopfh::::res://sprites/player/all anims/fireattack/imageedit_22_7633397634 (3) (1).png<>uid://bxlioahnehafu::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 3 (2).png<>uid://bmdg1iel28ci5::::res://sprites/player/all anims/idle/idle fire 2.png<>uid://bjjayguh0opsh::::res://sprites/player/all anims/idle/idle fire 1.png<>uid://d3bucvnfcjq3e::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (4).png<>uid://cfwikgc4qduha::::res://sprites/player/all anims/run/imageedit_22_7633397634 (3).png<>uid://dimxe55kwbn6y::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (3).png<>uid://b4v8hrfm1c7og::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/fire spin.png<>uid://dqv7pch784nmy::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/fire spin copy.png<>uid://cr1ry20efl681::::res://sprites/player/all anims/walk/output-onlinepngtools (3).png<>uid://w6r1apof6mob::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/spin_grass.png<>uid://dwjyfu3ac06ph::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/spin_grass copy.png<>uid://4rq3etn7m0ui::::res://sprites/player/all anims/walk/output-onlinepngtools (2).png<>uid://djeqfthqrb5h7::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (2) (1).png<>uid://lg17cjy6p77t::::res://sprites/player/all anims/idle/idle2 (1).png<>uid://co2xv1ck2hwow::::res://sprites/player/all anims/idle/idle1 (2).png<>uid://b66h1nffdlgb::::res://sprites/player/all anims/run/imageedit_22_7633397634 (1).png<>uid://bmp6iil4n6qkr::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin.png<>uid://c76xft5vpcmhk::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (4).png<>uid://d32oo58slrha7::::res://sprites/player/all anims/walk/output-onlinepngtools (1) (1).png<>uid://eaiqg538fbvl::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin copy.png<>uid://bsvqnwa4qvjk6::::res://sounds/Super Mario Bros 1 and 2(JP)/Beep.wav<>uid://c6g23ja0hdtic::::res://sprites/player/all anims/idle/water idle 2.png<>uid://dfbfa3ghjnuun::::res://sprites/player/all anims/waterattack/imageedit_22_7633397634 (3) (1) 2.png<>uid://b8gxmoytvl1eh::::res://sprites/player/all anims/idle/water idle 1.png<>uid://dn2hn1vu3v7pf::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (5).png<>uid://bfqaikmdv71yl::::res://sprites/player/all anims/run/imageedit_22_7633397634 (2).png<>uid://6jgwdpqrk417::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (1).png<>uid://bckgi6j5w3xm7::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin.png<>uid://c3dgg35cfu651::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin copy.png<>uid://bci4ac6kqmuqp::::res://sprites/player/all anims/walk/output-onlinepngtools (4).png
-QuestionBlock.gd::GDScript::-1::1723925969::0::1::::<>StaticBody2D<>::
-question_block.tscn::PackedScene::4571752148728364671::1723932128::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn<>res://QuestionBlock.gd
-spinning_coin.gd::GDScript::-1::1723236066::0::1::::<>Node2D<>::
-spinning_coin.tscn::PackedScene::4190055760806540014::1723932128::0::1::::<><>::res://spinning_coin.gd<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png
+mushroom_power.gd::GDScript::-1::1724107183::0::1::::<>CharacterBody2D<>::
+mushroom_power.tscn::PackedScene::2897318143314504900::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://mushroom_power.gd
+old_charmander.gd::GDScript::-1::1724022428::0::1::::<>CharacterBody2D<>::
+old_charmander.tscn::PackedScene::8308321696631004148::1724123538::0::1::::<><>::res://old_charmander.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://df3kx2cw2wtwt::::res://sprites/mobs/charmander/35067 (2).png<>uid://cgqipx5gsfcuv::::res://sprites/mobs/charmander/output-onlinepngtools-2 copy 4.png<>uid://ktkatlwyadnp::::res://sprites/mobs/charmander/output-onlinepngtools-2 copy 6.png
+petal_projectile.gd::GDScript::-1::1724628186::0::1::::<>CharacterBody2D<>::
+petal_projectile.tscn::PackedScene::8324549672105063517::1724874826::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://petal_projectile.gd
+Player.gd::GDScript::-1::1724891042::0::1::::Player<>CharacterBody2D<>::
+Player.tscn::PackedScene::414298450581743502::1724891466::0::1::::<><>::res://Player.gd<>uid://dtv8iamfbk4dh::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png<>uid://ce21ymjcm7e7h::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 5.png<>uid://c8fojj6oqql6b::::res://sprites/player/Grass Player/ulixouipmkhb1 (1) (1) (1).png<>uid://d08usosywxij5::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 9 (1).png<>uid://blyww64obyk6v::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 8.png<>uid://dqb5lbs6fuutc::::res://sprites/player/Default Player/imageedit_22_7633397634 copy.png<>uid://b630bol42622s::::res://sprites/player/Grass Player/ulixouipmkhb1 (3).png<>uid://cvbr0gh6lhgn3::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 4.png<>uid://wtyahswbws06::::res://sprites/player/Grass Player/ulixouipmkhb1 (4).png<>uid://bvp26a4vlkorl::::res://sprites/player/Default Player/imageedit_22_7633397634.png<>uid://lkay6mo5sh2o::::res://sprites/player/Grass Player/celebration (2).png<>uid://bgdlfbadpjgk8::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy (3).png<>uid://bqf1g3wt5w2p5::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 3.png<>uid://bak2wv8xspokr::::res://sprites/player/Grass Player/idle grass 2.png<>uid://b664ninapwno2::::res://sprites/player/Default Player/output-onlinepngtools.png<>uid://bjjboaesl5km0::::res://sprites/player/Default Player/imageedit_22_7633397634 copy 9.png<>uid://c67cjdeypc6lg::::res://sprites/player/Grass Player/idle grass 1.png<>uid://bgoafs552lvv1::::res://sprites/player/Grass Player/imageedit_22_7633397634 (4).png<>uid://daxriukavopfh::::res://sprites/player/all anims/fireattack/imageedit_22_7633397634 (3) (1).png<>uid://bxlioahnehafu::::res://sprites/player/Grass Player/imageedit_22_7633397634 copy 3 (2).png<>uid://bmdg1iel28ci5::::res://sprites/player/all anims/idle/idle fire 2.png<>uid://bjjayguh0opsh::::res://sprites/player/all anims/idle/idle fire 1.png<>uid://d3bucvnfcjq3e::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (4).png<>uid://cfwikgc4qduha::::res://sprites/player/all anims/run/imageedit_22_7633397634 (3).png<>uid://dimxe55kwbn6y::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (3).png<>uid://b4v8hrfm1c7og::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/fire spin.png<>uid://dqv7pch784nmy::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/fire spin copy.png<>uid://cr1ry20efl681::::res://sprites/player/all anims/walk/output-onlinepngtools (3).png<>uid://w6r1apof6mob::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/spin_grass.png<>uid://dwjyfu3ac06ph::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/spin_grass copy.png<>uid://4rq3etn7m0ui::::res://sprites/player/all anims/walk/output-onlinepngtools (2).png<>uid://djeqfthqrb5h7::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (2) (1).png<>uid://lg17cjy6p77t::::res://sprites/player/all anims/idle/idle2 (1).png<>uid://co2xv1ck2hwow::::res://sprites/player/all anims/idle/idle1 (2).png<>uid://b66h1nffdlgb::::res://sprites/player/all anims/run/imageedit_22_7633397634 (1).png<>uid://bmp6iil4n6qkr::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin.png<>uid://c76xft5vpcmhk::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (4).png<>uid://d32oo58slrha7::::res://sprites/player/all anims/walk/output-onlinepngtools (1) (1).png<>uid://eaiqg538fbvl::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/small spin copy.png<>uid://c6g23ja0hdtic::::res://sprites/player/all anims/idle/water idle 2.png<>uid://dfbfa3ghjnuun::::res://sprites/player/all anims/waterattack/imageedit_22_7633397634 (3) (1) 2.png<>uid://b8gxmoytvl1eh::::res://sprites/player/all anims/idle/water idle 1.png<>uid://dn2hn1vu3v7pf::::res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (5).png<>uid://bfqaikmdv71yl::::res://sprites/player/all anims/run/imageedit_22_7633397634 (2).png<>uid://6jgwdpqrk417::::res://sprites/player/all anims/slide/imageedit_22_7633397634 copy 3 (1).png<>uid://bckgi6j5w3xm7::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin.png<>uid://c3dgg35cfu651::::res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin copy.png<>uid://bci4ac6kqmuqp::::res://sprites/player/all anims/walk/output-onlinepngtools (4).png
+QuestionBlock.gd::GDScript::-1::1724891010::0::1::::<>StaticBody2D<>::
+question_block.tscn::PackedScene::4571752148728364671::1724891466::0::1::::<><>::uid://cvtqpjdaxe642::::res://hittable_block.tscn<>res://QuestionBlock.gd
+spinning_coin.gd::GDScript::-1::1724467305::0::1::::<>Node2D<>::
+spinning_coin.tscn::PackedScene::4190055760806540014::1724891466::0::1::::<><>::res://spinning_coin.gd<>uid://dw4l3f0vtf2f4::::res://sprites/tiles/tilesets/output-onlinepngtools-6 copy.png<>uid://c3c7cgqrp80fn::::res://sprites/effects/sma4_sprites copy.png
+squirtle.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+squirtle.tscn::PackedScene::3529528648022835599::1724891466::0::1::::<><>::res://squirtle.gd<>uid://crmhu8ehlh48i::::res://sprites/mobs/charmander/35067 (1).png<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://b16ub006nfx6::::res://sprites/mobs/squirtle/36344 (1) (1).png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png
+squirtle_shell.gd::GDScript::-1::1724867698::0::1::::<>CharacterBody2D<>::
+squirtle_shell.tscn::PackedScene::3294823917753353491::1724891466::0::1::::<><>::uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>res://squirtle_shell.gd<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://c51qulxvp021g::::res://sprites/mobs/squirtle/SNES - Super Mario World - Koopas & Masked Koopas (1).png
 SteepSlope.gd::GDScript::-1::1720401262::0::1::::<>StaticBody2D<>::
 Super-Mario-World.ttf::FontFile::151207973846888600::1379942396::1722915739::1::::<><>::
-used_block.tscn::PackedScene::1277075594768847201::1723932128::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn
-waterball.tscn::PackedScene::3747829621378653310::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://water_ball.gd<>uid://di8n3ntkl2vo5::::res://sprites/entities/powerups/powerups-custom-4.png<>uid://chi0c0u4dh1rx::::res://sprites/player/fireplayer/fire_marigi_mini_sprite_sheet_by_storm424_dg1u5ai-414w-2x (2).png<>uid://bst6w3q0pms5b::::res://sprites/entities/powerups/powerups-custom-3.png<>uid://drvqaj2v1ue8::::res://sprites/entities/powerups/powerups-custom-3 copy.png<>uid://ncl6u4c738w6::::res://sprites/entities/powerups/sprite-sheet-water-explosion-splashesanimation-260nw-1046891053.png
-water_ball.gd::GDScript::-1::1723930072::0::1::::<>CharacterBody2D<>::
-water_power.gd::GDScript::-1::1723925877::0::1::::<>CharacterBody2D<>::
-water_power.tscn::PackedScene::8322090820449654848::1723932128::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://water_power.gd
+used_block.tscn::PackedScene::1277075594768847201::1724021651::0::1::::<><>::uid://cc27lt2m5bta0::::res://block.tscn
+venusaur.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+venusaur.tscn::PackedScene::4375086910439565070::1724874826::0::1::::<><>::res://venusaur.gd<>uid://c2722e8pniwle::::res://sprites/mobs/venusaur/35066 (2).png<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://d4ciarmapua15::::res://sprites/mobs/venusaur/35066 (1).png
+wartortle.gd::GDScript::-1::1724867934::0::1::::<>CharacterBody2D<>::
+wartortle.tscn::PackedScene::8772135149918803787::1724891466::0::1::::<><>::res://wartortle.gd<>uid://gmuasefy7ag8::::res://sprites/effects/sma4_sprites copy 3.png<>uid://ua6r8137q4hs::::res://sprites/player/all anims/death/New Piskel.png<>uid://c1ec0i1ni2nl5::::res://sprites/mobs/wartortle/36349 (1).png<>uid://b16ub006nfx6::::res://sprites/mobs/squirtle/36344 (1) (1).png<>uid://tnom70euaiwa::::res://sprites/mobs/wartortle/36349 (2).png
+waterball.tscn::PackedScene::3747829621378653310::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://water_ball.gd
+waterball_bounce1.gd::GDScript::-1::1724876910::0::1::::<>CharacterBody2D<>::
+waterball_bounce1.tscn::PackedScene::1887392754352585997::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://waterball_bounce1.gd
+waterball_bounce2.gd::GDScript::-1::1724875323::0::1::::<>CharacterBody2D<>::
+waterball_bounce2.tscn::PackedScene::6968840844850424448::1724891466::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://waterball_bounce2.gd
+water_ball.gd::GDScript::-1::1724891010::0::1::::<>CharacterBody2D<>::
+water_particles.tscn::PackedScene::1751651895914984373::1724891466::0::1::::<><>::uid://ncl6u4c738w6::::res://sprites/entities/powerups/sprite-sheet-water-explosion-splashesanimation-260nw-1046891053.png
+water_power.gd::GDScript::-1::1724123218::0::1::::<>CharacterBody2D<>::
+water_power.tscn::PackedScene::8322090820449654848::1724188530::0::1::::<><>::uid://ja2nmsip0fyc::::res://entity.tscn<>res://water_power.gd
 world1_label.gd::GDScript::-1::1722915100::0::1::::<>Label<>::
-world_1.gd::GDScript::-1::1723698231::0::1::::<>Node2D<>::
-world_1.tscn::PackedScene::2568898723036457646::1723932128::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn<>uid://c0ws2rvhej4oj::::res://marioblocks.tres<>res://world_1.gd<>res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://dqmu3yhsnod6k::::res://charmander.tscn<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png<>uid://dmjxrgekwi0jx::::res://berry.tscn<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://88b48vkgtaiy::::res://grass_power.tscn<>uid://dog8fv8spe6ns::::res://fire_power.tscn<>uid://b0xxuu1kp52r7::::res://spinning_coin.tscn<>uid://cfimxpyx6jga::::res://Super-Mario-World.ttf<>uid://dqtjvcwekhqua::::res://water_power.tscn
-world_2.tscn::PackedScene::2547518394695272360::1723932128::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn
-::res://sounds/::1722997838
-::res://sounds/Super Mario Bros 1 and 2(JP)/::1722989300
-1up.wav::AudioStreamWAV::3450338034926006563::1275660890::1722989300::1::::<><>::
-Beep.wav::AudioStreamWAV::3694167646071514335::1275614872::1722989300::1::::<><>::
-Big Jump.wav::AudioStreamWAV::2687091896630369391::1275771702::1722989300::1::::<><>::
-Bowser Die.wav::AudioStreamWAV::7967014801747725687::1275771686::1722989300::1::::<><>::
-Break.wav::AudioStreamWAV::6358324010575229695::1275614672::1722989300::1::::<><>::
-Bump.wav::AudioStreamWAV::4576919129511859237::1275614938::1722989300::1::::<><>::
-Coin.wav::AudioStreamWAV::4155710239336737210::1275614712::1722989300::1::::<><>::
-Die.wav::AudioStreamWAV::7309805873384111082::1275614810::1722989300::1::::<><>::
-Enemy Fire.wav::AudioStreamWAV::4261007388355415187::1275614698::1722989300::1::::<><>::
-Fire Ball.wav::AudioStreamWAV::5291159098207014877::1275614978::1722989300::1::::<><>::
-Flagpole.wav::AudioStreamWAV::1596560920165904086::1275614988::1722989300::1::::<><>::
-Game Over.wav::AudioStreamWAV::289835628361857809::1275614822::1722989300::1::::<><>::
-Item.wav::AudioStreamWAV::2216324009535929673::1275614732::1722989300::1::::<><>::
-Jump.wav::AudioStreamWAV::3814624819633858385::1275614928::1722989299::1::::<><>::
-Kick.wav::AudioStreamWAV::7605728863550787676::1275614958::1722989299::1::::<><>::
-Pause.wav::AudioStreamWAV::3388061838766865563::1275614650::1722989299::1::::<><>::
-Powerup.wav::AudioStreamWAV::8434896646692164607::1275614892::1722989299::1::::<><>::
-Skid.wav::AudioStreamWAV::1525985742900923026::1275771662::1722989299::1::::<><>::
-Squish.wav::AudioStreamWAV::7211597188276154975::1275614950::1722989299::1::::<><>::
-Thwomp.wav::AudioStreamWAV::8295929450538889802::1275614858::1722989299::1::::<><>::
-Vine.wav::AudioStreamWAV::5812721798233163633::1275614742::1722989299::1::::<><>::
-Warp.wav::AudioStreamWAV::2044261947026047519::1275614966::1722989299::1::::<><>::
+world_1.gd::GDScript::-1::1724877648::0::1::::<>Node2D<>::
+world_1.tscn::PackedScene::2568898723036457646::1724891466::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn<>uid://c0ws2rvhej4oj::::res://marioblocks.tres<>res://world_1.gd<>res://BG.gd<>uid://cutneystmh3wj::::res://sprites/Backrounds/world1back.png<>uid://b6atscc1habc3::::res://sprites/tiles/tile002.png<>uid://ffn5ep4gcdnc::::res://sprites/tiles/tile003.png<>uid://bithcoocktlbf::::res://sprites/tiles/tile001.png<>uid://l07kcv05l2u4::::res://sprites/tiles/tile000.png<>uid://c1l5fgu488iod::::res://ivysaur.tscn<>uid://bqjy26i72n55d::::res://squirtle.tscn<>uid://dmjxrgekwi0jx::::res://berry.tscn<>uid://b3llbo15nh6y1::::res://venusaur.tscn<>uid://betwdofsgyooc::::res://bulbasaur.tscn<>uid://b6eudb8la734v::::res://question_block.tscn<>uid://dog8fv8spe6ns::::res://fire_power.tscn<>uid://b0xxuu1kp52r7::::res://spinning_coin.tscn<>uid://dy41um3ywvb0q::::res://checkpoint_pole.tscn<>uid://diw1pm5fvxhuc::::res://sprites/tiles/145146 (1).png<>uid://cfimxpyx6jga::::res://Super-Mario-World.ttf<>uid://drcngwora3bbq::::res://light_blue_pole.tscn<>uid://rla7keck6nxc::::res://blue_pole.tscn<>uid://dqtjvcwekhqua::::res://water_power.tscn<>uid://bn2c85cly447r::::res://sounds/SNES - Super Mario World - Sound Effects/12. Overworld-[AudioTrimmer.com].wav
+world_2.tscn::PackedScene::2547518394695272360::1724891466::0::1::::<><>::uid://f5xo12ldwedy::::res://Player.tscn
+::res://sounds/::1724190167
+::res://sounds/SNES - Super Mario World - Sound Effects/::1724714617
+01. Nintendo Logo.wav::AudioStreamWAV::6216578703316535286::1724185745::1724190125::1::::<><>::
+1up.wav::AudioStreamWAV::4911223918805924889::1724190119::1724190119::1::::<><>::
+02. Title-[AudioTrimmer.com].wav::AudioStreamWAV::2025111664993797734::1724192198::1724192210::1::::<><>::
+03. Yoshi's Island-[AudioTrimmer.com].wav::AudioStreamWAV::5643327031077952157::1724189972::1724190183::1::::<><>::
+12. Overworld-[AudioTrimmer.com].wav::AudioStreamWAV::3354795794854679821::1724471537::1724714617::1::::<><>::
+balloon.wav::AudioStreamWAV::3232718202537054557::1724190119::1724190119::1::::<><>::
+boss-burnt.wav::AudioStreamWAV::814600115073558662::1724190119::1724190119::1::::<><>::
+boss-defeat.wav::AudioStreamWAV::8716639574464283986::1724190119::1724190119::1::::<><>::
+boss-fall.wav::AudioStreamWAV::4758877090204789295::1724190119::1724190119::1::::<><>::
+boss-flame.wav::AudioStreamWAV::2827771955451392145::1724190119::1724190119::1::::<><>::
+boss-poof.wav::AudioStreamWAV::2852682760849823472::1724190119::1724190119::1::::<><>::
+bullet.wav::AudioStreamWAV::6397310802504564233::1724190119::1724190119::1::::<><>::
+bump.wav::AudioStreamWAV::4466196069791601080::1724190119::1724190119::1::::<><>::
+camera.wav::AudioStreamWAV::2348143297459891929::1724190119::1724190119::1::::<><>::
+cape-acquire.wav::AudioStreamWAV::3015174321106480395::1724190119::1724190119::1::::<><>::
+cape-fly.wav::AudioStreamWAV::7825468773661335250::1724190119::1724190119::1::::<><>::
+checkpoint.wav::AudioStreamWAV::1385625635271646408::1724190119::1724190119::1::::<><>::
+clap.wav::AudioStreamWAV::607862851228257172::1724190119::1724190119::1::::<><>::
+clowncar-defeat.wav::AudioStreamWAV::5474927813026663871::1724190119::1724190119::1::::<><>::
+clowncar-moveout-thenin.wav::AudioStreamWAV::3948297422177299576::1724190119::1724190119::1::::<><>::
+clowncar-moveout.wav::AudioStreamWAV::2517662255205313736::1724190119::1724190119::1::::<><>::
+clowncar-reenter.wav::AudioStreamWAV::1399246546361831135::1724190119::1724190119::1::::<><>::
+coin-special.wav::AudioStreamWAV::8016083321114432990::1724190119::1724190119::1::::<><>::
+coin.wav::AudioStreamWAV::7824368578020105303::1724190119::1724190119::1::::<><>::
+correct.wav::AudioStreamWAV::3135314547353759996::1724190119::1724190119::1::::<><>::
+countdown.wav::AudioStreamWAV::3117699889261561129::1724190119::1724190119::1::::<><>::
+door.wav::AudioStreamWAV::6559492299366469540::1724190119::1724190119::1::::<><>::
+dry-bones-crumble.wav::AudioStreamWAV::6068912741184723943::1724190119::1724190119::1::::<><>::
+fall.wav::AudioStreamWAV::5160374878894091884::1724190119::1724190119::1::::<><>::
+fireball1.wav::AudioStreamWAV::7602075812932437055::1724190119::1724190119::1::::<><>::
+fireball2.wav::AudioStreamWAV::6840081432064712692::1724190119::1724190119::1::::<><>::
+fireball3.wav::AudioStreamWAV::4661803437814305978::1724190119::1724190119::1::::<><>::
+fireball.wav::AudioStreamWAV::5806362755083281800::1724190119::1724190119::1::::<><>::
+firebreath.wav::AudioStreamWAV::6119535555820958629::1724190119::1724629420::1::::<><>::
+fireworks.wav::AudioStreamWAV::6474479384224548868::1724190119::1724190119::1::::<><>::
+flame.wav::AudioStreamWAV::3597028974492156916::1724631487::1724631501::1::::<><>::
+Flamethrower.wav::AudioStreamWAV::5641457361005695745::1724630228::1724630289::1::::<><>::
+grow.wav::AudioStreamWAV::2772027442970243189::1724190119::1724190119::1::::<><>::
+item-get.wav::AudioStreamWAV::3164402693653270143::1724190119::1724190119::1::::<><>::
+jump.wav::AudioStreamWAV::2284767103170112547::1724190119::1724190119::1::::<><>::
+kick.wav::AudioStreamWAV::1115739335451219590::1724190119::1724190119::1::::<><>::
+magic.wav::AudioStreamWAV::1956575325965218518::1724190119::1724190119::1::::<><>::
+map-castle-demolish.wav::AudioStreamWAV::8285120267026241602::1724190119::1724190119::1::::<><>::
+map-menu.wav::AudioStreamWAV::1385784238014309124::1724190119::1724190119::1::::<><>::
+map-spot.wav::AudioStreamWAV::5174773490808050743::1724190119::1724190119::1::::<><>::
+map-spot_alt.wav::AudioStreamWAV::5940651699118487577::1724190119::1724190119::1::::<><>::
+map-unlock.wav::AudioStreamWAV::1653150479318148608::1724190119::1724190119::1::::<><>::
+message.wav::AudioStreamWAV::5071599414751382580::1724190119::1724190119::1::::<><>::
+peach-help.wav::AudioStreamWAV::1295626489935157294::1724190119::1724190119::1::::<><>::
+pipe.wav::AudioStreamWAV::1363721289107536070::1724190119::1724190119::1::::<><>::
+podoboo.wav::AudioStreamWAV::5174524640488476193::1724190119::1724190119::1::::<><>::
+powerup.wav::AudioStreamWAV::313193786992345686::1724190119::1724190119::1::::<><>::
+reserved-item.wav::AudioStreamWAV::2650514011459347492::1724190119::1724190119::1::::<><>::
+roar.wav::AudioStreamWAV::4098047146899256697::1724190119::1724190119::1::::<><>::
+saw.wav::AudioStreamWAV::3473753355464902554::1724190119::1724190119::1::::<><>::
+shatter.wav::AudioStreamWAV::5655061772838490521::1724190119::1724190119::1::::<><>::
+slam.wav::AudioStreamWAV::7194796664001920097::1724190119::1724190119::1::::<><>::
+smw_lost_a_life.wav::AudioStreamWAV::2849225411632702402::1724622611::1724622612::1::::<><>::
+spin.wav::AudioStreamWAV::250990591843715935::1724190119::1724190119::1::::<><>::
+spring.wav::AudioStreamWAV::4497265497618270856::1724190119::1724190119::1::::<><>::
+sprout-item.wav::AudioStreamWAV::7593588693934651941::1724190119::1724190119::1::::<><>::
+sprout-vine.wav::AudioStreamWAV::5349274469222609164::1724190119::1724190119::1::::<><>::
+starman-low.wav::AudioStreamWAV::9092887229078759382::1724190119::1724190119::1::::<><>::
+stomp.wav::AudioStreamWAV::7762514726603470462::1724190119::1724190119::1::::<><>::
+stun.wav::AudioStreamWAV::4974759058188820474::1724190119::1724190119::1::::<><>::
+super-stomp.wav::AudioStreamWAV::7462218891163514888::1724190119::1724190119::1::::<><>::
+swim.wav::AudioStreamWAV::4735387068267244671::1724190119::1724190119::1::::<><>::
+switch.wav::AudioStreamWAV::6854801982911479136::1724190119::1724190119::1::::<><>::
+switch_old.wav::AudioStreamWAV::5404440055045869651::1724190119::1724190119::1::::<><>::
+swooper.wav::AudioStreamWAV::1957354050394379048::1724190119::1724190119::1::::<><>::
+thunder.wav::AudioStreamWAV::1592552556889177792::1724190119::1724190119::1::::<><>::
+unknown1.wav::AudioStreamWAV::6547219561885823221::1724190119::1724190119::1::::<><>::
+water-gun_xKgwgdvI.wav::AudioStreamWAV::3200734067583357199::1724713142::1724713154::1::::<><>::
+whistle.wav::AudioStreamWAV::929592967170052301::1724190119::1724190119::1::::<><>::
+wrong.wav::AudioStreamWAV::5046261525720389271::1724190119::1724190119::1::::<><>::
+yoshi-eat.wav::AudioStreamWAV::5762474473898759175::1724190119::1724190119::1::::<><>::
+yoshi-escape.wav::AudioStreamWAV::7906585409277870168::1724190119::1724190119::1::::<><>::
+yoshi-gulp.wav::AudioStreamWAV::8334536363313722065::1724190119::1724190119::1::::<><>::
+yoshi-hatch.wav::AudioStreamWAV::163769243666871734::1724190119::1724190119::1::::<><>::
+yoshi-mount.wav::AudioStreamWAV::2354906169917207172::1724190119::1724190119::1::::<><>::
+yoshi-spit.wav::AudioStreamWAV::8053785619686265338::1724190119::1724190119::1::::<><>::
 ::res://sprites/::1723162964
 ::res://sprites/Backrounds/::1719607849
 tile000.png::CompressedTexture2D::1016062176430642454::1719602130::1719602522::1::::<><>::
@@ -111,13 +214,17 @@ tile033.png::CompressedTexture2D::1213271723468055874::1719602130::1719602522::1
 tile034.png::CompressedTexture2D::3789288519812403317::1719602130::1719602522::1::::<><>::
 tile035.png::CompressedTexture2D::8635900434050095241::1719602130::1719602522::1::::<><>::
 world1back.png::CompressedTexture2D::6216639170802069437::1719607848::1719607849::1::::<><>::
-::res://sprites/effects/::1722707390
+::res://sprites/effects/::1724625043
+53664 (1).png::CompressedTexture2D::2337949461973487062::1724446359::1724446375::1::::<><>::
+IMG_3258 (1).png::CompressedTexture2D::59331484150432107::1724625018::1724625043::1::::<><>::
+IMG_3258 (2).png::CompressedTexture2D::5332785957093068701::1724625021::1724625043::1::::<><>::
 sma4_sprites copy 2.png::CompressedTexture2D::5565754041544046764::1719706628::1719706704::1::::<><>::
 sma4_sprites copy 3.png::CompressedTexture2D::447120886592268301::1719706702::1719706704::1::::<><>::
 sma4_sprites copy 4.png::CompressedTexture2D::4027506887701415156::1719706665::1719706704::1::::<><>::
 sma4_sprites copy 5.png::CompressedTexture2D::3286890271161639609::1719706682::1719706704::1::::<><>::
 sma4_sprites copy.png::CompressedTexture2D::6744204600766309939::1719706301::1719706304::1::::<><>::
 sma4_sprites.png::CompressedTexture2D::9073080766326616022::1719706646::1719706704::1::::<><>::
+Smoke & Fire_0 (1).png::CompressedTexture2D::2588838350006273825::1724279965::1724279989::1::::<><>::
 ::res://sprites/effects/drive-download-20240803T174930Z-001/::1722707401
 sma4_sprites copy 3 (1).png::CompressedTexture2D::2238830862729301030::1722644869::1722707401::1::::<><>::
 sma4_sprites copy 3 (2).png::CompressedTexture2D::3893872415653534778::1722645389::1722707401::1::::<><>::
@@ -135,14 +242,40 @@ DS DSi - Pokemon HeartGold SoulSilver - Photo Album.png::CompressedTexture2D::19
 Screenshot 2024-06-24 at 7.40.56 PM.png::CompressedTexture2D::3015428518392383526::1719288781::1720128271::1::::<><>::
 Screenshot 2024-06-24 at 7.45.07 PM.png::CompressedTexture2D::1908921830197153612::1719288974::1720128271::1::::<><>::
 Super-pokemon-bros-7-2-2024.png::CompressedTexture2D::3093441713391453902::1719980537::1720128271::1::::<><>::
-::res://sprites/mobs/::1719718537
-output-onlinepngtools-2 copy 2.png::CompressedTexture2D::1088387246469260148::1719681456::1719681597::1::::<><>::
-output-onlinepngtools-2 copy 4.png::CompressedTexture2D::5227518250808109901::1719718498::1719718537::1::::<><>::
-output-onlinepngtools-2 copy 5.png::CompressedTexture2D::3276651373640728263::1719682479::1719682512::1::::<><>::
-output-onlinepngtools-2 copy 6.png::CompressedTexture2D::741719799603280853::1719718533::1719718537::1::::<><>::
-output-onlinepngtools-2 copy 7.png::CompressedTexture2D::6570684984620209636::1719682493::1719718537::1::::<><>::
-output-onlinepngtools-2 copy.png::CompressedTexture2D::6483952208897965486::1719681413::1719681597::1::::<><>::
-output-onlinepngtools-2.png::CompressedTexture2D::7314343316541177741::1719682389::1719682512::1::::<><>::
+::res://sprites/mobs/::1724624432
+::res://sprites/mobs/bulbasaur/::1724028040
+35063 (1).png::CompressedTexture2D::3600147344484833162::1724027858::1724028040::1::::<><>::
+::res://sprites/mobs/charizard/::1724379495
+35282 (1).png::CompressedTexture2D::6064494952269302551::1724378738::1724378760::1::::<><>::
+35282 (2).png::CompressedTexture2D::4350244839170180144::1724378500::1724378588::1::::<><>::
+203438 (2) (2).png::CompressedTexture2D::7004681950530908592::1724379493::1724379495::1::::<><>::
+::res://sprites/mobs/charmander/::1724028040
+35067 (1).png::CompressedTexture2D::5991286716891762982::1724027776::1724028040::1::::<><>::
+35067 (2).png::CompressedTexture2D::7568658511827226603::1724017984::1724028040::1::::<><>::
+output-onlinepngtools-2 copy 2.png::CompressedTexture2D::1088387246469260148::1719681456::1724028040::1::::<><>::
+output-onlinepngtools-2 copy 4.png::CompressedTexture2D::5227518250808109901::1719718498::1724028040::1::::<><>::
+output-onlinepngtools-2 copy 5.png::CompressedTexture2D::3276651373640728263::1719682479::1724028040::1::::<><>::
+output-onlinepngtools-2 copy 6.png::CompressedTexture2D::741719799603280853::1719718533::1724028040::1::::<><>::
+output-onlinepngtools-2 copy 7.png::CompressedTexture2D::6570684984620209636::1719682493::1724028040::1::::<><>::
+output-onlinepngtools-2 copy.png::CompressedTexture2D::6483952208897965486::1719681413::1724028040::1::::<><>::
+output-onlinepngtools-2.png::CompressedTexture2D::7314343316541177741::1719682389::1724028040::1::::<><>::
+::res://sprites/mobs/charmeleon/::1724540449
+36325 (2) (1).png::CompressedTexture2D::5860540683175358982::1724539946::1724540014::1::::<><>::
+36325 (3) (1).png::CompressedTexture2D::3770424196659950380::1724540437::1724540449::1::::<><>::
+spr_pt_005_1 (2) copy.png::CompressedTexture2D::4699711650159618482::1724121732::1724121735::1::::<><>::
+spr_pt_005_1 (2).png::CompressedTexture2D::1325071260071502050::1724119512::1724119542::1::::<><>::
+::res://sprites/mobs/ivysaur/::1724031885
+35064 (1).png::CompressedTexture2D::5776418192011404556::1724031828::1724031859::1::::<><>::
+35064 (2).png::CompressedTexture2D::1345461486885387575::1724031870::1724031885::1::::<><>::
+::res://sprites/mobs/squirtle/::1724289509
+36344 (1) (1).png::CompressedTexture2D::125780700218734969::1724283469::1724283489::1::::<><>::
+SNES - Super Mario World - Koopas & Masked Koopas (1).png::CompressedTexture2D::6933188300157645950::1724289501::1724289509::1::::<><>::
+::res://sprites/mobs/venusaur/::1724624441
+35066 (1).png::CompressedTexture2D::9199353919487931042::1724624413::1724624441::1::::<><>::
+35066 (2).png::CompressedTexture2D::6735688070754306306::1724624416::1724624441::1::::<><>::
+::res://sprites/mobs/wartortle/::1724359401
+36349 (1).png::CompressedTexture2D::6606175352778582336::1724359393::1724359401::1::::<><>::
+36349 (2).png::CompressedTexture2D::1361298126926775052::1724359396::1724359401::1::::<><>::
 ::res://sprites/player/::1723410342
 output-onlinepngtools-7.png::CompressedTexture2D::3123878874178834816::1720411239::1720411275::1::::<><>::
 ::res://sprites/player/all anims/::1723845360
@@ -234,7 +367,12 @@ ulixouipmkhb1 (1).png::CompressedTexture2D::2025419891617628218::1721928786::172
 ulixouipmkhb1 (3).png::CompressedTexture2D::4621597877873554716::1721929010::1721929310::1::::<><>::
 ulixouipmkhb1 (4).png::CompressedTexture2D::1584835341661975865::1721929162::1721929310::1::::<><>::
 ::res://sprites/player/Small Player/::1722979647
-::res://sprites/tiles/::1722553612
+::res://sprites/tiles/::1724893027
+144428 (1) copy.png::CompressedTexture2D::3393319402783397843::1724893004::1724893030::1::::<><>::
+144428 (1).png::CompressedTexture2D::489763313124953849::1724890408::1724890412::1::::<><>::
+144428 (2).png::CompressedTexture2D::4305339393252151177::1724888981::1724889233::1::::<><>::
+144428 (3).png::CompressedTexture2D::70281463445352084::1724889005::1724889233::1::::<><>::
+145146 (1).png::CompressedTexture2D::7767795216373865966::1724879394::1724879476::1::::<><>::
 output-onlinepngtools-2 copy 2.png::CompressedTexture2D::719778949087145951::1719608566::1719608571::1::::<><>::
 output-onlinepngtools-2 copy.png::CompressedTexture2D::8661242239017839563::1719608518::1719608571::1::::<><>::
 output-onlinepngtools-2.png::CompressedTexture2D::6419093041573558475::1719608473::1719608571::1::::<><>::

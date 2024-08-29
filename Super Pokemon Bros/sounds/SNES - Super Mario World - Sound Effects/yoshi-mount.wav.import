@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8sy7wn7fx10c"
+path="res://.godot/imported/yoshi-mount.wav-26167c425d433be94d7e4bf50504f333.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/yoshi-mount.wav"
+dest_files=["res://.godot/imported/yoshi-mount.wav-26167c425d433be94d7e4bf50504f333.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

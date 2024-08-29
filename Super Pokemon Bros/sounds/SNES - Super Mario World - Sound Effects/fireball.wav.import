@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://coyv7f4v74mei"
+path="res://.godot/imported/fireball.wav-60fb8969f5ddb9c27f2d47c746e7ff80.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/fireball.wav"
+dest_files=["res://.godot/imported/fireball.wav-60fb8969f5ddb9c27f2d47c746e7ff80.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

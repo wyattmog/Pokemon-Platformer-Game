@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://codnd3iwn13jf"
+path="res://.godot/imported/yoshi-eat.wav-fcc8486d3e0019daa259b1dac818c305.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/yoshi-eat.wav"
+dest_files=["res://.godot/imported/yoshi-eat.wav-fcc8486d3e0019daa259b1dac818c305.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

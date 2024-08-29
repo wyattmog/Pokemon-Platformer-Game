@@ -25,6 +25,7 @@ func _physics_process(delta):
 	elif velocity.y < 0:
 		get_node("AnimatedSprite2D").play("grass_power_up")
 	if get_node("Timer").is_stopped():
+		set_z_index(2)
 		set_collision_mask_value(4, true)
 		if is_on_floor():
 			velocity.y += gravity * delta

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://p5qcf2ker0vq"
+path="res://.godot/imported/kick.wav-f2a1a6279ff6fe3950a0c82303a6c7a4.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/kick.wav"
+dest_files=["res://.godot/imported/kick.wav-f2a1a6279ff6fe3950a0c82303a6c7a4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

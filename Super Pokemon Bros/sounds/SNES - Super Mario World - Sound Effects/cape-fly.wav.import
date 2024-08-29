@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djqylepu5408e"
+path="res://.godot/imported/cape-fly.wav-654fb971391c7056247dc22cd428fae7.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/cape-fly.wav"
+dest_files=["res://.godot/imported/cape-fly.wav-654fb971391c7056247dc22cd428fae7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

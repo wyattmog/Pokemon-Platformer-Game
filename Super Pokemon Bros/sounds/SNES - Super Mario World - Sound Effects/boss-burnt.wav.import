@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://luulyxgqu8r7"
+path="res://.godot/imported/boss-burnt.wav-8787a05ba50558ae5fa0541ac641a0c5.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/boss-burnt.wav"
+dest_files=["res://.godot/imported/boss-burnt.wav-8787a05ba50558ae5fa0541ac641a0c5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cfyx07ox0c3nn"
+path="res://.godot/imported/map-spot.wav-3d66a2d34835b5c8aee776b2519f52a0.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav"
+dest_files=["res://.godot/imported/map-spot.wav-3d66a2d34835b5c8aee776b2519f52a0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

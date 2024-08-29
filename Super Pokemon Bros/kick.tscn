@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmpktnhsqpt3f"]
+
+[ext_resource type="Script" path="res://kick.gd" id="1_tnvbr"]
+[ext_resource type="Texture2D" uid="uid://8krxlc5xskha" path="res://sprites/effects/53664 (1).png" id="1_v3tm8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw2lo"]
+atlas = ExtResource("1_v3tm8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dbnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw2lo")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"kick",
+"speed": 10.0
+}]
+
+[node name="Kick" type="Node2D"]
+z_index = 4
+script = ExtResource("1_tnvbr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0dbnc")
+animation = &"kick"

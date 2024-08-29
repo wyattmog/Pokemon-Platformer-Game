@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ja2nmsip0fyc"]
+[gd_scene load_steps=45 format=3 uid="uid://ja2nmsip0fyc"]
 
 [ext_resource type="Script" path="res://entity.gd" id="1_w0eyh"]
 [ext_resource type="Texture2D" uid="uid://di8n3ntkl2vo5" path="res://sprites/entities/powerups/powerups-custom-4.png" id="2_t6v5p"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://chi0c0u4dh1rx" path="res://sprites/player/fireplayer/fire_marigi_mini_sprite_sheet_by_storm424_dg1u5ai-414w-2x (2).png" id="3_vsa8n"]
 [ext_resource type="Texture2D" uid="uid://drvqaj2v1ue8" path="res://sprites/entities/powerups/powerups-custom-3 copy.png" id="4_58382"]
 [ext_resource type="Texture2D" uid="uid://ncl6u4c738w6" path="res://sprites/entities/powerups/sprite-sheet-water-explosion-splashesanimation-260nw-1046891053.png" id="6_4vbg2"]
+[ext_resource type="Texture2D" uid="uid://c51qulxvp021g" path="res://sprites/mobs/squirtle/SNES - Super Mario World - Koopas & Masked Koopas (1).png" id="6_beqs3"]
+[ext_resource type="Texture2D" uid="uid://30gfdep57rj" path="res://sprites/effects/IMG_3258 (1).png" id="6_grcsf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nqx1"]
 resource_local_to_scene = true
@@ -66,6 +68,46 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nteeo"]
 atlas = ExtResource("4_58382")
 region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vtjw"]
+atlas = ExtResource("6_grcsf")
+region = Rect2(79, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20a01"]
+atlas = ExtResource("6_grcsf")
+region = Rect2(0, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksbj4"]
+atlas = ExtResource("6_grcsf")
+region = Rect2(79, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdtp7"]
+atlas = ExtResource("6_grcsf")
+region = Rect2(0, 73, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqkbw"]
+atlas = ExtResource("6_grcsf")
+region = Rect2(79, 73, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tcbc"]
+atlas = ExtResource("6_beqs3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a0ed"]
+atlas = ExtResource("6_beqs3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xddx"]
+atlas = ExtResource("6_beqs3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqgiq"]
+atlas = ExtResource("6_beqs3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubvh8"]
+atlas = ExtResource("6_beqs3")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25r1c"]
 atlas = ExtResource("2_t6v5p")
@@ -174,12 +216,67 @@ animations = [{
 "name": &"mushroom_power",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nteeo")
 }],
 "loop": true,
 "name": &"one_up_power",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vtjw")
+}],
+"loop": true,
+"name": &"petal_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20a01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdtp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqkbw")
+}],
+"loop": true,
+"name": &"petal_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tcbc")
+}],
+"loop": true,
+"name": &"squirtle_shell_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a0ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xddx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqgiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubvh8")
+}],
+"loop": true,
+"name": &"squirtle_shell_moving",
 "speed": 5.0
 }, {
 "frames": [{
@@ -194,7 +291,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_26hsu")
 }, {
 "duration": 1.5,
@@ -218,6 +315,37 @@ animations = [{
 "loop": false,
 "name": &"waterball",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaqe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26hsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbwsa")
+}],
+"loop": true,
+"name": &"waterball_bounce1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_24c4t")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_ggm8e")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_dwfc8")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_xcidv")
+}],
+"loop": false,
+"name": &"waterball_bounce2",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_niwae"]
@@ -232,7 +360,7 @@ shape = SubResource("RectangleShape2D_5nqx1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fja7f")
-animation = &"waterball"
+animation = &"waterball_bounce2"
 
 [node name="Area2D" type="Area2D" parent="."]
 

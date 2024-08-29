@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmtmbnuxmyxvt"
+path="res://.godot/imported/shatter.wav-c39a3d6979a64fa1be2a53160e44735c.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/shatter.wav"
+dest_files=["res://.godot/imported/shatter.wav-c39a3d6979a64fa1be2a53160e44735c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

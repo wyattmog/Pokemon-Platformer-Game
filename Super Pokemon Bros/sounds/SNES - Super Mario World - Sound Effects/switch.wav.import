@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4wrt70ykrc05"
+path="res://.godot/imported/switch.wav-70c4879961d7cf43f5515f354b321955.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/switch.wav"
+dest_files=["res://.godot/imported/switch.wav-70c4879961d7cf43f5515f354b321955.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

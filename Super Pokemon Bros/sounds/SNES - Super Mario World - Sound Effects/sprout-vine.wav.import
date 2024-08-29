@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cihh1e6tm5j2c"
+path="res://.godot/imported/sprout-vine.wav-a3bd05dbb79df0170bdd8834902fd85c.sample"
+
+[deps]
+
+source_file="res://sounds/SNES - Super Mario World - Sound Effects/sprout-vine.wav"
+dest_files=["res://.godot/imported/sprout-vine.wav-a3bd05dbb79df0170bdd8834902fd85c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
