@@ -11,12 +11,13 @@ var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects
 var fireball = preload("res://fireball.tscn")
 var waterball = preload("res://waterball.tscn")
 const SPEED = 250.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -280.0
 const FRICTION = 35
 const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
 var platVel = Vector2(0,0)
 var disable_input = false
+var plat_vel = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
@@ -49,6 +50,7 @@ var collected = "small"
 func _ready():
 	add_to_group("player")
 	GameState.player = self
+	GameState.display_power()
 	get_node("GrassAttack/CollisionShapeRight").disabled = true
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90)
@@ -76,6 +78,7 @@ func emit_signal_while_playing(direction):
 	#get_tree().call_group("question_block", "_grass_attack")
 	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	print(GameState.big_num_coins)
 	#if Input.is_action_just_pressed("GodMode"):
 		#get_tree().call_group("enemies", "invincible_start")
 		#get_tree().call_group("enemy_projectiles", "invincible_start")
@@ -84,25 +87,26 @@ func _physics_process(delta):
 	#print("player: ", position)
 	#print(GameState.projectile_adjustment)
 	#print(anim.get_speed_scale())
+	#print("plat ",platVel.x,"player " ,velocity.x)
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
 		if not get_node("Invincibility").is_stopped() and played:
 			#emit_signal("invincibility")
 			#add_to_group("invincibility")
-			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, randi_range(.99,1)))
+			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, randi_range(.8,1)))
 		elif get_node("Invincibility").is_stopped() and played:
-			get_tree().call_group("enemies", "invincible_end")
-			get_tree().call_group("enemy_projectiles", "invincible_end")
+			#get_tree().call_group("enemies", "invincible_end")
+			#get_tree().call_group("enemy_projectiles", "invincible_end")
+			GameState.invincible = false
 			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
+			played = false
 		#if GameState.big:
 			#scale = Vector2(1.1,1.1)
 		#else:
 			#scale = Vector2(.9,.9)
 		#print("power:",GameState.power,"collect:" ,collected, "big:", GameState.big)
 		if scaling:
-			get_tree().call_group("enemies", "invincible_start")
-			get_tree().call_group("enemy_projectiles", "invincible_start")
 			scaling = false
 			anim.stop(false)
 			#move = false
@@ -243,6 +247,8 @@ func _physics_process(delta):
 				get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
 				scale = Vector2(.90,.90)
 				played = true
+			#get_tree().call_group("enemies", "invincible_start")
+			#get_tree().call_group("enemy_projectiles", "invincible_start")
 			anim.play()
 			set_physics_process(true)
 			if scaled:
@@ -254,6 +260,7 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").set_visible(1)
 		#if GameState.power = ""
 		if GameState.power == "grass" and collected != "grass":
+			GameState.display_power()
 			audio_player.set_stream(powerup_sound)
 			audio_player.play()
 			scaled = false
@@ -266,6 +273,7 @@ func _physics_process(delta):
 			#collected = "grass"
 			scaled = true
 		elif GameState.power == "water" and collected != "water":
+			GameState.display_power()
 			audio_player.set_stream(powerup_sound)
 			audio_player.play()
 			scaled = false
@@ -278,6 +286,7 @@ func _physics_process(delta):
 			#collected = "grass"
 			scaled = true
 		elif GameState.power == "fire" and collected != "fire":
+			GameState.display_power()
 			audio_player.set_stream(powerup_sound)
 			audio_player.play()
 			scaled = false
@@ -290,8 +299,10 @@ func _physics_process(delta):
 			#collected = "grass"
 			scaled = true
 		elif GameState.power == "" and GameState.big and (collected == "fire" or collected == "water" or collected == "grass"):
+			GameState.display_power()
 			audio_player.set_stream(powerdown_sound)
 			audio_player.play()
+			GameState.invincible = true
 			scaled = false
 			#print("wow")
 			#GameState.power == "big
@@ -301,6 +312,7 @@ func _physics_process(delta):
 			await get_tree().create_timer(.40).timeout
 			scaled = true
 		elif GameState.big and not scaled:
+			GameState.display_power()
 			audio_player.set_stream(powerup_sound)
 			audio_player.play()
 			scale = Vector2(1.1,1.1)
@@ -311,6 +323,8 @@ func _physics_process(delta):
 			scaled = true
 		#elif GameState.big and GameState.power != "":
 		elif !GameState.big and scaled:
+			GameState.display_power()
+			GameState.invincible = true
 			audio_player.set_stream(powerdown_sound)
 			audio_player.play()
 			scale = Vector2(.90,.90)
@@ -381,10 +395,14 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			audio_player.set_stream(jump_sound)
 			audio_player.play()
+			if abs(platVel.x) > 20:
+				plat_vel = true
+			else:
+				plat_vel = false
 			_jumped()
-			if !velocity.x:
-				velocity.x = platVel.x * .2
-				get_node("AirResistanceTimer").start()
+			#if !velocity.x:
+				#velocity.x += platVel.x
+				#get_node("AirResistanceTimer").start()
 			#if velocity.x >= 250 or velocity.x <= -250:
 				#velocity.y = JUMP_VELOCITY - 50
 			#else:
@@ -405,10 +423,14 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("spinjump") and is_on_floor():
 			audio_player.set_stream(spin_sound)
 			audio_player.play()
+			if abs(platVel.x) > 20:
+				plat_vel = true
+			else:
+				plat_vel = false
 			_spinned()
-			if !velocity.x:
-				velocity.x = platVel.x * .2
-				get_node("AirResistanceTimer").start()
+			#if !velocity.x:
+				#velocity.x += platVel.x
+				#get_node("AirResistanceTimer").start()
 			#if velocity.x >= 250 or velocity.x <= -250:
 				#velocity.y = JUMP_VELOCITY -25
 			#else:
@@ -513,7 +535,6 @@ func _death():
 	
 func _on_bounce_signal():
 	bounce = true
-	print("jump: ",jumptype,"bounce: ", bounce)
 	if jumptype == "spin" and !animplaying:
 		#if GameState.big:
 		
@@ -610,11 +631,13 @@ func _spinned():
 	
 func _gravity(delta):
 	#print(bounce)
-	if not is_on_floor() and (jumptype == "spin") and bounce:
+	if not is_on_floor() and (jumptype == "spin") and bounce and velocity.y <= 0:
 		velocity.y += gravity * delta * 2
 	elif not is_on_floor() and (jumptype == "jump") and bounce and velocity.y <= 0:
 		velocity.y += gravity * delta 
 	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and !bounce:
+		velocity.y += gravity * delta 
+	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce:
 		velocity.y += gravity * delta 
 	elif not is_on_floor() and !disable_input:
 		velocity.y += gravity * delta * 2
@@ -720,8 +743,34 @@ func _directionalMovement(direction):
 				anim.play("BigIdle")
 			else:
 				anim.play("SmallIdle")
-		if platVel.x != 0:
+		#if platVel.x != 0:
+			#velocity.x = move_toward(velocity.x, 0 , ACCELERATION*20)
+		#elif (get_node("AirResistanceTimer").is_stopped() or is_on_floor()):
+		#print(platVel.x)
+		if abs(platVel.x)> 20:
 			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*20)
-		elif (get_node("AirResistanceTimer").is_stopped() or is_on_floor()):
+		elif is_on_floor():
 			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
+		elif not is_on_floor() and !plat_vel:
+			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*3)
+			
+		#elif platVel.x != 0:
+			
 		
+		
+func _on_invincible_area_body_entered(body):
+	if body.name == "Player":
+		#print("entered")
+		GameState.invincible = true
+		#get_tree().call_group("enemies", "invincible_start")
+		#get_tree().call_group("shell_projectile", "invincible_start")
+		#get_tree().call_group("enemy_projectiles", "invincible_start")
+
+
+func _on_invincible_area_body_exited(body):
+	if body.name == "Player":
+		#print("exited")
+		GameState.invincible = false
+		#get_tree().call_group("enemies", "invincible_end")
+		#get_tree().call_group("shell_projectile", "invincible_end")
+		#get_tree().call_group("enemy_projectiles", "invincible_end")

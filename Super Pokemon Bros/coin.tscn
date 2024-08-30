@@ -18,6 +18,9 @@ script = ExtResource("2_u1fy4")
 position = Vector2(2.38419e-07, 0)
 shape = SubResource("RectangleShape2D_pg1n5")
 
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"coin"
+
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_6barv")

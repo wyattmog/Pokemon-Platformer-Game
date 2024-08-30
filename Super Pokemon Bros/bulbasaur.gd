@@ -15,7 +15,7 @@ signal bounce_signal
 var attacked = false
 var nearby
 #var collided = false
-var invincible = false
+#var invincible = false
 signal enemy_death(body)
 var animplaying = false
 var start = false
@@ -27,12 +27,17 @@ func _ready():
 	#velocity.y = JUMP_VELOCITY
 
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
+	#print("invincible",invincible)
 	#print("Player: ", GameState.player.position.y, "Enenmy: ", position.y/2 +90)
 	#print(get_node("GroundTimer").is_stopped(), velocity.y)
 	 #Add the gravity.
 	#if not is_on_floor() and get_node("GroundTimer").is_stopped():
 		#get_node("GroundTimer").start()
-	if !isdead and start:
+	if !isdead and start: 
 		#print(GameState.player.position.y," and " ,position.y)
 		if velocity.y < 0:
 			anim.play("Jump")
@@ -42,10 +47,17 @@ func _physics_process(delta):
 			anim.play("Ground")
 		if not get_node("GroundTimer").is_stopped():
 			velocity.x = 0
+		#if is_on_floor():
+			#get_node("CollisionLeft").set_deferred("disabled", false)
+			#get_node("CollisionRight").set_deferred("disabled", false)
+			#get_node("CollisionTop").set_deferred("disabled", false)
 		if is_on_floor() and get_node("GroundTimer").is_stopped():
 			velocity.y = JUMP_VELOCITY
 			get_node("GroundTimer").start()
 		elif not is_on_floor():
+			#get_node("CollisionLeft").set_deferred("disabled", true)
+			#get_node("CollisionRight").set_deferred("disabled", true)
+			#get_node("CollisionTop").set_deferred("disabled", true)
 			velocity.y += gravity * delta
 			velocity.x = -SPEED
 	else: 
@@ -87,10 +99,10 @@ func death():
 		audio_player.set_pitch_scale(1)
 	audio_player.play()
 	get_node("PlayerHitbox/CollisionShape2D").set_deferred("disabled", true)
-	get_node("CollisionDown").set_deferred("disabled", true)
-	get_node("CollisionTop").set_deferred("disabled", true)
-	get_node("CollisionRight").set_deferred("disabled", true)
-	get_node("CollisionLeft").set_deferred("disabled", true)
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	#get_node("CollisionTop").set_deferred("disabled", true)
+	#get_node("CollisionRight").set_deferred("disabled", true)
+	#get_node("CollisionLeft").set_deferred("disabled", true)
 	emit_signal("enemy_death", get_path())
 	anim.play("Death")
 	if !attacked and jumped_on:
@@ -99,14 +111,14 @@ func death():
 	await get_tree().create_timer(0.25).timeout
 	self.queue_free()
 	
-	
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+	#
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	attacked = true
@@ -123,7 +135,7 @@ func is_above():
 
 
 func _on_player_hitbox_body_entered(body):
-	if body.name == "Player" and not isdead and !invincible and is_above():
+	if body.name == "Player" and not isdead and !GameState.invincible and is_above():
 		jumped_on = true
 		death()
 		isdead=true
@@ -131,7 +143,7 @@ func _on_player_hitbox_body_entered(body):
 		jumped_on = false
 		death()
 		isdead=true
-	elif body.name == "Player" and !isdead and !invincible:
+	elif body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

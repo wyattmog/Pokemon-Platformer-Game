@@ -139,7 +139,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mri0l"]
 resource_local_to_scene = true
-size = Vector2(54, 17.5)
+size = Vector2(98, 20.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im0w4"]
 size = Vector2(386.25, 276)
@@ -329,13 +329,12 @@ shape = SubResource("SeparationRayShape2D_ag3u0")
 position = Vector2(0, -7)
 scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_2seva")
-animation = &"Attack"
-frame = 1
+animation = &"Idle"
 
 [node name="LeafDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeafDetection"]
-position = Vector2(0, 1)
+position = Vector2(0, 2.625)
 shape = SubResource("RectangleShape2D_mri0l")
 
 [node name="PlayerDetection" type="Area2D" parent="."]

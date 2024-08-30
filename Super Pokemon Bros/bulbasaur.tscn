@@ -1,25 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://betwdofsgyooc"]
+[gd_scene load_steps=29 format=3 uid="uid://betwdofsgyooc"]
 
 [ext_resource type="Script" path="res://bulbasaur.gd" id="1_24x02"]
 [ext_resource type="Texture2D" uid="uid://gmuasefy7ag8" path="res://sprites/effects/sma4_sprites copy 3.png" id="2_ihrup"]
 [ext_resource type="Texture2D" uid="uid://ua6r8137q4hs" path="res://sprites/player/all anims/death/New Piskel.png" id="3_r16ik"]
 [ext_resource type="Texture2D" uid="uid://brj65vkc2j38a" path="res://sprites/mobs/bulbasaur/35063 (1).png" id="4_6gj8u"]
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_0h07u"]
-resource_local_to_scene = true
-length = 18.0
-
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_4csqe"]
-resource_local_to_scene = true
-length = 15.0
-
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_advhx"]
-resource_local_to_scene = true
-length = 14.0
-
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_ag3u0"]
-resource_local_to_scene = true
-length = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ex2t"]
+size = Vector2(33, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gi37v"]
 atlas = ExtResource("3_r16ik")
@@ -133,7 +120,7 @@ size = Vector2(386.25, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qvp"]
 resource_local_to_scene = true
-size = Vector2(32, 34)
+size = Vector2(35, 34)
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_q2nsa"]
 
@@ -375,24 +362,11 @@ _data = {
 [node name="Bulbasaur" type="CharacterBody2D"]
 script = ExtResource("1_24x02")
 
-[node name="CollisionDown" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("SeparationRayShape2D_0h07u")
-
-[node name="CollisionLeft" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("SeparationRayShape2D_4csqe")
-
-[node name="CollisionTop" type="CollisionShape2D" parent="."]
-rotation = 3.14159
-shape = SubResource("SeparationRayShape2D_advhx")
-
-[node name="CollisionRight" type="CollisionShape2D" parent="."]
-rotation = -1.5708
-shape = SubResource("SeparationRayShape2D_ag3u0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8ex2t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -1)
 scale = Vector2(1, 0.847)
 sprite_frames = SubResource("SpriteFrames_dwpjs")
 animation = &"Ground"
@@ -414,7 +388,6 @@ shape = SubResource("RectangleShape2D_dcsvf")
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_f7qvp")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

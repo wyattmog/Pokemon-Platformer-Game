@@ -3,7 +3,7 @@ extends CharacterBody2D
 var SPEED = 150
 var stationary = false
 var direction
-var invincible = false
+#var invincible = false
 var isdead = false
 var nearby = false
 var started = false
@@ -27,6 +27,10 @@ func _ready():
 	stationary = true
 	#set_absorbent(false)
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	if stationary:
 		add_to_group("enemy_projectiles")
 		remove_from_group("projectiles")
@@ -95,13 +99,13 @@ func death():
 		#get_node("AnimatedSprite2D").play("death")
 		await get_tree().create_timer(2.0).timeout
 	self.queue_free()
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 	
 func _on_leaf_detection_body_entered(body):
 	if body.name == "Player" and !isdead:
@@ -157,7 +161,7 @@ func _on_area_2d_area_entered(area):
 				velocity.x = SPEED * direction
 				#velocity.y = 0
 				stationary = false
-			elif !invincible:
+			elif !GameState.invincible:
 				if GameState.big and GameState.power == "":
 					GameState.big = false
 				elif GameState.big and GameState.power != "":
@@ -191,7 +195,7 @@ func _on_area_2d_area_entered(area):
 				get_tree().call_group("player", "_spawn_kick")
 				get_tree().call_group("player", "_on_bounce_signal")
 				death()
-			elif !invincible:
+			elif !GameState.invincible:
 				if GameState.big and GameState.power == "":
 					GameState.big = false
 				elif GameState.big and GameState.power != "":

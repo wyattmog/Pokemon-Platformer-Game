@@ -5,7 +5,7 @@ var SPEED = 100
 var started = false
 #var isstopped = false
 var isdead = false
-var invincible = false
+#var invincible = false
 var nearby = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,6 +22,10 @@ func _ready():
 	started = true
 
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	if isdead:
 		#get_node("CollisionShape2D").set_defered("disabled", true)
 		queue_free()
@@ -84,13 +88,13 @@ func _physics_process(delta):
 ##
 	#move_and_slide()
 
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 
 func _on_leaf_detection_body_entered(body):
 	if body.name == "Player" and !isdead:
@@ -105,7 +109,7 @@ func _on_player_grass_attack():
 		isdead = true
 		
 func _on_area_2d_body_entered(body):
-	if body.name == "Player" and !invincible:
+	if body.name == "Player" and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

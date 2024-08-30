@@ -3,6 +3,10 @@ signal on_tile
 var fort_node
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GameState.checkpoint:
+		GameState.player.position = Vector2(2437, 505)
+	else:
+		GameState.player.position = Vector2(63, 528)
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
@@ -10,8 +14,8 @@ func _ready():
 	#get_tree().call_group("enemies", "_on_player_grass_attack")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("CanvasLayer/Label").text = "Coins: %d" % GameState.num_coins
-
+	pass
+	
 func _on_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
 
@@ -41,22 +45,18 @@ func _on_void_area_body_entered(body):
 
 
 
-
-func _on_invincible_area_body_entered(body):
-	if body.name == "Player":
-		print("entered")
-		get_tree().call_group("enemies", "invincible_start")
-		get_tree().call_group("shell_projectile", "invincible_start")
-		get_tree().call_group("enemy_projectiles", "invincible_start")
-
-
-func _on_invincible_area_body_exited(body):
-	if body.name == "Player":
-		print("exited")
-		get_tree().call_group("enemies", "invincible_end")
-		get_tree().call_group("shell_projectile", "invincible_end")
-		get_tree().call_group("enemy_projectiles", "invincible_end")
-
-
-func _on_bounce_signal():
-	pass # Replace with function body.
+#
+#func _on_invincible_area_body_entered(body):
+	#if body.name == "Player":
+		#print("entered")
+		#get_tree().call_group("enemies", "invincible_start")
+		#get_tree().call_group("shell_projectile", "invincible_start")
+		#get_tree().call_group("enemy_projectiles", "invincible_start")
+#
+#
+#func _on_invincible_area_body_exited(body):
+	#if body.name == "Player":
+		#print("exited")
+		#get_tree().call_group("enemies", "invincible_end")
+		#get_tree().call_group("shell_projectile", "invincible_end")
+		#get_tree().call_group("enemy_projectiles", "invincible_end")

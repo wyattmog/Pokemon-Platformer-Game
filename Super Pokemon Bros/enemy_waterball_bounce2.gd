@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var splash_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/water-gun_xKgwgdvI.wav")
 var water_particle = preload("res://water_particles.tscn")
 var bounce_count = 0
-var invincible = false
+#var invincible = false
 var isdead = false
 var nearby
 var started = false
@@ -36,6 +36,10 @@ func _ready():
 	started = true
 	
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	if isdead:
 		queue_free()
 	if get_node("WaterTimer").is_stopped():
@@ -152,13 +156,13 @@ func _physics_process(delta):
 	#
 	#get_parent().add_child(waterball_1)
 	#get_parent().add_child(waterball_2)
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 	
 func _on_leaf_detection_body_entered(body):
 	if body.name == "Player" and !isdead:
@@ -180,7 +184,7 @@ func _spawn_particles():
 	add_sibling(water_particles)
 	get_node("WaterTimer").start()
 func _on_area_2d_body_entered(body):
-	if body.name == "Player" and !invincible:
+	if body.name == "Player" and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

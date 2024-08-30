@@ -10,7 +10,7 @@ var water_particle = preload("res://water_particles.tscn")
 var bounce2 = preload("res://enemy_waterball_bounce2.tscn")
 #var has_split = false
 var bounce_count = 0
-var invincible = false
+#var invincible = false
 var isdead = false
 var nearby
 var started = false
@@ -37,6 +37,10 @@ func _ready():
 	started = true
 	
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	if isdead:
 		queue_free()
 	if !get_node("AnimatedSprite2D").is_playing():
@@ -121,13 +125,13 @@ func _physics_process(delta):
 	#
 	#get_parent().add_child(waterball_1)
 	#get_parent().add_child(waterball_2)
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 	
 func _on_leaf_detection_body_entered(body):
 	if body.name == "Player" and !isdead:
@@ -150,7 +154,7 @@ func _spawn_particles():
 	get_node("WaterTimer").start()
 	
 func _on_area_2d_body_entered(body):
-	if body.name == "Player" and !invincible:
+	if body.name == "Player" and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

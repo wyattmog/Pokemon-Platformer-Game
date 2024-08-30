@@ -1,39 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt3qu0yv46gpb"]
+[gd_scene load_steps=8 format=3 uid="uid://dt3qu0yv46gpb"]
 
 [ext_resource type="Texture2D" uid="uid://bol0qe4j44ei2" path="res://sprites/tiles/144428 (1) copy.png" id="1_2dhu2"]
-[ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="2_jyca8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fwemm"]
-font = ExtResource("2_jyca8")
-font_size = 8
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://xn5wno2dn7ec" path="res://time_label.tscn" id="1_p1lyb"]
+[ext_resource type="PackedScene" uid="uid://dw5alky3b6qje" path="res://score_label.tscn" id="1_v8gfv"]
+[ext_resource type="PackedScene" uid="uid://cee167db61rfh" path="res://lives_label.tscn" id="2_fdlih"]
+[ext_resource type="PackedScene" uid="uid://bgbmpoqq3uaxc" path="res://current_power_label.tscn" id="3_mewqp"]
+[ext_resource type="PackedScene" uid="uid://c0s8drrybj16g" path="res://coin_label.tscn" id="4_btv8g"]
+[ext_resource type="PackedScene" uid="uid://bsofs254r7ply" path="res://big_coin_label.tscn" id="5_6nnv7"]
 
 [node name="StatusBar" type="CanvasLayer"]
 
+[node name="TimeLabel" parent="." instance=ExtResource("1_p1lyb")]
+position = Vector2(43, 0)
+
+[node name="ScoreLabel" parent="." instance=ExtResource("1_v8gfv")]
+position = Vector2(92, 1)
+
+[node name="LivesLabel" parent="." instance=ExtResource("2_fdlih")]
+position = Vector2(-80, 0)
+
+[node name="CurrentPowerLabel" parent="." instance=ExtResource("3_mewqp")]
+position = Vector2(10, 0)
+
+[node name="CoinLabel" parent="." instance=ExtResource("4_btv8g")]
+position = Vector2(100, -8)
+
+[node name="BigCoinLabel" parent="." instance=ExtResource("5_6nnv7")]
+position = Vector2(-42, -5)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2dhu2")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 100.0
-offset_top = -8.0
-offset_right = 140.0
-offset_bottom = 15.0
-text = "00"
-label_settings = SubResource("LabelSettings_fwemm")
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 85.0
-offset_right = 125.0
-offset_bottom = 23.0
-text = "0000"
-label_settings = SubResource("LabelSettings_fwemm")
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 85.0
-offset_right = 125.0
-offset_bottom = 23.0
-text = "0000"
-label_settings = SubResource("LabelSettings_fwemm")

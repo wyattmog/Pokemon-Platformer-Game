@@ -16,7 +16,7 @@ var attacked = false
 var jumped_on = false
 var nearby
 #var collided = false
-var invincible = false
+#var invincible = false
 signal enemy_death(body)
 var animplaying = false
 var start = false
@@ -30,6 +30,10 @@ func _ready():
 	#velocity.y = JUMP_VELOCITY
 
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	#print(count)
 	#print(get_node("GroundTimer").is_stopped(), velocity.y)
 	 #Add the gravity.
@@ -55,7 +59,7 @@ func _physics_process(delta):
 		if not get_node("RestTimer").is_stopped():
 			anim.play("Idle")
 			count = 0
-		if get_node("RestTimer").is_stopped() and count <= max_count and !invincible:
+		if get_node("RestTimer").is_stopped() and count <= max_count and !GameState.invincible:
 			#print("wowow")
 			anim.play("Attack")
 			await get_tree().create_timer(.1).timeout
@@ -123,15 +127,15 @@ func death():
 	self.queue_free()
 	
 	
-func invincible_start():
-	#print("started")
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	#print('stopped') 
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	##print("started")
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	##print('stopped') 
+	#invincible = false
+	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	jumped_on = false
@@ -149,7 +153,7 @@ func is_above():
 
 func _on_player_hitbox_body_entered(body):
 	#print("wpwpwp")
-	if body.name == "Player" and not isdead and !invincible and is_above():
+	if body.name == "Player" and not isdead and !GameState.invincible and is_above():
 		jumped_on = true
 		death()
 		isdead=true
@@ -157,7 +161,7 @@ func _on_player_hitbox_body_entered(body):
 		jumped_on = false
 		death()
 		isdead=true
-	elif body.name == "Player" and !isdead and !invincible:
+	elif body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

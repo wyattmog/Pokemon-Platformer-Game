@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://c0ws2rvhej4oj"]
+[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://c0ws2rvhej4oj"]
 
 [ext_resource type="Texture2D" uid="uid://dw46xal1ijqqu" path="res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png" id="1_m4f0e"]
 [ext_resource type="Texture2D" uid="uid://cfemxfb0ijags" path="res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png" id="2_1cd6v"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="5_0hx66"]
 [ext_resource type="PackedScene" uid="uid://vxnkx35swspn" path="res://coin.tscn" id="6_smm5p"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="7_2qtk7"]
+[ext_resource type="PackedScene" uid="uid://buv2wfq5ehcmg" path="res://big_coin.tscn" id="9_560x7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_36do3"]
 tile_data = PackedInt32Array(0, 65537, 11, 65536, 65537, 12, 131072, 131073, 11, 196608, 131073, 12, 262144, 65537, 15, 327680, 65537, 16, 393216, 65537, 17, 458752, 65537, 18, 1, 131073, 11, 65537, 131073, 12, 131073, 131073, 13, 196609, 131073, 14, 262145, 131073, 5, 327681, 131073, 6, 393217, 131073, 17, 458753, 131073, 18, 2, 196609, 11, 65538, 196609, 12, 131074, 131073, 5, 196610, 131073, 6, 262146, 131073, 5, 327682, 131073, 6, 393218, 131073, 5, 458754, 131073, 6, 524290, 131073, 17, 589826, 131073, 18, 65539, 262145, 12, 131075, 262145, 13, 196611, 262145, 14, 262147, 131073, 5, 327683, 131073, 6, 393219, 131073, 5, 458755, 131073, 6, 524291, 131073, 5, 589827, 131073, 6, 262148, 262145, 13, 327684, 262145, 14, 393220, 131073, 5, 458756, 131073, 6, 524292, 131073, 5, 589828, 131073, 6, 393221, 262145, 13, 458757, 262145, 14, 524293, 131073, 5, 589829, 131073, 6, 524294, 262145, 13, 589830, 262145, 14)
@@ -28941,11 +28942,12 @@ texture_region_size = Vector2i(16, 8)
 scenes/1/scene = ExtResource("5_0hx66")
 scenes/2/scene = ExtResource("6_smm5p")
 scenes/3/scene = ExtResource("7_2qtk7")
+scenes/4/scene = ExtResource("9_560x7")
 
 [resource]
 tile_size = Vector2i(16, 8)
 physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_cddfx")
 sources/0 = SubResource("TileSetAtlasSource_ccg6q")
 sources/1 = SubResource("TileSetAtlasSource_sxh2i")

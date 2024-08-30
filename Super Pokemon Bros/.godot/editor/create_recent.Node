@@ -1,9 +1,9 @@
-Sprite2D
-Label
-CanvasLayer
-CollisionShape2D
-Area2D
 AnimatedSprite2D
+CollisionShape2D
+Label
+Sprite2D
+CanvasLayer
+Area2D
 StaticBody2D
 Timer
 AnimationPlayer

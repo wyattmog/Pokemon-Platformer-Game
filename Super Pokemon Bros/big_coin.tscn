@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://buv2wfq5ehcmg"]
+
+[ext_resource type="PackedScene" uid="uid://cc27lt2m5bta0" path="res://block.tscn" id="1_p2jmd"]
+[ext_resource type="Script" path="res://big_coin.gd" id="2_4lggh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg1n5"]
+resource_local_to_scene = true
+size = Vector2(20, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6barv"]
+resource_local_to_scene = true
+size = Vector2(14, 14)
+
+[node name="BigCoin" instance=ExtResource("1_p2jmd")]
+script = ExtResource("2_4lggh")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_pg1n5")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(1.3, 1.3)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_6barv")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.133
+one_shot = true
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

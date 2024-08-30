@@ -18,7 +18,7 @@ var nearby
 var start = false
 var going = false
 #var collided = false
-var invincible = false
+#var invincible = false
 signal enemy_death(body)
 
 func _ready(): 
@@ -26,6 +26,10 @@ func _ready():
 	anim.play("Walk")
 
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	#print(invincible)
 	#print(isdead)
 	#print(velocity.x)
@@ -33,6 +37,7 @@ func _physics_process(delta):
 	#print(attacked)
 	 #Add the gravity.
 	if !isdead and start:
+		#print(invincible)
 		if velocity.x == 0 :
 			SPEED *= -1
 		#anim.play("Walk")
@@ -102,13 +107,15 @@ func death():
 	self.queue_free()
 	
 	
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+#func invincible_start():
+	##print("started")
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	##print("ended")
+	#invincible = false
+	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	attacked = true
@@ -124,7 +131,7 @@ func is_above():
 
 
 func _on_player_hitbox_body_entered(body):
-	if body.name == "Player" and not isdead and !invincible and is_above():
+	if body.name == "Player" and not isdead and !GameState.invincible and is_above():
 		jumped_on = true
 		death()
 		isdead=true
@@ -135,7 +142,7 @@ func _on_player_hitbox_body_entered(body):
 	elif body.is_in_group("enemies") and not isdead:
 		SPEED *= -1
 		#isdead=true
-	elif body.name == "Player" and !isdead and !invincible:
+	elif body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

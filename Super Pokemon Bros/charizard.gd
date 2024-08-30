@@ -19,7 +19,6 @@ var attacked = false
 var started = true
 var nearby
 #var collided = false
-var invincible = false
 signal enemy_death(body)
 var animplaying = false
 var start = false
@@ -33,6 +32,10 @@ func _ready():
 	#velocity.y = JUMP_VELOCITY
 
 func _physics_process(delta):
+	if GameState.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
 	#print(get_node("GroundTimer").is_stopped(), velocity.y)
 	 #Add the gravity.
 	#if not is_on_floor() and get_node("GroundTimer").is_stopped():
@@ -67,7 +70,7 @@ func _physics_process(delta):
 			audio_player.set_stream(flame_sound)
 			audio_player.play()
 			print("wowow")
-		if get_node("RestTimer").is_stopped() and !animplaying and in_range and !invincible:
+		if get_node("RestTimer").is_stopped() and !animplaying and in_range and !GameState.invincible:
 			#print("wowow")
 			get_node("Flamethrower").set_visible(1)
 			anim.play("Attack")
@@ -117,14 +120,14 @@ func death():
 	await get_tree().create_timer(0.25).timeout
 	self.queue_free()
 	
-	
-func invincible_start():
-	invincible = true
-	set_collision_mask_value(1, false)
-	
-func invincible_end():
-	invincible = false
-	set_collision_mask_value(1, true)
+	#
+#func invincible_start():
+	#invincible = true
+	#set_collision_mask_value(1, false)
+	#
+#func invincible_end():
+	#invincible = false
+	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	attacked = true
@@ -141,7 +144,7 @@ func is_above():
 
 
 func _on_player_hitbox_body_entered(body):
-	if body.name == "Player" and not isdead and !invincible and is_above():
+	if body.name == "Player" and not isdead and !GameState.invincible and is_above():
 		jumped_on = true
 		death()
 		isdead=true
@@ -149,7 +152,7 @@ func _on_player_hitbox_body_entered(body):
 		jumped_on = false
 		death()
 		isdead=true
-	elif body.name == "Player" and !isdead and !invincible:
+	elif body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":
@@ -178,7 +181,7 @@ func _on_attack_radius_body_exited(body):
 
 
 func _on_flamethrower_area_body_entered(body):
-	if body.name == "Player" and !isdead and !invincible:
+	if body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

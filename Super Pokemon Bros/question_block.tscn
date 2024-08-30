@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5mhh"]
 resource_local_to_scene = true
-size = Vector2(8.35821, 14)
+size = Vector2(8.35821, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bqsq"]
 resource_local_to_scene = true
@@ -19,7 +19,7 @@ script = ExtResource("2_dtd0v")
 spawned_scene = null
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(5.96046e-08, 1)
+position = Vector2(5.96046e-08, 4)
 scale = Vector2(1.675, 1)
 shape = SubResource("RectangleShape2D_t5mhh")
 

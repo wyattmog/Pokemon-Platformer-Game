@@ -1,7 +1,8 @@
 res://
 res://sprites/tiles
-res://sprites/mobs/squirtle
+res://sprites/mobs/blastoise
 res://sprites/entities/powerups
+res://sprites/mobs/squirtle
 res://sprites/effects
 res://sprites/mobs/venusaur
 res://sprites/player/Default Player
@@ -19,4 +20,3 @@ res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001
 res://sprites/player/all anims/slide
 res://sprites/player/all anims/idle
 res://sprites/player/all anims/run
-res://sprites/player/all anims/walk
