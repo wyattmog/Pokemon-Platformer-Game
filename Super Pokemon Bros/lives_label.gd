@@ -5,5 +5,7 @@ func _ready():
 func display_lives():
 	
 	
-	get_node("Label").set_text(GameState.num_lives)
+	get_node("Label").set_text(str(GameState.num_lives))
+	
+	
 	

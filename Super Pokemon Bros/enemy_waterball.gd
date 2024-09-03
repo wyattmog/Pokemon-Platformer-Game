@@ -4,6 +4,8 @@ const JUMP_VELOCITY = -200.0
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var water_bounce1 = preload("res://enemy_waterball_bounce1.tscn")
+@onready var audio_player = get_node("SoundEffects")
+var splash_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/water-gun_xKgwgdvI.wav")
 var water_particle = preload("res://water_particles.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #var has_split = false

@@ -8,7 +8,7 @@ var num_coins: int = 0
 var power: String = ""
 var direct: float = 0
 var split = false
-var num_lives: int = 0
+var num_lives: int = 5
 var projectile_adjustment = 0
 var stomp_counter = 0
 var invincible = false
@@ -22,9 +22,11 @@ func _give_coins(num:int):
 func _give_big_coins(num:int):
 	big_num_coins += num
 	get_tree().call_group("status_bar", "display_big_coins")
-func _add_lives():
+func _add_lives(num:int):
+	num_lives += 1
 	get_tree().call_group("status_bar", "display_lives")
-func _remove_lives():
+func _remove_lives(num:int):
+	num_lives -= 1
 	get_tree().call_group("status_bar", "display_lives")
 func _give_score(num:int):
 	score += num

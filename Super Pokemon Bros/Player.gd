@@ -12,7 +12,7 @@ var grass_particle = preload("res://grass_particles.tscn")
 var fireball = preload("res://fireball.tscn")
 var waterball = preload("res://waterball.tscn")
 const SPEED = 225.00
-const JUMP_VELOCITY = -280.0
+const JUMP_VELOCITY = -250.0
 const FRICTION = 35
 const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
@@ -52,7 +52,7 @@ var direction
 var played = false 
 var collected = "small"
 func _ready():
-	print(get_node("Camera2D").get_drag_margin(1), " and ", get_node("Camera2D").get_drag_margin(3))
+	#print(get_node("Camera2D").get_drag_margin(1), " and ", get_node("Camera2D").get_drag_margin(3))
 	add_to_group("player")
 	GameState.player = self
 	GameState.display_power()
@@ -86,14 +86,9 @@ func emit_signal_while_playing(direction):
 	#get_tree().call_group("question_block", "_grass_attack")
 	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
+	
 	#print(GameState.score)
-	
-	
-	
-	
-	
-	#print("shellkicked ",GameState.shellkicked," counter ", GameState.stomp_counter)
-	#print("player vel ", velocity.y, " margin ", target_top_margin)
+	print("player vel ", velocity.y)
 	#print(target_bottom_margin, target_top_margin)
 	#print(GameState.big_num_coins)
 	#if velocity.y >= 0 and not is_on_floor():
@@ -112,9 +107,9 @@ func _physics_process(delta):
 		target_bottom_margin =1.00
 		#get_node("Camera2D").set_drag_vertical_enabled(1)
 		target_top_margin = .00
-		
-	get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, target_bottom_margin, MARGIN_CHANGE_SPEED * delta)
-	get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, target_top_margin, MARGIN_CHANGE_SPEED * delta)
+	#if get_node("CameraTimer").is_stopped():
+	get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, target_bottom_margin, MARGIN_CHANGE_SPEED * .5 *delta)
+	get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, target_top_margin, MARGIN_CHANGE_SPEED * .5 * delta)
 	#if Input.is_action_just_pressed("GodMode"):
 		#get_tree().call_group("enemies", "invincible_start")
 		#get_tree().call_group("enemy_projectiles", "invincible_start")
@@ -492,8 +487,8 @@ func _physics_process(delta):
 			#elif direction == 1: 
 				#last_pressed = 1
 				
-		if (!Input.is_action_pressed("spinjump") and !Input.is_action_pressed("ui_accept")) and velocity.y < 0:
-			velocity.y += gravity*delta
+		#if (!Input.is_action_pressed("spinjump") and !Input.is_action_pressed("ui_accept")) and velocity.y < 0:
+			#velocity.y += gravity*delta
 		if !Input.is_action_pressed("down") and is_on_floor() and !GameState.big:
 				get_node("AnimatedSprite2D").offset.y = 0
 		if Input.is_action_just_pressed("down") and velocity.x:
@@ -608,6 +603,7 @@ func _death():
 	velocity.x = 0
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	await get_tree().create_timer(2.5).timeout
+	GameState._remove_lives(1)
 	get_tree().call_group("worlds", "_on_player_dead")
 	get_tree().change_scene_to_file("res://main.tscn")
 	
@@ -633,6 +629,7 @@ func _on_bounce_signal():
 		_jumped()
 	
 func _jumped():
+	#get_node("CameraTimer").start
 	emit_signal("jumped")
 	if velocity.x >= 225 or velocity.x <= -225:
 		velocity.y = JUMP_VELOCITY - 50
@@ -661,6 +658,7 @@ func _jumped():
 		last_pressed = 1
 	
 func _spinned():
+	#get_node("CameraTimer").start
 	#print("wpow")
 	emit_signal("jumped")
 	if (velocity.x >= 225 or velocity.x <= -225) and GameState.big:
@@ -729,17 +727,18 @@ func _gravity(delta):
 	if not is_on_floor() and (jumptype == "spin") and bounce and velocity.y <= 0:
 		velocity.y += gravity * delta * 2
 	elif not is_on_floor() and (jumptype == "jump") and bounce and velocity.y <= 0:
+		velocity.y += gravity * delta
+	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and !bounce and velocity.y < abs(JUMP_VELOCITY):
 		velocity.y += gravity * delta 
-	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and !bounce:
+		print(velocity.y < abs(JUMP_VELOCITY))
+	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce and velocity.y < abs(JUMP_VELOCITY):
 		velocity.y += gravity * delta 
-	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce:
-		velocity.y += gravity * delta 
-	elif not is_on_floor() and !disable_input:
-		velocity.y += gravity * delta * 2
+	elif not is_on_floor() and not (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and not velocity.y > abs(JUMP_VELOCITY*2):
+		velocity.y += gravity * delta * 1.75
 	elif disable_input:
 		#print("wow")
 		velocity.y += gravity * delta * 1.2
-	else:
+	elif is_on_floor():
 		emit_signal("landed")
 		if not GameState.shellkicked:
 			GameState.stomp_counter = 0

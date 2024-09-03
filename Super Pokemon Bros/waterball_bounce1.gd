@@ -14,6 +14,8 @@ var started = false
 #var max_bounces = 3
 func _ready():
 	add_to_group("projectiles")
+	audio_player.set_stream(splash_sound)
+	audio_player.play()
 	#GameState.split = false
 	#get_node("AnimatedSprite2D2").set_visible(0)
 	#get_node("AnimatedSprite2D3").set_visible(0)

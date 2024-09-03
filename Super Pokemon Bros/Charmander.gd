@@ -83,6 +83,8 @@ func death():
 		GameState._give_score(5000)
 	elif GameState.stomp_counter == 8:
 		GameState._give_score(8000)
+	elif GameState.stomp_counter > 8:
+		GameState._add_lives(1)
 	GameState.stomp_counter += 1
 	#chase = false
 	audio_player.set_stream(death_sound)
