@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw5alky3b6qje"]
 
 [ext_resource type="Script" path="res://score_label.gd" id="1_qnee3"]
-[ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="1_w0a0y"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="2_i77h4"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n3h4t"]
-font = ExtResource("1_w0a0y")
+[sub_resource type="LabelSettings" id="LabelSettings_gvtks"]
+line_spacing = 5.0
+font = ExtResource("2_i77h4")
 font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 1)
 
 [node name="ScoreLabel" type="Node2D"]
+scale = Vector2(1.05, 0.75)
 script = ExtResource("1_qnee3")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_n3h4t")
+theme_override_constants/line_spacing = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_gvtks")

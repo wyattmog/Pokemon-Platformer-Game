@@ -10,8 +10,11 @@ var direct: float = 0
 var split = false
 var num_lives: int = 0
 var projectile_adjustment = 0
+var stomp_counter = 0
 var invincible = false
 var checkpoint = false
+var score = 0
+var shellkicked = false
 # Called when the node enters the scene tree for the first time.
 func _give_coins(num:int):
 	num_coins += num
@@ -23,7 +26,8 @@ func _add_lives():
 	get_tree().call_group("status_bar", "display_lives")
 func _remove_lives():
 	get_tree().call_group("status_bar", "display_lives")
-func _give_score():
+func _give_score(num:int):
+	score += num
 	get_tree().call_group("status_bar", "display_score")
 func display_power():
 	get_tree().call_group("status_bar", "display_power")

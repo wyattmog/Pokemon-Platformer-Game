@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://y7rpleqrx31j"]
+
+[ext_resource type="Texture2D" uid="uid://ch8ig8wixqfp2" path="res://sprites/effects/IMG_3258 (2).png" id="1_qeqvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1lc"]
+atlas = ExtResource("1_qeqvi")
+region = Rect2(0, 0, 11, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co3wl"]
+atlas = ExtResource("1_qeqvi")
+region = Rect2(11, 0, 11, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h341"]
+atlas = ExtResource("1_qeqvi")
+region = Rect2(0, 9, 11, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqxsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk1lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co3wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h341")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"particle",
+"speed": 15.0
+}]
+
+[node name="GrassParticles" type="Node2D"]
+z_index = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uqxsp")
+animation = &"particle"
+autoplay = "particle"
+frame = 3
+frame_progress = 1.0

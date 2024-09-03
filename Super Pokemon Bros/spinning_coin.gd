@@ -9,6 +9,7 @@ func _ready():
 	emit_signal("coin_spawned")
 	get_node("AnimatedSprite2D").play("spinning")
 	GameState._give_coins(1)
+	GameState._give_score(200)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

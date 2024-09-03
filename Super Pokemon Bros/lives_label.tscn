@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cee167db61rfh"]
 
 [ext_resource type="Script" path="res://lives_label.gd" id="1_bgi5k"]
-[ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="1_yvp1r"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="2_geh0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k5u0b"]
-font = ExtResource("1_yvp1r")
+line_spacing = 5.0
+font = ExtResource("2_geh0a")
 font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -12,10 +13,11 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="LivesLabel" type="Node2D"]
+scale = Vector2(1.05, 0.75)
 script = ExtResource("1_bgi5k")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "0"
+theme_override_constants/line_spacing = 1
 label_settings = SubResource("LabelSettings_k5u0b")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://xn5wno2dn7ec"]
 
 [ext_resource type="Script" path="res://time_label.gd" id="1_exvfh"]
-[ext_resource type="FontFile" uid="uid://cfimxpyx6jga" path="res://Super-Mario-World.ttf" id="2_vpn5n"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="2_qbpty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kn8fp"]
-font = ExtResource("2_vpn5n")
+font = ExtResource("2_qbpty")
 font_size = 8
 font_color = Color(0.972549, 0.847059, 0.439216, 1)
 outline_size = 4
@@ -13,10 +13,12 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="TimeLabel" type="Node2D"]
+scale = Vector2(1.05, 0.75)
 script = ExtResource("1_exvfh")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_constants/line_spacing = 1
 text = "0"
 label_settings = SubResource("LabelSettings_kn8fp")

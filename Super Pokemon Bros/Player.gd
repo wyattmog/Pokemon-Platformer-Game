@@ -8,9 +8,10 @@ var powerup_sound = preload("res://sounds/SNES - Super Mario World - Sound Effec
 var powerdown_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/pipe.wav")
 var projectile = preload("res://sounds/SNES - Super Mario World - Sound Effects/fireball.wav")
 var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_lost_a_life.wav")
+var grass_particle = preload("res://grass_particles.tscn")
 var fireball = preload("res://fireball.tscn")
 var waterball = preload("res://waterball.tscn")
-const SPEED = 250.0
+const SPEED = 225.00
 const JUMP_VELOCITY = -280.0
 const FRICTION = 35
 const ACCELERATION = 5.0
@@ -34,11 +35,14 @@ var bounce = false
 var scaleup = false
 var scaledown = false
 var move = true
+var camera_moving = false
 signal grass_attack
 signal grass_attack_ended
 signal invincibility
 var target_left_margin = 0.0
 var target_right_margin = 0.0
+var target_top_margin = 0.0
+var target_bottom_margin = 0.0
 signal jumped
 signal landed
 var min = 0
@@ -48,6 +52,7 @@ var direction
 var played = false 
 var collected = "small"
 func _ready():
+	print(get_node("Camera2D").get_drag_margin(1), " and ", get_node("Camera2D").get_drag_margin(3))
 	add_to_group("player")
 	GameState.player = self
 	GameState.display_power()
@@ -57,6 +62,8 @@ func _ready():
 	
 func emit_signal_while_playing(direction):
 	while anim.is_playing():
+		if get_node("GrassTimer").is_stopped():
+			_spawn_particles()
 		anim.set_speed_scale(1)
 		get_tree().call_group("enemies", "_on_player_grass_attack")
 		get_tree().call_group("enemy_projectiles", "_on_player_grass_attack")
@@ -70,15 +77,44 @@ func emit_signal_while_playing(direction):
 			velocity.x = move_toward(velocity.x, velocity.x + 50, 50)
 		await get_tree().create_timer(0.0).timeout
 	animplaying = false
+	get_tree().call_group("enemies", "_on_player_grass_attack_ended")
 	if last_pressed == -1:
-				get_node("GrassAttack/CollisionShapeLeft").disabled = true
+		get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	elif last_pressed == 1:
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 	#get_tree().call_group("enemies", "_on_player_grass_attack_ended")
 	#get_tree().call_group("question_block", "_grass_attack")
 	#emit_signal("grass_attack_ended")
 func _physics_process(delta):
-	print(GameState.big_num_coins)
+	#print(GameState.score)
+	
+	
+	
+	
+	
+	#print("shellkicked ",GameState.shellkicked," counter ", GameState.stomp_counter)
+	#print("player vel ", velocity.y, " margin ", target_top_margin)
+	#print(target_bottom_margin, target_top_margin)
+	#print(GameState.big_num_coins)
+	#if velocity.y >= 0 and not is_on_floor():
+		##get_node("CameraTimer").start()
+		#target_bottom_margin = 0.00
+		#target_top_margin = 1.00
+	if not is_on_floor() and !disable_input:
+		#print("wpw")
+		#get_node("CameraTimer").start()
+		
+		target_top_margin = 1.00
+		target_bottom_margin = .00
+		#get_node("Camera2D").set_drag_vertical_enabled(0)
+	elif is_on_floor() and !platVel:
+		#get_node("CameraTimer").start()
+		target_bottom_margin =1.00
+		#get_node("Camera2D").set_drag_vertical_enabled(1)
+		target_top_margin = .00
+		
+	get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, target_bottom_margin, MARGIN_CHANGE_SPEED * delta)
+	get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, target_top_margin, MARGIN_CHANGE_SPEED * delta)
 	#if Input.is_action_just_pressed("GodMode"):
 		#get_tree().call_group("enemies", "invincible_start")
 		#get_tree().call_group("enemy_projectiles", "invincible_start")
@@ -337,7 +373,13 @@ func _physics_process(delta):
 		#elif:
 			#GameState.big = false
 			#scale = Vector2(.95,.95)
-
+		#print(not is_on_floor, jumptype == "spin", GameState.power == "grass")
+		if not is_on_floor() and jumptype == "spin" and GameState.power == "grass":
+			get_tree().call_group("enemies", "_on_player_grass_attack")
+			get_tree().call_group("enemy_projectiles", "_on_player_grass_attack")
+			get_tree().call_group("question_block", "_grass_attack")
+			if get_node("GrassTimer").is_stopped():
+				_spawn_particles()
 		direction = Input.get_axis("ui_left", "ui_right")
 		if Input.is_action_just_pressed("attack") and !animplaying and GameState.power != "":	
 				#print("wow")
@@ -431,7 +473,8 @@ func _physics_process(delta):
 			#if !velocity.x:
 				#velocity.x += platVel.x
 				#get_node("AirResistanceTimer").start()
-			#if velocity.x >= 250 or velocity.x <= -250:
+			#if velocity.x >= 
+			 #or velocity.x <= -250:
 				#velocity.y = JUMP_VELOCITY -25
 			#else:
 				#velocity.y = JUMP_VELOCITY + 25
@@ -471,9 +514,10 @@ func _physics_process(delta):
 		else:
 			anim.set_speed_scale(1)
 		if direction:
-			if get_node("AnimatedSprite2D").global_position[0] > 35 + get_node("Camera2D").get_screen_center_position()[0]:
+			if get_node("AnimatedSprite2D").global_position[0] > 30 + get_node("Camera2D").get_screen_center_position()[0]:
+
 				target_right_margin = 0.0
-			elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 35:
+			elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 30:
 				target_left_margin = 0.0
 			_directionalMovement(direction)
 			if direction < 0:
@@ -483,9 +527,9 @@ func _physics_process(delta):
 		else:
 			_directionalMovement(direction)
 			if last_pressed == 1:
-				target_left_margin = 0.2
+				target_left_margin = 0.3
 			elif last_pressed == -1:
-				target_right_margin = 0.2
+				target_right_margin = 0.3
 		if velocity.y > 0 and !animplaying and jumptype=="jump":
 			if GameState.power == "grass":
 				anim.play("GrassFall")
@@ -506,6 +550,41 @@ func _spawn_kick():
 	new_dust.position.x = position.x
 	new_dust.position.y = position.y + 14
 	add_sibling(new_dust)
+func _spawn_particles():
+	#if not get_node("FireTimer").is_stopped():
+		#return
+	var fire_particles = grass_particle.instantiate()
+	if anim.get_current_animation() == "GrassAttack":
+		if anim.get_current_animation_position() > 0 and anim.get_current_animation_position() < .06:
+			fire_particles.position.x = position.x + ((-1*last_pressed) * 15)
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.06 and anim.get_current_animation_position() < .14:
+			fire_particles.position.x = position.x
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.14 and anim.get_current_animation_position() < .21:
+			fire_particles.position.x = position.x + (last_pressed * 15)
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.21 and anim.get_current_animation_position() < .26:
+			fire_particles.position.x = position.x
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.26:
+			fire_particles.position.x = position.x + (last_pressed * 15)
+			fire_particles.position.y = position.y + 5
+	else:
+		if anim.get_current_animation_position() > 0 and anim.get_current_animation_position() < .03:
+			fire_particles.position.x = position.x + ((-1*last_pressed) * 15)
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.03 and anim.get_current_animation_position() < .07:
+			fire_particles.position.x = position.x
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.07 and anim.get_current_animation_position() < .11:
+			fire_particles.position.x = position.x + (last_pressed * 15)
+			fire_particles.position.y = position.y + 5
+		elif anim.get_current_animation_position() > 0.11 and anim.get_current_animation_position() < .15:
+			fire_particles.position.x = position.x
+			fire_particles.position.y = position.y + 5
+	add_sibling(fire_particles)
+	get_node("GrassTimer").start()
 func _spawn_dust():
 	if not get_node("DustTimer").is_stopped():
 		return
@@ -555,7 +634,7 @@ func _on_bounce_signal():
 	
 func _jumped():
 	emit_signal("jumped")
-	if velocity.x >= 250 or velocity.x <= -250:
+	if velocity.x >= 225 or velocity.x <= -225:
 		velocity.y = JUMP_VELOCITY - 50
 	else:
 		velocity.y = JUMP_VELOCITY
@@ -582,17 +661,18 @@ func _jumped():
 		last_pressed = 1
 	
 func _spinned():
+	#print("wpow")
 	emit_signal("jumped")
-	if (velocity.x >= 250 or velocity.x <= -250) and GameState.big:
+	if (velocity.x >= 225 or velocity.x <= -225) and GameState.big:
 		velocity.y = JUMP_VELOCITY -25
-	elif (velocity.x < 250 or velocity.x < -250) and GameState.big:
+	elif (velocity.x < 225 or velocity.x < -225) and GameState.big:
 		velocity.y = JUMP_VELOCITY + 25
-	elif (velocity.x >= 250 or velocity.x <= -250) and !GameState.big:
+	elif (velocity.x >= 225 or velocity.x <= -225) and !GameState.big:
 		if bounce:
 			velocity.y = JUMP_VELOCITY/2
 		else: 
 			velocity.y = JUMP_VELOCITY + 25
-	elif (velocity.x < 250 or velocity.x < -250) and !GameState.big:
+	elif (velocity.x < 225 or velocity.x < -225) and !GameState.big:
 		if bounce:
 			velocity.y = JUMP_VELOCITY/2
 		else:
@@ -621,6 +701,21 @@ func _spinned():
 		fireball2.position.x = position.x
 		fireball2.position.y = position.y
 		add_sibling(fireball2)
+	elif GameState.power == "water":
+		jumptype = "spin"
+		GameState.direct = 1
+		var waterball1 = waterball.instantiate()
+		waterball1.position.x = position.x
+		waterball1.position.y = position.y
+		add_sibling(waterball1)
+		GameState.direct = -1
+		var waterball2 = waterball.instantiate()
+		waterball2.position.x = position.x
+		waterball2.position.y = position.y
+		add_sibling(waterball2)
+	elif GameState.power == "grass":
+		get_node("GrassAttack/CollisionShapeRight").disabled = false
+		get_node("GrassAttack/CollisionShapeLeft").disabled = false
 	await is_on_floor()
 	jumptype = "spin"
 	animplaying = false
@@ -646,6 +741,12 @@ func _gravity(delta):
 		velocity.y += gravity * delta * 1.2
 	else:
 		emit_signal("landed")
+		if not GameState.shellkicked:
+			GameState.stomp_counter = 0
+		if not animplaying:
+			get_tree().call_group("enemies", "_on_player_grass_attack_ended")
+			get_node("GrassAttack/CollisionShapeRight").disabled = true
+			get_node("GrassAttack/CollisionShapeLeft").disabled = true
 		bounce = false
 		jumptype = ""
 		
@@ -774,3 +875,4 @@ func _on_invincible_area_body_exited(body):
 		#get_tree().call_group("enemies", "invincible_end")
 		#get_tree().call_group("shell_projectile", "invincible_end")
 		#get_tree().call_group("enemy_projectiles", "invincible_end")
+

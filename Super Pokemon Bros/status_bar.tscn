@@ -14,7 +14,7 @@
 position = Vector2(43, 0)
 
 [node name="ScoreLabel" parent="." instance=ExtResource("1_v8gfv")]
-position = Vector2(92, 1)
+position = Vector2(78, 0)
 
 [node name="LivesLabel" parent="." instance=ExtResource("2_fdlih")]
 position = Vector2(-80, 0)

@@ -400,6 +400,7 @@ libraries = {
 }
 
 [node name="GroundTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]

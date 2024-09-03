@@ -8,6 +8,9 @@ var isdead = false
 var nearby = false
 var started = false
 var stop_func = false
+var timer_started = false
+var score_gate = false
+var kicked = false
 var jumptype = ""
 @onready var anim = get_node("AnimationPlayer")
 @onready var audio_player = get_node("SoundEffects")
@@ -27,6 +30,9 @@ func _ready():
 	stationary = true
 	#set_absorbent(false)
 func _physics_process(delta):
+	#print(kicked)
+	if timer_started and get_node("ShellKickTimer").is_stopped() and kicked:
+		GameState.shellkicked = false
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:
@@ -75,7 +81,33 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	move_and_slide()
+func _start_timer():
+	if kicked:
+		#print("started")
+		timer_started = true
+		get_node("ShellKickTimer").start()
 func death():
+	if GameState.stomp_counter == 0:
+		GameState._give_score(100)
+	elif GameState.stomp_counter == 1:
+		GameState._give_score(200)
+	elif GameState.stomp_counter == 2:
+		GameState._give_score(400)
+	elif GameState.stomp_counter == 3:
+		GameState._give_score(500)
+	elif GameState.stomp_counter == 4:
+		GameState._give_score(800)
+	elif GameState.stomp_counter == 5:
+		GameState._give_score(1000)
+	elif GameState.stomp_counter == 6:
+		GameState._give_score(2000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(4000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(5000)
+	elif GameState.stomp_counter == 8:
+		GameState._give_score(8000)
+	GameState.stomp_counter += 1
 	#chase = false
 	audio_player.set_stream(death_sound)
 	if GameState.player.velocity.y > 400:
@@ -132,6 +164,7 @@ func _on_area_2d_area_entered(area):
 	if area.name == "PlayerArea" and started:
 		#print(area.name)
 		if stationary:
+			kicked = true
 			#add_to_group("enemy_projectiles")
 			#remove_from_group("projectiles")
 			#print("wpw")
@@ -158,6 +191,9 @@ func _on_area_2d_area_entered(area):
 				anim.play("shell_moving")
 				direction = GameState.direct
 				#position.x += direction*10
+				if not score_gate:
+					GameState._give_score(400)
+					score_gate = true
 				velocity.x = SPEED * direction
 				#velocity.y = 0
 				stationary = false
@@ -178,6 +214,7 @@ func _on_area_2d_area_entered(area):
 				get_tree().call_group("player", "_spawn_kick")
 				get_tree().call_group("player", "_on_bounce_signal")
 				anim.play("shell_idle")
+				kicked = false
 				velocity.x = 0
 				#velocity.y = 0
 				stationary = true
@@ -216,6 +253,9 @@ func _on_shell_2d_body_entered(body):
 		isdead=true
 	elif body.is_in_group("projectiles") and body.is_in_group("shell_projectile") and abs(body.velocity.x) > 0:
 		death()
+		if body.is_in_group("shell_projectile"):
+			GameState.shellkicked = true
+			get_tree().call_group("shell_projectile", "_start_timer")
 		isdead=true
 		
 	#elif body.is_in_group("shell_projectile") and body.is_in_group("projectiles") and !stationary:

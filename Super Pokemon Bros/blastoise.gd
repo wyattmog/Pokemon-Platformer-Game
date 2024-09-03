@@ -69,7 +69,7 @@ func _physics_process(delta):
 			#get_node("GroundTimer").start()
 			#get_node("RestTimer").start()
 			
-		if get_node("RestTimer").is_stopped() and !animplaying and in_range and !invincible:
+		if get_node("RestTimer").is_stopped() and !animplaying and in_range and !GameState.invincible:
 			#print("wowow")
 			get_node("Flamethrower").set_visible(1)
 			anim.play("Attack")
@@ -98,6 +98,27 @@ func _on_leaf_detection_body_exited(body):
 		nearby = false
 		
 func death():
+	if GameState.stomp_counter == 0:
+		GameState._give_score(100)
+	elif GameState.stomp_counter == 1:
+		GameState._give_score(200)
+	elif GameState.stomp_counter == 2:
+		GameState._give_score(400)
+	elif GameState.stomp_counter == 3:
+		GameState._give_score(500)
+	elif GameState.stomp_counter == 4:
+		GameState._give_score(800)
+	elif GameState.stomp_counter == 5:
+		GameState._give_score(1000)
+	elif GameState.stomp_counter == 6:
+		GameState._give_score(2000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(4000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(5000)
+	elif GameState.stomp_counter == 8:
+		GameState._give_score(8000)
+	GameState.stomp_counter += 1
 	#chase = false
 	audio_player.set_stream(death_sound)
 	if GameState.player.velocity.y > 400:
@@ -150,6 +171,9 @@ func _on_player_hitbox_body_entered(body):
 		isdead=true
 	elif body.is_in_group("projectiles") and not isdead:
 		jumped_on = false
+		if body.is_in_group("shell_projectile"):
+			GameState.shellkicked = true
+			get_tree().call_group("shell_projectile", "_start_timer")
 		death()
 		isdead=true
 	elif body.name == "Player" and !isdead and !GameState.invincible:
@@ -181,7 +205,7 @@ func _on_attack_radius_body_exited(body):
 
 
 func _on_flamethrower_area_body_entered(body):
-	if body.name == "Player" and !isdead and !invincible:
+	if body.name == "Player" and !isdead and !GameState.invincible:
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

@@ -1,11 +1,11 @@
-AnimatedSprite2D
+Timer
 CollisionShape2D
+Area2D
+AnimatedSprite2D
 Label
 Sprite2D
 CanvasLayer
-Area2D
 StaticBody2D
-Timer
 AnimationPlayer
 AnimatableBody2D
 AnimationTree

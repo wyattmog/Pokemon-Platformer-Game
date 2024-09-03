@@ -76,6 +76,27 @@ func _on_leaf_detection_body_exited(body):
 		nearby = false
 		
 func death():
+	if GameState.stomp_counter == 0:
+		GameState._give_score(100)
+	elif GameState.stomp_counter == 1:
+		GameState._give_score(200)
+	elif GameState.stomp_counter == 2:
+		GameState._give_score(400)
+	elif GameState.stomp_counter == 3:
+		GameState._give_score(500)
+	elif GameState.stomp_counter == 4:
+		GameState._give_score(800)
+	elif GameState.stomp_counter == 5:
+		GameState._give_score(1000)
+	elif GameState.stomp_counter == 6:
+		GameState._give_score(2000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(4000)
+	elif GameState.stomp_counter == 7:
+		GameState._give_score(5000)
+	elif GameState.stomp_counter == 8:
+		GameState._give_score(8000)
+	GameState.stomp_counter += 1
 	#chase = false
 	audio_player.set_stream(death_sound)
 	if GameState.player.velocity.y > 400:
@@ -125,6 +146,7 @@ func _on_player_grass_attack():
 
 func _on_player_grass_attack_ended():
 	attacked = false
+	#print(attacked)
 
 func is_above():
 	return GameState.player.position.y < position.y +90 and GameState.player.velocity.y > 0
@@ -137,6 +159,11 @@ func _on_player_hitbox_body_entered(body):
 		isdead=true
 	elif body.is_in_group("projectiles") and not isdead:
 		jumped_on = false
+		if body.is_in_group("shell_projectile"):
+			GameState.shellkicked = true
+			get_tree().call_group("shell_projectile", "_start_timer")
+			
+			
 		death()
 		isdead=true
 	elif body.is_in_group("enemies") and not isdead:

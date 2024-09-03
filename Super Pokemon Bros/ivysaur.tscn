@@ -367,7 +367,6 @@ libraries = {
 
 [node name="RestTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
 

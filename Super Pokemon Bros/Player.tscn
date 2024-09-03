@@ -1,4 +1,4 @@
-[gd_scene load_steps=224 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=228 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="Texture2D" uid="uid://dtv8iamfbk4dh" path="res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png" id="2_lsvfv"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://dwjyfu3ac06ph" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/spin_grass copy.png" id="22_qtwdx"]
 [ext_resource type="Texture2D" uid="uid://4rq3etn7m0ui" path="res://sprites/player/all anims/walk/output-onlinepngtools (2).png" id="23_j8xxj"]
 [ext_resource type="Texture2D" uid="uid://djeqfthqrb5h7" path="res://sprites/player/all anims/jump/imageedit_22_7633397634 copy (2) (1).png" id="24_dugaj"]
+[ext_resource type="Texture2D" uid="uid://34emtmt616mg" path="res://sprites/player/Grass Player/ulixouipmkhb1 (1).png" id="24_w3xpx"]
 [ext_resource type="Texture2D" uid="uid://lg17cjy6p77t" path="res://sprites/player/all anims/idle/idle2 (1).png" id="25_x5tsr"]
 [ext_resource type="Texture2D" uid="uid://co2xv1ck2hwow" path="res://sprites/player/all anims/idle/idle1 (2).png" id="26_r0bml"]
 [ext_resource type="Texture2D" uid="uid://b66h1nffdlgb" path="res://sprites/player/all anims/run/imageedit_22_7633397634 (1).png" id="27_lq6ec"]
@@ -49,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://bckgi6j5w3xm7" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin.png" id="46_3b3yu"]
 [ext_resource type="Texture2D" uid="uid://c3dgg35cfu651" path="res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001/blue_spin copy.png" id="47_kqopk"]
 [ext_resource type="Texture2D" uid="uid://bci4ac6kqmuqp" path="res://sprites/player/all anims/walk/output-onlinepngtools (4).png" id="48_mekvr"]
+[ext_resource type="PackedScene" uid="uid://dt3qu0yv46gpb" path="res://status_bar.tscn" id="50_qlycl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1wql"]
 radius = 7.0
@@ -269,6 +271,10 @@ region = Rect2(32, 0, 22, 27)
 [sub_resource type="AtlasTexture" id="AtlasTexture_iss00"]
 atlas = ExtResource("19_ovunb")
 region = Rect2(64, 0, 22, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8r1w"]
+atlas = ExtResource("24_w3xpx")
+region = Rect2(0, 0, 31, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjs0v"]
 atlas = ExtResource("7_owt13")
@@ -784,6 +790,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_yligf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8r1w")
 }],
 "loop": false,
 "name": &"GrassAttack",
@@ -1096,6 +1105,9 @@ animations = [{
 "name": &"WaterWalk",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kkt1"]
+size = Vector2(1363, 84.5)
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_u2dxu"]
 
@@ -1852,7 +1864,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"GrassSpin"]
+"values": [&"GrassAttack"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1864,7 +1876,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0375, 0.075, 0.1125),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [5, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_81bin"]
@@ -2509,19 +2521,32 @@ frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 2)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(4.5, 4.5)
 limit_left = 0
-limit_top = 150
+limit_top = 275
 limit_bottom = 570
+position_smoothing_enabled = true
 position_smoothing_speed = 120.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_vertical_offset = -1.0
 drag_left_margin = 0.0
-drag_top_margin = 1.0
+drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.53
 editor_draw_limits = true
+
+[node name="VerticleCameraNotifier" type="Area2D" parent="Camera2D"]
+position = Vector2(-2, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/VerticleCameraNotifier"]
+position = Vector2(684, 532)
+shape = SubResource("RectangleShape2D_4kkt1")
+
+[node name="StatusBar" parent="Camera2D" instance=ExtResource("50_qlycl")]
+offset = Vector2(630, 120)
+scale = Vector2(5.3, 5.3)
+transform = Transform2D(5.3, 0, 0, 5.3, 630, 120)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_u2dxu")
@@ -2596,4 +2621,13 @@ one_shot = true
 [node name="AirResistanceTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CameraTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="GrassTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="body_entered" from="Camera2D/VerticleCameraNotifier" to="." method="_on_verticle_camera_notifier_body_entered"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]

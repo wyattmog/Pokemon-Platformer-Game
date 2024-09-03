@@ -25,6 +25,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		GameState._give_score(1000)
 		GameState.power = "fire"
 		GameState.big = true
 		queue_free()

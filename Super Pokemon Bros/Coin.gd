@@ -22,6 +22,7 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		get_node("AnimatedSprite2D").scale = Vector2(1.2, 1.2)
 		get_node("AnimatedSprite2D").play("sparkle")
+		GameState._give_score(200)
 		audio_player.set_stream(coin_sound)
 		audio_player.play()
 		GameState._give_coins(1)
