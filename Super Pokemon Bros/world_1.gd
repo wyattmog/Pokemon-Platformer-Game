@@ -3,10 +3,10 @@ signal on_tile
 var fort_node
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameState.checkpoint:
-		GameState.player.position = Vector2(2437, 505)
-	else:
-		GameState.player.position = Vector2(63, 528)
+	#if GameState.checkpoint:
+		#GameState.player.position = Vector2(2437, 505)
+	#else:
+		#GameState.player.position = Vector2(63, 528)
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
@@ -15,7 +15,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
 func _on_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
 

@@ -1,6 +1,7 @@
 class_name Global 
 extends Node
 static var player = null
+var cutscene = false
 var game_ended = false
 var big = false
 var big_num_coins: int = 0

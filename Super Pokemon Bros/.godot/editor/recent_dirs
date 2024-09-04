@@ -1,12 +1,13 @@
-res://sprites/player/Grass Player
-res://sprites/effects
+res://sprites/player/all anims/celebration
+res://sprites/player/Default Player
 res://
 res://sprites/tiles
+res://sprites/player/Grass Player
+res://sprites/effects
 res://sprites/mobs/blastoise
 res://sprites/entities/powerups
 res://sprites/mobs/squirtle
 res://sprites/mobs/venusaur
-res://sprites/player/Default Player
 res://sprites/mobs/charmeleon
 res://sprites/mobs/charizard
 res://sprites/mobs/wartortle
@@ -19,4 +20,3 @@ res://sprites/player/all anims/waterattack
 res://sprites/player/all anims/jump
 res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001
 res://sprites/player/all anims/slide
-res://sprites/player/all anims/idle

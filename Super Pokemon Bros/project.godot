@@ -54,7 +54,7 @@ GodMode={
 
 [physics]
 
-2d/default_gravity=520.0
+2d/default_gravity=530.0
 
 [rendering]
 
