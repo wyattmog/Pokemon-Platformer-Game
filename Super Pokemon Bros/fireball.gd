@@ -32,28 +32,17 @@ func _physics_process(delta):
 	else:
 		velocity.y = JUMP_VELOCITY
 
-	# Handle jump.
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	move_and_slide()
 	
 
 func _spawn_particles():
-	#if not get_node("FireTimer").is_stopped():
-		#return
 	var fire_particles = fire_particle.instantiate()
 	fire_particles.position.x = position.x
 	fire_particles.position.y = position.y
 	add_sibling(fire_particles)
 	get_node("FireTimer").start()
 
-func _on_area_2d_body_entered(body):
-	if body.name == "Charmander":
-		#get_tree().call_group("enemies", "_on_player_grass_attack")
-		queue_free()
-		
 		
 		
 		

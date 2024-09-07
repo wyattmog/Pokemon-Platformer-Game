@@ -28,20 +28,6 @@ func _physics_process(delta):
 	else: 
 		velocity.x = 0
 		velocity.y = 0
-	#if chase == true:
-		#if !isdead:
-			#get_node("AnimatedSprite2D").play("Walk")
-		#player = get_node("../../Player/Player")
-		#var direction = (player.position - self.position).normalized()
-		#if direction.x > 0:
-			#get_node("AnimatedSprite2D").flip_h = true 
-		#else:
-			#get_node("AnimatedSprite2D").flip_h = false
-		#if !isdead:
-			#velocity.x = direction.x * SPEED
-	#else:
-		#velocity.x = 0
-	#print(invincible)
 	
 	move_and_slide()
 	

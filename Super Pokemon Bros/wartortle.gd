@@ -4,6 +4,7 @@ var waterball = preload("res://enemy_waterball.tscn")
 var shell = preload("res://squirtle_shell.tscn")
 var SPEED = 50
 @onready var audio_player = get_node("SoundEffects")
+var stomp_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/super-stomp.wav")
 var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/kick.wav")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -128,13 +129,16 @@ func death():
 		GameState._add_lives(1)
 	GameState.stomp_counter += 1
 	#chase = false
-	audio_player.set_stream(death_sound)
-	if GameState.player.velocity.y > 400:
-		audio_player.set_pitch_scale(1.66)
-	elif GameState.player.velocity.y > 300:
-		audio_player.set_pitch_scale(1.33)
+	if GameState.player.jumptype != "spin":
+		audio_player.set_stream(death_sound)
+		if GameState.player.velocity.y > 400:
+			audio_player.set_pitch_scale(1.66)
+		elif GameState.player.velocity.y > 300:
+			audio_player.set_pitch_scale(1.33)
+		else:
+			audio_player.set_pitch_scale(1)
 	else:
-		audio_player.set_pitch_scale(1)
+		audio_player.set_stream(stomp_sound)
 	audio_player.play()
 	get_node("PlayerHitbox/CollisionShape2D").set_deferred("disabled", true)
 	get_node("CollisionDown").set_deferred("disabled", true)
@@ -155,6 +159,9 @@ func death():
 		anim.play("Death")
 		await get_tree().create_timer(.25).timeout
 	#get_node("FireTimer").start()
+	get_node("AnimatedSprite2D").set_visible(false)
+	if GameState.player.jumptype == "spin":
+		await get_tree().create_timer(0.40).timeout
 	self.queue_free()
 	
 	

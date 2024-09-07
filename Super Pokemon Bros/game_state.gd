@@ -16,7 +16,13 @@ var invincible = false
 var checkpoint = false
 var score = 0
 var shellkicked = false
+var time = 300
+var total_points = 0
 # Called when the node enters the scene tree for the first time.
+func _process(delta):
+	get_tree().call_group("status_bar", "display_time")
+	if GameState.cutscene:
+		get_tree().call_group("status_bar", "change_time")
 func _give_coins(num:int):
 	num_coins += num
 	get_tree().call_group("status_bar", "display_coins")

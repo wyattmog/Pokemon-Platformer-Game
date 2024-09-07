@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://jcs4gpsxwdtr"]
+
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="1_6rof3"]
+[ext_resource type="Script" path="res://total_coins.gd" id="1_16rkm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t3lqv"]
+font = ExtResource("1_6rof3")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TotalCoins" type="Node2D"]
+scale = Vector2(1.05, 0.75)
+script = ExtResource("1_16rkm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/line_spacing = 1
+text = "0"
+label_settings = SubResource("LabelSettings_t3lqv")

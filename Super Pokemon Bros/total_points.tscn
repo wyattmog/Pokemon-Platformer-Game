@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgmfuo0ayttj"]
+
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="1_05i1y"]
+[ext_resource type="Script" path="res://total_points.gd" id="1_k8gev"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhi5b"]
+font = ExtResource("1_05i1y")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TotalPoints" type="Node2D"]
+scale = Vector2(1.05, 0.75)
+script = ExtResource("1_k8gev")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/line_spacing = 1
+text = "0"
+label_settings = SubResource("LabelSettings_bhi5b")

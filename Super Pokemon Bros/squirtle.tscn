@@ -16,7 +16,7 @@ length = 13.0
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_j0f31"]
 resource_local_to_scene = true
-length = 13.0
+length = 11.0
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_vhshk"]
 resource_local_to_scene = true
@@ -143,7 +143,7 @@ size = Vector2(610.125, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ir7d"]
 resource_local_to_scene = true
-size = Vector2(26, 39.5)
+size = Vector2(26, 33.5)
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_pcrla"]
 
@@ -487,7 +487,7 @@ shape = SubResource("SeparationRayShape2D_vhshk")
 position = Vector2(2, -1)
 scale = Vector2(1, 0.847)
 sprite_frames = SubResource("SpriteFrames_gssxi")
-animation = &"Death"
+animation = &"SquirtleWalk"
 frame = 1
 
 [node name="LeafDetection" type="Area2D" parent="."]
@@ -506,7 +506,7 @@ shape = SubResource("RectangleShape2D_xq3rg")
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(-2, -4.25)
+position = Vector2(-2, -1.25)
 shape = SubResource("RectangleShape2D_4ir7d")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

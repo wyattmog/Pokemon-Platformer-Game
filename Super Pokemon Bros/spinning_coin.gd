@@ -10,8 +10,6 @@ func _ready():
 	get_node("AnimatedSprite2D").play("spinning")
 	GameState._give_coins(1)
 	GameState._give_score(200)
+	await get_node("AnimatedSprite2D").animation_finished
+	queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

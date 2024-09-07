@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3cnemb20bq5q"]
+
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="1_w6pbn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvyhi"]
+font = ExtResource("1_w6pbn")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Multiplier" type="Node2D"]
+scale = Vector2(1.05, 0.75)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/line_spacing = 1
+text = "50"
+label_settings = SubResource("LabelSettings_cvyhi")

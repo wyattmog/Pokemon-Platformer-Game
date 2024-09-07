@@ -10,16 +10,13 @@ func _ready():
 	set_visible(0)
 	await get_tree().create_timer(.15).timeout
 	set_visible(1)
-	#get_node("UpTimer").start()
 	velocity.y =UPWARDS_VEL
 
 func _physics_process(delta):
 	if GameState.game_ended:
 		queue_free()
-	# Add the gravity.
 	if velocity.y == 0 and is_on_floor():
 		get_node("AnimatedSprite2D").play("grass_power_still")
-		#await get_tree().create_timer(.15).timeout
 	elif velocity.y > 0:
 		get_node("AnimatedSprite2D").play("grass_power_down")
 	elif velocity.y < 0:

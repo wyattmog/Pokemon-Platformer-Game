@@ -258,7 +258,7 @@ size = Vector2(323, 236)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ir7d"]
 resource_local_to_scene = true
-size = Vector2(63, 59)
+size = Vector2(63, 53)
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_pcrla"]
 
@@ -765,7 +765,7 @@ shape = SubResource("RectangleShape2D_hs17d")
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, -3.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4ir7d")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

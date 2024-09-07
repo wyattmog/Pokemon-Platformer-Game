@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgo8li6yfl002"]
+
+[ext_resource type="Script" path="res://time_label.gd" id="1_fidkr"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="2_mdpb8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kn8fp"]
+font = ExtResource("2_mdpb8")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TimeLabel" type="Node2D"]
+scale = Vector2(1.05, 0.75)
+script = ExtResource("1_fidkr")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/line_spacing = 1
+text = "0"
+label_settings = SubResource("LabelSettings_kn8fp")

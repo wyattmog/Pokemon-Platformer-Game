@@ -19,18 +19,10 @@ var bounce_type = ""
 var spawnable
 var coin_timer
 var hit = false
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("question_block")
 	orig_y_position = get_node("AnimatedSprite2D").position.y
 	get_node("AnimatedSprite2D").play("turn")
-	#var instance = spawned_scene.instantiate()
-	#add_child(instance)
-	#instance.connect("coin_spawned", spawn_coin)
-#func spawn_coin():
-	#spawn = "coin"
-	#print("wpw")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameState.game_ended:
 		if spawnable and is_instance_valid(spawnable):
@@ -45,10 +37,6 @@ func _process(delta):
 		get_node("AnimatedSprite2D").position.y += block_speed * delta 
 		block_speed += gravity * delta
 		played = true
-		#else:
-			#get_node("AnimatedSprite2D").play("used_animation")
-			#await get_node("AnimatedSprite2D").animation_finished
-			#played = true
 	if hit and spawn == "coin":
 		if not get_node("CoinTimer").is_stopped():
 			spawnable.position.y += coin_speed * delta
@@ -62,18 +50,14 @@ func _process(delta):
 	elif hit and spawn == "powerup" and get_node("BounceTimer").is_stopped():
 		if not get_node("PowerupTimer").is_stopped() and is_instance_valid(spawnable):
 			spawnable.position.y += -.275
-			#coin_speed += gravity * delta
 		elif get_node("PowerupTimer").is_stopped():
 			if is_instance_valid(spawnable):
-				#coin_speed = 0 
 				await spawnable.get_node("AnimatedSprite2D").animation_finished
-				#spawnable.queue_free()
 				hit=false
 			
 func _bounce():
 	if spawned_scene.can_instantiate() and !played and spawned_scene.resource_path == "res://spinning_coin.tscn":
 		spawn = "coin"
-		#print(spawned_scene.resource_path)
 		get_node("CoinTimer").start()
 		spawnable = spawned_scene.instantiate() 
 		spawnable.position = position + Vector2(0, -16)
@@ -85,28 +69,10 @@ func _bounce():
 		spawn = "powerup"
 		get_node("PowerupTimer").start()
 		spawnable = spawned_scene.instantiate()
-		#spawnable.set_visible(0)
 		spawnable.position = position + Vector2(0, -1)
 		get_tree().root.add_child(spawnable)
-	#elif spawned_scene.can_instantiate() and !played and spawned_scene.resource_path == "res://grass_power.tscn":
-		##print("wow")
-		#spawn = "powerup"
-		#get_node("PowerupTimer").start()
-		#spawnable = spawned_scene.instantiate()
-		##spawnable.set_visible(0)
-		#spawnable.position = position + Vector2(0, -1)
-		#get_tree().root.add_child(spawnable)
-	#elif spawned_scene.can_instantiate() and !played and spawned_scene.resource_path == "res://water_power.tscn":
-		##print("wow")
-		#spawn = "powerup"
-		#get_node("PowerupTimer").start()
-		#spawnable = spawned_scene.instantiate()
-		##spawnable.set_visible(0)
-		#spawnable.position = position + Vector2(0, -1)
-		#get_tree().root.add_child(spawnable)
 	block_speed = initial_bounce_speed
 	coin_speed = initial_bounce_speed*1.5
-	#powerup_speed = initial_bounce_speed
 	get_node("BounceTimer").start()
 
 func _grass_attack():
@@ -117,7 +83,6 @@ func _grass_attack():
 
 func _on_area_2d_area_entered(body):
 	if body.name == "PlayerArea":
-		#print(body)
 		audio_player.set_stream(hit_sound)
 		audio_player.set_volume_db(-10)
 

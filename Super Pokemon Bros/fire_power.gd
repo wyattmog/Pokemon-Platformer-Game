@@ -12,8 +12,6 @@ func _ready():
 func _physics_process(delta):
 	if GameState.game_ended:
 		queue_free()
-	# Add the gravity.
-		#await get_tree().create_timer(.15).timeout
 	if get_node("Timer").is_stopped():
 		set_collision_mask_value(4, true)
 		if is_on_floor():

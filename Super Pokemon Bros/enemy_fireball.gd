@@ -4,7 +4,6 @@ const JUMP_VELOCITY = -200.0
 var direction
 var started = false
 var isdead = false
-#var invincible = false
 var nearby = false
 @onready var fire_particle = preload("res://fire_particles.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -13,10 +12,8 @@ func _ready():
 	add_to_group("enemy_projectiles")
 	var direction = (GameState.player.position - Vector2(position.x + GameState.projectile_adjustment, position.y)).normalized()
 	if direction.x > 0:
-		#get_node("AnimatedSprite2D").flip_h = true 
 		velocity.x = SPEED
 	else:
-		#get_node("AnimatedSprite2D").flip_h = false
 		velocity.x = -SPEED 
 	get_node("AnimatedSprite2D").play("fireball")
 	get_node("LifeTimer").start()
@@ -33,7 +30,6 @@ func _physics_process(delta):
 	if get_node("LifeTimer").is_stopped():
 		queue_free()
 	if isdead:
-		#get_node("CorllisionShape2D").set_defered("disabled", true)
 		queue_free()
 	# Add the gravity
 	if velocity.x > 0:
@@ -95,7 +91,6 @@ func _on_area_2d_body_entered(body):
 			GameState.big = true
 			GameState.power = ""
 		else:
-			#get_node("AnimatedSprite2D").queue_free()
 			get_tree().call_group("player", "_death")
 	elif started and !isdead:
 		isdead = true
