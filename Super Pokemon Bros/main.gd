@@ -16,13 +16,13 @@ func _on_button_focus_entered():
 	if started:
 		select_player.play()
 	get_node("AnimatedSprite2D").play("default")
-	get_node("AnimatedSprite2D").position = Vector2(301, 224)
+	get_node("AnimatedSprite2D").position = Vector2(252, 251)
 
 
 func _on_button_2_focus_entered():
 	started = true
 	select_player.play()
-	get_node("AnimatedSprite2D").position =Vector2(438, 224)
+	get_node("AnimatedSprite2D").position =Vector2(442, 251)
 	
 	
 
@@ -35,3 +35,13 @@ func _on_button_pressed():
 
 func _on_button_2_pressed():
 	get_tree().change_scene_to_file("res://world_2.tscn")
+
+
+func _on_button_3_pressed():
+	get_tree().change_scene_to_file("res://world_3.tscn")
+
+
+func _on_button_3_focus_entered():
+	started = true
+	select_player.play()
+	get_node("AnimatedSprite2D").position =Vector2(252, 411)

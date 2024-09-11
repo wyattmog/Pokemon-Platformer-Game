@@ -1,5 +1,7 @@
-res://sprites/tiles
+res://sprites/tiles/tilesets
+res://sprites/tiles/
 res://
+res://sprites/tiles
 res://sprites/player/all anims/celebration
 res://sprites/player/Default Player
 res://sprites/player/Grass Player
@@ -18,5 +20,3 @@ res://sprites/mobs/bulbasaur
 res://sprites/mobs
 res://sprites/player/all anims/waterattack
 res://sprites/player/all anims/jump
-res://sprites/player/all anims/spins/drive-download-20240811T210456Z-001
-res://sprites/player/all anims/slide

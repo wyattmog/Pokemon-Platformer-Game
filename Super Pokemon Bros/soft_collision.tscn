@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgaihsqhw3igx"]
+
+[ext_resource type="Script" path="res://soft_collision.gd" id="1_eagxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxb4i"]
+
+[node name="SoftCollision" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_eagxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wxb4i")

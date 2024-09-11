@@ -65,7 +65,8 @@ func _physics_process(delta):
 	#else:
 		#velocity.x = 0
 	#print(invincible)
-	
+	if get_node("SoftCollision").is_colliding():
+		velocity.x += get_node("SoftCollision").get_push_vector().x * delta * 10000
 	move_and_slide()
 	
 func _on_leaf_detection_body_entered(body):

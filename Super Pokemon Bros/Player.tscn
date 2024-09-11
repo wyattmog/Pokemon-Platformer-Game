@@ -1,4 +1,4 @@
-[gd_scene load_steps=258 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=264 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="Texture2D" uid="uid://dtv8iamfbk4dh" path="res://sprites/player/Default Player/imageedit_22_7633397634 copy 2.png" id="2_lsvfv"]
@@ -564,13 +564,13 @@ region = Rect2(64, 0, 22, 27)
 [sub_resource type="SpriteFrames" id="SpriteFrames_vy0g8"]
 animations = [{
 "frames": [{
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4pd10")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4rsas")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dcdvc")
 }],
 "loop": true,
@@ -604,6 +604,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"BigJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pd10")
+}],
+"loop": true,
+"name": &"BigPipe",
 "speed": 5.0
 }, {
 "frames": [{
@@ -736,13 +744,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vlbbr")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qyxot")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cb0tj")
 }],
 "loop": true,
@@ -764,6 +772,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"FireJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlbbr")
+}],
+"loop": true,
+"name": &"FirePipe",
 "speed": 5.0
 }, {
 "frames": [{
@@ -865,17 +881,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5oqt4")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_is2xn")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x6xjo")
-}, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_is2xn")
 }],
 "loop": true,
 "name": &"GrassIdle",
@@ -890,6 +903,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"GrassJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oqt4")
+}],
+"loop": true,
+"name": &"GrassPipe",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1011,6 +1032,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_76oi4")
+}],
+"loop": true,
+"name": &"SmallPipe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ljgho")
 }, {
 "duration": 1.0,
@@ -1116,6 +1145,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"WaterJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oke4o")
+}],
+"loop": true,
+"name": &"WaterPipe",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2371,6 +2408,20 @@ tracks/1/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_nflas"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, -75)]
+}
+
 [sub_resource type="Animation" id="Animation_xae3a"]
 resource_name = "Powerup"
 tracks/0/type = "value"
@@ -2900,11 +2951,152 @@ tracks/1/keys = {
 "values": [2]
 }
 
+[sub_resource type="Animation" id="Animation_1tyss"]
+resource_name = "FirePipe"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"FirePipe"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ou7fg"]
+resource_name = "FirePipe"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"WaterPipe"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vq6sd"]
+resource_name = "FirePipe"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"GrassSpin"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1rvm7"]
+resource_name = "FirePipe"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"SmallPipe"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ty5lq"]
+resource_name = "FirePipe"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"BigPipe"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur182"]
 _data = {
 "BigFall": SubResource("Animation_55k75"),
 "BigIdle": SubResource("Animation_jpl1l"),
 "BigJump": SubResource("Animation_gu5im"),
+"BigPipe": SubResource("Animation_ty5lq"),
 "BigPowerAnim": SubResource("Animation_f3jcc"),
 "BigRun": SubResource("Animation_f1kaw"),
 "BigSlide": SubResource("Animation_spj5x"),
@@ -2920,6 +3112,7 @@ _data = {
 "FireIdle": SubResource("Animation_dv7w6"),
 "FireIdleAttack": SubResource("Animation_og56w"),
 "FireJump": SubResource("Animation_imbxv"),
+"FirePipe": SubResource("Animation_1tyss"),
 "FireRun": SubResource("Animation_r7a4m"),
 "FireRunAttack": SubResource("Animation_qstdn"),
 "FireSlide": SubResource("Animation_byif2"),
@@ -2930,15 +3123,18 @@ _data = {
 "GrassFall": SubResource("Animation_pmo5i"),
 "GrassIdle": SubResource("Animation_ai4wt"),
 "GrassJump": SubResource("Animation_bf7im"),
+"GrassPipe": SubResource("Animation_vq6sd"),
 "GrassRun": SubResource("Animation_aem4d"),
 "GrassSlide": SubResource("Animation_v8k6r"),
 "GrassSpin": SubResource("Animation_r3i3p"),
 "GrassWalk": SubResource("Animation_81bin"),
+"Pipe": SubResource("Animation_nflas"),
 "Powerup": SubResource("Animation_xae3a"),
 "RESET": SubResource("Animation_aihof"),
 "SmallFall": SubResource("Animation_65ca6"),
 "SmallIdle": SubResource("Animation_ja2y4"),
 "SmallJump": SubResource("Animation_y6pin"),
+"SmallPipe": SubResource("Animation_1rvm7"),
 "SmallRun": SubResource("Animation_t1quh"),
 "SmallSlide": SubResource("Animation_korqh"),
 "SmallSpin": SubResource("Animation_27aj1"),
@@ -2947,6 +3143,7 @@ _data = {
 "WaterIdle": SubResource("Animation_spj86"),
 "WaterIdleAttack": SubResource("Animation_h2qhv"),
 "WaterJump": SubResource("Animation_mii6h"),
+"WaterPipe": SubResource("Animation_ou7fg"),
 "WaterRun": SubResource("Animation_fwilx"),
 "WaterRunAttack": SubResource("Animation_1ae0g"),
 "WaterSlide": SubResource("Animation_0qbde"),
@@ -2988,7 +3185,6 @@ shape = SubResource("CapsuleShape2D_y1wql")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vy0g8")
 animation = &"FireIdle"
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 1
@@ -2996,7 +3192,6 @@ position = Vector2(2, 2)
 zoom = Vector2(4.5, 4.5)
 process_callback = 0
 limit_left = 0
-limit_top = 275
 limit_bottom = 570
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -3085,6 +3280,7 @@ libraries = {
 }
 
 [node name="GameOverScreen" type="CanvasLayer" parent="Camera2D"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/GameOverScreen"]
 self_modulate = Color(0, 0, 0, 0)
@@ -3197,6 +3393,9 @@ wait_time = 2.0
 one_shot = true
 
 [node name="SubtractTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PipeTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="Camera2D/PointScreen/PointNotifier" to="." method="_on_point_notifier_animation_finished"]

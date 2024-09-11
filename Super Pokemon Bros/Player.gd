@@ -18,6 +18,8 @@ const JUMP_VELOCITY = -250.0
 const FRICTION = 35
 const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
+var on_pipe = false
+var pipe_timer_started = false
 var platVel = Vector2(0,0)
 var curr_moving = false
 var subtract = false
@@ -71,7 +73,33 @@ func _ready():
 	get_node("GrassAttack/CollisionShapeRight").disabled = true
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90)
-	
+func _start_pipe_helper():
+	if GameState.power == "fire":
+		anim.play("FirePipe")
+	elif GameState.power == "water":
+		anim.play("WaterPipe")
+	elif GameState.power == "grass":
+		anim.play("GrassPipe")
+	elif GameState.big:
+		anim.play("BigPipe")
+	else:
+		anim.play("SmallPipe")
+	collected = GameState.power
+	if GameState.big:
+		scaled = true
+		scale = Vector2(1.1,1.1)
+	else:
+		scale = Vector2(.9,.9)
+	set_z_index(-1)
+	set_physics_process(false)
+	disable_input = true
+	audio_player.set_stream(powerdown_sound)
+	audio_player.play()
+func end_pipe_helper(anim_name):
+	if anim_name == "pipe_load":
+		set_z_index(2)
+		set_physics_process(true)
+		disable_input = false
 func emit_signal_while_playing(direction):
 	while anim.is_playing():
 		if get_node("GrassTimer").is_stopped():
@@ -93,7 +121,7 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-
+	print(GameState.big)
 	if GameState.cutscene and !cutscene_played:
 		disable_input = true
 		if not display_point_screen:
@@ -177,7 +205,9 @@ func _physics_process(delta):
 	elif is_on_floor() and !platVel:
 		get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
 		get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 0.0, MARGIN_CHANGE_SPEED*delta)	
-	
+	#if get_node("PipeTimer").is_stopped() and pipe_timer_started:
+		#get_node("AnimatedSprite2D").offset.y += 1
+		#print("wpw")
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
@@ -462,10 +492,20 @@ func _physics_process(delta):
 				plat_vel = false
 			_spinned()
 			
+		#if get_node("PipeTimer").is_stopped():
+			
 		if !Input.is_action_pressed("down") and is_on_floor() and !GameState.big:
-				get_node("AnimatedSprite2D").offset.y = 0
+			get_node("AnimatedSprite2D").offset.y = 0
 		if Input.is_action_just_pressed("down") and velocity.x:
-				get_node("AnimatedSprite2D").offset.y = 3
+			get_node("AnimatedSprite2D").offset.y = 3
+		if Input.is_action_pressed("down") and on_pipe:
+			get_tree().call_group("worlds", "_pipe")
+			#set_physics_process(false)
+			#get_node("CollisionShape2D").set_deferred("disabled", true)
+			#set_physics_process(false)
+			#print("played")
+			#get_node("PipeTimer").start()
+			#get_node("AnimationPlayer").play("pipe")
 		if last_pressed == -1:
 			GameState.direct = -1
 			get_node("AnimatedSprite2D").flip_h = true
@@ -843,3 +883,14 @@ func _on_game_over_animation_finished(anim_name):
 	if anim_name == "game_over":
 		print("endeddd")
 		send_player = true
+
+
+func _on_pipe_area_body_entered(body):
+	if body.name == "Player":
+		on_pipe = true
+
+func _on_pipe_area_body_exited(body):
+	if body.name == "Player":
+		on_pipe = false
+
+
