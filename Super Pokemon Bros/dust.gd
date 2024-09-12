@@ -4,4 +4,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("DustSprite").play("dust")
+	await get_node("DustSprite").animation_finished
+	queue_free()
 

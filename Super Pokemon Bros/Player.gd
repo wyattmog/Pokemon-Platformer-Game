@@ -35,6 +35,7 @@ var plat_vel = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 var DustScene = preload("res://dust.tscn")
+var BubbleScene = preload("res://bubble.tscn")
 var KickScene = preload("res://kick.tscn")
 var animplaying = false
 var jumptype = ""
@@ -121,6 +122,8 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
+	if GameState.water_gravity:
+		_spawn_bubble()
 	if GameState.cutscene and !cutscene_played:
 		disable_input = true
 		if not display_point_screen:
@@ -608,6 +611,14 @@ func _spawn_dust():
 	new_dust.position.y = position.y + 12
 	add_sibling(new_dust)
 	get_node("DustTimer").start()
+func _spawn_bubble():
+	if not get_node("BubbleTimer").is_stopped():
+		return
+	var BubbleScene = BubbleScene.instantiate()
+	BubbleScene.position.x = position.x
+	BubbleScene.position.y = position.y - 5
+	add_sibling(BubbleScene)
+	get_node("BubbleTimer").start()
 func _death():
 	get_node("Camera2D").set_process_mode(3)
 	get_node("Camera2D/GameOverScreen").set_visible(true)

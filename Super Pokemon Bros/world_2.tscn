@@ -297,78 +297,91 @@ visibility_layer = 9
 position = Vector2(-5.96046e-08, 0)
 
 [node name="Squirtle" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(782, 386)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Squirtle2" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(706, 426)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Squirtle3" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(624, 466)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Squirtle4" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(2569, 482)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Squirtle5" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(2509, 482)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Squirtle6" parent="Mobs" instance=ExtResource("8_xpiif")]
+z_index = 3
 position = Vector2(2539, 482)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Wartortle" parent="Mobs" instance=ExtResource("9_sqftx")]
+z_index = 3
 position = Vector2(1548, 382)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Wartortle3" parent="Mobs" instance=ExtResource("9_sqftx")]
+z_index = 3
 position = Vector2(2097, 374)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Wartortle4" parent="Mobs" instance=ExtResource("9_sqftx")]
+z_index = 3
 position = Vector2(2211, 382)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Blastoise" parent="Mobs" instance=ExtResource("10_6j1d4")]
+z_index = 3
 position = Vector2(2632, 446)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Blastoise3" parent="Mobs" instance=ExtResource("10_6j1d4")]
+z_index = 3
 position = Vector2(2808, 368)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Blastoise4" parent="Mobs" instance=ExtResource("10_6j1d4")]
+z_index = 3
 position = Vector2(1697, 448)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
 [node name="Blastoise2" parent="Mobs" instance=ExtResource("10_6j1d4")]
+z_index = 3
 position = Vector2(2710, 407)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
@@ -408,24 +421,30 @@ position = Vector2(3415, 445)
 
 [node name="Question_Block" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(567, 422)
+collision_layer = 8
 spawned_scene = ExtResource("16_qvowd")
 
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(582, 422)
+collision_layer = 8
 spawned_scene = ExtResource("17_tlfcf")
 
 [node name="Question_Block3" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(597, 422)
+collision_layer = 8
 spawned_scene = ExtResource("16_qvowd")
 
 [node name="Question_Block4" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(2421, 466)
+collision_layer = 8
 
 [node name="Question_Block5" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(2436, 466)
+collision_layer = 8
 
 [node name="Question_Block6" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(2451, 466)
+collision_layer = 8
 
 [node name="VoidArea" type="Area2D" parent="."]
 
@@ -469,6 +488,32 @@ shape = SubResource("RectangleShape2D_im4q8")
 
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]
+[connection signal="bounce_signal" from="Mobs/Squirtle" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Squirtle2" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle2" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Squirtle3" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle3" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Squirtle4" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle4" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Squirtle5" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle5" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Squirtle6" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Squirtle6" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Wartortle" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Wartortle" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Wartortle3" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Wartortle3" to="." method="_on_wartortle_3_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Wartortle4" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Wartortle4" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Blastoise" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Blastoise" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Blastoise3" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Blastoise3" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Blastoise4" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Blastoise4" to="." method="_on_enemy_death"]
+[connection signal="bounce_signal" from="Mobs/Blastoise2" to="Player/Player" method="_on_bounce_signal"]
+[connection signal="enemy_death" from="Mobs/Blastoise2" to="." method="_on_enemy_death"]
 [connection signal="body_entered" from="Foreground Blocks/FinishPole/Area2D" to="." method="_on_finish_body_entered"]
 [connection signal="body_entered" from="Foreground Blocks/FinishPole/Area2D" to="Player/Player" method="_on_finish_area_2d_body_entered"]
 [connection signal="body_entered" from="Foreground Blocks/FinishPole/Area2D" to="Foreground Blocks/FinishPole" method="_on_area_2d_body_entered"]

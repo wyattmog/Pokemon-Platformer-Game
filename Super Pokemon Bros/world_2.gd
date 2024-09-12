@@ -5,7 +5,8 @@ var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameState.checkpoint:
-		GameState.player.position = Vector2(2437, 505)
+		#GameState.player.position = Vector2(2437, 505)
+		GameState.player.position = Vector2(942, 401)
 	else:
 		GameState.player.position = Vector2(67, 491)
 	add_to_group("worlds")
@@ -45,3 +46,11 @@ func _on_finish_body_entered(body):
 		get_node("BackroundMusic").set_stream(course_clear_sound)
 		get_node("BackroundMusic").play()
 
+
+
+func _on_bounce_signal():
+	pass # Replace with function body.
+
+
+func _on_wartortle_3_enemy_death(body):
+	pass # Replace with function body.

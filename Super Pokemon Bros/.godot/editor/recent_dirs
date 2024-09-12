@@ -1,3 +1,7 @@
+res://sprites/mobs/seaking/idle
+res://sprites/mobs/seaking/attack
+res://sprites/mobs/goldeen
+res://sprites/player
 res://sprites/player/all anims/swim
 res://sprites/tiles/tilesets
 res://sprites/tiles/
@@ -16,7 +20,3 @@ res://sprites/mobs/charizard
 res://sprites/mobs/wartortle
 res://sprites/player/all anims/death
 res://sprites/effects/drive-download-20240803T174930Z-001
-res://sprites/mobs/ivysaur
-res://sprites/mobs/bulbasaur
-res://sprites/mobs
-res://sprites/player/all anims/waterattack
