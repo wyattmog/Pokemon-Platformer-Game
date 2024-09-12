@@ -13,6 +13,9 @@ func _ready():
 	GameState.game_ended = false
 	
 func _pipe():
+	GameState.water_gravity = true
+	ProjectSettings.set_setting("physics/2d/default_gravity", 150)
+
 	get_node("Player/PipeAnimation").play("pipe_load")
 	GameState.player._start_pipe_helper()
 	await get_tree().create_timer(2).timeout

@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(947, 417), Vector2(947, 470)]
+"values": [Vector2(944, 417), Vector2(944, 470)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8arq"]
@@ -464,7 +464,7 @@ shape = SubResource("RectangleShape2D_toaqy")
 [node name="PipeArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PipeArea"]
-position = Vector2(947, 436.75)
+position = Vector2(944, 437)
 shape = SubResource("RectangleShape2D_im4q8")
 
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]

@@ -121,7 +121,6 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	print(GameState.big)
 	if GameState.cutscene and !cutscene_played:
 		disable_input = true
 		if not display_point_screen:
@@ -197,14 +196,14 @@ func _physics_process(delta):
 			GameState.cutscene = false
 			get_tree().call_group("worlds", "_on_player_dead")
 			get_tree().change_scene_to_file("res://main.tscn")
+	if !GameState.water_gravity:
+		if not is_on_floor() and !disable_input and velocity.y > 0:
+			get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 0.00, MARGIN_CHANGE_SPEED*delta)
+			get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 1.00, MARGIN_CHANGE_SPEED*delta)
 
-	elif not is_on_floor() and !disable_input and velocity.y > 0:
-		get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 0.00, MARGIN_CHANGE_SPEED*delta)
-		get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 1.00, MARGIN_CHANGE_SPEED*delta)
-
-	elif is_on_floor() and !platVel:
-		get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
-		get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 0.0, MARGIN_CHANGE_SPEED*delta)	
+		elif is_on_floor() and !platVel:
+			get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
+			get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 0.0, MARGIN_CHANGE_SPEED*delta)	
 	#if get_node("PipeTimer").is_stopped() and pipe_timer_started:
 		#get_node("AnimatedSprite2D").offset.y += 1
 		#print("wpw")
@@ -471,26 +470,29 @@ func _physics_process(delta):
 					add_sibling(waterball)
 					await anim.animation_finished
 					animplaying = false
-	
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor() :
-			get_node("CameraTimer").start()
-			audio_player.set_stream(jump_sound)
-			audio_player.play()
-			if abs(platVel.x) > 20:
-				plat_vel = true
-			else:
-				plat_vel = false
-			_jumped()
-				
-		if Input.is_action_just_pressed("spinjump") and is_on_floor():
-			get_node("CameraTimer").start()
-			audio_player.set_stream(spin_sound)
-			audio_player.play()
-			if abs(platVel.x) > 20:
-				plat_vel = true
-			else:
-				plat_vel = false
-			_spinned()
+		if !GameState.water_gravity:
+			if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+				audio_player.set_stream(jump_sound)
+				audio_player.play()
+				if abs(platVel.x) > 20:
+					plat_vel = true
+				else:
+					plat_vel = false
+				_jumped()
+					
+			if Input.is_action_just_pressed("spinjump") and is_on_floor():
+				audio_player.set_stream(spin_sound)
+				audio_player.play()
+				if abs(platVel.x) > 20:
+					plat_vel = true
+				else:
+					plat_vel = false
+				_spinned()
+		else:
+			if Input.is_action_just_pressed("ui_accept"):
+				audio_player.set_stream(jump_sound)
+				audio_player.play()
+				_water_jumped()
 			
 		#if get_node("PipeTimer").is_stopped():
 			
@@ -498,6 +500,7 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").offset.y = 0
 		if Input.is_action_just_pressed("down") and velocity.x:
 			get_node("AnimatedSprite2D").offset.y = 3
+			
 		if Input.is_action_pressed("down") and on_pipe:
 			get_tree().call_group("worlds", "_pipe")
 			#set_physics_process(false)
@@ -520,23 +523,31 @@ func _physics_process(delta):
 		else:
 			anim.set_speed_scale(1)
 		if direction:
-			if get_node("AnimatedSprite2D").global_position[0] > 30 + get_node("Camera2D").get_screen_center_position()[0]:
+			if !GameState.water_gravity:
+				if get_node("AnimatedSprite2D").global_position[0] > 30 + get_node("Camera2D").get_screen_center_position()[0]:
 
-				target_right_margin = 0.0
-			elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 30:
-				target_left_margin = 0.0
-			_directionalMovement(direction)
+					target_right_margin = 0.0
+				elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 30:
+					target_left_margin = 0.0
+			if !GameState.water_gravity:
+				_directionalMovement(direction)
+			else:
+				_waterDirectionalMovement(direction)
 			if direction < 0:
 				last_pressed = -1
 			else: 
 				last_pressed = 1
 		else:
-			_directionalMovement(direction)
-			if last_pressed == 1:
-				target_left_margin = 0.3
-			elif last_pressed == -1:
-				target_right_margin = 0.3
-		if velocity.y > 0 and !animplaying and jumptype=="jump":
+			if !GameState.water_gravity:
+				_directionalMovement(direction)
+				if last_pressed == 1:
+					target_left_margin = 0.3
+				elif last_pressed == -1:
+					target_right_margin = 0.3
+			else:
+				_waterDirectionalMovement(direction)
+			
+		if velocity.y > 0 and !animplaying and jumptype=="jump" and !GameState.water_gravity:
 			if GameState.power == "grass":
 				anim.play("GrassFall")
 			elif GameState.power == "fire":
@@ -638,7 +649,25 @@ func _on_bounce_signal():
 		_jumped()
 	elif !animplaying:
 		_jumped()
-	
+func _water_jumped():
+	velocity.y = JUMP_VELOCITY/3
+	animplaying = true
+	if GameState.power == "grass":
+		anim.play("GrassSwim")
+	elif GameState.power == "fire":
+		anim.play("FireSwim")
+	elif GameState.power == "water":
+		anim.play("WaterSwim")
+	elif GameState.big:
+		anim.play("BigSwim")
+	else:
+		anim.play("SmallSwim")
+	await is_on_floor()
+	animplaying = false
+	if direction == -1:
+		last_pressed = -1
+	elif direction == 1: 
+		last_pressed = 1
 func _jumped():
 	get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")
@@ -732,7 +761,9 @@ func _spinned():
 func _gravity(delta):
 	if disable_input and get_node("AnimationPlayer").get_assigned_animation() == "Death":
 		velocity.y += gravity * delta * 1.5
-	if not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce and velocity.y < abs(JUMP_VELOCITY):
+	elif GameState.water_gravity and not is_on_floor():
+		velocity.y += gravity * delta
+	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce and velocity.y < abs(JUMP_VELOCITY):
 		velocity.y += gravity * delta 
 	elif not is_on_floor() and not (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and not velocity.y > abs(JUMP_VELOCITY*2):
 		velocity.y += gravity * delta * 1.75
@@ -753,9 +784,73 @@ func _gravity(delta):
 		bounce = false
 		jumptype = ""
 		
-
+func _waterDirectionalMovement(direction):
+	if direction:
+		if GameState.big:
+			get_node("AnimatedSprite2D").offset.y = 1
+		if direction == -1 && velocity.x > 0:
+			if is_on_floor():
+				_spawn_dust()
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
+		elif direction == 1 && velocity.x < 0:
+			if is_on_floor():
+				_spawn_dust()
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION*4)
+		
+		else:
+			velocity.x = move_toward(velocity.x, (direction * SPEED)/3, ACCELERATION)
+			if !animplaying and is_on_floor() and get_floor_angle() == 0:
+				if GameState.power == "grass":
+					anim.play("GrassWalk")
+				elif GameState.power == "fire":
+					anim.play("FireWalk")
+				elif GameState.power == "water":
+					anim.play("WaterWalk")
+				elif GameState.big:
+					anim.play("BigWalk")
+				else:
+					anim.play("SmallWalk")
+			else:
+				if GameState.power == "grass":
+					anim.play("GrassSwim")
+				elif GameState.power == "fire":
+					anim.play("FireSwim")
+				elif GameState.power == "water":
+					anim.play("WaterSwim")
+				elif GameState.big:
+					anim.play("BigSwim")
+				else:
+					anim.play("SmallSwim")
+	else:
+		get_node("AnimatedSprite2D").offset.y = 0
+		if is_on_floor() and get_floor_angle() == 0 and not velocity.x and !animplaying and velocity.y == 0:
+			if GameState.power == "grass":
+				anim.play("GrassIdle")
+			elif GameState.power == "fire":
+				anim.play("FireIdle")
+			elif GameState.power == "water":
+				anim.play("WaterIdle")
+			elif GameState.big:
+				anim.play("BigIdle")
+			else:
+				anim.play("SmallIdle")
+		elif not velocity.y and not is_on_floor():
+			if GameState.power == "grass":
+				anim.play("GrassSwimIdle")
+			elif GameState.power == "fire":
+				anim.play("FireSwimIdle")
+			elif GameState.power == "water":
+				anim.play("WaterSwimIdle")
+			elif GameState.big:
+				anim.play("BigSwimIdle")
+			else:
+				anim.play("SmallSwimIdle")
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
+		
 	
 func _directionalMovement(direction):
+	print("wow")
 	if direction:
 		if GameState.big:
 			get_node("AnimatedSprite2D").offset.y = 1
@@ -863,7 +958,6 @@ func _on_fade_player_animation_finished(anim_name):
 
 func _on_point_notifier_animation_finished(anim_name):
 	if anim_name == "visibility":
-		print("wow")
 		display_point_screen = true
 	if anim_name == "subtract":
 		subtract = true
@@ -873,7 +967,6 @@ func _on_point_notifier_animation_finished(anim_name):
 
 func _on_finish_area_2d_body_entered(body):
 	if body.name == "Player":
-		print("finished")
 		get_node("Camera2D/GameEndFade/FadePlayer1").play("fade")
 		set_z_index(7)
 		GameState.cutscene = true
@@ -881,7 +974,6 @@ func _on_finish_area_2d_body_entered(body):
 
 func _on_game_over_animation_finished(anim_name):
 	if anim_name == "game_over":
-		print("endeddd")
 		send_player = true
 
 

@@ -1,7 +1,11 @@
-res://main.tscn
+res://world_2.tscn
 res://water_ball.gd
 res://QuestionBlock.gd
 res://marioblocks.tres
+res://game_state.gd
+res://Player.gd
+res://world_2.gd
+res://main.tscn
 res://world_1.tscn
 res://Player.tscn
 res://point_screen.tscn
@@ -12,11 +16,9 @@ res://charizard.tscn
 res://squirtle_shell.tscn
 res://spinning_coin.tscn
 res://soft_collision.tscn
-res://world_2.tscn
 res://bg.tscn
 res://water.tscn
 res://wartortle.tscn
 res://world_2_underwater.tscn
-res://Player.gd
-res://world_2.gd
-res://world_2_underwater.gd
+res://grass_projectile.tscn
+res://grass_power.tscn

@@ -15,6 +15,7 @@ var stomp_counter = 0
 var invincible = false
 var checkpoint = false
 var score = 0
+var water_gravity = false
 var shellkicked = false
 var time = 300
 var total_points = 0
