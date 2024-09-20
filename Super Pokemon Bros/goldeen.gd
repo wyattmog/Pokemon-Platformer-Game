@@ -7,6 +7,7 @@ var stomp_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects
 var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/kick.wav")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var BubbleScene = preload("res://bubble.tscn")
 @onready var anim = get_node("AnimationPlayer")
 var isdead = false
 var jumped_on = false
@@ -18,10 +19,13 @@ signal enemy_death(body)
 
 func _ready(): 
 	add_to_group("enemies")
-	anim.play("Walk")
+	anim.play("Swim")
 	velocity.x = SPEED
 
 func _physics_process(delta):
+	if get_node("BubbleTimer").is_stopped():
+		_spawn_bubble()
+		get_node("BubbleTimer").set_wait_time(randf_range(.5,1))
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:
@@ -93,6 +97,7 @@ func death():
 		emit_signal("bounce_signal")
 	await get_tree().create_timer(0.25).timeout
 	get_node("AnimatedSprite2D").set_visible(false)	
+	scale = Vector2(2,2)
 	if GameState.player.jumptype == "spin":
 		await get_tree().create_timer(0.40).timeout
 	self.queue_free()
@@ -125,7 +130,14 @@ func _on_player_hitbox_body_entered(body):
 		else:
 			get_tree().call_group("player", "_death")
 
-
+func _spawn_bubble():
+	if not get_node("BubbleTimer").is_stopped():
+		return
+	var BubbleScene = BubbleScene.instantiate()
+	BubbleScene.position.x = position.x
+	BubbleScene.position.y = position.y - 5
+	add_sibling(BubbleScene)
+	get_node("BubbleTimer").start()
 
 func _on_player_detection_body_entered(body):
 	if body.name == "Player":

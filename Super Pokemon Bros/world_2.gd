@@ -4,21 +4,20 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameState.checkpoint:
-		#GameState.player.position = Vector2(2437, 505)
-		GameState.player.position = Vector2(942, 401)
+	if GameState.water_gravity:
+		GameState.water_gravity = false
+		get_node("Player/PipeAnimation").play("pipe_exit")
+		GameState.player._start_pipe_helper()
 	else:
-		GameState.player.position = Vector2(67, 491)
+		GameState.player.position = Vector2(86, 515)
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
-	
-func _pipe():
+func surface_pipe_entered():
+	GameState.player._start_pipe_helper()
 	GameState.water_gravity = true
 	ProjectSettings.set_setting("physics/2d/default_gravity", 150)
-
 	get_node("Player/PipeAnimation").play("pipe_load")
-	GameState.player._start_pipe_helper()
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://world_2_underwater.tscn")
 func _on_enemy_death(name):
@@ -45,12 +44,3 @@ func _on_finish_body_entered(body):
 	if body.name == "Player":
 		get_node("BackroundMusic").set_stream(course_clear_sound)
 		get_node("BackroundMusic").play()
-
-
-
-func _on_bounce_signal():
-	pass # Replace with function body.
-
-
-func _on_wartortle_3_enemy_death(body):
-	pass # Replace with function body.

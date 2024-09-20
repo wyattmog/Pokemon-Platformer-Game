@@ -1612,8 +1612,6 @@ shape = SubResource("RectangleShape2D_7l1ih")
 position = Vector2(4366.5, 438.5)
 shape = SubResource("RectangleShape2D_6i3qw")
 
-[node name="Pausable" type="Node2D" parent="."]
-
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]
 [connection signal="bounce_signal" from="Mobs/Venusaur" to="Player/Player" method="_on_bounce_signal"]

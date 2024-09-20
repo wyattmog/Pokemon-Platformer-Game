@@ -75,6 +75,15 @@ func _ready():
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90)
 func _start_pipe_helper():
+	collected = GameState.power
+	if GameState.big:
+		scaled = true
+		scale = Vector2(1.1,1.1)
+	else:
+		scale = Vector2(.9,.9)
+	set_z_index(-1)
+	set_physics_process(false)
+	disable_input = true
 	if GameState.power == "fire":
 		anim.play("FirePipe")
 	elif GameState.power == "water":
@@ -85,19 +94,10 @@ func _start_pipe_helper():
 		anim.play("BigPipe")
 	else:
 		anim.play("SmallPipe")
-	collected = GameState.power
-	if GameState.big:
-		scaled = true
-		scale = Vector2(1.1,1.1)
-	else:
-		scale = Vector2(.9,.9)
-	set_z_index(-1)
-	set_physics_process(false)
-	disable_input = true
 	audio_player.set_stream(powerdown_sound)
 	audio_player.play()
 func end_pipe_helper(anim_name):
-	if anim_name == "pipe_load":
+	if anim_name == "pipe_load" or anim_name == "pipe_exit":
 		set_z_index(2)
 		set_physics_process(true)
 		disable_input = false
@@ -122,8 +122,13 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	if GameState.water_gravity:
+	print(GameState.checkpoint)
+	if Input.is_action_just_pressed("GodMode"):
+		GameState.invincible = true
+	if GameState.water_gravity and get_node("BubbleTimer").is_stopped() and !disable_input:
 		_spawn_bubble()
+		get_node("BubbleTimer").set_wait_time(randf_range(.5,1))
+
 	if GameState.cutscene and !cutscene_played:
 		disable_input = true
 		if not display_point_screen:
@@ -196,6 +201,7 @@ func _physics_process(delta):
 			await get_tree().create_timer(.35).timeout
 			get_node("Camera2D/GameTransition/FadePlayer").play("fade")
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
+			GameState.checkpoint = false
 			GameState.cutscene = false
 			get_tree().call_group("worlds", "_on_player_dead")
 			get_tree().change_scene_to_file("res://main.tscn")
@@ -207,9 +213,6 @@ func _physics_process(delta):
 		elif is_on_floor() and !platVel:
 			get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
 			get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 0.0, MARGIN_CHANGE_SPEED*delta)	
-	#if get_node("PipeTimer").is_stopped() and pipe_timer_started:
-		#get_node("AnimatedSprite2D").offset.y += 1
-		#print("wpw")
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
@@ -503,9 +506,11 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").offset.y = 0
 		if Input.is_action_just_pressed("down") and velocity.x:
 			get_node("AnimatedSprite2D").offset.y = 3
-			
-		if Input.is_action_pressed("down") and on_pipe:
-			get_tree().call_group("worlds", "_pipe")
+		if ((Input.is_action_pressed("down") and on_pipe)) or ((Input.is_action_pressed("up") and on_pipe and GameState.water_gravity)):
+			if !GameState.water_gravity:
+				get_tree().call_group("worlds", "surface_pipe_entered")
+			else:
+				get_tree().call_group("worlds", "underwater_pipe_entered")
 			#set_physics_process(false)
 			#get_node("CollisionShape2D").set_deferred("disabled", true)
 			#set_physics_process(false)
@@ -620,25 +625,27 @@ func _spawn_bubble():
 	add_sibling(BubbleScene)
 	get_node("BubbleTimer").start()
 func _death():
+	velocity.y = 0
+	velocity.x = 0
 	get_node("Camera2D").set_process_mode(3)
-	get_node("Camera2D/GameOverScreen").set_visible(true)
-	get_node("Camera2D/GameOverScreen/ColorRect").set_visible(true)
 	set_physics_process(false)
 	anim.play("Death")
 	get_tree().call_group("worlds", "_on_player_death")
 	disable_input = true
 	audio_player.set_stream(death_sound)
 	audio_player.play()
-	velocity.y = 0
-	velocity.x = 0
 	await get_tree().create_timer(.5).timeout
 	set_physics_process(true)
-	velocity.y -= 300
+	if GameState.water_gravity:
+		velocity.y -= 200
+	else:
+		velocity.y -= 300
 	velocity.x = 0
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	if GameState.num_lives == 1:
 		await get_tree().create_timer(3).timeout
-		print(audio_player.is_playing())
+		get_node("Camera2D/GameOverScreen").set_visible(true)
+		get_node("Camera2D/GameOverScreen/ColorRect").set_visible(true)
 		get_node("Camera2D/GameOverScreen/GameOver").play("game_over")
 		get_node("GameOver").play()
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished
@@ -697,7 +704,6 @@ func _jumped():
 		anim.play("BigJump")
 	else:
 		anim.play("SmallJump")
-	#print(animplaying)
 	await is_on_floor()
 	animplaying = false
 	jumptype = "jump"
@@ -770,10 +776,10 @@ func _spinned():
 		last_pressed = 1
 	
 func _gravity(delta):
-	if disable_input and get_node("AnimationPlayer").get_assigned_animation() == "Death":
+	if disable_input and get_node("AnimationPlayer").get_assigned_animation() == "Death" and not GameState.water_gravity:
 		velocity.y += gravity * delta * 1.5
-	elif GameState.water_gravity and not is_on_floor():
-		velocity.y += gravity * delta
+	elif GameState.water_gravity and not is_on_floor() and disable_input and get_node("AnimationPlayer").get_assigned_animation() == "Death":
+		velocity.y += gravity * delta * 2.5
 	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and bounce and velocity.y < abs(JUMP_VELOCITY):
 		velocity.y += gravity * delta 
 	elif not is_on_floor() and not (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and not velocity.y > abs(JUMP_VELOCITY*2):
@@ -784,7 +790,7 @@ func _gravity(delta):
 		velocity.y += gravity * delta
 	elif not is_on_floor() and (Input.is_action_pressed("spinjump") or Input.is_action_pressed("ui_accept")) and !disable_input and !bounce and velocity.y < abs(JUMP_VELOCITY):
 		velocity.y += gravity * delta 
-	elif is_on_floor():
+	elif is_on_floor() and !disable_input:
 		emit_signal("landed")
 		if not GameState.shellkicked:
 			GameState.stomp_counter = 0
@@ -794,6 +800,8 @@ func _gravity(delta):
 			get_node("GrassAttack/CollisionShapeLeft").disabled = true
 		bounce = false
 		jumptype = ""
+	else:
+		velocity.y += gravity * delta
 		
 func _waterDirectionalMovement(direction):
 	if direction:
@@ -861,7 +869,6 @@ func _waterDirectionalMovement(direction):
 		
 	
 func _directionalMovement(direction):
-	print("wow")
 	if direction:
 		if GameState.big:
 			get_node("AnimatedSprite2D").offset.y = 1

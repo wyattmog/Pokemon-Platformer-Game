@@ -6,17 +6,21 @@ var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound 
 func _ready():
 	#await get_tree().create_timer(1).timeout
 	if GameState.checkpoint:
-		GameState.player.position = Vector2(2437, 505)
+		GameState.water_gravity = true
+		ProjectSettings.set_setting("physics/2d/default_gravity", 150)
+		GameState.player.position = Vector2(1156, 497)
 	else:
 		get_node("Player/PipeAnimation").play("pipe_load")
 		GameState.player._start_pipe_helper()
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
-func _pipe():
-	GameState.player.position.x = get_node("PipeArea/CollisionShape2D").position.x
-	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://world_2_underwater.tscn")
+func underwater_pipe_entered():
+	GameState.player._start_pipe_helper() 
+	ProjectSettings.set_setting("physics/2d/default_gravity", 530)
+	get_node("Player/PipeAnimation").play("pipe_exit")
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://world_2.tscn")
 func _on_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
 

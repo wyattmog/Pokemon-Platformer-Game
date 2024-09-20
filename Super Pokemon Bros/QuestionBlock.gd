@@ -82,7 +82,7 @@ func _grass_attack():
 		
 
 func _on_area_2d_area_entered(body):
-	if body.name == "PlayerArea":
+	if body.name == "PlayerArea" and !audio_player.is_playing():
 		audio_player.set_stream(hit_sound)
 		audio_player.set_volume_db(-10)
 

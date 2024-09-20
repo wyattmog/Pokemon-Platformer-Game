@@ -7,6 +7,7 @@ var stomp_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects
 var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/kick.wav")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var BubbleScene = preload("res://bubble.tscn")
 @onready var anim = get_node("AnimationPlayer")
 var isdead = false
 var jumped_on = false
@@ -15,6 +16,7 @@ var player_dir = 0
 signal bounce_signal
 var follow_timer = false
 var animplaying = false
+var player_last_position
 var attacked = false
 var nearby
 var start = false
@@ -27,16 +29,20 @@ func _ready():
 	anim.play("Idle")
 
 func _physics_process(delta):
-	print(follow_timer)
+	if get_node("BubbleTimer").is_stopped():
+		_spawn_bubble()
+		get_node("BubbleTimer").set_wait_time(randf_range(.5,1))
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:
 		set_collision_mask_value(1, true)
 	if !isdead and start:
 		var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
+		# use global coordinates, not local to node
 		var query = PhysicsRayQueryParameters2D.create(position, GameState.player.position)
-		var result = space_state.intersect_ray(query)["collider"].name == "Player"
+		var result
+		if !GameState.invincible:
+			result = space_state.intersect_ray(query)["collider"].name == "Player"
 		if !get_node("FollowTimer").is_stopped() and !follow_timer:
 			follow_timer = true
 		elif get_node("FollowTimer").is_stopped():
@@ -59,8 +65,10 @@ func _physics_process(delta):
 				get_node("FollowTimer").start()
 		else:
 			anim.set_speed_scale(1)
-			position.x = move_toward(position.x, initial_position.x, 1)
-			position.y = move_toward(position.y, initial_position.y, 1)
+			velocity.x = 0
+			velocity.y = 0
+			position.x = move_toward(position.x, initial_position.x, .5)
+			position.y = move_toward(position.y, initial_position.y, .5)
 			if position.x < initial_position.x:
 				get_node("AnimatedSprite2D").flip_h = true 
 			elif position.x > initial_position.x:
@@ -144,6 +152,7 @@ func _on_player_grass_attack_ended():
 func _on_player_hitbox_body_entered(body):
 	if body.is_in_group("projectiles") and not isdead:
 		jumped_on = false
+		get_node("PlayerHitbox/CollisionShape2D").set_deferred("disabled", true)
 		if body.is_in_group("shell_projectile"):
 			GameState.shellkicked = true
 			get_tree().call_group("shell_projectile", "_start_timer")
@@ -158,7 +167,14 @@ func _on_player_hitbox_body_entered(body):
 		else:
 			get_tree().call_group("player", "_death")
 
-
+func _spawn_bubble():
+	if not get_node("BubbleTimer").is_stopped():
+		return
+	var BubbleScene = BubbleScene.instantiate()
+	BubbleScene.position.x = position.x
+	BubbleScene.position.y = position.y - 5
+	add_sibling(BubbleScene)
+	get_node("BubbleTimer").start()
 
 func _on_player_detection_body_entered(body):
 	if body.name == "Player":

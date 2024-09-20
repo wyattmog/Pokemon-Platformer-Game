@@ -3702,6 +3702,7 @@ shape = SubResource("CapsuleShape2D_y1wql")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vy0g8")
 animation = &"FireIdle"
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 1
@@ -3800,7 +3801,7 @@ libraries = {
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/GameOverScreen"]
-self_modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(32.047, 25.5702)
