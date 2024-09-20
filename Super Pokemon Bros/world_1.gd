@@ -4,7 +4,7 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameState.checkpoint:
+	if GameState.checkpoint_level_1:
 		GameState.player.position = Vector2(2437, 505)
 	else:
 		GameState.player.position = Vector2(63, 528)

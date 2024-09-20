@@ -13,12 +13,14 @@ var num_lives: int = 5
 var projectile_adjustment = 0
 var stomp_counter = 0
 var invincible = false
-var checkpoint = false
+var checkpoint_level_1 = false
+var checkpoint_level_2 = false
 var score = 0
 var water_gravity = false
 var shellkicked = false
 var time = 300
 var total_points = 0
+var collected_items = {}
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
 	get_tree().call_group("status_bar", "display_time")
