@@ -3713,6 +3713,7 @@ limit_left = 0
 limit_bottom = 570
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_vertical_offset = -0.04
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
@@ -3912,7 +3913,12 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="CameraDelayTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="Camera2D/PointScreen/PointNotifier" to="." method="_on_point_notifier_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/GameEndFade/FadePlayer1" to="." method="_on_fade_player_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/GameOverScreen/GameOver" to="." method="_on_game_over_animation_finished"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="CameraDelayTimer" to="." method="_on_camera_delay_timer_timeout"]

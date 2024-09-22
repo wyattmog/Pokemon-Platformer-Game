@@ -1,9 +1,7 @@
-res://lava.tscn
-res://QuestionBlock.gd
-res://water_ball.gd
-res://marioblocks.tres
-res://world_3.tscn
 res://main.tscn
+res://water_ball.gd
+res://QuestionBlock.gd
+res://marioblocks.tres
 res://world_1.tscn
 res://Player.tscn
 res://point_screen.tscn
@@ -31,5 +29,6 @@ res://charmeleon.tscn
 res://question_block.tscn
 res://grass_moving_platform.tscn
 res://venusaur.tscn
+res://world_3.tscn
+res://lava.tscn
 res://Player.gd
-res://world_3.gd
