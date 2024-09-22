@@ -1,3 +1,5 @@
+res://sprites/tiles
+res://
 res://sprites/mobs/seaking/idle
 res://sprites/mobs/seaking/attack
 res://sprites/mobs/goldeen
@@ -5,8 +7,6 @@ res://sprites/player
 res://sprites/player/all anims/swim
 res://sprites/tiles/tilesets
 res://sprites/tiles/
-res://
-res://sprites/tiles
 res://sprites/player/all anims/celebration
 res://sprites/player/Default Player
 res://sprites/player/Grass Player

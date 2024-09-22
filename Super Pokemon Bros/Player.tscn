@@ -3908,6 +3908,10 @@ one_shot = true
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CameraDragTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="animation_finished" from="Camera2D/PointScreen/PointNotifier" to="." method="_on_point_notifier_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/GameEndFade/FadePlayer1" to="." method="_on_fade_player_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/GameOverScreen/GameOver" to="." method="_on_game_over_animation_finished"]

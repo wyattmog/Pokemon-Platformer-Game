@@ -19,10 +19,11 @@ const FRICTION = 35
 const ACCELERATION = 5.0
 const MARGIN_CHANGE_SPEED = 10.0
 var on_pipe = false
-var pipe_timer_started = false
+var pipe_started = false
 var platVel = Vector2(0,0)
 var curr_moving = false
 var subtract = false
+var pi
 var timer_started = false
 var disable_input = false
 var display_point_screen = false
@@ -48,6 +49,7 @@ var scaleup = false
 var scaledown = false
 var move = true
 var camera_moving = false
+var last_pos = 0.0
 signal grass_attack
 signal grass_attack_ended
 signal invincibility
@@ -122,9 +124,7 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	print(GameState.checkpoint)
-	if Input.is_action_just_pressed("GodMode"):
-		GameState.invincible = true
+	print(get_node("Camera2D").drag_top_margin)
 	if GameState.water_gravity and get_node("BubbleTimer").is_stopped() and !disable_input:
 		_spawn_bubble()
 		get_node("BubbleTimer").set_wait_time(randf_range(.5,1))
@@ -200,19 +200,47 @@ func _physics_process(delta):
 				anim.play("SmallWalk")
 			await get_tree().create_timer(.35).timeout
 			get_node("Camera2D/GameTransition/FadePlayer").play("fade")
+			if get_tree().current_scene.name == "World1":
+				GameState.checkpoint_level_1 = false
+			elif get_tree().current_scene.name == "World2":
+				GameState.checkpoint_level_2 = false
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
-			GameState.checkpoint = false
 			GameState.cutscene = false
 			get_tree().call_group("worlds", "_on_player_dead")
 			get_tree().change_scene_to_file("res://main.tscn")
 	if !GameState.water_gravity:
-		if not is_on_floor() and !disable_input and velocity.y > 0:
-			get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 0.00, MARGIN_CHANGE_SPEED*delta)
-			get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 1.00, MARGIN_CHANGE_SPEED*delta)
+		#if get_node("Camera2D").drag_top_margin == 0:
+		get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
+		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
+		if is_on_floor() and position.y != last_pos:
+			get_node("Camera2D").drag_top_margin = 0.00
+			last_pos = position.y
+		elif not is_on_floor() and last_pos >= position.y:
+			get_node("Camera2D").drag_bottom_margin = 1.00
+		elif not is_on_floor() and last_pos <position.y:
+			get_node("Camera2D").drag_bottom_margin = 0.00
+			get_node("Camera2D").global_position.y = position.y
+			#get_node("Camera2D").drag_bottom_margin = 1.00
+			#get_node("Camera2D").global_position.y = position.y
+		#elif not is_on_floor() and velocity.y > 0:
+			#get_node("Camera2D").global_position.y = position.y 
+		#else:
+		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
+		#if is_on_floor() or get_node("CameraDragTimer").is_stopped():
+			#get_node("Camera2D").drag_top_margin = 0.00
+		#get_node("Camera2D").global_position.y = move_toward(global_position.y, last_pos, MARGIN_CHANGE_SPEED*delta)
+		#if not is_on_floor() and !disable_input and velocity.y > 0:
+			#get_node("Camera2D").global_position.y = last_pos
+			#get_node("Camera2D").set_global_position(Vector2(global_position.x, move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*delta)))
+			#get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 0.00, 20*delta)
+			#get_node("Camera2D").drag_top_margin = 1.00
 
-		elif is_on_floor() and !platVel:
-			get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
-			get_node("Camera2D").drag_top_margin = lerp(get_node("Camera2D").drag_top_margin, 0.0, MARGIN_CHANGE_SPEED*delta)	
+		#if is_on_floor() and !platVel:
+			#get_node("Camera2D").drag_top_margin = 0.00
+			#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
+			#last_pos = position.y
+			#get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
+			#get_node("Camera2D").drag_top_margin = 0.0
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
@@ -223,6 +251,7 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, 1))
 			played = false
 		if scaling:
+			GameState.invincible = true
 			scaling = false
 			anim.stop(false)
 			set_physics_process(false)
@@ -358,6 +387,8 @@ func _physics_process(delta):
 			set_physics_process(true)
 			if scaled:
 				position.y -= 2
+			if get_node("Invincibility").is_stopped():
+				GameState.invincible = false
 		else:
 			get_node("AnimatedSprite2D").set_visible(1)
 		if GameState.power == "grass" and collected != "grass":
@@ -394,7 +425,6 @@ func _physics_process(delta):
 			GameState.display_power()
 			audio_player.set_stream(powerdown_sound)
 			audio_player.play()
-			GameState.invincible = true
 			scaled = false
 			collected = "big"
 			scaling = true
@@ -413,7 +443,6 @@ func _physics_process(delta):
 			scaled = true
 		elif !GameState.big and scaled:
 			GameState.display_power()
-			GameState.invincible = true
 			audio_player.set_stream(powerdown_sound)
 			audio_player.play()
 			scale = Vector2(.90,.90)
@@ -508,8 +537,12 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").offset.y = 3
 		if ((Input.is_action_pressed("down") and on_pipe)) or ((Input.is_action_pressed("up") and on_pipe and GameState.water_gravity)):
 			if !GameState.water_gravity:
+				get_node("Camera2D").drag_top_margin = 1.00
+				get_node("Camera2D").drag_bottom_margin = 0.00
 				get_tree().call_group("worlds", "surface_pipe_entered")
 			else:
+				get_node("Camera2D").drag_top_margin = 1.00
+				get_node("Camera2D").drag_bottom_margin = 0.00
 				get_tree().call_group("worlds", "underwater_pipe_entered")
 			#set_physics_process(false)
 			#get_node("CollisionShape2D").set_deferred("disabled", true)
@@ -625,6 +658,8 @@ func _spawn_bubble():
 	add_sibling(BubbleScene)
 	get_node("BubbleTimer").start()
 func _death():
+	get_node("Camera2D").drag_top_margin = 1.00
+	get_node("Camera2D").drag_bottom_margin = 0.00
 	velocity.y = 0
 	velocity.x = 0
 	get_node("Camera2D").set_process_mode(3)
@@ -713,7 +748,10 @@ func _jumped():
 		last_pressed = 1
 	
 func _spinned():
-	get_node("Camera2D").drag_top_margin = 1.00
+	if get_node("CameraDragTimer").is_stopped():
+		get_node("CameraDragTimer").start()
+		get_node("Camera2D").drag_top_margin = 1.00 
+	#get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")
 	if (velocity.x >= 225 or velocity.x <= -225) and GameState.big:
 		velocity.y = JUMP_VELOCITY -25

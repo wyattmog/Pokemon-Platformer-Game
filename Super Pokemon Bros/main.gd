@@ -4,6 +4,8 @@ var started = false
 @onready var select_player = get_node("SelectSound")
 func _ready():
 	music_player.play()
+	GameState.water_gravity = false
+	ProjectSettings.set_setting("physics/2d/default_gravity", 530)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,7 +36,7 @@ func _on_button_pressed():
 
 
 func _on_button_2_pressed():
-	if GameState.checkpoint:
+	if GameState.checkpoint_level_2:
 		get_tree().change_scene_to_file("res://world_2_underwater.tscn")
 	else:
 		get_tree().change_scene_to_file("res://world_2.tscn")

@@ -4,6 +4,8 @@ signal coin_collected
 var coin_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/coin.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GameState.collected_items.has(position):
+		queue_free()
 	get_node("AnimatedSprite2D").play("coin")
 
 
@@ -11,6 +13,7 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		GameState.collected_items[position] = true
 		get_node("AnimatedSprite2D").scale = Vector2(1.2, 1.2)
 		get_node("AnimatedSprite2D").play("sparkle")
 		GameState._give_score(200)

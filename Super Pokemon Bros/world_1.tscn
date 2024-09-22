@@ -1330,20 +1330,20 @@ disabled = true
 
 [node name="BigBluePole" parent="Foreground Blocks" instance=ExtResource("15_egdkt")]
 z_index = 3
-position = Vector2(5296, 469)
+position = Vector2(5296, 472)
 
 [node name="BigLightBluePole" parent="Foreground Blocks" instance=ExtResource("16_ioki1")]
-position = Vector2(5266, 469)
+position = Vector2(5266, 472)
 
 [node name="BluePole" parent="Foreground Blocks" instance=ExtResource("16_jwpla")]
 z_index = 3
-position = Vector2(2445, 513.496)
+position = Vector2(2445, 516)
 
 [node name="CheckpointPole" parent="Foreground Blocks" instance=ExtResource("14_2fnbf")]
-position = Vector2(2437, 505)
+position = Vector2(2437, 508)
 
 [node name="LightBluePole" parent="Foreground Blocks" instance=ExtResource("15_kj66e")]
-position = Vector2(2429, 513.496)
+position = Vector2(2429, 516.496)
 
 [node name="GrassMovingPlatform2" type="AnimatableBody2D" parent="Foreground Blocks"]
 position = Vector2(4309, 467)
