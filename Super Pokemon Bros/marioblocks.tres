@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://c0ws2rvhej4oj"]
+[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://c0ws2rvhej4oj"]
 
 [ext_resource type="Texture2D" uid="uid://dw46xal1ijqqu" path="res://sprites/tiles/tilesets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y-pre copy.png" id="1_m4f0e"]
 [ext_resource type="Texture2D" uid="uid://cfemxfb0ijags" path="res://sprites/tiles/tilesets/output-onlinepngtools-2 copy 3.png" id="2_1cd6v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://g4x60x4lqr58" path="res://sprites/tiles/tilesets/output-onlinepngtools-4.png" id="4_ulalj"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="5_0hx66"]
 [ext_resource type="Texture2D" uid="uid://c0ri3l1quua55" path="res://sprites/tiles/114986 (1) (1) copy.png" id="5_83dih"]
+[ext_resource type="Texture2D" uid="uid://cfsg5reko714" path="res://sprites/tiles/tilesets/grass copy 2.png" id="6_ba43h"]
 [ext_resource type="PackedScene" uid="uid://vxnkx35swspn" path="res://coin.tscn" id="6_smm5p"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="7_2qtk7"]
 [ext_resource type="PackedScene" uid="uid://buv2wfq5ehcmg" path="res://big_coin.tscn" id="9_560x7"]
@@ -26753,6 +26754,26 @@ texture_region_size = Vector2i(16, 8)
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkslt"]
+texture = ExtResource("6_ba43h")
+texture_region_size = Vector2i(16, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_og3p5"]
+texture = ExtResource("6_ba43h")
+texture_region_size = Vector2i(23, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hw1ym"]
 texture = ExtResource("3_31sr8")
 texture_region_size = Vector2i(16, 8)
@@ -43026,4 +43047,6 @@ sources/6 = SubResource("TileSetAtlasSource_12wq2")
 sources/7 = SubResource("TileSetAtlasSource_vh6um")
 sources/10 = SubResource("TileSetAtlasSource_sb1e4")
 sources/12 = SubResource("TileSetAtlasSource_6i4jq")
+sources/13 = SubResource("TileSetAtlasSource_pkslt")
+sources/14 = SubResource("TileSetAtlasSource_og3p5")
 pattern_0 = SubResource("TileMapPattern_36do3")

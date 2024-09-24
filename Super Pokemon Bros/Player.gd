@@ -217,6 +217,7 @@ func _physics_process(delta):
 		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
 		if is_on_floor() and position.y != last_pos:
 			get_node("Camera2D").drag_top_margin = 0.00
+			print("now")
 			last_pos = position.y
 		elif not is_on_floor() and last_pos - 10 >= position.y:
 			get_node("Camera2D").drag_bottom_margin = 1.00
@@ -665,6 +666,9 @@ func _spawn_bubble():
 	add_sibling(BubbleScene)
 	get_node("BubbleTimer").start()
 func _death():
+	print(get_node("Camera2D").get_screen_center_position().y)
+	#print(get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/2))
+	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
 	get_node("Camera2D").drag_top_margin = 1.00
 	get_node("Camera2D").drag_bottom_margin = 0.00
 	velocity.y = 0

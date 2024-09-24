@@ -3721,9 +3721,8 @@ drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Camera2D"]
-visible = false
-color = Color(1, 1, 0.356863, 1)
+[node name="BottomOfScreen" type="Node2D" parent="Camera2D"]
+position = Vector2(636, 1018)
 
 [node name="StatusBar" parent="Camera2D" instance=ExtResource("50_qlycl")]
 offset = Vector2(630, 120)
