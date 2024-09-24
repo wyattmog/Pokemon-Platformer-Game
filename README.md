@@ -1,14 +1,12 @@
-# React Native Photography Settings Calculator
+# Pokemon Platformer Game
 ## What Is It?
-This app is designed for beginner to amateur photographers looking for an app to assist with shooting settings. It is a calculator with the user inputs a shooting 
-environment, and outputs optimal shooting settings. 
+This is a platformer game designed to feel like the classic game of Super Mario World. It sports three unique levels, each equipped with various Pokemon, mechanics,
+powerups, and more. You must complete the level and touch the field goal before time (or your lives) runs out.
+and get to the finish before time runs out. There are
 ## How Does It Work?
-You can click on the Expo Snack link, which will link you to a virtual Javascript emulator to test out the app. When the app is loaded up, select either Android or IOS. 
-Then, once on the home screen, simply click the arrow on the lens to bring you to the calculator page. You will see 6 dropdowns, all of which must be selected to give an output. 
-Once you select calculate, the program will then run through a list of precoded values based on your choices and decide the best combinations of iso, shutter, and aperture. 
-It also will display your EV, which will indicate what those settings can be used for.
+You can click on my GitHub page link, which will link you to the game. It will prompt you to choose a save file, and then you enter the world. There are three levels, but you must complete the first to complete the second and must complete the first and second to play the third. To select the level you would like to play, simply move your arrow keys in the direction you would like to move. Then, simply select the level. Once in the level, you have 300 seconds to reach the finish until you lose a life and have to restart. There is a checkpoint system that will be used onced reached if you die. That's it, have fun!
 ## How Was It Coded?
-This app was developed using React Native Javascript, specifically through React Native's expo development tool. This app is developed through 
-React Native JavaScript and its purpose is to be used as a calculator for iso, shutter speed, and aperature. The app also sports its own exposure value calculator to aid the user.   
+This app was developed using the Godot game engine, specifically using GDScript. Many of the sprites are from the famous Super Mario World, and some sprites I created/altered to fit
+the theme of Pokemon.
 ## Where Can I Try It Out?
-If you would like to test out the app, simply try it out using Expo Snack! https://snack.expo.dev/@wyattmog/react-native-photography-settings-calculator
+If you would like to test out the app, simply try it out using my GitHub Pages! There is a link to the left of the repository!
