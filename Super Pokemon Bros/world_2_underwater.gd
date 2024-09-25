@@ -5,6 +5,7 @@ var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#await get_tree().create_timer(1).timeout
+	print(GameState.checkpoint_level_2)
 	if GameState.checkpoint_level_2:
 		GameState.water_gravity = true
 		ProjectSettings.set_setting("physics/2d/default_gravity", 150)

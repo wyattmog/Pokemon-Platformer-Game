@@ -34,7 +34,6 @@ func _on_button_pressed():
 	get_tree().change_scene_to_file("res://world_1.tscn")
 	
 
-
 func _on_button_2_pressed():
 	if GameState.checkpoint_level_2:
 		get_tree().change_scene_to_file("res://world_2_underwater.tscn")

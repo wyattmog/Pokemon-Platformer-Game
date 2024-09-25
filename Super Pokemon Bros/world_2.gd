@@ -42,5 +42,6 @@ func _on_void_area_body_entered(body):
 		
 func _on_finish_body_entered(body):
 	if body.name == "Player":
+		GameState.world_unlock = 3
 		get_node("BackroundMusic").set_stream(course_clear_sound)
 		get_node("BackroundMusic").play()

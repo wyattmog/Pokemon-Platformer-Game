@@ -125,6 +125,7 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
+	print(get_node("Camera2D").drag_top_margin, " ", get_node("Camera2D").drag_bottom_margin)
 	current_screen_center = get_node("Camera2D").get_screen_center_position()
 	if GameState.water_gravity and get_node("BubbleTimer").is_stopped() and !disable_input:
 		_spawn_bubble()
@@ -208,21 +209,21 @@ func _physics_process(delta):
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
 			GameState.cutscene = false
 			get_tree().call_group("worlds", "_on_player_dead")
-			get_tree().change_scene_to_file("res://main.tscn")
+			get_tree().change_scene_to_file("res://world_select.tscn")
 	if !GameState.water_gravity:
 		#if get_node("Camera2D").drag_top_margin == 0:
 		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
 		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
 		#if get_node("Camera2D").drag_top_margin == 0:
 		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
-		if is_on_floor() and position.y != last_pos:
+		if is_on_floor() and (position.y != last_pos):
 			get_node("Camera2D").drag_top_margin = 0.00
-			print("now")
 			last_pos = position.y
 		elif not is_on_floor() and last_pos - 10 >= position.y:
 			get_node("Camera2D").drag_bottom_margin = 1.00
-		elif not is_on_floor() and last_pos + 10 <position.y:
-			get_node("Camera2D").drag_bottom_margin = 0.00
+		elif not is_on_floor() and velocity.y > 0:
+			if last_pos + 10 < position.y:
+				get_node("Camera2D").drag_bottom_margin = 0.00
 			#last_pos = position.y
 			get_node("Camera2D").global_position.y = position.y
 		get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
@@ -666,7 +667,6 @@ func _spawn_bubble():
 	add_sibling(BubbleScene)
 	get_node("BubbleTimer").start()
 func _death():
-	print(get_node("Camera2D").get_screen_center_position().y)
 	#print(get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/2))
 	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
 	get_node("Camera2D").drag_top_margin = 1.00
@@ -694,15 +694,17 @@ func _death():
 		get_node("Camera2D/GameOverScreen/ColorRect").set_visible(true)
 		get_node("Camera2D/GameOverScreen/GameOver").play("game_over")
 		get_node("GameOver").play()
+		GameState.curr_world = 0
+		GameState.world_unlock = 0
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished
 		get_tree().call_group("worlds", "_on_player_dead")
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://world_select.tscn")
 		queue_free()
 	else:
 		await get_tree().create_timer(2.4).timeout
 		GameState._remove_lives(1)
 		get_tree().call_group("worlds", "_on_player_dead")
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://world_select.tscn")
 		queue_free()
 
 func _on_bounce_signal():
@@ -733,7 +735,7 @@ func _water_jumped():
 	elif direction == 1: 
 		last_pressed = 1
 func _jumped():
-	if previous_screen_center == current_screen_center:
+	if previous_screen_center.y == current_screen_center.y:
 		get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")
 	if velocity.x >= 225 or velocity.x <= -225:
@@ -760,7 +762,7 @@ func _jumped():
 		last_pressed = 1
 	
 func _spinned():
-	if get_node("CameraDragTimer").is_stopped():
+	if previous_screen_center.y == current_screen_center.y:
 		get_node("Camera2D").drag_top_margin = 1.00
 	#get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")

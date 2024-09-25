@@ -19,6 +19,8 @@ var score = 0
 var water_gravity = false
 var shellkicked = false
 var time = 300
+var curr_world = 0
+var world_unlock = 1
 var total_points = 0
 var collected_items = {}
 # Called when the node enters the scene tree for the first time.

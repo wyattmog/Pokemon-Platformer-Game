@@ -1,0 +1,314 @@
+[gd_scene load_steps=18 format=3 uid="uid://bvlawp6h5hv7p"]
+
+[ext_resource type="Script" path="res://world_select.gd" id="1_yq7o7"]
+[ext_resource type="Texture2D" uid="uid://bmj4ks06oktho" path="res://sprites/main menu/4607 (2) (2) 8.27.48 PM.png" id="2_vqeop"]
+[ext_resource type="Texture2D" uid="uid://b3rq8u21q0d55" path="res://sprites/main menu/4607 (2) (2).png" id="3_dmggu"]
+[ext_resource type="SpriteFrames" uid="uid://b8g3s70uacscw" path="res://Player.tres" id="3_r6b3j"]
+[ext_resource type="Texture2D" uid="uid://bul67oqcdoktx" path="res://sprites/main menu/145533 (1).png" id="4_bogob"]
+[ext_resource type="Texture2D" uid="uid://ccr5naubxxgbv" path="res://sprites/main menu/4607 (2) (5).png" id="4_uphao"]
+[ext_resource type="AudioStream" uid="uid://338j785o7alq" path="res://sounds/SNES - Super Mario World - Sound Effects/02. Title-[AudioTrimmer.com].wav" id="7_durit"]
+[ext_resource type="AudioStream" uid="uid://cfyx07ox0c3nn" path="res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav" id="8_8go6l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_st3vn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vqeop")
+}],
+"loop": true,
+"name": &"World1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dmggu")
+}],
+"loop": true,
+"name": &"World2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uphao")
+}],
+"loop": true,
+"name": &"World3",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_7ij5e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 284)]
+}
+
+[sub_resource type="Animation" id="Animation_30vvx"]
+resource_name = "start to world1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-95, 236), Vector2(-34.4, 235.6), Vector2(86.8, 279.8), Vector2(208, 284)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_walkRight"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3eei7"]
+resource_name = "world1-start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(208, 284), Vector2(86.8, 279.8), Vector2(-34.4, 235.6), Vector2(-95, 236)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_walkLeft"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_il6lp"]
+resource_name = "world1-world2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(208, 284), Vector2(218, 100), Vector2(301, 90), Vector2(342, 73), Vector2(405, -14), Vector2(411, -106)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_back"
+}, {
+"args": [],
+"method": &"_walkRight"
+}, {
+"args": [],
+"method": &"_back"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fm7jv"]
+resource_name = "world2-world1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(411, -106), Vector2(405, -14), Vector2(342, 73), Vector2(301, 90), Vector2(218, 100), Vector2(208, 284)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_front"
+}, {
+"args": [],
+"method": &"_walkLeft"
+}, {
+"args": [],
+"method": &"_front"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t634y"]
+resource_name = "world2-world3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(411, -106), Vector2(410, -154), Vector2(402, -224), Vector2(364, -278), Vector2(287, -285), Vector2(213, -288)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_back"
+}, {
+"args": [],
+"method": &"_walkLeft"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k66nl"]
+resource_name = "world3-world2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(213, -288), Vector2(287, -285), Vector2(364, -278), Vector2(402, -224), Vector2(410, -154), Vector2(411, -106)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_walkRight"
+}, {
+"args": [],
+"method": &"_front"
+}, {
+"args": [],
+"method": &"_idle"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_erk4t"]
+_data = {
+"RESET": SubResource("Animation_7ij5e"),
+"start-world1": SubResource("Animation_30vvx"),
+"world1-start": SubResource("Animation_3eei7"),
+"world1-world2": SubResource("Animation_il6lp"),
+"world2-world1": SubResource("Animation_fm7jv"),
+"world2-world3": SubResource("Animation_t634y"),
+"world3-world2": SubResource("Animation_k66nl")
+}
+
+[node name="WorldSelect" type="Node2D"]
+script = ExtResource("1_yq7o7")
+
+[node name="WorldScreen" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(6.32941, 6.32941)
+sprite_frames = SubResource("SpriteFrames_st3vn")
+animation = &"World1"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(208, 284)
+scale = Vector2(4.3, 4.3)
+sprite_frames = ExtResource("3_r6b3j")
+animation = &"BigWalk"
+frame_progress = 0.177121
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_erk4t")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(6.44, 9.68)
+zoom = Vector2(0.75, 0.75)
+
+[node name="BorderSprite" type="Sprite2D" parent="."]
+position = Vector2(2, -20.1281)
+scale = Vector2(6.22616, 5.95207)
+texture = ExtResource("4_bogob")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_durit")
+max_polyphony = 32
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8go6l")
+max_polyphony = 32
