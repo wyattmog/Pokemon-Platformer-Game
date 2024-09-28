@@ -125,7 +125,6 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	print(get_node("Camera2D").drag_top_margin, " ", get_node("Camera2D").drag_bottom_margin)
 	current_screen_center = get_node("Camera2D").get_screen_center_position()
 	if GameState.water_gravity and get_node("BubbleTimer").is_stopped() and !disable_input:
 		_spawn_bubble()
@@ -209,7 +208,9 @@ func _physics_process(delta):
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
 			GameState.cutscene = false
 			get_tree().call_group("worlds", "_on_player_dead")
-			get_tree().change_scene_to_file("res://world_select.tscn")
+			GameState.next_scene = "res://world_select.tscn"
+			get_tree().change_scene_to_packed(GameState.loading_screen)
+			queue_free()
 	if !GameState.water_gravity:
 		#if get_node("Camera2D").drag_top_margin == 0:
 		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
@@ -544,19 +545,13 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").offset.y = 3
 		if ((Input.is_action_pressed("down") and on_pipe)) or ((Input.is_action_pressed("up") and on_pipe and GameState.water_gravity)):
 			if !GameState.water_gravity:
-				get_node("Camera2D").drag_top_margin = 1.00
-				get_node("Camera2D").drag_bottom_margin = 0.00
+				get_node("Camera2D").drag_top_margin = 0.00
+				get_node("Camera2D").drag_bottom_margin = 1.00
 				get_tree().call_group("worlds", "surface_pipe_entered")
 			else:
-				get_node("Camera2D").drag_top_margin = 1.00
-				get_node("Camera2D").drag_bottom_margin = 0.00
+				get_node("Camera2D").drag_top_margin = 0.00
+				get_node("Camera2D").drag_bottom_margin = 1.00
 				get_tree().call_group("worlds", "underwater_pipe_entered")
-			#set_physics_process(false)
-			#get_node("CollisionShape2D").set_deferred("disabled", true)
-			#set_physics_process(false)
-			#print("played")
-			#get_node("PipeTimer").start()
-			#get_node("AnimationPlayer").play("pipe")
 		if last_pressed == -1:
 			GameState.direct = -1
 			get_node("AnimatedSprite2D").flip_h = true
@@ -667,7 +662,7 @@ func _spawn_bubble():
 	add_sibling(BubbleScene)
 	get_node("BubbleTimer").start()
 func _death():
-	#print(get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/2))
+	GameState.collected_items = {}
 	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
 	get_node("Camera2D").drag_top_margin = 1.00
 	get_node("Camera2D").drag_bottom_margin = 0.00
@@ -695,17 +690,20 @@ func _death():
 		get_node("Camera2D/GameOverScreen/GameOver").play("game_over")
 		get_node("GameOver").play()
 		GameState.curr_world = 0
+		GameState.checkpoint_level_1 = false
+		GameState.checkpoint_level_2 = false
+		GameState.checkpoint_level_3 = false
 		GameState.world_unlock = 0
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished
-		get_tree().call_group("worlds", "_on_player_dead")
-		get_tree().change_scene_to_file("res://world_select.tscn")
-		queue_free()
+		GameState.next_scene = "res://world_select.tscn"
+		get_node("Camera2D/CanvasLayer/LoadingScreenTransition").set_visible(true)
+		get_node("Camera2D/CanvasLayer/LoadingScreenTransition/FadePlayer1").play("fade_out")
 	else:
 		await get_tree().create_timer(2.4).timeout
 		GameState._remove_lives(1)
-		get_tree().call_group("worlds", "_on_player_dead")
-		get_tree().change_scene_to_file("res://world_select.tscn")
-		queue_free()
+		GameState.next_scene = "res://world_select.tscn"
+		get_node("Camera2D/CanvasLayer/LoadingScreenTransition").set_visible(true)
+		get_node("Camera2D/CanvasLayer/LoadingScreenTransition/FadePlayer1").play("fade_out")
 
 func _on_bounce_signal():
 	bounce = true
@@ -1054,4 +1052,8 @@ func _on_pipe_area_body_exited(body):
 	if body.name == "Player":
 		on_pipe = false
 
-
+func _on_loading_screen_animation_finished(anim_name):
+	if anim_name == "fade_out" || anim_name == "fade_out_death":
+		get_tree().call_group("worlds", "_on_player_dead")
+		get_tree().change_scene_to_packed(GameState.loading_screen)
+		queue_free()

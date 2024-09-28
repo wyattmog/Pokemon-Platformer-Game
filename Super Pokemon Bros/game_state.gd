@@ -1,6 +1,7 @@
 class_name Global 
 extends Node
 static var player = null
+var loading_screen = preload("res://loading_screen.tscn")
 var cutscene = false
 var game_ended = false
 var big = false
@@ -15,6 +16,8 @@ var stomp_counter = 0
 var invincible = false
 var checkpoint_level_1 = false
 var checkpoint_level_2 = false
+var checkpoint_level_3 = false
+var next_scene = ""
 var score = 0
 var water_gravity = false
 var shellkicked = false

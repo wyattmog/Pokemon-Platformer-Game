@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cdgp8r5o6ivps"]
+[gd_scene load_steps=53 format=3 uid="uid://cdgp8r5o6ivps"]
 
 [ext_resource type="Script" path="res://world_3.gd" id="1_2lbw3"]
 [ext_resource type="TileSet" uid="uid://c0ws2rvhej4oj" path="res://marioblocks.tres" id="2_wbb3y"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://mhbo8bolabkd" path="res://sounds/SNES - Super Mario World - Sound Effects/30. Fortress-[AudioTrimmer.com].wav" id="22_35f73"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="22_spj6a"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="23_1083r"]
+[ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="23_bgwsx"]
 [ext_resource type="PackedScene" uid="uid://bhjqn260gic3e" path="res://mushroom_power.tscn" id="24_f5asf"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="25_olaku"]
 [ext_resource type="PackedScene" uid="uid://dog8fv8spe6ns" path="res://fire_power.tscn" id="26_ydq5k"]
@@ -630,6 +631,17 @@ shape = SubResource("RectangleShape2D_kupxm")
 position = Vector2(4937, 489)
 shape = SubResource("RectangleShape2D_7l1ih")
 
+[node name="LoadingScreenTransition" parent="." instance=ExtResource("23_bgwsx")]
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreenTransition"]
+visible = false
+offset_left = 1.0
+offset_top = -220.0
+offset_right = 41.0
+offset_bottom = -180.0
+scale = Vector2(143.125, 20.1694)
+color = Color(0, 0, 0, 1)
+
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]
 [connection signal="bounce_signal" from="Mobs/Charizard" to="Player/Player" method="_on_bounce_signal"]
@@ -680,3 +692,5 @@ shape = SubResource("RectangleShape2D_7l1ih")
 [connection signal="body_entered" from="VoidArea" to="." method="_on_void_area_body_entered"]
 [connection signal="body_entered" from="InvincibleArea" to="Player/Player" method="_on_invincible_area_body_entered"]
 [connection signal="body_exited" from="InvincibleArea" to="Player/Player" method="_on_invincible_area_body_exited"]
+
+[editable path="LoadingScreenTransition"]

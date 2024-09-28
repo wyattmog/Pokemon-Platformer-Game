@@ -2,11 +2,13 @@ extends Node2D
 var curr_world
 @onready var music_player = get_node("Music")
 @onready var select_player = get_node("SelectSound")
-const start = Vector2(-95,236)
-const world_1 = Vector2(208,284)
-const world_2 = Vector2(411,-106)
-const world_3 = Vector2(213,-288)
+const start = Vector2(-48,230)
+const world_1 = Vector2(257,307)
+const world_2 = Vector2(461,-60)
+const world_3 = Vector2(257,-229)
 func _ready():
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
+	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	GameState.game_ended = true
 	music_player.play()
 	GameState.water_gravity = false
@@ -31,22 +33,30 @@ func _ready():
 		get_node("AnimatedSprite2D").play("BigIdle")
 	else:
 		get_node("AnimatedSprite2D").play("SmallIdle")
+	await get_tree().create_timer(0.1).timeout
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(false)
 func _input(event):
 	curr_world = get_node("AnimatedSprite2D").position
 	if event.is_action_pressed("ui_accept"):
 		if curr_world == world_1:
 			GameState.curr_world = 1
-			get_tree().change_scene_to_file("res://world_1.tscn")
+			GameState.next_scene = "res://world_1.tscn"
+			get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
 		elif curr_world == world_2:
 			if GameState.checkpoint_level_2:
 				GameState.curr_world = 2
-				get_tree().change_scene_to_file("res://world_2_underwater.tscn")
+				GameState.water_gravity = true
+				ProjectSettings.set_setting("physics/2d/default_gravity", 150)
+				GameState.next_scene = "res://world_2_underwater.tscn"
+				get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
 			else:
 				GameState.curr_world = 2
-				get_tree().change_scene_to_file("res://world_2.tscn")
+				GameState.next_scene = "res://world_2.tscn"
+				get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
 		elif curr_world == world_3:
 			GameState.curr_world = 3
-			get_tree().change_scene_to_file("res://world_3.tscn")
+			GameState.next_scene = "res://world_3.tscn"
+			get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
 	if event.is_action_pressed("ui_up"):
 		if curr_world == world_1 and GameState.world_unlock > 1:
 			get_node("AnimationPlayer").play("world1-world2")
@@ -117,6 +127,16 @@ func _front():
 	else:
 		get_node("AnimatedSprite2D").play("SmallFrontWalk")
 func _idle():
+	curr_world = get_node("AnimatedSprite2D").position
+	if curr_world == start:
+		GameState.curr_world = 0
+	elif curr_world == world_1:
+		GameState.curr_world = 1
+	elif curr_world == world_2:
+		GameState.curr_world = 2
+	elif curr_world == world_3:
+		GameState.curr_world = 3
+	get_tree().call_group("status_bar", "display_world")
 	select_player.play()
 	curr_world = get_node("AnimatedSprite2D").position
 	if GameState.power != "":
@@ -130,3 +150,8 @@ func _idle():
 		get_node("AnimatedSprite2D").play("BigIdle")
 	else:
 		get_node("AnimatedSprite2D").play("SmallIdle")
+
+
+func _on_loading_screen_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		get_tree().change_scene_to_packed(GameState.loading_screen)

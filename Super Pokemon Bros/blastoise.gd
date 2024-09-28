@@ -159,7 +159,7 @@ func _on_player_hitbox_body_entered(body):
 			GameState.big = true
 			GameState.power = ""
 		else:
-			get_tree().change_scene_to_file("res://main.tscn")
+			get_tree().call_group("player", "_death")
 
 
 

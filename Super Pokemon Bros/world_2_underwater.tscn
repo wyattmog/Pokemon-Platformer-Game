@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bs2hpyaw0qvfe"]
+[gd_scene load_steps=27 format=3 uid="uid://bs2hpyaw0qvfe"]
 
 [ext_resource type="Script" path="res://world_2_underwater.gd" id="1_25u8c"]
 [ext_resource type="TileSet" uid="uid://c0ws2rvhej4oj" path="res://marioblocks.tres" id="2_23888"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ykv3xl007ish" path="res://sounds/SNES - Super Mario World - Sound Effects/14a Swimming-[AudioTrimmer.com].wav" id="14_5p3pw"]
 [ext_resource type="PackedScene" uid="uid://dy41um3ywvb0q" path="res://checkpoint_pole.tscn" id="14_k7ham"]
 [ext_resource type="PackedScene" uid="uid://drcngwora3bbq" path="res://light_blue_pole.tscn" id="15_5jfge"]
+[ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="15_qqca2"]
 
 [sub_resource type="Animation" id="Animation_h0wcx"]
 length = 0.001
@@ -45,6 +46,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1491, 433), Vector2(1491, 388)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_pipe_fade_in"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xx8q6"]
 resource_name = "pipe_load"
@@ -59,6 +74,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(51, 420), Vector2(51, 465)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_pipe_fade_out"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v8frw"]
@@ -349,6 +378,15 @@ shape = SubResource("RectangleShape2D_5vg7e")
 [node name="BackroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_5p3pw")
 
+[node name="LoadingScreenTransition" parent="." instance=ExtResource("15_qqca2")]
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreenTransition"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(44.2977, 17.2999)
+color = Color(0, 0, 0, 1)
+
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]
 [connection signal="animation_finished" from="Player/PipeAnimation" to="Player/Player" method="end_pipe_helper"]
@@ -371,3 +409,5 @@ stream = ExtResource("14_5p3pw")
 [connection signal="body_entered" from="VoidArea" to="." method="_on_void_area_body_entered"]
 [connection signal="body_entered" from="PipeArea" to="Player/Player" method="_on_pipe_area_body_entered"]
 [connection signal="body_exited" from="PipeArea" to="Player/Player" method="_on_pipe_area_body_exited"]
+
+[editable path="LoadingScreenTransition"]

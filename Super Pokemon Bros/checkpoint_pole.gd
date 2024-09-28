@@ -12,7 +12,8 @@ func _on_area_2d_body_entered(body):
 			GameState.checkpoint_level_1 = true
 		elif get_tree().current_scene.name == "World2Underwater":
 			GameState.checkpoint_level_2 = true
-			print("wow")
+		elif get_tree().current_scene.name == "World3":
+			GameState.checkpoint_level_2 = true
 		get_node("AnimatedSprite2D").set_visible(0)
 		get_node("AudioStreamPlayer").play()
 		await get_tree().create_timer(1).timeout

@@ -4,6 +4,8 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
+	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	if GameState.water_gravity:
 		GameState.water_gravity = false
 		get_node("Player/PipeAnimation").play("pipe_exit")
@@ -13,13 +15,18 @@ func _ready():
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
+	await get_tree().create_timer(0.1).timeout
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(false)
+	
 func surface_pipe_entered():
 	GameState.player._start_pipe_helper()
 	GameState.water_gravity = true
 	ProjectSettings.set_setting("physics/2d/default_gravity", 150)
 	get_node("Player/PipeAnimation").play("pipe_load")
-	await get_tree().create_timer(2).timeout
-	get_tree().change_scene_to_file("res://world_2_underwater.tscn")
+	await get_tree().create_timer(1).timeout
+	get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
+	GameState.next_scene = "res://world_2_underwater.tscn"
+	
 func _on_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
 
@@ -45,3 +52,9 @@ func _on_finish_body_entered(body):
 		GameState.world_unlock = 3
 		get_node("BackroundMusic").set_stream(course_clear_sound)
 		get_node("BackroundMusic").play()
+
+
+func _on_loading_screen_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		print("faded")
+		get_tree().change_scene_to_packed(GameState.loading_screen)

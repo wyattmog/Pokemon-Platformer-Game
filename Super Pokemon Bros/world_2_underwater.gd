@@ -4,7 +4,8 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#await get_tree().create_timer(1).timeout
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
+	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	print(GameState.checkpoint_level_2)
 	if GameState.checkpoint_level_2:
 		GameState.water_gravity = true
@@ -16,6 +17,9 @@ func _ready():
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false
+	await get_tree().create_timer(0.1).timeout
+	get_node("LoadingScreenTransition/ColorRect2").set_visible(false)
+	
 func underwater_pipe_entered():
 	GameState.player._start_pipe_helper() 
 	ProjectSettings.set_setting("physics/2d/default_gravity", 530)
@@ -47,3 +51,7 @@ func _on_finish_body_entered(body):
 		get_node("BackroundMusic").set_stream(course_clear_sound)
 		get_node("BackroundMusic").play()
 
+
+func _on_loading_screen_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		get_tree().change_scene_to_packed(GameState.loading_screen)

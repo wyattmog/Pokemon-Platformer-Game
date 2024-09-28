@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bq78al2glf1sf"]
+[gd_scene load_steps=53 format=3 uid="uid://bq78al2glf1sf"]
 
 [ext_resource type="PackedScene" uid="uid://f5xo12ldwedy" path="res://Player.tscn" id="1_jfab6"]
 [ext_resource type="Script" path="res://world_2.gd" id="1_wwupv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7xj2shg4qq1" path="res://big_light_blue_pole.tscn" id="17_ls1xa"]
 [ext_resource type="PackedScene" uid="uid://88b48vkgtaiy" path="res://grass_power.tscn" id="17_tlfcf"]
 [ext_resource type="AudioStream" uid="uid://c8ktu6gg3jm1v" path="res://sounds/SNES - Super Mario World - Sound Effects/04 Wandering the Plains-[AudioTrimmer.com].wav" id="18_yp4wv"]
+[ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="20_3jy07"]
 
 [sub_resource type="Animation" id="Animation_p7cr7"]
 length = 0.001
@@ -49,6 +50,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1248, 465), Vector2(1248, 419)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_pipe_fade_in"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eeajk"]
 resource_name = "pipe_load"
@@ -64,6 +79,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(944, 417), Vector2(944, 470)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_pipe_fade_out"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8arq"]
@@ -813,6 +842,21 @@ shape = SubResource("RectangleShape2D_toaqy")
 position = Vector2(944, 437)
 shape = SubResource("RectangleShape2D_im4q8")
 
+[node name="LoadingScreenTransition" parent="." instance=ExtResource("20_3jy07")]
+
+[node name="ColorRect" parent="LoadingScreenTransition" index="0"]
+visible = false
+scale = Vector2(155.733, 17.0398)
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreenTransition"]
+visible = false
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 64.0
+scale = Vector2(112.819, 16.9443)
+color = Color(0, 0, 0, 1)
+
 [connection signal="jumped" from="Player/Player" to="." method="_on_player_jumped"]
 [connection signal="landed" from="Player/Player" to="." method="_on_player_landed"]
 [connection signal="animation_finished" from="Player/PipeAnimation" to="Player/Player" method="end_pipe_helper"]
@@ -850,3 +894,6 @@ shape = SubResource("RectangleShape2D_im4q8")
 [connection signal="body_exited" from="InvincibleArea" to="Player/Player" method="_on_invincible_area_body_exited"]
 [connection signal="body_entered" from="PipeArea" to="Player/Player" method="_on_pipe_area_body_entered"]
 [connection signal="body_exited" from="PipeArea" to="Player/Player" method="_on_pipe_area_body_exited"]
+[connection signal="animation_finished" from="LoadingScreenTransition/FadePlayer1" to="." method="_on_loading_screen_animation_finished"]
+
+[editable path="LoadingScreenTransition"]
