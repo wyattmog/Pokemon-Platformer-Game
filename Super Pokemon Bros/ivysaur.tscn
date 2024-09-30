@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c1l5fgu488iod"]
+[gd_scene load_steps=35 format=3 uid="uid://c1l5fgu488iod"]
 
 [ext_resource type="Script" path="res://ivysaur.gd" id="1_pqydk"]
 [ext_resource type="Texture2D" uid="uid://gmuasefy7ag8" path="res://sprites/effects/sma4_sprites copy 3.png" id="2_0sycl"]
@@ -153,6 +153,9 @@ size = Vector2(386.25, 276)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qvp"]
 resource_local_to_scene = true
 size = Vector2(41, 35)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odmox"]
+radius = 175.071
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_q2nsa"]
 
@@ -356,6 +359,11 @@ shape = SubResource("RectangleShape2D_im0w4")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_f7qvp")
 
+[node name="AttackRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_odmox")
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_q2nsa")
 anim_player = NodePath("../AnimationPlayer")
@@ -374,3 +382,5 @@ one_shot = true
 [connection signal="body_exited" from="LeafDetection" to="." method="_on_leaf_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
+[connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]

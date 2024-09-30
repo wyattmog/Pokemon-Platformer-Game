@@ -19,6 +19,7 @@ const FRICTION = 35
 const ACCELERATION = 5.0
 var MARGIN_CHANGE_SPEED = 10.0
 var on_pipe = false
+var last_platform
 var pipe_started = false
 var platVel = Vector2(0,0)
 var curr_moving = false
@@ -130,11 +131,11 @@ func emit_signal_while_playing():
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	print(animplaying)
-	if not is_on_floor() and get_node("RayCast2D").is_colliding() and !GameState.water_gravity:
+	print(get_node("Camera2D").drag_bottom_margin, "and ", (get_node("Camera2D").drag_top_margin))
+	if not is_on_floor() and get_node("RayCast2D").is_colliding() and !GameState.water_gravity and velocity.y > 0 and !disable_input:
 		get_node("JustLanded").start()
 		follow_player = true
-	elif is_on_floor() and follow_player == true and !GameState.water_gravity:
+	elif is_on_floor() and follow_player == true and !GameState.water_gravity and !disable_input:
 		get_node("JumpDelay").start()
 		get_node("Camera2D").drag_bottom_margin = 1.00
 		follow_player = false
@@ -150,6 +151,7 @@ func _physics_process(delta):
 		get_node("BubbleTimer").set_wait_time(randf_range(.5,1))
 
 	if GameState.cutscene and !cutscene_played:
+		GameState.invincible = true
 		disable_input = true
 		if not display_point_screen:
 			get_node("Camera2D/PointScreen/PointNotifier").play("visibility")
@@ -226,6 +228,7 @@ func _physics_process(delta):
 				GameState.checkpoint_level_2 = false
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
 			GameState.cutscene = false
+			GameState.invincible = false
 			get_tree().call_group("worlds", "_on_player_dead")
 			GameState.next_scene = "res://world_select.tscn"
 			get_tree().change_scene_to_packed(GameState.loading_screen)
@@ -234,6 +237,8 @@ func _physics_process(delta):
 		if (is_on_floor() and (position.y != last_pos)):
 			get_node("Camera2D").drag_top_margin = 0.00
 			last_pos = position.y
+			if last_pos > last_platform_y:
+				last_platform_y = last_pos
 			if !get_node("JustLanded").is_stopped():
 				get_node("Camera2D").drag_bottom_margin = 1.00
 			else:
@@ -694,6 +699,9 @@ func _death():
 		GameState.checkpoint_level_2 = false
 		GameState.checkpoint_level_3 = false
 		GameState.world_unlock = 1
+		GameState.num_lives = 5
+		GameState.num_coins = 0
+		GameState.score = 0
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished
 		GameState.next_scene = "res://starting_scene.tscn"
 		get_tree().call_group("worlds", "_on_player_dead")
@@ -729,17 +737,19 @@ func _water_jumped():
 		else:
 			anim.play("SmallSwim")
 func _jumped():
-	#follow_player = true
-	#print(previous_screen_center.y,"and " ,current_screen_center.y)
-	if get_node("JumpDelay").is_stopped():
-		if previous_screen_center.y > current_screen_center.y:
-			if floor(previous_screen_center.y) == ceil(current_screen_center.y):
-				get_node("Camera2D").drag_top_margin = 1.00
-		elif previous_screen_center.y < current_screen_center.y:
-			if ceil(previous_screen_center.y) == floor(current_screen_center.y):
-				get_node("Camera2D").drag_top_margin = 1.00
-		elif previous_screen_center.y == current_screen_center.y:
-				get_node("Camera2D").drag_top_margin = 1.00
+	print(last_platform_y, " and ", position.y)
+	if abs(position.y - last_platform_y) <= 10:
+		get_node("Camera2D").drag_top_margin = 1.00
+		print("wowsers")
+		#if previous_screen_center.y > current_screen_center.y:
+			#if floor(previous_screen_center.y) == ceil(current_screen_center.y):
+				#get_node("Camera2D").drag_top_margin = 1.00
+		#elif previous_screen_center.y < current_screen_center.y:
+			#if ceil(previous_screen_center.y) == floor(current_screen_center.y):
+				#get_node("Camera2D").drag_top_margin = 1.00
+		#elif previous_screen_center.y == current_screen_center.y:
+				#get_node("Camera2D").drag_top_margin = 1.00
+	last_platform_y = position.y
 	emit_signal("jumped")
 	jumptype = "jump"
 	if velocity.x >= 225 or velocity.x <= -225:

@@ -19,6 +19,7 @@ var nearby
 #var collided = false
 #var invincible = false
 signal enemy_death(body)
+var attack = false
 var animplaying = false
 var start = false
 var count = 0
@@ -60,7 +61,7 @@ func _physics_process(delta):
 		if not get_node("RestTimer").is_stopped():
 			anim.play("Idle")
 			count = 0
-		if get_node("RestTimer").is_stopped() and count <= max_count and !GameState.invincible:
+		if attack and get_node("RestTimer").is_stopped() and count <= max_count and !GameState.invincible:
 			#print("wowow")
 			anim.play("Attack")
 			await get_tree().create_timer(.1).timeout
@@ -210,4 +211,14 @@ func _on_player_detection_body_entered(body):
 	if body.name == "Player":
 		start = true
 
+
+
+func _on_attack_radius_body_entered(body):
+	if body.name == "Player":
+		attack = true
+
+
+func _on_attack_radius_body_exited(body):
+	if body.name == "Player":
+		attack = false
 

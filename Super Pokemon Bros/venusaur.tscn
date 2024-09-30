@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3llbo15nh6y1"]
+[gd_scene load_steps=34 format=3 uid="uid://b3llbo15nh6y1"]
 
 [ext_resource type="Script" path="res://venusaur.gd" id="1_saido"]
 [ext_resource type="Texture2D" uid="uid://c2722e8pniwle" path="res://sprites/mobs/venusaur/35066 (2).png" id="2_r1mvn"]
@@ -147,6 +147,9 @@ size = Vector2(386.25, 276)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qvp"]
 resource_local_to_scene = true
 size = Vector2(70, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xwts4"]
+radius = 175.071
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_q2nsa"]
 
@@ -350,6 +353,11 @@ shape = SubResource("RectangleShape2D_im0w4")
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_f7qvp")
 
+[node name="AttackRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_xwts4")
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_q2nsa")
 anim_player = NodePath("../AnimationPlayer")
@@ -370,3 +378,5 @@ autostart = true
 [connection signal="body_exited" from="LeafDetection" to="." method="_on_leaf_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
+[connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]

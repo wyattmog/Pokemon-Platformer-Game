@@ -26,7 +26,6 @@ res://charmeleon.tscn
 res://question_block.tscn
 res://grass_moving_platform.tscn
 res://venusaur.tscn
-res://world_3.tscn
 res://lava.tscn
 res://loading_screen.tscn
 res://loading_screen_transition.tscn
@@ -39,7 +38,6 @@ res://current_power_label.tscn
 res://score_label.tscn
 res://main.tscn
 res://game_end_fade.tscn
-res://starting_scene.gd
-res://world_1.gd
-res://game_state.gd
+res://ivysaur.tscn
+res://world_3.tscn
 res://Player.gd

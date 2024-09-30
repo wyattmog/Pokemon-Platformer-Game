@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 #var player
 var isdead = false
+var attack = false
 signal bounce_signal
 var attacked = false
 var jumped_on = false
@@ -55,7 +56,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 		if not get_node("RestTimer").is_stopped():
 			anim.play("Idle")
-		if get_node("RestTimer").is_stopped() and !attacked and !GameState.invincible:
+		if attack and  get_node("RestTimer").is_stopped() and !attacked and !GameState.invincible:
 			print("wowow")
 			anim.play("Attack")
 			attacked = true
@@ -203,6 +204,14 @@ func _on_player_detection_body_entered(body):
 
 
 
+func _on_attack_radius_body_entered(body):
+	if body.name == "Player":
+		attack = true
+
+
+func _on_attack_radius_body_exited(body):
+	if body.name == "Player":
+		attack = false
 
 
 
