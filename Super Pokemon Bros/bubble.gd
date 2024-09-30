@@ -5,7 +5,7 @@ extends Node2D
 func _ready():
 	get_node("BubbleSprite").play("dust")
 	get_node("BubbleTimer").start()
-func _process(delta):
+func _process(_delta):
 	if get_node("BubbleTimer").is_stopped():
 		queue_free()
 	position.y -= 1

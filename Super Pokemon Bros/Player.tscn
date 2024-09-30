@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=100 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="SpriteFrames" uid="uid://b8g3s70uacscw" path="res://Player.tres" id="2_pl1fw"]
@@ -126,10 +126,10 @@ tracks/0/path = NodePath("ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -190,6 +190,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1465, 510), Vector2(745, 510)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameSprite:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("OverSprite:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ptlj"]
@@ -2342,6 +2366,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavn"]
 size = Vector2(0, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3sly"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i3ug"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7588k"]
+size = Vector2(0, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wc4s"]
 size = Vector2(13, 9)
 
@@ -2358,7 +2391,7 @@ shape = SubResource("CapsuleShape2D_y1wql")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 22)
-collision_mask = 15
+collision_mask = 8
 collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -2373,6 +2406,8 @@ zoom = Vector2(4.5, 4.5)
 process_callback = 0
 limit_left = 0
 limit_bottom = 570
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_vertical_offset = -0.04
@@ -2387,7 +2422,6 @@ editor_draw_drag_margin = true
 position = Vector2(636, 1018)
 
 [node name="StatusBar" parent="Camera2D" instance=ExtResource("50_qlycl")]
-visible = false
 offset = Vector2(630, 120)
 scale = Vector2(5.3, 5.3)
 transform = Transform2D(5.3, 0, 0, 5.3, 630, 120)
@@ -2457,6 +2491,7 @@ visible = false
 position = Vector2(-5, -3)
 
 [node name="GameTransition" type="CanvasLayer" parent="Camera2D"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/GameTransition"]
 position = Vector2(990, 850)
@@ -2514,6 +2549,20 @@ shape = SubResource("RectangleShape2D_xwavn")
 position = Vector2(3, -10)
 shape = SubResource("RectangleShape2D_xwavn")
 
+[node name="Feet" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_d3sly")
+
+[node name="RightTop" type="CollisionShape2D" parent="PlayerArea"]
+visible = false
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_0i3ug")
+
+[node name="LeftTop" type="CollisionShape2D" parent="PlayerArea"]
+visible = false
+position = Vector2(-7, 5)
+shape = SubResource("RectangleShape2D_7588k")
+
 [node name="DustTimer" type="Timer" parent="."]
 wait_time = 0.025
 one_shot = true
@@ -2563,8 +2612,8 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="CameraDragTimer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="JumpDelay" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="CameraDelayTimer" type="Timer" parent="."]

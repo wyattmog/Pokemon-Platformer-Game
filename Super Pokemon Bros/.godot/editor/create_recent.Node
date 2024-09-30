@@ -1,6 +1,6 @@
+CanvasLayer
 RayCast2D
 Timer
-CanvasLayer
 Control
 Sprite2D
 VideoStreamPlayer
@@ -12,4 +12,3 @@ Camera2D
 AnimationPlayer
 CollisionShape2D
 Area2D
-ParallaxLayer

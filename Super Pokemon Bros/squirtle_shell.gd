@@ -127,6 +127,7 @@ func is_above():
 
 func _on_area_2d_area_entered(area):
 	if area.name == "PlayerArea" and started:
+		print("KICKED")
 		#print(area.name)
 		if stationary:
 			kicked = true

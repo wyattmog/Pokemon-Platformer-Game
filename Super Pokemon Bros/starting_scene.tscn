@@ -196,6 +196,7 @@ texture = ExtResource("5_5ikjy")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gsw7y")
+autoplay = true
 max_polyphony = 32
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]

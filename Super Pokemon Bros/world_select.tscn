@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cee167db61rfh" path="res://lives_label.tscn" id="4_rlyly"]
 [ext_resource type="Texture2D" uid="uid://ccr5naubxxgbv" path="res://sprites/main menu/4607 (2) (5).png" id="4_uphao"]
 [ext_resource type="Texture2D" uid="uid://b4dbywhoc15mt" path="res://sprites/tiles/4590 (2) (1).png" id="5_j3u3d"]
-[ext_resource type="AudioStream" uid="uid://338j785o7alq" path="res://sounds/SNES - Super Mario World - Sound Effects/02. Title-[AudioTrimmer.com].wav" id="7_durit"]
 [ext_resource type="AudioStream" uid="uid://cfyx07ox0c3nn" path="res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav" id="8_8go6l"]
 [ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="9_po81t"]
+[ext_resource type="AudioStream" uid="uid://cmnw1ic7o4cnt" path="res://sounds/SNES - Super Mario World - Sound Effects/03. Yoshi's Island-[AudioTrimmer.com].wav" id="12_u0l7c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ph24t"]
 line_spacing = 5.0
@@ -355,7 +355,7 @@ scale = Vector2(6.22616, 5.95207)
 texture = ExtResource("4_bogob")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_durit")
+stream = ExtResource("12_u0l7c")
 max_polyphony = 32
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
