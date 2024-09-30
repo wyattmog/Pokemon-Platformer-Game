@@ -351,7 +351,7 @@ size = Vector2(498, 498)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8sb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu4si"]
-size = Vector2(39, 18)
+size = Vector2(56.5, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erbcl"]
 size = Vector2(73, 16)
@@ -1534,7 +1534,7 @@ shape = SubResource("RectangleShape2D_r8sb5")
 [node name="InvincibleArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvincibleArea"]
-position = Vector2(110.5, 541.5)
+position = Vector2(112, 540)
 shape = SubResource("RectangleShape2D_tu4si")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InvincibleArea"]
@@ -1542,7 +1542,7 @@ position = Vector2(16, 541.5)
 shape = SubResource("RectangleShape2D_tu4si")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InvincibleArea"]
-position = Vector2(312, 541.5)
+position = Vector2(312.75, 540)
 shape = SubResource("RectangleShape2D_tu4si")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="InvincibleArea"]

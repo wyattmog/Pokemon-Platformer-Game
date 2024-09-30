@@ -9,7 +9,7 @@ func _ready():
 	if GameState.checkpoint_level_1:
 		GameState.player.position = Vector2(2437, 505)
 	else:
-		GameState.player.position = Vector2(5146, 528)
+		GameState.player.position = Vector2(60, 528)
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()
 	GameState.game_ended = false

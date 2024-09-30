@@ -1,3 +1,5 @@
+res://sprites/main menu
+res://sounds
 res://
 res://sprites/player/all anims/forward and backward
 res://sprites/tiles/tilesets
@@ -18,5 +20,3 @@ res://sprites/mobs/squirtle
 res://sprites/mobs/venusaur
 res://sprites/mobs/charmeleon
 res://sprites/mobs/charizard
-res://sprites/mobs/wartortle
-res://sprites/player/all anims/death

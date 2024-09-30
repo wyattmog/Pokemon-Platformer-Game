@@ -40,8 +40,12 @@ func _physics_process(delta):
 		bounce1_2.position = position
 		bounce1_1.velocity.x = velocity.x
 		bounce1_2.velocity.x = velocity.x
-		bounce1_1.velocity.y = JUMP_VELOCITY
-		bounce1_2.velocity.y = JUMP_VELOCITY
+		if GameState.water_gravity:
+			bounce1_1.velocity.y = JUMP_VELOCITY
+			bounce1_2.velocity.y = JUMP_VELOCITY
+		else: 
+			bounce1_1.velocity.y = JUMP_VELOCITY/3
+			bounce1_2.velocity.y = JUMP_VELOCITY/3
 		bounce1_1.position.x += randi_range(1,20)
 		bounce1_2.position.x += randi_range(-1,-20)
 		bounce1_1.position.y += randi_range(-5,5)

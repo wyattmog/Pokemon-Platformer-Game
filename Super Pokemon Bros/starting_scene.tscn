@@ -1,0 +1,264 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2iyxundcgvr3"]
+
+[ext_resource type="Script" path="res://starting_scene.gd" id="1_utug1"]
+[ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="2_1fvam"]
+[ext_resource type="VideoStream" path="res://sounds/new_vidy.ogv" id="3_u35xg"]
+[ext_resource type="Texture2D" uid="uid://dbf2p1iv6kdxp" path="res://sprites/main menu/65841 (2).png" id="3_y8vcc"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="4_sj6k5"]
+[ext_resource type="Texture2D" uid="uid://bkcqsehqbaufe" path="res://sprites/main menu/Super-pokemon-bros-7-2-2024.png" id="5_5ikjy"]
+[ext_resource type="AudioStream" uid="uid://338j785o7alq" path="res://sounds/SNES - Super Mario World - Sound Effects/02. Title-[AudioTrimmer.com].wav" id="7_gsw7y"]
+[ext_resource type="AudioStream" uid="uid://cfyx07ox0c3nn" path="res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav" id="8_tqy8d"]
+[ext_resource type="Texture2D" uid="uid://b2fruo5plu3ra" path="res://sprites/tiles/fSWEJ (1).png" id="9_2iy38"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dl6ld"]
+line_spacing = 5.0
+font = ExtResource("4_sj6k5")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_fcehk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14.478, 15.414)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6b3sh"]
+resource_name = "fade"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.318), Vector2(15.478, 16.479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect5:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uehb"]
+_data = {
+"RESET": SubResource("Animation_fcehk"),
+"fade": SubResource("Animation_6b3sh")
+}
+
+[node name="StartingScene" type="Node2D"]
+script = ExtResource("1_utug1")
+
+[node name="LoadingScreenTransition" parent="." instance=ExtResource("2_1fvam")]
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreenTransition"]
+visible = false
+offset_left = -13.2228
+offset_top = -13.2895
+offset_right = 26.7772
+offset_bottom = 26.7105
+scale = Vector2(32.797, 26.4111)
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+offset_right = 1280.0
+offset_bottom = 1024.0
+stream = ExtResource("3_u35xg")
+autoplay = true
+loop = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5.01333, 4.5985)
+texture = ExtResource("3_y8vcc")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 345.0
+offset_top = 676.0
+offset_right = 486.0
+offset_bottom = 699.0
+scale = Vector2(4.50192, 4.50192)
+theme_override_constants/line_spacing = 0
+text = "Press any key to begin."
+label_settings = SubResource("LabelSettings_dl6ld")
+
+[node name="Super-pokemon-bros-7-2-2024" type="Sprite2D" parent="."]
+position = Vector2(642, 247)
+scale = Vector2(1.08415, 1.08415)
+texture = ExtResource("5_5ikjy")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gsw7y")
+max_polyphony = 32
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tqy8d")
+max_polyphony = 32
+
+[node name="GameTransition" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="GameTransition"]
+position = Vector2(640, 544)
+scale = Vector2(14.478, 15.414)
+texture = ExtResource("9_2iy38")
+
+[node name="ColorRect" type="ColorRect" parent="GameTransition"]
+offset_left = 6.0
+offset_top = -207.0
+offset_right = 46.0
+offset_bottom = -167.0
+scale = Vector2(31.8683, 11.2004)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="GameTransition"]
+offset_left = 347.0
+offset_top = -41.0
+offset_right = 387.0
+offset_bottom = -1.0
+scale = Vector2(-9.40424, 26.4243)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="GameTransition"]
+offset_left = 936.0
+offset_top = -34.0
+offset_right = 976.0
+offset_bottom = 6.0
+scale = Vector2(9.30105, 26.5753)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="GameTransition"]
+offset_left = 196.0
+offset_top = 824.0
+offset_right = 236.0
+offset_bottom = 864.0
+scale = Vector2(24.3842, 8.65538)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="GameTransition"]
+offset_left = -13.2228
+offset_top = -13.2895
+offset_right = 26.7772
+offset_bottom = 26.7105
+scale = Vector2(32.797, 26.4111)
+color = Color(0, 0, 0, 1)
+
+[node name="FadePlayer" type="AnimationPlayer" parent="GameTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_6uehb")
+}
+
+[connection signal="animation_finished" from="LoadingScreenTransition/FadePlayer1" to="." method="_on_loading_screen_animation_finished"]
+
+[editable path="LoadingScreenTransition"]

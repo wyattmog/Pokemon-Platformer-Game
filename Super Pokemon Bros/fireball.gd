@@ -30,7 +30,10 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		
 	else:
-		velocity.y = JUMP_VELOCITY
+		if GameState.water_gravity:
+			velocity.y = JUMP_VELOCITY/3
+		else:
+			velocity.y = JUMP_VELOCITY
 
 
 	move_and_slide()

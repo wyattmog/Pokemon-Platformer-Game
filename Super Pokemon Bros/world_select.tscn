@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://bvlawp6h5hv7p"]
+[gd_scene load_steps=25 format=3 uid="uid://bvlawp6h5hv7p"]
 
 [ext_resource type="Script" path="res://world_select.gd" id="1_yq7o7"]
 [ext_resource type="PackedScene" uid="uid://dm2c0ila35245" path="res://world_label.tscn" id="2_n4aov"]
 [ext_resource type="Texture2D" uid="uid://2djbmyj77nxt" path="res://sprites/tiles/144428 (1) copy (1).png" id="2_p57fc"]
 [ext_resource type="Texture2D" uid="uid://bmj4ks06oktho" path="res://sprites/main menu/4607 (2) (2) 8.27.48 PM.png" id="2_vqeop"]
 [ext_resource type="Texture2D" uid="uid://b3rq8u21q0d55" path="res://sprites/main menu/4607 (2) (2).png" id="3_dmggu"]
+[ext_resource type="FontFile" uid="uid://tbv8lfyp4idn" path="res://SMW.ttf" id="3_nmwye"]
 [ext_resource type="SpriteFrames" uid="uid://b8g3s70uacscw" path="res://Player.tres" id="3_r6b3j"]
 [ext_resource type="Texture2D" uid="uid://bul67oqcdoktx" path="res://sprites/main menu/145533 (1).png" id="4_bogob"]
 [ext_resource type="PackedScene" uid="uid://cee167db61rfh" path="res://lives_label.tscn" id="4_rlyly"]
@@ -13,6 +14,15 @@
 [ext_resource type="AudioStream" uid="uid://338j785o7alq" path="res://sounds/SNES - Super Mario World - Sound Effects/02. Title-[AudioTrimmer.com].wav" id="7_durit"]
 [ext_resource type="AudioStream" uid="uid://cfyx07ox0c3nn" path="res://sounds/SNES - Super Mario World - Sound Effects/map-spot.wav" id="8_8go6l"]
 [ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="9_po81t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ph24t"]
+line_spacing = 5.0
+font = ExtResource("3_nmwye")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_st3vn"]
 animations = [{
@@ -285,11 +295,13 @@ script = ExtResource("1_yq7o7")
 [node name="WorldLabel" parent="." instance=ExtResource("2_n4aov")]
 
 [node name="Label" parent="WorldLabel" index="0"]
-offset_left = -250.0
-offset_top = -517.0
-offset_right = -176.0
-offset_bottom = -507.0
-scale = Vector2(11.6171, 7.95747)
+offset_left = -224.0
+offset_top = -513.0
+offset_right = -125.0
+offset_bottom = -500.0
+scale = Vector2(9.83393, 5.01074)
+text = "Ash's Island 1"
+label_settings = SubResource("LabelSettings_ph24t")
 
 [node name="NameSprite" type="Sprite2D" parent="."]
 top_level = true

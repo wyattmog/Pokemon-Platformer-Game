@@ -60,6 +60,7 @@ var target_top_margin = 0.0
 var target_bottom_margin = 0.0
 signal jumped
 signal landed
+var follow_player = false
 var min = 0
 var scaled = false
 var scaling = false
@@ -125,6 +126,9 @@ func emit_signal_while_playing(direction):
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
+	if not is_on_floor() and get_node("RayCast2D").is_colliding():
+		get_node("JustLanded").start()
+		
 	current_screen_center = get_node("Camera2D").get_screen_center_position()
 	if GameState.water_gravity and get_node("BubbleTimer").is_stopped() and !disable_input:
 		_spawn_bubble()
@@ -212,43 +216,23 @@ func _physics_process(delta):
 			get_tree().change_scene_to_packed(GameState.loading_screen)
 			queue_free()
 	if !GameState.water_gravity:
-		#if get_node("Camera2D").drag_top_margin == 0:
-		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
-		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
-		#if get_node("Camera2D").drag_top_margin == 0:
-		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
-		if is_on_floor() and (position.y != last_pos):
+		if (is_on_floor() and (position.y != last_pos)) and !follow_player:
 			get_node("Camera2D").drag_top_margin = 0.00
 			last_pos = position.y
-		elif not is_on_floor() and last_pos - 10 >= position.y:
+			if !get_node("JustLanded").is_stopped():
+				get_node("Camera2D").drag_bottom_margin = 1.00
+			else:
+				get_node("Camera2D").drag_bottom_margin = 0.00
+		elif not is_on_floor() and last_pos > position.y and !follow_player:
 			get_node("Camera2D").drag_bottom_margin = 1.00
-		elif not is_on_floor() and velocity.y > 0:
-			if last_pos + 10 < position.y:
+		elif not is_on_floor():
+			if last_pos < position.y:
 				get_node("Camera2D").drag_bottom_margin = 0.00
 			#last_pos = position.y
 			get_node("Camera2D").global_position.y = position.y
-		get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
-			#get_node("Camera2D").drag_bottom_margin = 1.00
-			#get_node("Camera2D").global_position.y = position.y
-		#elif not is_on_floor() and velocity.y > 0:
-			#get_node("Camera2D").global_position.y = position.y 
-		#else:
-		#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*30 * delta)
-		#if is_on_floor() or get_node("CameraDragTimer").is_stopped():
-			#get_node("Camera2D").drag_top_margin = 0.00
-		#get_node("Camera2D").global_position.y = move_toward(global_position.y, last_pos, MARGIN_CHANGE_SPEED*delta)
-		#if not is_on_floor() and !disable_input and velocity.y > 0:
-			#get_node("Camera2D").global_position.y = last_pos
-			#get_node("Camera2D").set_global_position(Vector2(global_position.x, move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*delta)))
-			#get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 0.00, 20*delta)
-			#get_node("Camera2D").drag_top_margin = 1.00
+		if !follow_player:
+			get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*20 * delta)
 
-		#if is_on_floor() and !platVel:
-			#get_node("Camera2D").drag_top_margin = 0.00
-			#get_node("Camera2D").global_position.y = move_toward(get_node("Camera2D").global_position.y, last_pos, MARGIN_CHANGE_SPEED*10 * delta)
-			#last_pos = position.y
-			#get_node("Camera2D").drag_bottom_margin = lerp(get_node("Camera2D").drag_bottom_margin, 1.0, MARGIN_CHANGE_SPEED*delta)
-			#get_node("Camera2D").drag_top_margin = 0.0
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
@@ -431,8 +415,8 @@ func _physics_process(delta):
 			scaled = true
 		elif GameState.power == "" and GameState.big and (collected == "fire" or collected == "water" or collected == "grass"):
 			GameState.display_power()
-			audio_player.set_stream(powerdown_sound)
-			audio_player.play()
+			powerup_player.set_stream(powerdown_sound)
+			powerup_player.play()
 			scaled = false
 			collected = "big"
 			scaling = true
@@ -441,8 +425,8 @@ func _physics_process(delta):
 			scaled = true
 		elif GameState.big and not scaled:
 			GameState.display_power()
-			audio_player.set_stream(powerup_sound)
-			audio_player.play()
+			powerup_player.set_stream(powerup_sound)
+			powerup_player.play()
 			scale = Vector2(1.1,1.1)
 			collected = "big"
 			scaling = true
@@ -451,8 +435,8 @@ func _physics_process(delta):
 			scaled = true
 		elif !GameState.big and scaled:
 			GameState.display_power()
-			audio_player.set_stream(powerdown_sound)
-			audio_player.play()
+			powerup_player.set_stream(powerdown_sound)
+			powerup_player.play()
 			scale = Vector2(.90,.90)
 			collected = "small"
 			scaling = true
@@ -695,7 +679,7 @@ func _death():
 		GameState.checkpoint_level_3 = false
 		GameState.world_unlock = 0
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished
-		GameState.next_scene = "res://world_select.tscn"
+		GameState.next_scene = "res://starting_scene.tscn"
 		get_node("Camera2D/CanvasLayer/LoadingScreenTransition").set_visible(true)
 		get_node("Camera2D/CanvasLayer/LoadingScreenTransition/FadePlayer1").play("fade_out")
 	else:
@@ -733,6 +717,7 @@ func _water_jumped():
 	elif direction == 1: 
 		last_pressed = 1
 func _jumped():
+	follow_player = true
 	if previous_screen_center.y == current_screen_center.y:
 		get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")
@@ -752,6 +737,9 @@ func _jumped():
 	else:
 		anim.play("SmallJump")
 	await is_on_floor()
+	get_node("Camera2D").drag_bottom_margin = 1.00
+
+	follow_player = false
 	animplaying = false
 	jumptype = "jump"
 	if direction == -1:
@@ -1057,3 +1045,7 @@ func _on_loading_screen_animation_finished(anim_name):
 		get_tree().call_group("worlds", "_on_player_dead")
 		get_tree().change_scene_to_packed(GameState.loading_screen)
 		queue_free()
+
+
+func _on_ground_entered(body):
+	print(body.name)
