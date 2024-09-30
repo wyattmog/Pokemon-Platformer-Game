@@ -664,6 +664,7 @@ func _death():
 	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
 	get_node("Camera2D").drag_top_margin = 1.00
 	get_node("Camera2D").drag_bottom_margin = 0.00
+	get_node("Camera2D").set_process_mode(3)
 	velocity.y = 0
 	velocity.x = 0
 	get_node("Camera2D").set_process_mode(3)
