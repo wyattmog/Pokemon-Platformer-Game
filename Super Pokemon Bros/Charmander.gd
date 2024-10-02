@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var SPEED = 50
+var SPEED = -50
 @onready var audio_player = get_node("SoundEffects")
 var stomp_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/super-stomp.wav")
 var death_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/kick.wav")
@@ -22,19 +22,23 @@ func _ready():
 	velocity.x = SPEED
 
 func _physics_process(delta):
+	print(is_above())
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:
 		set_collision_mask_value(1, true)
 	 #Add the gravity.
 	if !isdead and start:
+		if velocity.x == 0:
+			SPEED *= -1
 		anim.play("Walk")
 		velocity.x = -SPEED
 		velocity.y += gravity * delta
 	else: 
 		velocity.x = 0
 		velocity.y = 0
-	
+	if get_node("SoftCollision").is_colliding():
+		velocity.x += get_node("SoftCollision").get_push_vector().x * delta * 10000
 	move_and_slide()
 	
 func _on_leaf_detection_body_entered(body):
@@ -108,7 +112,7 @@ func _on_player_grass_attack_ended():
 	attacked = false
 
 func is_above():
-	return GameState.player.position.y < position.y +90 and GameState.player.velocity.y > 0
+	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0))
 
 
 func _on_player_hitbox_body_entered(body):
@@ -123,7 +127,10 @@ func _on_player_hitbox_body_entered(body):
 			get_tree().call_group("shell_projectile", "_start_timer")
 		death()
 		isdead=true
+	elif body.is_in_group("enemies") and not isdead:
+		SPEED *= -1
 	elif body.name == "Player" and !isdead and !GameState.invincible:
+		print("wow")
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":
@@ -137,4 +144,3 @@ func _on_player_hitbox_body_entered(body):
 func _on_player_detection_body_entered(body):
 	if body.name == "Player":
 		start = true
-

@@ -31,10 +31,11 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").flip_h = true 
 		else:
 			get_node("AnimatedSprite2D").flip_h = false
-		if velocity.y < 0 and !animplaying:
-			anim.play("Jump")
-		elif velocity.y > 0 and !animplaying:
-			anim.play("Fall")
+		if in_range:
+			if velocity.y < 0 and !animplaying:
+				anim.play("Jump")
+			elif velocity.y > 0 and !animplaying:
+				anim.play("Fall")
 		elif velocity.y == 0 and !animplaying:		
 			anim.play("Idle")
 		if is_on_floor() and get_node("GroundTimer").is_stopped() and in_range:
@@ -130,7 +131,7 @@ func _on_player_grass_attack_ended():
 	attacked = false
 
 func is_above():
-	return GameState.player.position.y < position.y +90 and GameState.player.velocity.y > 0
+	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0))
 
 
 func _on_player_hitbox_body_entered(body):

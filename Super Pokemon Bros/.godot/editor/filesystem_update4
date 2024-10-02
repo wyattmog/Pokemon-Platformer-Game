@@ -40,4 +40,15 @@ res://main.tscn
 res://game_end_fade.tscn
 res://ivysaur.tscn
 res://world_3.tscn
+res://charmander.gd
+res://charmeleon.gd
+res://squirtle.gd
+res://squirtle.tscn
+res://squirtle_shell.gd
 res://Player.gd
+res://blastoise.gd
+res://bulbasaur.gd
+res://charizard.gd
+res://ivysaur.gd
+res://venusaur.gd
+res://wartortle.gd

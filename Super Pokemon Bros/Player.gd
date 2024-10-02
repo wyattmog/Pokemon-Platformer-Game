@@ -131,12 +131,13 @@ func emit_signal_while_playing():
 		get_node("GrassAttack/CollisionShapeRight").disabled = true
 
 func _physics_process(delta):
-	print(get_node("Camera2D").drag_bottom_margin, "and ", (get_node("Camera2D").drag_top_margin))
+	#print(get_node("Camera2D").drag_bottom_margin, "and ", (get_node("Camera2D").drag_top_margin))
 	if not is_on_floor() and get_node("RayCast2D").is_colliding() and !GameState.water_gravity and velocity.y > 0 and !disable_input:
 		get_node("JustLanded").start()
 		follow_player = true
 	elif is_on_floor() and follow_player == true and !GameState.water_gravity and !disable_input:
 		get_node("JumpDelay").start()
+		get_node("CameraDelayTimer").start()
 		get_node("Camera2D").drag_bottom_margin = 1.00
 		follow_player = false
 
@@ -737,10 +738,9 @@ func _water_jumped():
 		else:
 			anim.play("SmallSwim")
 func _jumped():
-	print(last_platform_y, " and ", position.y)
-	if abs(position.y - last_platform_y) <= 10:
+	#print(last_platform_y, " and ", position.y)
+	if abs(position.y - last_platform_y) <= 10 or get_node("CameraDelayTimer").is_stopped():
 		get_node("Camera2D").drag_top_margin = 1.00
-		print("wowsers")
 		#if previous_screen_center.y > current_screen_center.y:
 			#if floor(previous_screen_center.y) == ceil(current_screen_center.y):
 				#get_node("Camera2D").drag_top_margin = 1.00
@@ -769,15 +769,8 @@ func _jumped():
 		anim.play("SmallJump")
 	
 func _spinned():
-	if previous_screen_center.y > current_screen_center.y:
-		if floor(previous_screen_center.y) == ceil(current_screen_center.y):
-			get_node("Camera2D").drag_top_margin = 1.00
-	elif previous_screen_center.y < current_screen_center.y:
-		if ceil(previous_screen_center.y) == floor(current_screen_center.y):
-			get_node("Camera2D").drag_top_margin = 1.00
-	elif previous_screen_center.y == current_screen_center.y:
-			get_node("Camera2D").drag_top_margin = 1.00
-	#get_node("Camera2D").drag_top_margin = 1.00
+	if abs(position.y - last_platform_y) <= 10 or get_node("CameraDelayTimer").is_stopped():
+		get_node("Camera2D").drag_top_margin = 1.00
 	emit_signal("jumped")
 	if (velocity.x >= 225 or velocity.x <= -225) and GameState.big:
 		velocity.y = JUMP_VELOCITY -25
@@ -794,11 +787,6 @@ func _spinned():
 		else:
 			velocity.y = JUMP_VELOCITY + 25
 	animplaying = false
-	
-	
-	
-	
-	
 	jumptype = "spin"
 	if GameState.power == "grass":
 		anim.play("GrassSpin")

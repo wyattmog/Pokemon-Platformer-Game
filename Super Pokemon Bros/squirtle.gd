@@ -39,7 +39,7 @@ func _physics_process(delta):
 	 #Add the gravity.
 	if !isdead and start:
 		#print(invincible)
-		if velocity.x == 0 :
+		if velocity.x == 0:
 			SPEED *= -1
 		#anim.play("Walk")
 		if velocity.x > 0:
@@ -159,7 +159,7 @@ func _on_player_grass_attack_ended():
 	#print(attacked)
 
 func is_above():
-	return GameState.player.position.y < position.y +90 and GameState.player.velocity.y > 0
+	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0))
 
 
 func _on_player_hitbox_body_entered(body):
@@ -172,8 +172,6 @@ func _on_player_hitbox_body_entered(body):
 		if body.is_in_group("shell_projectile"):
 			GameState.shellkicked = true
 			get_tree().call_group("shell_projectile", "_start_timer")
-			
-			
 		death()
 		isdead=true
 	elif body.is_in_group("enemies") and not isdead:
@@ -186,9 +184,7 @@ func _on_player_hitbox_body_entered(body):
 			GameState.big = true
 			GameState.power = ""
 		else:
-			#queue_free()
 			get_tree().call_group("player", "_death")
-			#get_tree().change_scene_to_file("res://main.tscn")
 
 
 
@@ -197,8 +193,3 @@ func _on_player_detection_body_entered(body):
 	if body.name == "Player":
 		start = true
 
-
-
-func _on_player_hitbox_area_entered(area):
-	if area.name == "CollisionHelper":
-		SPEED *= -1

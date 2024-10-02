@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://dkkvgv2jkyy5a"]
+[gd_scene load_steps=35 format=3 uid="uid://dkkvgv2jkyy5a"]
 
 [ext_resource type="Script" path="res://charmander.gd" id="2_6cc2q"]
 [ext_resource type="Texture2D" uid="uid://gmuasefy7ag8" path="res://sprites/effects/sma4_sprites copy 3.png" id="2_60nr6"]
 [ext_resource type="Texture2D" uid="uid://crmhu8ehlh48i" path="res://sprites/mobs/charmander/35067 (1).png" id="2_rquo3"]
 [ext_resource type="Texture2D" uid="uid://ua6r8137q4hs" path="res://sprites/player/all anims/death/New Piskel.png" id="3_8prv4"]
 [ext_resource type="Texture2D" uid="uid://df3kx2cw2wtwt" path="res://sprites/mobs/charmander/35067 (2).png" id="4_68mjh"]
+[ext_resource type="PackedScene" uid="uid://cgaihsqhw3igx" path="res://soft_collision.tscn" id="6_s5bt4"]
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_r66ng"]
 resource_local_to_scene = true
@@ -118,6 +119,9 @@ animations = [{
 "name": &"Death",
 "speed": 15.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xu2u"]
+size = Vector2(1.23796, 8.60419)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u78p7"]
 resource_local_to_scene = true
@@ -392,6 +396,14 @@ sprite_frames = SubResource("SpriteFrames_gssxi")
 animation = &"CharmanderWalk"
 frame = 1
 
+[node name="SoftCollision" parent="." instance=ExtResource("6_s5bt4")]
+position = Vector2(2, -1)
+scale = Vector2(15.3479, 4.06779)
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2(-0.228045, -0.368751)
+shape = SubResource("RectangleShape2D_1xu2u")
+
 [node name="LeafDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeafDetection"]
@@ -425,3 +437,5 @@ libraries = {
 [connection signal="body_exited" from="LeafDetection" to="." method="_on_leaf_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+
+[editable path="SoftCollision"]
