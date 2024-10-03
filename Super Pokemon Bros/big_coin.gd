@@ -1,5 +1,4 @@
 extends StaticBody2D
-signal coin_collected
 @onready var audio_player = get_node("SoundEffects")
 var coin_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/coin-special.wav")
 var stop = false

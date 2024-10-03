@@ -406,7 +406,7 @@ shape = SubResource("SeparationRayShape2D_vhshk")
 position = Vector2(2, -1)
 scale = Vector2(1, 0.847)
 sprite_frames = SubResource("SpriteFrames_gssxi")
-animation = &"GoldeenSwim"
+animation = &"Death"
 frame = 1
 
 [node name="LeafDetection" type="Area2D" parent="."]
@@ -418,7 +418,8 @@ shape = SubResource("RectangleShape2D_u78p7")
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(-192, 2)
+position = Vector2(2.08165e-12, 2)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_xq3rg")
 
 [node name="PlayerHitbox" type="Area2D" parent="."]

@@ -55,5 +55,5 @@ script = ExtResource("1_5tnbt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rpvso")
-animation = &"0"
+animation = &"3"
 autoplay = "0"

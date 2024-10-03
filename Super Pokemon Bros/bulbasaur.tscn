@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brj65vkc2j38a" path="res://sprites/mobs/bulbasaur/35063 (1).png" id="4_6gj8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ex2t"]
-size = Vector2(33, 27)
+size = Vector2(33, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gi37v"]
 atlas = ExtResource("3_r16ik")
@@ -120,7 +120,7 @@ size = Vector2(386.25, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7qvp"]
 resource_local_to_scene = true
-size = Vector2(35, 30)
+size = Vector2(38, 28)
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_q2nsa"]
 
@@ -363,13 +363,13 @@ _data = {
 script = ExtResource("1_24x02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_8ex2t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.847)
 sprite_frames = SubResource("SpriteFrames_dwpjs")
-animation = &"Death"
+animation = &"Ground"
 frame = 1
 
 [node name="LeafDetection" type="Area2D" parent="."]
@@ -379,16 +379,17 @@ position = Vector2(0, -0.9375)
 shape = SubResource("RectangleShape2D_mri0l")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-position = Vector2(77, -1)
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(-272, 0)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_dcsvf")
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_f7qvp")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

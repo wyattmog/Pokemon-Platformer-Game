@@ -4,6 +4,7 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
 	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	if GameState.water_gravity:
@@ -56,5 +57,4 @@ func _on_finish_body_entered(body):
 
 func _on_loading_screen_animation_finished(anim_name):
 	if anim_name == "fade_out":
-		print("faded")
 		get_tree().change_scene_to_packed(GameState.loading_screen)

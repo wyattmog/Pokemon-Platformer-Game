@@ -31,14 +31,13 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").flip_h = true 
 		else:
 			get_node("AnimatedSprite2D").flip_h = false
-		if in_range:
-			if velocity.y < 0 and !animplaying:
-				anim.play("Jump")
-			elif velocity.y > 0 and !animplaying:
-				anim.play("Fall")
+		if velocity.y < 0 and !animplaying:
+			anim.play("Jump")
+		elif velocity.y > 0 and !animplaying:
+			anim.play("Fall")
 		elif velocity.y == 0 and !animplaying:		
 			anim.play("Idle")
-		if is_on_floor() and get_node("GroundTimer").is_stopped() and in_range:
+		if is_on_floor() and get_node("GroundTimer").is_stopped() and in_range and !GameState.invincible:
 			velocity.y = JUMP_VELOCITY
 			get_node("GroundTimer").start()
 			get_node("RestTimer").start()

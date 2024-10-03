@@ -4,7 +4,6 @@ func _ready():
 	ResourceLoader.load_threaded_request(GameState.next_scene)
 	
 func _process(_delta):
-	print("proccessing")
 	var progress = []
 	ResourceLoader.load_threaded_get_status(GameState.next_scene, progress)
 	if progress[0] == 1:

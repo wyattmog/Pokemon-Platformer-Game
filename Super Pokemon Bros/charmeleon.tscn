@@ -497,10 +497,11 @@ position = Vector2(0, -0.9375)
 shape = SubResource("RectangleShape2D_mri0l")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-position = Vector2(77, -1)
+position = Vector2(2.08165e-12, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(-272, 0)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_dcsvf")
 
 [node name="PlayerHitbox" type="Area2D" parent="."]

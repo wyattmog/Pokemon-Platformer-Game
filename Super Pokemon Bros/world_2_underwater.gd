@@ -24,8 +24,9 @@ func underwater_pipe_entered():
 	GameState.player._start_pipe_helper() 
 	ProjectSettings.set_setting("physics/2d/default_gravity", 530)
 	get_node("Player/PipeAnimation").play("pipe_exit")
-	await get_tree().create_timer(2).timeout
-	get_tree().change_scene_to_file("res://world_2.tscn")
+	await get_tree().create_timer(1).timeout
+	get_node("LoadingScreenTransition/FadePlayer1").play("fade_out")
+	GameState.next_scene = "res://world_2.tscn"
 func _on_enemy_death(name):
 	get_node(name).set_collision_mask_value(1, false)
 
@@ -45,13 +46,8 @@ func _on_void_area_body_entered(body):
 		await get_tree().create_timer(3).timeout
 		GameState.big = false
 		GameState.power = ""
-		
-func _on_finish_body_entered(body):
-	if body.name == "Player":
-		get_node("BackroundMusic").set_stream(course_clear_sound)
-		get_node("BackroundMusic").play()
-
 
 func _on_loading_screen_animation_finished(anim_name):
 	if anim_name == "fade_out":
+		print("faded")
 		get_tree().change_scene_to_packed(GameState.loading_screen)
