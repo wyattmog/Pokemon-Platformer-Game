@@ -240,6 +240,7 @@ func _physics_process(delta):
 	if not scaling:
 		_gravity(delta)
 	if !disable_input:
+
 		if not get_node("Invincibility").is_stopped() and played:
 			get_node("AnimatedSprite2D").set_self_modulate(Color(1, 1, 1, randi_range(.8,1)))
 		elif get_node("Invincibility").is_stopped() and played:

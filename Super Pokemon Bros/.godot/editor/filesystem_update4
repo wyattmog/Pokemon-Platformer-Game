@@ -1,9 +1,9 @@
-res://world_select.tscn
+res://world_2_underwater.tscn
 res://water_ball.gd
 res://QuestionBlock.gd
 res://Player.tres
 res://marioblocks.tres
-res://seaking.gd
+res://world_select.tscn
 res://world_1.tscn
 res://Player.tscn
 res://point_screen.tscn
@@ -14,7 +14,6 @@ res://world_2.tscn
 res://bg.tscn
 res://water.tscn
 res://wartortle.tscn
-res://world_2_underwater.tscn
 res://grass_projectile.tscn
 res://grass_power.tscn
 res://dust.tscn
@@ -53,3 +52,13 @@ res://multiplier.tscn
 res://coin_label.tscn
 res://big_coin_label.tscn
 res://Player.gd
+res://bulbasaur.gd
+res://squirtle.gd
+res://charizard.gd
+res://charmander.gd
+res://charmeleon.gd
+res://ivysaur.gd
+res://squirtle_shell.gd
+res://venusaur.gd
+res://wartortle.gd
+res://finish_pole.gd

@@ -123,7 +123,7 @@ func _on_player_grass_attack():
 		isdead = true
 		
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0))
+	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y == 0))
 
 func _on_area_2d_area_entered(area):
 	if area.name == "PlayerArea" and started:
