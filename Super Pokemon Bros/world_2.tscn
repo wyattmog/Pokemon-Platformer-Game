@@ -12,10 +12,10 @@
 [ext_resource type="Script" path="res://finish_pole.gd" id="14_ujnby"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="15_7br43"]
 [ext_resource type="Texture2D" uid="uid://46xgay2wsrlk" path="res://sprites/tiles/144613 (2).png" id="15_jycuh"]
+[ext_resource type="PackedScene" uid="uid://bhjqn260gic3e" path="res://mushroom_power.tscn" id="16_k2f7o"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="16_qvowd"]
 [ext_resource type="PackedScene" uid="uid://b04j4apqmrk0v" path="res://big_blue_pole.tscn" id="16_yg6mh"]
 [ext_resource type="PackedScene" uid="uid://ch7xj2shg4qq1" path="res://big_light_blue_pole.tscn" id="17_ls1xa"]
-[ext_resource type="PackedScene" uid="uid://88b48vkgtaiy" path="res://grass_power.tscn" id="17_tlfcf"]
 [ext_resource type="Texture2D" uid="uid://c63dm5ic1m8u2" path="res://sprites/tiles/New Piskel (1).png" id="17_wyurf"]
 [ext_resource type="AudioStream" uid="uid://c8ktu6gg3jm1v" path="res://sounds/SNES - Super Mario World - Sound Effects/04 Wandering the Plains-[AudioTrimmer.com].wav" id="18_yp4wv"]
 [ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="20_3jy07"]
@@ -438,7 +438,7 @@ spawned_scene = ExtResource("16_qvowd")
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(582, 422)
 collision_layer = 8
-spawned_scene = ExtResource("17_tlfcf")
+spawned_scene = ExtResource("16_k2f7o")
 
 [node name="Question_Block3" parent="Foreground Blocks" instance=ExtResource("15_7br43")]
 position = Vector2(597, 422)
