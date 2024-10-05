@@ -3,7 +3,7 @@ var curr_world
 @onready var music_player = get_node("Music")
 @onready var select_player = get_node("SelectSound")
 const start = Vector2(-48,230)
-const world_1 = Vector2(257,307)
+const world_1 = Vector2(256,306)
 const world_2 = Vector2(461,-60)
 const world_3 = Vector2(257,-229)
 func _ready():
