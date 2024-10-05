@@ -215,6 +215,8 @@ func _physics_process(delta):
 			await get_node("Camera2D/GameTransition/FadePlayer").animation_finished
 			GameState.cutscene = false
 			GameState.invincible = false
+			GameState.big_num_coins = 0
+			GameState.num_coins = 0
 			get_tree().call_group("worlds", "_on_player_dead")
 			GameState.next_scene = "res://world_select.tscn"
 			get_tree().change_scene_to_packed(GameState.loading_screen)

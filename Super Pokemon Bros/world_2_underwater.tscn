@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs2hpyaw0qvfe"]
+[gd_scene load_steps=26 format=3 uid="uid://bs2hpyaw0qvfe"]
 
 [ext_resource type="Script" path="res://world_2_underwater.gd" id="1_25u8c"]
 [ext_resource type="TileSet" uid="uid://c0ws2rvhej4oj" path="res://marioblocks.tres" id="2_23888"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c2o3i2bjgt0nk" path="res://seaking.tscn" id="6_cj51a"]
 [ext_resource type="PackedScene" uid="uid://b6eudb8la734v" path="res://question_block.tscn" id="9_bkepg"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="10_f266w"]
-[ext_resource type="PackedScene" uid="uid://dqtjvcwekhqua" path="res://water_power.tscn" id="11_kn2de"]
 [ext_resource type="PackedScene" uid="uid://rla7keck6nxc" path="res://blue_pole.tscn" id="13_nwbgo"]
 [ext_resource type="AudioStream" uid="uid://ykv3xl007ish" path="res://sounds/SNES - Super Mario World - Sound Effects/14a Swimming-[AudioTrimmer.com].wav" id="14_5p3pw"]
 [ext_resource type="PackedScene" uid="uid://dy41um3ywvb0q" path="res://checkpoint_pole.tscn" id="14_k7ham"]
@@ -390,7 +389,7 @@ spawned_scene = ExtResource("10_f266w")
 [node name="Question_Block7" parent="Foreground Blocks" instance=ExtResource("9_bkepg")]
 position = Vector2(143, 483)
 collision_layer = 8
-spawned_scene = ExtResource("11_kn2de")
+spawned_scene = ExtResource("10_f266w")
 
 [node name="Question_Block8" parent="Foreground Blocks" instance=ExtResource("9_bkepg")]
 position = Vector2(128, 483)
