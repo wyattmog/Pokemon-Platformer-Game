@@ -37,7 +37,6 @@ func _physics_process(delta):
 	if !isdead and start:
 		if !animplaying:
 			var direction = (GameState.player.position - self.position)
-			#print(GameState.player.position.x," and ", self.position.x)
 			if direction.x > 0:
 				get_node("AnimatedSprite2D").flip_h = true 
 				get_node("Flamethrower").flip_h = true 
@@ -137,7 +136,7 @@ func _on_player_grass_attack_ended():
 	attacked = false
 
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0))
+	return GameState.player.position.y <= position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y >= 0))
 
 
 func _on_player_hitbox_body_entered(body):

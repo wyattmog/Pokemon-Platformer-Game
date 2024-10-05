@@ -495,39 +495,35 @@ spawned_scene = ExtResource("26_ydq5k")
 [node name="VoidArea" type="Area2D" parent="."]
 
 [node name="VoidDetectionShape" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(1007, 511)
+position = Vector2(1007, 520)
 shape = SubResource("RectangleShape2D_esp6m")
 
 [node name="VoidDetectionShape7" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(4627, 513)
+position = Vector2(4627, 522)
 shape = SubResource("RectangleShape2D_esp6m")
 
 [node name="VoidDetectionShape8" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(4800, 549.5)
+position = Vector2(4800, 558.5)
 shape = SubResource("RectangleShape2D_esp6m")
 
 [node name="VoidDetectionShape9" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(5031.5, 574.25)
+position = Vector2(5031.5, 583.25)
 shape = SubResource("RectangleShape2D_esp6m")
 
 [node name="VoidDetectionShape6" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(2867, 482)
+position = Vector2(2867, 491)
 shape = SubResource("RectangleShape2D_esp6m")
 
 [node name="VoidDetectionShape5" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(1969.72, 495.25)
+position = Vector2(1969.72, 504.25)
 shape = SubResource("RectangleShape2D_fv08g")
 
 [node name="VoidDetectionShape2" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(3149.5, 527)
-shape = SubResource("RectangleShape2D_fv08g")
-
-[node name="VoidDetectionShape3" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(4862.41, 718)
+position = Vector2(3149.5, 536)
 shape = SubResource("RectangleShape2D_fv08g")
 
 [node name="VoidDetectionShape4" type="CollisionShape2D" parent="VoidArea"]
-position = Vector2(3947, 478)
+position = Vector2(3947, 487)
 shape = SubResource("RectangleShape2D_pkom4")
 
 [node name="BackroundMusic" type="AudioStreamPlayer" parent="."]

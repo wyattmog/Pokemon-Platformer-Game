@@ -18,8 +18,8 @@ func _ready():
 	
 	
 	
-func _on_enemy_death(name):
-	get_node(name).set_collision_mask_value(1, false)
+func _on_enemy_death(enemy_name):
+	get_node(enemy_name).set_collision_mask_value(1, false)
 
 func _on_player_jumped():
 	get_node("TileMap").set_layer_z_index(1, 2)
@@ -32,8 +32,9 @@ func _on_player_dead():
 	get_tree().paused = false
 func _on_void_area_body_entered(body):
 	if body.name == "Player":
+		get_tree().call_group("player", "_set_camera_limit")
+		await get_tree().create_timer(.7).timeout
 		get_tree().call_group("player", "_death")
-		await get_tree().create_timer(3).timeout
 		GameState.big = false
 		GameState.power = ""
 		

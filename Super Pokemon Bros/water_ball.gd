@@ -6,10 +6,8 @@ var water_particle = preload("res://water_particles.tscn")
 var water_bounce1 = preload("res://waterball_bounce1.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#var has_split = false
 var started = false
 var bounce_count = 0
-#var max_bounces = 3
 func _ready():
 	add_to_group("projectiles")
 
@@ -41,11 +39,11 @@ func _physics_process(delta):
 		bounce1_1.velocity.x = velocity.x
 		bounce1_2.velocity.x = velocity.x
 		if GameState.water_gravity:
-			bounce1_1.velocity.y = JUMP_VELOCITY
-			bounce1_2.velocity.y = JUMP_VELOCITY
-		else: 
 			bounce1_1.velocity.y = JUMP_VELOCITY/3
 			bounce1_2.velocity.y = JUMP_VELOCITY/3
+		else: 
+			bounce1_1.velocity.y = JUMP_VELOCITY
+			bounce1_2.velocity.y = JUMP_VELOCITY
 		bounce1_1.position.x += randi_range(1,20)
 		bounce1_2.position.x += randi_range(-1,-20)
 		bounce1_1.position.y += randi_range(-5,5)

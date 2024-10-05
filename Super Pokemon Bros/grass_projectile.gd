@@ -18,7 +18,7 @@ func _ready():
 	velocity.y =UPWARDS_VEL
 	started = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:

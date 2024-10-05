@@ -76,5 +76,4 @@ func _on_area_2d_body_entered(body):
 			get_tree().call_group("player", "_death")
 	elif started and !isdead:
 		isdead = true
-		print("dead")
 		

@@ -5,7 +5,7 @@ func _ready():
 	time = GameState.time
 	add_to_group("status_bar")
 func _timer_loop():
-	while time > 0 and !GameState.player.disable_input:
+	while time >= 0 and !GameState.player.disable_input:
 		display_time()
 		get_node("Label").set_text(str(time))
 		time -= 1

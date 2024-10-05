@@ -33,31 +33,20 @@ func _physics_process(delta):
 		set_collision_mask_value(1, false)
 	else:
 		set_collision_mask_value(1, true)
-	#print(get_node("GroundTimer").is_stopped(), velocity.y)
-	 #Add the gravity.
-	#if not is_on_floor() and get_node("GroundTimer").is_stopped():
-		#get_node("GroundTimer").start()
 	if !isdead and start:
 
 		var direction = (GameState.player.position - self.position)
-		#print(GameState.player.position.x," and ", self.position.x)
 		if direction.x > 0:
 			get_node("AnimatedSprite2D").flip_h = true 
 			GameState.projectile_adjustment = -60
-			
-			#position.y -= 1
-			#velocity.x = -SPEED*2
 		else:
 			GameState.projectile_adjustment = 0
-			#position.y -= 1
 			get_node("AnimatedSprite2D").flip_h = false
-			#velocity.x = SPEED*2
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		if not get_node("RestTimer").is_stopped():
 			anim.play("Idle")
 		if attack and  get_node("RestTimer").is_stopped() and !attacked and !GameState.invincible:
-			print("wowow")
 			anim.play("Attack")
 			attacked = true
 			await get_tree().create_timer(.2).timeout
@@ -68,24 +57,9 @@ func _physics_process(delta):
 			await anim.animation_finished
 			get_node("RestTimer").start()
 			attacked = false
-			#print("ivy: ",position)
 	else: 
 		velocity.x = 0
 		velocity.y = 0
-	#if chase == true:
-		#if !isdead:
-			#get_node("AnimatedSprite2D").play("Walk")
-		#player = get_node("../../Player/Player")
-		#var direction = (player.position - self.position).normalized()
-		#if direction.x > 0:
-			#get_node("AnimatedSprite2D").flip_h = true 
-		#else:
-			#get_node("AnimatedSprite2D").flip_h = false
-		#if !isdead:
-			#velocity.x = direction.x * SPEED
-	#else:
-		#velocity.x = 0
-	#print(invincible)
 	
 	move_and_slide()
 	
@@ -149,16 +123,6 @@ func death():
 		await get_tree().create_timer(0.40).timeout
 	self.queue_free()
 	
-	
-#func invincible_start():
-	##print("started")
-	#invincible = true
-	#set_collision_mask_value(1, false)
-	#
-#func invincible_end():
-	##print('stopped') 
-	#invincible = false
-	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	jumped_on = false
@@ -171,11 +135,10 @@ func _on_player_grass_attack_ended():
 	leaf_attacked = false
 
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y == 0))
+	return GameState.player.position.y <= position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y >= 0))
 
 
 func _on_player_hitbox_body_entered(body):
-	#print("wpwpwp")
 	if body.name == "Player" and not isdead and !GameState.invincible and is_above():
 		jumped_on = true
 		death()

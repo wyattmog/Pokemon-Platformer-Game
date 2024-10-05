@@ -70,7 +70,6 @@ func _physics_process(delta):
 				velocity.x = 0
 				velocity.y = 0
 			else: 
-				print(position.x < initial_position.x)
 				if position.x > initial_position.x:
 					velocity.x = SPEED*-1
 				elif position.y < initial_position.x:
@@ -82,10 +81,7 @@ func _physics_process(delta):
 				if abs(position.y - initial_position.y) < 5 and abs(position.x - initial_position.x) < 5:
 					velocity.x = 0
 					velocity.y = 0 
-				print(position.x < initial_position.x)
 					
-				#position.x = move_toward(position.x, initial_position.x, .5)
-				#position.y = move_toward(position.y, initial_position.y, .5)
 				if position.x < initial_position.x:
 					get_node("AnimatedSprite2D").flip_h = true 
 				elif position.x > initial_position.x:

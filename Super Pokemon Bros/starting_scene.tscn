@@ -180,13 +180,13 @@ texture = ExtResource("3_y8vcc")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 345.0
+offset_left = 246.0
 offset_top = 676.0
-offset_right = 486.0
+offset_right = 429.0
 offset_bottom = 699.0
 scale = Vector2(4.50192, 4.50192)
 theme_override_constants/line_spacing = 0
-text = "Press any key to begin."
+text = "Press enter or space to begin."
 label_settings = SubResource("LabelSettings_dl6ld")
 
 [node name="Super-pokemon-bros-7-2-2024" type="Sprite2D" parent="."]

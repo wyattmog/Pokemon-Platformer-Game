@@ -6,7 +6,6 @@ var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound 
 func _ready():
 	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
 	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
-	print(GameState.checkpoint_level_2)
 	if GameState.checkpoint_level_2:
 		GameState.water_gravity = true
 		ProjectSettings.set_setting("physics/2d/default_gravity", 150)
@@ -49,5 +48,4 @@ func _on_void_area_body_entered(body):
 
 func _on_loading_screen_animation_finished(anim_name):
 	if anim_name == "fade_out":
-		print("faded")
 		get_tree().change_scene_to_packed(GameState.loading_screen)

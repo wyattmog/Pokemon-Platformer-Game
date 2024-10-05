@@ -12,6 +12,7 @@ var timer_started = false
 var score_gate = false
 var kicked = false
 var jumptype = ""
+signal enemy_death(body)
 @onready var anim = get_node("AnimationPlayer")
 @onready var audio_player = get_node("SoundEffects")
 var stomp_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/super-stomp.wav")
@@ -127,7 +128,6 @@ func is_above():
 
 func _on_area_2d_area_entered(area):
 	if area.name == "PlayerArea" and started:
-		#print(area.name)
 		if stationary:
 			kicked = true
 			audio_player.set_stream(death_sound)
@@ -142,7 +142,6 @@ func _on_area_2d_area_entered(area):
 				if is_above() and GameState.player.jumptype != "spin":
 					get_tree().call_group("player", "_spawn_kick")
 					get_tree().call_group("player", "_on_bounce_signal")
-					print("wow")
 				elif is_above() and GameState.player.jumptype == "spin":
 					isdead = true
 					jumptype = "spin"

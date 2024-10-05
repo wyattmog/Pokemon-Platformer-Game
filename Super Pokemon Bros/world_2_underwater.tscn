@@ -202,7 +202,6 @@ autoplay = "default"
 frame_progress = 0.806656
 
 [node name="Mobs" type="Node2D" parent="."]
-visible = false
 light_mask = 2
 visibility_layer = 9
 position = Vector2(-5.96046e-08, 0)
@@ -217,6 +216,13 @@ collision_mask = 9
 [node name="Seaking4" parent="Mobs" instance=ExtResource("6_cj51a")]
 z_index = 3
 position = Vector2(391, 504)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 9
+
+[node name="Seaking5" parent="Mobs" instance=ExtResource("6_cj51a")]
+z_index = 3
+position = Vector2(719, 509)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 9
@@ -285,6 +291,24 @@ collision_layer = 2
 [node name="Goldeen8" parent="Mobs" instance=ExtResource("6_8orgi")]
 z_index = 3
 position = Vector2(900, 378)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Goldeen14" parent="Mobs" instance=ExtResource("6_8orgi")]
+z_index = 3
+position = Vector2(911, 424)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Goldeen15" parent="Mobs" instance=ExtResource("6_8orgi")]
+z_index = 3
+position = Vector2(1003, 487)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+
+[node name="Goldeen16" parent="Mobs" instance=ExtResource("6_8orgi")]
+z_index = 3
+position = Vector2(636, 372)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 
@@ -405,6 +429,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="animation_finished" from="Player/PipeAnimation" to="Player/Player" method="end_pipe_helper"]
 [connection signal="enemy_death" from="Mobs/Seaking2" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Seaking4" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Mobs/Seaking5" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Seaking3" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen2" to="." method="_on_enemy_death"]
@@ -416,6 +441,9 @@ color = Color(0, 0, 0, 1)
 [connection signal="enemy_death" from="Mobs/Goldeen12" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen13" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen8" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Mobs/Goldeen14" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Mobs/Goldeen15" to="." method="_on_enemy_death"]
+[connection signal="enemy_death" from="Mobs/Goldeen16" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen9" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen10" to="." method="_on_enemy_death"]
 [connection signal="enemy_death" from="Mobs/Goldeen11" to="." method="_on_enemy_death"]

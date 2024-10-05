@@ -61,7 +61,7 @@ func _bounce():
 		get_node("CoinTimer").start()
 		spawnable = spawned_scene.instantiate() 
 		spawnable.position = position + Vector2(0, -16)
-		get_tree().root.add_child(spawnable)
+		get_tree().root.call_deferred("add_child", spawnable)
 	elif spawned_scene.can_instantiate() and !played and (spawned_scene.resource_path == "res://mushroom_power.tscn" or spawned_scene.resource_path == "res://grass_power.tscn" or spawned_scene.resource_path == "res://fire_power.tscn" or spawned_scene.resource_path == "res://water_power.tscn"):
 		audio_player.set_stream(powerup_sound)
 		audio_player.set_volume_db(0)
@@ -70,7 +70,7 @@ func _bounce():
 		get_node("PowerupTimer").start()
 		spawnable = spawned_scene.instantiate()
 		spawnable.position = position + Vector2(0, -1)
-		get_tree().root.add_child(spawnable)
+		get_tree().root.call_deferred("add_child", spawnable)
 	block_speed = initial_bounce_speed
 	coin_speed = initial_bounce_speed*1.5
 	get_node("BounceTimer").start()

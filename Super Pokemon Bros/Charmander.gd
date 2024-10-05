@@ -22,7 +22,6 @@ func _ready():
 	velocity.x = SPEED
 
 func _physics_process(delta):
-	print(is_above())
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:
@@ -112,7 +111,7 @@ func _on_player_grass_attack_ended():
 	attacked = false
 
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y == 0))
+	return GameState.player.position.y <= position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y >= 0))
 
 
 func _on_player_hitbox_body_entered(body):
@@ -130,7 +129,6 @@ func _on_player_hitbox_body_entered(body):
 	elif body.is_in_group("enemies") and not isdead:
 		SPEED *= -1
 	elif body.name == "Player" and !isdead and !GameState.invincible:
-		print("wow")
 		if GameState.big and GameState.power == "":
 			GameState.big = false
 		elif GameState.big and GameState.power != "":

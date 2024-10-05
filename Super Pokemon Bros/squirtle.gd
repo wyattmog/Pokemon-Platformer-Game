@@ -31,17 +31,9 @@ func _physics_process(delta):
 		set_collision_mask_value(1, false)
 	else:
 		set_collision_mask_value(1, true)
-	#print(invincible)
-	#print(isdead)
-	#print(velocity.x)
-	#set_collision_layer_value(4, true)
-	#print(attacked)
-	 #Add the gravity.
 	if !isdead and start:
-		#print(invincible)
 		if velocity.x == 0:
 			SPEED *= -1
-		#anim.play("Walk")
 		if velocity.x > 0:
 			get_node("AnimatedSprite2D").flip_h = true
 		elif velocity.x < 0:
@@ -51,20 +43,6 @@ func _physics_process(delta):
 	else: 
 		velocity.x = 0
 		velocity.y = 0
-	#if chase == true:
-		#if !isdead:
-			#get_node("AnimatedSprite2D").play("Walk")
-		#player = get_node("../../Player/Player")
-		#var direction = (player.position - self.position).normalized()
-		#if direction.x > 0:
-			#get_node("AnimatedSprite2D").flip_h = true 
-		#else:
-			#get_node("AnimatedSprite2D").flip_h = false
-		#if !isdead:
-			#velocity.x = direction.x * SPEED
-	#else:
-		#velocity.x = 0
-	#print(invincible)
 	if get_node("SoftCollision").is_colliding():
 		velocity.x += get_node("SoftCollision").get_push_vector().x * delta * 10000
 	move_and_slide()
@@ -134,19 +112,9 @@ func death():
 	get_node("AnimatedSprite2D").set_visible(false)
 	if GameState.player.jumptype == "spin":
 		await get_tree().create_timer(0.40).timeout
-	#get_node("FireTimer").start()
 	self.queue_free()
 	
-	
-#func invincible_start():
-	##print("started")
-	#invincible = true
-	#set_collision_mask_value(1, false)
-	#
-#func invincible_end():
-	##print("ended")
-	#invincible = false
-	#set_collision_mask_value(1, true)
+
 
 func _on_player_grass_attack():
 	attacked = true
@@ -156,10 +124,9 @@ func _on_player_grass_attack():
 
 func _on_player_grass_attack_ended():
 	attacked = false
-	#print(attacked)
 
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y == 0))
+	return GameState.player.position.y <= position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y >= 0))
 
 
 func _on_player_hitbox_body_entered(body):

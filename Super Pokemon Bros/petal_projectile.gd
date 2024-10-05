@@ -23,7 +23,7 @@ func _ready():
 	started = true
 	await get_tree().create_timer(.25).timeout
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if GameState.invincible:
 		set_collision_mask_value(1, false)
 	else:

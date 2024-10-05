@@ -1,6 +1,5 @@
-[gd_scene load_steps=33 format=3 uid="uid://cc27lt2m5bta0"]
+[gd_scene load_steps=32 format=3 uid="uid://cc27lt2m5bta0"]
 
-[ext_resource type="Script" path="res://block.gd" id="1_1vti4"]
 [ext_resource type="Texture2D" uid="uid://l1qenk1nmx68" path="res://sprites/tiles/tilesets/output-onlinepngtools-6.png" id="1_mcyve"]
 [ext_resource type="Texture2D" uid="uid://mjuoqbnc2arf" path="res://sprites/tiles/tilesets/output-onlinepngtools-4 copy.png" id="2_5t07e"]
 [ext_resource type="Texture2D" uid="uid://d1xjnjweamft7" path="res://sprites/tiles/144428 (1) (1).png" id="2_goopi"]
@@ -227,7 +226,6 @@ resource_local_to_scene = true
 size = Vector2(14, 14)
 
 [node name="Block" type="StaticBody2D"]
-script = ExtResource("1_1vti4")
 
 [node name="Area2D" type="Area2D" parent="."]
 

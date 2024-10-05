@@ -558,22 +558,22 @@ func _physics_process(delta):
 				elif get_node("AnimatedSprite2D").global_position[0] < get_node("Camera2D").get_screen_center_position()[0] - 30:
 					target_left_margin = 0.0
 			if !GameState.water_gravity:
-				_directionalMovement(direction)
+				_directionalMovement()
 			else:
-				_waterDirectionalMovement(direction)
+				_waterDirectionalMovement()
 			if direction < 0:
 				last_pressed = -1
 			else: 
 				last_pressed = 1
 		else:
 			if !GameState.water_gravity:
-				_directionalMovement(direction)
+				_directionalMovement()
 				if last_pressed == 1:
 					target_left_margin = 0.3
 				elif last_pressed == -1:
 					target_right_margin = 0.3
 			else:
-				_waterDirectionalMovement(direction)
+				_waterDirectionalMovement()
 			
 		if velocity.y > 0 and !animplaying and jumptype=="jump" and !GameState.water_gravity:
 			if GameState.power == "grass":
@@ -704,7 +704,6 @@ func _on_bounce_signal():
 		_jumped()
 func _water_jumped():
 	velocity.y = JUMP_VELOCITY/3
-	#animplaying = true
 	if !animplaying:
 		if GameState.power == "grass":
 			anim.play("GrassSwim")
@@ -824,7 +823,7 @@ func _gravity(delta):
 	else:
 		velocity.y += gravity * delta
 		
-func _waterDirectionalMovement(direction):
+func _waterDirectionalMovement():
 	if direction:
 		if GameState.big:
 			get_node("AnimatedSprite2D").offset.y = 1
@@ -890,7 +889,7 @@ func _waterDirectionalMovement(direction):
 			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
 		
 	
-func _directionalMovement(direction):
+func _directionalMovement():
 	if direction:
 		if GameState.big:
 			get_node("AnimatedSprite2D").offset.y = 1
@@ -1003,7 +1002,8 @@ func _on_point_notifier_animation_finished(anim_name):
 		subtract = true
 
 
-
+func _set_camera_limits():
+	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
 
 func _on_finish_area_2d_body_entered(body):
 	if body.name == "Player":

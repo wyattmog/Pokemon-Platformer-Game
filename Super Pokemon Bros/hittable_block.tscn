@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvtqpjdaxe642"]
+[gd_scene load_steps=4 format=3 uid="uid://cvtqpjdaxe642"]
 
 [ext_resource type="PackedScene" uid="uid://cc27lt2m5bta0" path="res://block.tscn" id="1_t4gsh"]
-[ext_resource type="Script" path="res://hittable_block.gd" id="2_r08m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynsbu"]
 resource_local_to_scene = true
@@ -12,7 +11,6 @@ resource_local_to_scene = true
 size = Vector2(14, 14)
 
 [node name="Hittable_Block" instance=ExtResource("1_t4gsh")]
-script = ExtResource("2_r08m7")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("RectangleShape2D_ynsbu")

@@ -33,37 +33,20 @@ func _physics_process(delta):
 		set_collision_mask_value(1, false)
 	else:
 		set_collision_mask_value(1, true)
-	#print(attacked)
-	 #Add the gravity.
-	#if !isdead and start:
-		#anim.play("Walk")
-		#velocity.x = -SPEED
-		#velocity.y += gravity * delta
-	#else: 
-		#velocity.x = 0
-		#velocity.y = 0
+
 		
 	if !isdead and start:
 		var direction = (GameState.player.position - self.position)
-		#print(GameState.player.position.x," and ", self.position.x)
 		if direction.x > 0:
 			get_node("AnimatedSprite2D").flip_h = true 
-			#GameState.projectile_adjustment = -60
-			
-			#position.y -= 1
-			#velocity.x = -SPEED*2
+
 		else:
-			#GameState.projectile_adjustment = 0
-			#position.y -= 1
+
 			get_node("AnimatedSprite2D").flip_h = false
-		#print(GameState.player.position.y," and " ,position.y)
 		if velocity.y == 0 and !animplaying:		
 			anim.play("WartortleIdle")
-		#if is_on_floor() and get_node("GroundTimer").is_stopped() and in_range:
-			#get_node("GroundTimer").start()
-			#get_node("RestTimer").start()
+
 		if get_node("RestTimer").is_stopped() and !animplaying and in_range and !GameState.invincible:
-			#print("wowow")
 	
 			anim.play("WartortleAttack")
 			animplaying = true
@@ -79,20 +62,7 @@ func _physics_process(delta):
 	else: 
 		velocity.x = 0
 		velocity.y = 0
-	#if chase == true:
-		#if !isdead:
-			#get_node("AnimatedSprite2D").play("Walk")
-		#player = get_node("../../Player/Player")
-		#var direction = (player.position - self.position).normalized()
-		#if direction.x > 0:
-			#get_node("AnimatedSprite2D").flip_h = true 
-		#else:
-			#get_node("AnimatedSprite2D").flip_h = false
-		#if !isdead:
-			#velocity.x = direction.x * SPEED
-	#else:
-		#velocity.x = 0
-	#print(invincible)
+
 	
 	move_and_slide()
 	
@@ -183,7 +153,7 @@ func _on_player_grass_attack_ended():
 	attacked = false
 
 func is_above():
-	return GameState.player.position.y + 10 < position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y == 0))
+	return GameState.player.position.y <= position.y and (((GameState.player.velocity.y > 0 || GameState.player.bounce)) || (GameState.player.jumptype == "spin" and GameState.player.velocity.y < 0) || (GameState.player.velocity.y >= 0))
 
 
 func _on_player_hitbox_body_entered(body):
