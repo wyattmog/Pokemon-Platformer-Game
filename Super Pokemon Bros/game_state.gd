@@ -23,7 +23,7 @@ var water_gravity = false
 var shellkicked = false
 var time = 150
 var curr_world = 0
-var world_unlock = 3
+var world_unlock = 1
 
 
 

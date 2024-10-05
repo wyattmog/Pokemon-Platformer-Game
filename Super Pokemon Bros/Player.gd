@@ -717,6 +717,7 @@ func _water_jumped():
 			anim.play("BigSwim")
 		else:
 			anim.play("SmallSwim")
+
 func _jumped():
 	if abs(position.y - last_platform_y) <= 10 or get_node("CameraDelayTimer").is_stopped():
 		get_node("Camera2D").drag_top_margin = 1.00
@@ -890,7 +891,6 @@ func _waterDirectionalMovement():
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*2)
 		
-	
 func _directionalMovement():
 	if direction:
 		if GameState.big:
@@ -977,32 +977,23 @@ func _directionalMovement():
 		elif not is_on_floor() and !plat_vel:
 			velocity.x = move_toward(velocity.x, 0 , ACCELERATION*3)
 
-		
-		
 func _on_invincible_area_body_entered(body):
 	if body.name == "Player":
 		GameState.invincible = true
-
-
 
 func _on_invincible_area_body_exited(body):
 	if body.name == "Player":
 		GameState.invincible = false
 
-
-
-
 func _on_fade_player_animation_finished(anim_name):
 	if anim_name == "fade":
 		final_cutscene = true
-
 
 func _on_point_notifier_animation_finished(anim_name):
 	if anim_name == "visibility":
 		display_point_screen = true
 	if anim_name == "subtract":
 		subtract = true
-
 
 func _set_camera_limits():
 	get_node("Camera2D").set_limit(3, (get_node("Camera2D").get_screen_center_position().y + (get_viewport().size.y/9)))
@@ -1012,8 +1003,6 @@ func _on_finish_area_2d_body_entered(body):
 		get_node("Camera2D/GameEndFade/FadePlayer1").play("fade")
 		set_z_index(7)
 		GameState.cutscene = true
-
-
 
 func _on_pipe_area_body_entered(body):
 	if body.name == "Player":
