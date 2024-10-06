@@ -133,19 +133,10 @@ func death():
 	if GameState.player.jumptype == "spin":
 		await get_tree().create_timer(0.40).timeout
 	self.queue_free()
-	
-	
-#func invincible_start():
-	#invincible = true
-	#set_collision_mask_value(1, false)
-	#
-#func invincible_end():
-	#invincible = false
-	#set_collision_mask_value(1, true)
 
 func _on_player_grass_attack():
 	attacked = true
-	if nearby:
+	if nearby and not isdead:
 		isdead = true
 		death()
 

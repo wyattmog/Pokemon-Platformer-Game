@@ -129,7 +129,7 @@ func death():
 func _on_player_grass_attack():
 	attacked = true
 	jumped_on = false
-	if nearby:
+	if nearby and not isdead:
 		isdead = true
 		death()
 

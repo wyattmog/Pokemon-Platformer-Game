@@ -7,7 +7,7 @@ func display_power():
 	elif GameState.power == "water":
 		get_node("AnimatedSprite2D").play("water")
 	elif GameState.power == "grass":
-		get_node("AnimatedSprite2D").play("fire")
+		get_node("AnimatedSprite2D").play("grass")
 	elif GameState.big:
 		get_node("AnimatedSprite2D").play("big")
 	else:

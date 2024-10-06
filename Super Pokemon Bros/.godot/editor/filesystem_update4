@@ -82,3 +82,5 @@ res://seaking.gd
 res://world_2_underwater.gd
 res://world_label.gd
 res://world_select.gd
+res://goldeen.gd
+res://current_power_label.gd
