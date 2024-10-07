@@ -57,7 +57,6 @@ var played = false
 var collected = "small"
 func _ready():
 	add_to_group("player")
-
 	GameState.player = self
 	GameState.display_power()
 	get_node("Camera2D/GameTransition/ColorRect").set_visible(false)
@@ -67,7 +66,6 @@ func _ready():
 	get_node("GrassAttack/CollisionShapeRight").disabled = true
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90) 
-	get_tree().call_group("status_bar", "_timer_loop")
 func _start_pipe_helper():
 	get_node("Camera2D").set_position_smoothing_enabled(false)
 	collected = GameState.power
@@ -97,6 +95,7 @@ func end_pipe_helper(anim_name):
 		set_physics_process(true)
 		disable_input = false
 		get_node("Camera2D").set_position_smoothing_enabled(true)
+		get_tree().call_group("status_bar", "_timer_loop")
 func emit_signal_while_playing():
 	while anim.is_playing():
 		if get_node("GrassTimer").is_stopped():

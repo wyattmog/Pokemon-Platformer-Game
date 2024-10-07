@@ -2395,6 +2395,7 @@ collision_mask = 8
 collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = ExtResource("2_pl1fw")
 animation = &"FireIdle"
 frame = 1
@@ -2407,7 +2408,7 @@ process_callback = 0
 limit_left = 0
 limit_bottom = 570
 position_smoothing_enabled = true
-position_smoothing_speed = 15.0
+position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_vertical_offset = -0.04
@@ -2542,11 +2543,11 @@ autoplay = "SmallIdle"
 [node name="PlayerArea" type="Area2D" parent="."]
 
 [node name="HeadLeft" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(-3, -10)
+position = Vector2(-2, -10)
 shape = SubResource("RectangleShape2D_xwavn")
 
 [node name="HeadRight" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(3, -10)
+position = Vector2(2, -10)
 shape = SubResource("RectangleShape2D_xwavn")
 
 [node name="Feet" type="CollisionShape2D" parent="PlayerArea"]
@@ -2624,8 +2625,8 @@ one_shot = true
 [connection signal="animation_finished" from="Camera2D/GameEndFade/FadePlayer1" to="." method="_on_fade_player_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/GameOverScreen/GameOver" to="." method="_on_game_over_animation_finished"]
 [connection signal="animation_finished" from="Camera2D/CanvasLayer/LoadingScreenTransition/FadePlayer1" to="." method="_on_loading_screen_animation_finished"]
-[connection signal="body_entered" from="PlayerArea" to="." method="_on_ground_entered"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_ground_entered"]
 [connection signal="timeout" from="CameraDelayTimer" to="." method="_on_camera_delay_timer_timeout"]
 
 [editable path="Camera2D/CanvasLayer/LoadingScreenTransition"]

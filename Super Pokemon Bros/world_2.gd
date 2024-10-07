@@ -4,7 +4,6 @@ var fort_node
 var course_clear_sound = preload("res://sounds/SNES - Super Mario World - Sound Effects/smw_course_clear.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
 	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	if GameState.water_gravity:
@@ -12,6 +11,7 @@ func _ready():
 		get_node("Player/PipeAnimation").play("pipe_exit")
 		GameState.player._start_pipe_helper()
 	else:
+		get_tree().call_group("status_bar", "_timer_loop")
 		GameState.player.position = Vector2(86, 515)
 	add_to_group("worlds")
 	get_node("BackroundMusic").play()

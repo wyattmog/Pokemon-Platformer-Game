@@ -8,6 +8,7 @@ func _ready():
 	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	if GameState.checkpoint_level_2:
 		GameState.water_gravity = true
+		get_tree().call_group("status_bar", "_timer_loop")
 		ProjectSettings.set_setting("physics/2d/default_gravity", 150)
 		GameState.player.position = Vector2(1156, 497)
 	else:

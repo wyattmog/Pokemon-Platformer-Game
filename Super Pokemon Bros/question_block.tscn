@@ -16,7 +16,6 @@ size = Vector2(16, 13)
 
 [node name="Question_Block" instance=ExtResource("1_5we05")]
 script = ExtResource("2_dtd0v")
-spawned_scene = null
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(5.96046e-08, 4)
