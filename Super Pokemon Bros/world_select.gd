@@ -10,6 +10,7 @@ func _ready():
 	get_node("LoadingScreenTransition/ColorRect2").set_visible(true)
 	get_node("LoadingScreenTransition/FadePlayer1").play("fade_in")
 	GameState.game_ended = true
+	GameState.time = 150
 	music_player.play()
 	GameState.water_gravity = false
 	ProjectSettings.set_setting("physics/2d/default_gravity", 530)

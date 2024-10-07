@@ -67,7 +67,6 @@ func _ready():
 	get_node("GrassAttack/CollisionShapeLeft").disabled = true
 	scale = Vector2(.90,.90) 
 func _start_pipe_helper():
-	get_node("Camera2D").set_position_smoothing_enabled(false)
 	collected = GameState.power
 	if GameState.big:
 		scaled = true
@@ -94,7 +93,6 @@ func end_pipe_helper(anim_name):
 		set_z_index(2)
 		set_physics_process(true)
 		disable_input = false
-		get_node("Camera2D").set_position_smoothing_enabled(true)
 		get_tree().call_group("status_bar", "_timer_loop")
 func emit_signal_while_playing():
 	while anim.is_playing():

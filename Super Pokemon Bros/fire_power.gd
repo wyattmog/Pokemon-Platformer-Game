@@ -2,15 +2,17 @@ extends CharacterBody2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var curr_world
 func _ready():
 	get_node("AnimatedSprite2D").play("fire_power")
 	get_node("Timer").start()
 	set_visible(0)
+	curr_world = GameState.curr_world
 	await get_tree().create_timer(.15).timeout
 	set_visible(1)
 
 func _physics_process(delta):
-	if GameState.game_ended:
+	if GameState.game_ended || curr_world != GameState.curr_world:
 		queue_free()
 	if get_node("Timer").is_stopped():
 		set_collision_mask_value(4, true)

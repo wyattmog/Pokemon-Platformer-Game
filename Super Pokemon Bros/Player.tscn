@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://f5xo12ldwedy"]
+[gd_scene load_steps=104 format=3 uid="uid://f5xo12ldwedy"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_vhn5w"]
 [ext_resource type="SpriteFrames" uid="uid://b8g3s70uacscw" path="res://Player.tres" id="2_pl1fw"]
@@ -220,6 +220,96 @@ tracks/7/keys = {
 _data = {
 "RESET": SubResource("Animation_formr"),
 "game_over": SubResource("Animation_628ia")
+}
+
+[sub_resource type="Animation" id="Animation_mts1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.298039, 0.321569, 0.368627, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nbcns"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..:position_smoothing_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_wqnb6"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yn87"]
+_data = {
+"RESET": SubResource("Animation_mts1p"),
+"fade_in": SubResource("Animation_nbcns"),
+"fade_out": SubResource("Animation_wqnb6")
 }
 
 [sub_resource type="Animation" id="Animation_fcehk"]
@@ -2395,7 +2485,6 @@ collision_mask = 8
 collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = ExtResource("2_pl1fw")
 animation = &"FireIdle"
 frame = 1
@@ -2407,7 +2496,6 @@ zoom = Vector2(4.5, 4.5)
 process_callback = 0
 limit_left = 0
 limit_bottom = 570
-position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -2490,6 +2578,11 @@ texture = ExtResource("59_if17i")
 process_mode = 3
 visible = false
 position = Vector2(-5, -3)
+
+[node name="FadePlayer1" parent="Camera2D/CanvasLayer/LoadingScreenTransition" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_7yn87")
+}
 
 [node name="GameTransition" type="CanvasLayer" parent="Camera2D"]
 visible = false

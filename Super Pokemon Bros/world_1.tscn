@@ -430,7 +430,7 @@ z_index = 1
 z_index = 2
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(3621.02, 405.313)
+position = Vector2(83, 517)
 collision_mask = 12
 
 [node name="BG" type="ParallaxBackground" parent="."]
@@ -639,13 +639,6 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
-[node name="Bulbasaur15" parent="Mobs" instance=ExtResource("10_lglvw")]
-z_index = 3
-position = Vector2(2919, 364)
-scale = Vector2(0.7, 0.7)
-collision_layer = 2
-collision_mask = 9
-
 [node name="Bulbasaur" parent="Mobs" instance=ExtResource("10_lglvw")]
 z_index = 3
 position = Vector2(1719, 516)
@@ -684,13 +677,6 @@ collision_mask = 9
 [node name="Bulbasaur11" parent="Mobs" instance=ExtResource("10_lglvw")]
 z_index = 3
 position = Vector2(3238, 531)
-scale = Vector2(0.7, 0.7)
-collision_layer = 2
-collision_mask = 9
-
-[node name="Bulbasaur13" parent="Mobs" instance=ExtResource("10_lglvw")]
-z_index = 3
-position = Vector2(3570, 466)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
@@ -1007,7 +993,7 @@ position = Vector2(2794, 429)
 shape = SubResource("RectangleShape2D_i1623")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="InvincibleArea"]
-position = Vector2(3007, 372)
+position = Vector2(3009, 370)
 shape = SubResource("RectangleShape2D_aoky5")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="InvincibleArea"]
@@ -1088,8 +1074,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="enemy_death" from="Mobs/Bulbasaur12" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur14" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Bulbasaur14" to="." method="_on_enemy_death"]
-[connection signal="bounce_signal" from="Mobs/Bulbasaur15" to="Player/Player" method="_on_bounce_signal"]
-[connection signal="enemy_death" from="Mobs/Bulbasaur15" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Bulbasaur" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur3" to="Player/Player" method="_on_bounce_signal"]
@@ -1102,8 +1086,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="enemy_death" from="Mobs/Bulbasaur10" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur11" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Bulbasaur11" to="." method="_on_enemy_death"]
-[connection signal="bounce_signal" from="Mobs/Bulbasaur13" to="Player/Player" method="_on_bounce_signal"]
-[connection signal="enemy_death" from="Mobs/Bulbasaur13" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur16" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Bulbasaur16" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Bulbasaur17" to="Player/Player" method="_on_bounce_signal"]

@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var SPEED = 50
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready(): 
@@ -12,7 +11,6 @@ func _ready():
 	await get_tree().create_timer(.15).timeout
 	set_visible(1)
 func _physics_process(delta):
-	
 	if get_node("Timer").is_stopped():
 		set_z_index(2)
 		set_collision_mask_value(4, true)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 const UPWARDS_VEL = -100
 var SPEED = 50
+var curr_world
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
@@ -8,12 +9,13 @@ func _ready():
 	get_node("AnimatedSprite2D").play("grass_power_still")
 	get_node("Timer").start()
 	set_visible(0)
+	curr_world = GameState.curr_world
 	await get_tree().create_timer(.15).timeout
 	set_visible(1)
 	velocity.y =UPWARDS_VEL
 
 func _physics_process(delta):
-	if GameState.game_ended:
+	if GameState.game_ended || curr_world != GameState.curr_world:
 		queue_free()
 	if velocity.y == 0 and is_on_floor():
 		get_node("AnimatedSprite2D").play("grass_power_still")
