@@ -28,6 +28,10 @@ func _physics_process(delta):
 		set_collision_mask_value(1, true)
 	 #Add the gravity.
 	if !isdead and start:
+		if velocity.x > 0:
+			get_node("AnimatedSprite2D").flip_h = true
+		elif velocity.x < 0:
+			get_node("AnimatedSprite2D").flip_h = false
 		if velocity.x == 0:
 			SPEED *= -1
 		anim.play("Walk")
@@ -91,7 +95,7 @@ func death():
 	get_node("CollisionLeft").set_deferred("disabled", true)
 	emit_signal("enemy_death", get_path())
 	anim.play("Death")
-	if !attacked:
+	if !attacked and jumped_on:
 		get_tree().call_group("player", "_spawn_kick")
 		emit_signal("bounce_signal")
 	await get_tree().create_timer(0.25).timeout

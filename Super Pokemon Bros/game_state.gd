@@ -34,6 +34,8 @@ var collected_items = {}
 # Called when the node enters the scene tree for the first time.
 func _give_coins(num:int):
 	num_coins += num
+	if (num_coins % 100 == 0):
+		_add_lives(1)
 	get_tree().call_group("status_bar", "display_coins")
 func _give_big_coins(num:int):
 	big_num_coins += num

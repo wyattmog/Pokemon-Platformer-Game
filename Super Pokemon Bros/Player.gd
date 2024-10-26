@@ -666,7 +666,7 @@ func _death():
 		velocity.y -= 300
 	velocity.x = 0
 	get_node("CollisionShape2D").set_deferred("disabled", true)
-	if GameState.num_lives == 1:
+	if GameState.num_lives <= 1:
 		await get_tree().create_timer(2.2).timeout
 		get_node("Camera2D/GameOverScreen").set_visible(true)
 		get_node("Camera2D/GameOverScreen/ColorRect").set_visible(true)
@@ -677,7 +677,8 @@ func _death():
 		GameState.checkpoint_level_2 = false
 		GameState.checkpoint_level_3 = false
 		GameState.world_unlock = 1
-		GameState.num_lives = 5
+		GameState.collected_items.clear()
+		GameState.num_lives = 10
 		GameState.num_coins = 0
 		GameState.score = 0
 		await get_node("Camera2D/GameOverScreen/GameOver").animation_finished

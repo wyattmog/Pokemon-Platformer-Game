@@ -23,7 +23,7 @@ var attack = false
 var animplaying = false
 var start = false
 var count = 0
-var max_count = 1
+var max_count = 0
 
 func _ready(): 
 	add_to_group("enemies")
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	else:
 		set_collision_mask_value(1, true)
 	if !isdead and start:
-
+		print(count)
 		var direction = (GameState.player.position - self.position)
 		if direction.x > 0:
 			get_node("AnimatedSprite2D").flip_h = true 

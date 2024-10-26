@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cdgp8r5o6ivps"]
+[gd_scene load_steps=53 format=3 uid="uid://cdgp8r5o6ivps"]
 
 [ext_resource type="Script" path="res://world_3.gd" id="1_2lbw3"]
 [ext_resource type="TileSet" uid="uid://c0ws2rvhej4oj" path="res://marioblocks.tres" id="2_wbb3y"]
@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cbl8naoa04cx0" path="res://charizard.tscn" id="6_08p7b"]
 [ext_resource type="PackedScene" uid="uid://cgamnvepyjph5" path="res://charmeleon.tscn" id="7_kjc67"]
 [ext_resource type="PackedScene" uid="uid://dkkvgv2jkyy5a" path="res://charmander.tscn" id="8_fmi4d"]
-[ext_resource type="PackedScene" uid="uid://b3llbo15nh6y1" path="res://venusaur.tscn" id="10_y3x46"]
 [ext_resource type="Script" path="res://finish_pole.gd" id="14_51gxk"]
 [ext_resource type="Texture2D" uid="uid://46xgay2wsrlk" path="res://sprites/tiles/144613 (2).png" id="15_l773s"]
 [ext_resource type="PackedScene" uid="uid://b04j4apqmrk0v" path="res://big_blue_pole.tscn" id="16_ixnom"]
 [ext_resource type="PackedScene" uid="uid://ch7xj2shg4qq1" path="res://big_light_blue_pole.tscn" id="17_q2t71"]
 [ext_resource type="PackedScene" uid="uid://rla7keck6nxc" path="res://blue_pole.tscn" id="18_gr1u8"]
 [ext_resource type="PackedScene" uid="uid://dy41um3ywvb0q" path="res://checkpoint_pole.tscn" id="19_x3s3y"]
+[ext_resource type="PackedScene" uid="uid://dqtjvcwekhqua" path="res://water_power.tscn" id="20_hllwb"]
 [ext_resource type="PackedScene" uid="uid://drcngwora3bbq" path="res://light_blue_pole.tscn" id="20_hxmgv"]
 [ext_resource type="AudioStream" uid="uid://mhbo8bolabkd" path="res://sounds/SNES - Super Mario World - Sound Effects/30. Fortress-[AudioTrimmer.com].wav" id="22_35f73"]
 [ext_resource type="PackedScene" uid="uid://dmjxrgekwi0jx" path="res://berry.tscn" id="22_spj6a"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://doiyqu2kmmpwr" path="res://loading_screen_transition.tscn" id="23_bgwsx"]
 [ext_resource type="PackedScene" uid="uid://bhjqn260gic3e" path="res://mushroom_power.tscn" id="24_f5asf"]
 [ext_resource type="PackedScene" uid="uid://b0xxuu1kp52r7" path="res://spinning_coin.tscn" id="25_olaku"]
-[ext_resource type="PackedScene" uid="uid://dog8fv8spe6ns" path="res://fire_power.tscn" id="26_ydq5k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7npur"]
 atlas = ExtResource("15_l773s")
@@ -268,13 +267,6 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
-[node name="Charizard2" parent="Mobs" instance=ExtResource("6_08p7b")]
-z_index = 3
-position = Vector2(3256, 305)
-scale = Vector2(0.7, 0.7)
-collision_layer = 2
-collision_mask = 9
-
 [node name="Charizard3" parent="Mobs" instance=ExtResource("6_08p7b")]
 z_index = 3
 position = Vector2(3154, 418)
@@ -305,7 +297,7 @@ collision_mask = 9
 
 [node name="Charmeleon2" parent="Mobs" instance=ExtResource("7_kjc67")]
 z_index = 3
-position = Vector2(1309, 460)
+position = Vector2(1190, 441)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
@@ -429,13 +421,6 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 9
 
-[node name="Venusaur" parent="Mobs" instance=ExtResource("10_y3x46")]
-z_index = 3
-position = Vector2(3001, 453)
-scale = Vector2(0.7, 0.7)
-collision_layer = 2
-collision_mask = 9
-
 [node name="Charmander14" parent="Mobs" instance=ExtResource("8_fmi4d")]
 z_index = 3
 position = Vector2(4451, 359)
@@ -524,46 +509,46 @@ position = Vector2(2441, 300.496)
 position = Vector2(173.988, 511)
 
 [node name="Question_Block" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(719.999, 482)
+position = Vector2(1893, 356)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("24_f5asf")
 
 [node name="Question_Block2" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(738.997, 482)
+position = Vector2(1912, 356)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("25_olaku")
 
 [node name="Question_Block3" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(701, 482)
+position = Vector2(1874, 356)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("25_olaku")
 
 [node name="Question_Block5" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(2811, 363)
+position = Vector2(2794, 349)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("25_olaku")
 
 [node name="Question_Block6" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(2830, 363)
+position = Vector2(2813, 349)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("25_olaku")
 
 [node name="Question_Block7" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(2792, 363)
+position = Vector2(2775, 349)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
 spawned_scene = ExtResource("25_olaku")
 
 [node name="Question_Block4" parent="Foreground Blocks" instance=ExtResource("23_1083r")]
-position = Vector2(1974, 295)
+position = Vector2(844, 328)
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
-spawned_scene = ExtResource("26_ydq5k")
+spawned_scene = ExtResource("20_hllwb")
 
 [node name="VoidArea" type="Area2D" parent="."]
 
@@ -724,8 +709,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="enemy_death" from="Mobs/Charizard" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charizard6" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Charizard6" to="." method="_on_enemy_death"]
-[connection signal="bounce_signal" from="Mobs/Charizard2" to="Player/Player" method="_on_bounce_signal"]
-[connection signal="enemy_death" from="Mobs/Charizard2" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charizard3" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Charizard3" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charizard4" to="Player/Player" method="_on_bounce_signal"]
@@ -770,8 +753,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="enemy_death" from="Mobs/Charmander6" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charmander7" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Charmander7" to="." method="_on_enemy_death"]
-[connection signal="bounce_signal" from="Mobs/Venusaur" to="Player/Player" method="_on_bounce_signal"]
-[connection signal="enemy_death" from="Mobs/Venusaur" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charmander14" to="Player/Player" method="_on_bounce_signal"]
 [connection signal="enemy_death" from="Mobs/Charmander14" to="." method="_on_enemy_death"]
 [connection signal="bounce_signal" from="Mobs/Charmander15" to="Player/Player" method="_on_bounce_signal"]
